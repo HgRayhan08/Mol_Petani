@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "872976874500",
+    "project_id": "database-skripsi-c6759",
+    "storage_bucket": "database-skripsi-c6759.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:872976874500:android:18e52f4a7e20dd44578951",
+        "android_client_info": {
+          "package_name": "com.skripsi.mol_petani"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCT04jfuuX0jL6W_x1dwW23AUu3wfvrDjE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
