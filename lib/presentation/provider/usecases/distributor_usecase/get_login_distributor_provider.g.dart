@@ -1,26 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_data_petugas_provider.dart';
+part of 'get_login_distributor_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userDataPetugasHash() => r'47e339ad0689db9764af9d1f7c586d19bd30053a';
+String _$getLoginDistributorHash() =>
+    r'd76cc0519b04c29f7d0bd06ed88d350e151560e2';
 
-/// See also [UserDataPetugas].
-@ProviderFor(UserDataPetugas)
-final userDataPetugasProvider =
-    AsyncNotifierProvider<UserDataPetugas, User?>.internal(
-  UserDataPetugas.new,
-  name: r'userDataPetugasProvider',
+/// See also [getLoginDistributor].
+@ProviderFor(getLoginDistributor)
+final getLoginDistributorProvider =
+    AutoDisposeProvider<GetLoginDistributor>.internal(
+  getLoginDistributor,
+  name: r'getLoginDistributorProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$userDataPetugasHash,
+      : _$getLoginDistributorHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$UserDataPetugas = AsyncNotifier<User?>;
+typedef GetLoginDistributorRef = AutoDisposeProviderRef<GetLoginDistributor>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

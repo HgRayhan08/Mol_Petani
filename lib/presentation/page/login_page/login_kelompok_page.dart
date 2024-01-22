@@ -5,10 +5,11 @@ import 'package:mol_petani/presentation/page/login_page/method/login_with.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/provider/user_data_petugas/data_user_petugas_provider.dart';
 
-class LoginPplPage extends ConsumerWidget {
+class LoginKelompokPage extends ConsumerWidget {
   final TextEditingController emailControler = TextEditingController();
   final TextEditingController passwordControler = TextEditingController();
-  LoginPplPage({super.key});
+
+  LoginKelompokPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -17,7 +18,7 @@ class LoginPplPage extends ConsumerWidget {
       (previous, next) {
         if (next is AsyncData) {
           if (next.value != null) {
-            ref.read(routerProvider).goNamed("main-ppl");
+            ref.read(routerProvider).goNamed("main-kelompok");
           }
         } else if (next is AsyncError) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -51,7 +52,7 @@ class LoginPplPage extends ConsumerWidget {
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               Text(
-                "Penyuluh Pertanian Lapangan",
+                "Kelompok Tani",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
               ),
             ],
@@ -71,9 +72,11 @@ class LoginPplPage extends ConsumerWidget {
                           ),
                         );
                       } else {
-                        ref.read(dataUserPetugasProvider.notifier).loginPpl(
-                            email: emailControler.text,
-                            password: passwordControler.text);
+                        ref
+                            .read(dataUserPetugasProvider.notifier)
+                            .loginKelompok(
+                                email: emailControler.text,
+                                password: passwordControler.text);
                       }
                     },
                     child: const Text("Login"))
@@ -100,24 +103,16 @@ class LoginPplPage extends ConsumerWidget {
             ref,
             first: "Petani",
             toPageFirst: "login-petani",
-            seccond: "Distributor",
-            toPageSecond: "login-petani",
-            thrid: "Kelompok Tani",
-            toPagethrid: "login-kelompok",
+            seccond: "Penyuluh Pertanian Lapangan",
+            toPageSecond: "login-ppl",
+            thrid: "Distributor",
+            toPagethrid: "login-dis",
           ),
-          SizedBox(height: mediaHeight * 0.12),
+          SizedBox(height: mediaHeight * 0.13),
           const Align(
-            child: Column(
-              children: [
-                Text(
-                  "Login for Penyuluh Pertanian ",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  "Lapangan",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-              ],
+            child: Text(
+              "Login for Petani",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
           )
         ],

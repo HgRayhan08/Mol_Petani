@@ -2,37 +2,66 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mol_petani/domain/entities/result.dart';
 import 'package:mol_petani/domain/entities/user.dart';
-import 'package:mol_petani/domain/usecase/auth_petugas/get_login_petugas/get_login_petugas.dart';
+import 'package:mol_petani/domain/usecase/auth_petugas/get_login_distributor/get_login_distributor.dart';
+import 'package:mol_petani/domain/usecase/auth_petugas/get_login_kelompok/get_login_kelompok.dart';
+import 'package:mol_petani/domain/usecase/auth_petugas/get_login_ppl/get_login_ppl.dart';
 import 'package:mol_petani/domain/usecase/auth_petugas/login_petugas/login_distributor.dart';
 import 'package:mol_petani/domain/usecase/auth_petugas/login_petugas/login_kelompok.dart';
 import 'package:mol_petani/domain/usecase/auth_petugas/login_petugas/login_params.dart';
 import 'package:mol_petani/domain/usecase/auth_petugas/login_petugas/login_ppl.dart';
 import 'package:mol_petani/domain/usecase/auth_petugas/register_petugas/register_petugas.dart';
 import 'package:mol_petani/domain/usecase/auth_petugas/register_petugas/register_petugas_param.dart';
-import 'package:mol_petani/presentation/provider/usecases/auth_petugas_usecase/get_login_petugas_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/auth_petugas_usecase/login_distributor_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/auth_petugas_usecase/login_kelompok_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/auth_petugas_usecase/login_ppl_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/auth_petugas_usecase/logout_petugas_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/auth_petugas_usecase/register_petugas_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/distributor_usecase/get_login_distributor_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/kelompok_tani_usecase/get_login_kelompok_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/ppl_usecase/get_login_ppl_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'user_data_petugas_provider.g.dart';
+part 'data_user_petugas_provider.g.dart';
 
 @Riverpod(keepAlive: true)
-class UserDataPetugas extends _$UserDataPetugas {
+class DataUserPetugas extends _$DataUserPetugas {
   @override
   Future<User?> build() async {
-    GetLoginPetugas getLoginUserPetugas = ref.read(getLoginPetugasProvider);
-    var result = await getLoginUserPetugas(null);
+    GetLoginPpl getppl = ref.read(getLoginPplProvider);
+    var resultppl = await getppl(null);
 
-    switch (result) {
-      case Success(value: final user):
-        state = AsyncData(user);
-        return user;
-      case Failed(message: _):
-        return null;
+    GetLoginDistributor getDistributor = ref.read(getLoginDistributorProvider);
+    var resultDis = await getDistributor(null);
+
+    GetLoginKelompok getKelompok = ref.read(getLoginKelompokProvider);
+    var resultKelompok = await getKelompok(null);
+
+    if (resultppl.isSuccess) {
+      switch (resultppl) {
+        case Success(value: final user):
+          state = AsyncData(user);
+          return user;
+        case Failed(message: _):
+          return null;
+      }
+    } else if (resultDis.isSuccess) {
+      switch (resultDis) {
+        case Success(value: final user):
+          state = AsyncData(user);
+          return user;
+        case Failed(message: _):
+          return null;
+      }
+    } else if (resultKelompok.isSuccess) {
+      switch (resultKelompok) {
+        case Success(value: final user):
+          state = AsyncData(user);
+          return user;
+        case Failed(message: _):
+          return null;
+      }
     }
+    return null;
   }
 
   Future<void> loginPpl({

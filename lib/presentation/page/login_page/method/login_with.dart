@@ -1,43 +1,49 @@
 import 'package:flutter/material.dart';
+import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/widgets/card_login_with.dart';
 
-Widget loginWith() => Row(
+Widget loginWith(
+  ref, {
+  String? first,
+  String? seccond,
+  String? thrid,
+  required String? toPageFirst,
+  required String? toPageSecond,
+  required String? toPagethrid,
+}) =>
+    Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         CardLoginWith(
-            content: const Column(
-              children: [
-                Text(
-                  "Penyuluh Pertanian",
-                  style: TextStyle(fontSize: 11),
-                ),
-                Text(
-                  "Lapangan",
-                  style: TextStyle(fontSize: 11),
-                ),
-              ],
+            content: Text(
+              first!,
+              overflow: TextOverflow.clip,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 11),
             ),
-            onTap: () {}),
+            onTap: () {
+              ref.read(routerProvider).goNamed(toPageFirst.toString());
+            }),
         CardLoginWith(
-            content: const Text(
-              "Distributor Pupuk",
-              style: TextStyle(fontSize: 11),
+            content: Text(
+              seccond!,
+              overflow: TextOverflow.clip,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 11),
             ),
-            onTap: () {}),
+            onTap: () {
+              ref.read(routerProvider).goNamed(toPageSecond.toString());
+            }),
         CardLoginWith(
-          content: const Column(
-            children: [
-              Text(
-                "Ketua Kelompok",
-                style: TextStyle(fontSize: 11),
-              ),
-              Text(
-                "Tani",
-                style: TextStyle(fontSize: 11),
-              ),
-            ],
+          content: Text(
+            thrid!,
+            overflow: TextOverflow.clip,
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 11),
           ),
-          onTap: () {},
+          onTap: () {
+            ref.read(routerProvider).goNamed(toPagethrid.toString());
+          },
         ),
       ],
     );

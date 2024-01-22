@@ -1,23 +1,16 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter/material.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/provider/user_data_petugas/data_user_petugas_provider.dart';
 
-class PplProfilePage extends ConsumerStatefulWidget {
-  const PplProfilePage({
-    super.key,
-  });
+class MainDistributorPage extends ConsumerWidget {
+  const MainDistributorPage({super.key});
 
   @override
-  ConsumerState<PplProfilePage> createState() => _PplProfilePageState();
-}
-
-class _PplProfilePageState extends ConsumerState<PplProfilePage> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(dataUserPetugasProvider, (previous, next) {
       if (previous != null && next is AsyncData && next.value == null) {
-        ref.read(routerProvider).goNamed("login-petani");
+        ref.read(routerProvider).goNamed("login-ppl");
       } else if (next is AsyncError) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -32,7 +25,7 @@ class _PplProfilePageState extends ConsumerState<PplProfilePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("Halaman main"),
+            Text("distributor"),
             ElevatedButton(
               onPressed: () {
                 ref.read(dataUserPetugasProvider.notifier).logoutPetugas();

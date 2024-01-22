@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mol_petani/presentation/page/home_page/ppl_home_page.dart';
+import 'package:mol_petani/presentation/page/home_page/home_ppl_page.dart';
 import 'package:mol_petani/presentation/page/profile/ppl_profile_page.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
-import 'package:mol_petani/presentation/provider/user_data_petugas/user_data_petugas_provider.dart';
+import 'package:mol_petani/presentation/provider/user_data_petugas/data_user_petugas_provider.dart';
 
-class PplMainPage extends ConsumerStatefulWidget {
-  const PplMainPage({super.key});
+class MainPplPage extends ConsumerStatefulWidget {
+  const MainPplPage({super.key});
 
   @override
-  ConsumerState<PplMainPage> createState() => _PplMainPageState();
+  ConsumerState<MainPplPage> createState() => _MainPplPageState();
 }
 
-class _PplMainPageState extends ConsumerState<PplMainPage> {
+class _MainPplPageState extends ConsumerState<MainPplPage> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
-    PplHomePage(),
+    HomePplPage(),
     Text(
       'Index 1: Business',
       style: optionStyle,
@@ -37,9 +37,9 @@ class _PplMainPageState extends ConsumerState<PplMainPage> {
 
   @override
   Widget build(BuildContext context) {
-    ref.listen(userDataPetugasProvider, (previous, next) {
+    ref.listen(dataUserPetugasProvider, (previous, next) {
       if (previous != null && next is AsyncData && next.value == null) {
-        ref.read(routerProvider).goNamed("loginPpl");
+        ref.read(routerProvider).goNamed("login-petani");
       } else if (next is AsyncError) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

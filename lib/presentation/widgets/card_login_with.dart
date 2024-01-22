@@ -16,7 +16,8 @@ class CardLoginWith extends StatelessWidget {
       child: Container(
         alignment: Alignment.center,
         height: 50,
-        padding: const EdgeInsets.all(5),
+        width: MediaQuery.of(context).size.width * 0.28,
+        // padding: const EdgeInsets.all(2),
         decoration: BoxDecoration(
             color: const Color(0xffECF9FF),
             border: Border.all(
@@ -26,7 +27,7 @@ class CardLoginWith extends StatelessWidget {
             boxShadow: const [
               BoxShadow(
                 spreadRadius: 3,
-                blurRadius: 5,
+                // blurRadius: 5,
                 offset: Offset(2, 3),
                 color: Color(0xffECF9FF),
               )

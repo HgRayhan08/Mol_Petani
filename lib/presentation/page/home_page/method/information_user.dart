@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mol_petani/presentation/provider/user_data_petugas/user_data_petugas_provider.dart';
+import 'package:mol_petani/presentation/provider/user_data_petugas/data_user_petugas_provider.dart';
 
 Widget informationUser(context, ref) => Stack(
       children: [
@@ -25,7 +25,7 @@ Widget informationUser(context, ref) => Stack(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Hi! ${ref.watch(userDataPetugasProvider.notifier).state.value.nama}",
+                        "Hi! ${ref.watch(dataUserPetugasProvider.notifier).state.value.nama}",
                         style: const TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
@@ -33,7 +33,7 @@ Widget informationUser(context, ref) => Stack(
                       ),
                       Text(
                         ref
-                            .watch(userDataPetugasProvider.notifier)
+                            .watch(dataUserPetugasProvider.notifier)
                             .state
                             .value
                             .keterangan,
@@ -47,13 +47,13 @@ Widget informationUser(context, ref) => Stack(
                       shape: BoxShape.circle,
                       image: DecorationImage(
                         image: ref
-                                    .watch(userDataPetugasProvider.notifier)
+                                    .watch(dataUserPetugasProvider.notifier)
                                     .state
                                     .value
                                     .fotoUrl !=
                                 ""
                             ? NetworkImage(ref
-                                .watch(userDataPetugasProvider.notifier)
+                                .watch(dataUserPetugasProvider.notifier)
                                 .state
                                 .value
                                 .fotoUrl) as ImageProvider

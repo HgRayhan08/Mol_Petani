@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mol_petani/presentation/provider/user_data_petugas/user_data_petugas_provider.dart';
+import 'package:mol_petani/presentation/provider/router/router_provider.dart';
+import 'package:mol_petani/presentation/provider/user_data_petugas/data_user_petugas_provider.dart';
 
 class LoadingPage extends ConsumerWidget {
   const LoadingPage({super.key});
@@ -8,13 +9,40 @@ class LoadingPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(
-      userDataPetugasProvider,
+      dataUserPetugasProvider,
       (previous, next) {
         if (next is AsyncData) {
-          if (next.value != null) {
-            if (ref.read(userDataPetugasProvider.notifier).state.value!.uid ==
-                "ppl") {}
-          }
+          Future.delayed(
+            const Duration(milliseconds: 1500),
+            () {
+              if (next.value != null) {
+                if (ref
+                        .read(dataUserPetugasProvider.notifier)
+                        .state
+                        .value!
+                        .keterangan ==
+                    "Penyuluh Pertanian Lapangan") {
+                  ref.read(routerProvider).goNamed("main-ppl");
+                } else if (ref
+                        .read(dataUserPetugasProvider.notifier)
+                        .state
+                        .value!
+                        .keterangan ==
+                    "distributor") {
+                  ref.read(routerProvider).goNamed("main-dist");
+                } else if (ref
+                        .read(dataUserPetugasProvider.notifier)
+                        .state
+                        .value!
+                        .keterangan ==
+                    "Kelompok Tani") {
+                  ref.read(routerProvider).goNamed("main-kelompok");
+                }
+              } else {
+                ref.read(routerProvider).goNamed("login-petani");
+              }
+            },
+          );
         } else if (next is AsyncError) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
@@ -37,9 +65,9 @@ class LoadingPage extends ConsumerWidget {
               height: 80,
               fit: BoxFit.cover,
             ),
-            Text(
+            const Text(
               "Monitoring Lahan Petani",
-            )
+            ),
           ],
         ),
       ),
