@@ -1,20 +1,25 @@
-import 'package:flutter/material.dart';
-import 'package:mol_petani/presentation/provider/user_data_petugas/data_user_petugas_provider.dart';
+import 'dart:ui';
 
-Widget informationUser(context, ref) => Stack(
-      children: [
-        Container(
-          height: MediaQuery.of(context).size.height * 0.13,
-          decoration: const BoxDecoration(
-            color: Color(0xff60EFB8),
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(30),
-              bottomRight: Radius.circular(30),
-            ),
-          ),
+import 'package:flutter/material.dart';
+import 'package:mol_petani/presentation/misc/constant.dart';
+import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
+
+AppBar informationUser(context, ref) => AppBar(
+      backgroundColor: blueLight,
+      title: Align(
+        alignment: Alignment.topLeft,
+        child: Image.asset(
+          "assets/logo2.png",
+          height: 40,
+          fit: BoxFit.contain,
         ),
-        Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
+      ),
+      bottom: PreferredSize(
+        preferredSize:
+            Size(double.infinity, MediaQuery.of(context).size.height * 0.1),
+        child: Padding(
+          padding:
+              const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -25,18 +30,35 @@ Widget informationUser(context, ref) => Stack(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Hi! ${ref.watch(dataUserPetugasProvider.notifier).state.value.nama}",
-                        style: const TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),
+                        "Hi! ${ref.watch(dataUserProvider.notifier).state.value.nama}",
+                        style: extraLarge.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
-                      Text(
-                        ref
-                            .watch(dataUserPetugasProvider.notifier)
-                            .state
-                            .value
-                            .keterangan,
+                      Container(
+                        margin: const EdgeInsets.only(top: 5),
+                        padding: const EdgeInsets.all(6),
+                        decoration: BoxDecoration(
+                          color: light,
+                          boxShadow: [
+                            BoxShadow(
+                                offset: const Offset(0, 1),
+                                blurRadius: 5,
+                                color: Colors.black.withOpacity(0.3))
+                          ],
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                        ),
+                        child: Text(
+                          ref
+                              .watch(dataUserProvider.notifier)
+                              .state
+                              .value
+                              .keterangan,
+                          style: regulerReguler.copyWith(color: dark),
+                        ),
                       )
                     ],
                   ),
@@ -47,13 +69,13 @@ Widget informationUser(context, ref) => Stack(
                       shape: BoxShape.circle,
                       image: DecorationImage(
                         image: ref
-                                    .watch(dataUserPetugasProvider.notifier)
+                                    .watch(dataUserProvider.notifier)
                                     .state
                                     .value
                                     .fotoUrl !=
                                 ""
                             ? NetworkImage(ref
-                                .watch(dataUserPetugasProvider.notifier)
+                                .watch(dataUserProvider.notifier)
                                 .state
                                 .value
                                 .fotoUrl) as ImageProvider
@@ -67,6 +89,12 @@ Widget informationUser(context, ref) => Stack(
               ),
             ],
           ),
-        )
-      ],
+        ),
+      ),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(20),
+          bottomRight: Radius.circular(20),
+        ),
+      ),
     );

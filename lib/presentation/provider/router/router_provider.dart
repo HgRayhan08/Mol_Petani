@@ -58,11 +58,11 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(routes: [
       GoRoute(
         path: "/regis-distributor",
         name: "regis-distributor",
-        builder: (context, state) => const RegisterDistributorPage(),
+        builder: (context, state) => RegisterDistributorPage(),
       ),
       GoRoute(
         path: "/regis-kelompok",
         name: "regis-kelompok",
-        builder: (context, state) => const RegisterKelompokPage(),
+        builder: (context, state) => RegisterKelompokPage(),
       ),
     ], initialLocation: "/loading", debugLogDiagnostics: false);

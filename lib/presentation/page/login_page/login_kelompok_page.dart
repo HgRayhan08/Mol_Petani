@@ -2,8 +2,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:mol_petani/presentation/page/login_page/method/form_login.dart';
 import 'package:mol_petani/presentation/page/login_page/method/login_with.dart';
+import 'package:mol_petani/presentation/page/login_page/method/opener_petugas.dart';
+import 'package:mol_petani/presentation/page/login_page/method/text_bottom_petugas.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
-import 'package:mol_petani/presentation/provider/user_data_petugas/data_user_petugas_provider.dart';
+import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
 
 class LoginKelompokPage extends ConsumerWidget {
   final TextEditingController emailControler = TextEditingController();
@@ -14,7 +16,7 @@ class LoginKelompokPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(
-      dataUserPetugasProvider,
+      dataUserProvider,
       (previous, next) {
         if (next is AsyncData) {
           if (next.value != null) {
@@ -45,22 +47,11 @@ class LoginKelompokPage extends ConsumerWidget {
           SizedBox(
             height: mediaHeight * 0.05,
           ),
-          const Column(
-            children: [
-              Text(
-                "Login to your Account",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                "Kelompok Tani",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-              ),
-            ],
-          ),
+          openerPetugas(title: "Kelompok Tani"),
           SizedBox(height: mediaHeight * 0.03),
           formLogin(context,
               email: emailControler, password: passwordControler),
-          switch (ref.watch(dataUserPetugasProvider)) {
+          switch (ref.watch(dataUserProvider)) {
             AsyncData(:final value) => value == null
                 ? ElevatedButton(
                     onPressed: () {
@@ -72,11 +63,9 @@ class LoginKelompokPage extends ConsumerWidget {
                           ),
                         );
                       } else {
-                        ref
-                            .read(dataUserPetugasProvider.notifier)
-                            .loginKelompok(
-                                email: emailControler.text,
-                                password: passwordControler.text);
+                        ref.read(dataUserProvider.notifier).loginKelompok(
+                            email: emailControler.text,
+                            password: passwordControler.text);
                       }
                     },
                     child: const Text("Login"))
@@ -108,13 +97,10 @@ class LoginKelompokPage extends ConsumerWidget {
             thrid: "Distributor",
             toPagethrid: "login-dis",
           ),
-          SizedBox(height: mediaHeight * 0.13),
-          const Align(
-            child: Text(
-              "Login for Petani",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-          )
+          SizedBox(height: mediaHeight * 0.12),
+          textBottomPetugas(
+            title: "kelompok tani",
+          ),
         ],
       ),
     );

@@ -2,8 +2,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:mol_petani/presentation/page/login_page/method/form_login.dart';
 import 'package:mol_petani/presentation/page/login_page/method/login_with.dart';
+import 'package:mol_petani/presentation/page/login_page/method/opener_petugas.dart';
+import 'package:mol_petani/presentation/page/login_page/method/text_bottom_petugas.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
-import 'package:mol_petani/presentation/provider/user_data_petugas/data_user_petugas_provider.dart';
+import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
 
 class LoginPplPage extends ConsumerWidget {
   final TextEditingController emailControler = TextEditingController();
@@ -13,7 +15,7 @@ class LoginPplPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(
-      dataUserPetugasProvider,
+      dataUserProvider,
       (previous, next) {
         if (next is AsyncData) {
           if (next.value != null) {
@@ -44,22 +46,11 @@ class LoginPplPage extends ConsumerWidget {
           SizedBox(
             height: mediaHeight * 0.05,
           ),
-          const Column(
-            children: [
-              Text(
-                "Login to your Account",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                "Penyuluh Pertanian Lapangan",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-              ),
-            ],
-          ),
+          openerPetugas(title: "Penyuluh Pertanian Lapangan"),
           SizedBox(height: mediaHeight * 0.03),
           formLogin(context,
               email: emailControler, password: passwordControler),
-          switch (ref.watch(dataUserPetugasProvider)) {
+          switch (ref.watch(dataUserProvider)) {
             AsyncData(:final value) => value == null
                 ? ElevatedButton(
                     onPressed: () {
@@ -71,7 +62,7 @@ class LoginPplPage extends ConsumerWidget {
                           ),
                         );
                       } else {
-                        ref.read(dataUserPetugasProvider.notifier).loginPpl(
+                        ref.read(dataUserProvider.notifier).loginPpl(
                             email: emailControler.text,
                             password: passwordControler.text);
                       }
@@ -101,25 +92,12 @@ class LoginPplPage extends ConsumerWidget {
             first: "Petani",
             toPageFirst: "login-petani",
             seccond: "Distributor",
-            toPageSecond: "login-petani",
+            toPageSecond: "login-dis",
             thrid: "Kelompok Tani",
             toPagethrid: "login-kelompok",
           ),
           SizedBox(height: mediaHeight * 0.12),
-          const Align(
-            child: Column(
-              children: [
-                Text(
-                  "Login for Penyuluh Pertanian ",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  "Lapangan",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-          )
+          textBottomPetugas(title: "Penyuluh Pertanian Lapangan")
         ],
       ),
     );

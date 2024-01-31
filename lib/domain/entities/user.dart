@@ -12,7 +12,10 @@ class User with _$User {
     required String keterangan,
     String? fotoUrl,
     @Default([]) List<String>? cangkupan,
+    String? kecamatan,
     String? kelompok,
+    String? desa,
+    String? idPPL,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

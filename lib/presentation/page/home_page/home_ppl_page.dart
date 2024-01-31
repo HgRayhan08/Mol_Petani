@@ -9,22 +9,11 @@ class HomePplPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xff60EFB8),
-        title: Align(
-          alignment: Alignment.topLeft,
-          child: Image.asset(
-            "assets/logo2.png",
-            height: 40,
-            fit: BoxFit.contain,
-          ),
-        ),
-      ),
+      appBar: informationUser(context, ref),
       body: ListView(
         children: [
-          informationUser(context, ref),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.04,
+            height: MediaQuery.of(context).size.height * 0.03,
           ),
           subMenuPplPage(context, ref),
         ],

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/login_page/method/form_login.dart';
 import 'package:mol_petani/presentation/page/login_page/method/login_with.dart';
-import 'package:mol_petani/presentation/page/login_page/method/opener_text.dart';
+import 'package:mol_petani/presentation/page/login_page/method/opener_petani.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
-import 'package:mol_petani/presentation/provider/user_data_petugas/data_user_petugas_provider.dart';
+import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
 
 class LoginPetaniPage extends ConsumerWidget {
   final TextEditingController emailControler = TextEditingController();
@@ -14,7 +15,7 @@ class LoginPetaniPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(
-      dataUserPetugasProvider,
+      dataUserProvider,
       (previous, next) {
         if (next is AsyncData) {
           if (next.value != null) {
@@ -46,32 +47,32 @@ class LoginPetaniPage extends ConsumerWidget {
             height: 70,
             fit: BoxFit.contain,
           ),
-          openerText(context),
+          openerPetani(context),
           formLogin(
             context,
             email: emailControler,
             password: passwordControler,
           ),
-          switch (ref.watch(dataUserPetugasProvider)) {
+          switch (ref.watch(dataUserProvider)) {
             AsyncData(:final value) => value == null
                 ? ElevatedButton(
                     style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 12),
                       backgroundColor: const Color(0xff7BD3EA),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
                     onPressed: () {
-                      ref.read(dataUserPetugasProvider.notifier).loginPpl(
+                      ref.read(dataUserProvider.notifier).loginPpl(
                           email: emailControler.text,
                           password: passwordControler.text);
                     },
-                    child: const Text(
+                    child: Text(
                       "Login",
-                      style: TextStyle(
-                        color: Colors.white,
+                      style: buttonReguler.copyWith(
+                        color: light,
                         fontWeight: FontWeight.bold,
-                        fontSize: 18,
                       ),
                     ),
                   )
@@ -85,14 +86,11 @@ class LoginPetaniPage extends ConsumerWidget {
           SizedBox(
             height: mediaHeight * 0.04,
           ),
-          const Align(
+          Align(
             alignment: Alignment.center,
             child: Text(
-              "Atau Login Sebagai",
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-              ),
+              "atau login sebagai",
+              style: regulerReguler,
             ),
           ),
           SizedBox(
@@ -108,17 +106,17 @@ class LoginPetaniPage extends ConsumerWidget {
             toPagethrid: "login-kelompok",
           ),
           Padding(
-            padding: EdgeInsets.only(top: mediaHeight * 0.1),
-            child: const Column(
+            padding: EdgeInsets.only(top: mediaHeight * 0.08),
+            child: Column(
               children: [
                 Text(
                   "Belum punya akun?",
-                  style: TextStyle(fontSize: 12),
+                  style: smallReguler,
                 ),
                 Text(
                   "Hubungi Ketua keompok tani daerah anda",
-                  style: TextStyle(fontSize: 12),
-                ),
+                  style: smallReguler,
+                )
               ],
             ),
           )

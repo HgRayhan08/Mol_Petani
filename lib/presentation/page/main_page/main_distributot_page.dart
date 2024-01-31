@@ -1,14 +1,14 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
-import 'package:mol_petani/presentation/provider/user_data_petugas/data_user_petugas_provider.dart';
+import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
 
 class MainDistributorPage extends ConsumerWidget {
   const MainDistributorPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen(dataUserPetugasProvider, (previous, next) {
+    ref.listen(dataUserProvider, (previous, next) {
       if (previous != null && next is AsyncData && next.value == null) {
         ref.read(routerProvider).goNamed("login-ppl");
       } else if (next is AsyncError) {
@@ -28,7 +28,7 @@ class MainDistributorPage extends ConsumerWidget {
             Text("distributor"),
             ElevatedButton(
               onPressed: () {
-                ref.read(dataUserPetugasProvider.notifier).logoutPetugas();
+                ref.read(dataUserProvider.notifier).logoutPetugas();
               },
               child: const Text("Log out"),
             )

@@ -26,7 +26,10 @@ mixin _$User {
   String get keterangan => throw _privateConstructorUsedError;
   String? get fotoUrl => throw _privateConstructorUsedError;
   List<String>? get cangkupan => throw _privateConstructorUsedError;
+  String? get kecamatan => throw _privateConstructorUsedError;
   String? get kelompok => throw _privateConstructorUsedError;
+  String? get desa => throw _privateConstructorUsedError;
+  String? get idPPL => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +48,10 @@ abstract class $UserCopyWith<$Res> {
       String keterangan,
       String? fotoUrl,
       List<String>? cangkupan,
-      String? kelompok});
+      String? kecamatan,
+      String? kelompok,
+      String? desa,
+      String? idPPL});
 }
 
 /// @nodoc
@@ -67,7 +73,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? keterangan = null,
     Object? fotoUrl = freezed,
     Object? cangkupan = freezed,
+    Object? kecamatan = freezed,
     Object? kelompok = freezed,
+    Object? desa = freezed,
+    Object? idPPL = freezed,
   }) {
     return _then(_value.copyWith(
       uid: null == uid
@@ -94,9 +103,21 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.cangkupan
           : cangkupan // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      kecamatan: freezed == kecamatan
+          ? _value.kecamatan
+          : kecamatan // ignore: cast_nullable_to_non_nullable
+              as String?,
       kelompok: freezed == kelompok
           ? _value.kelompok
           : kelompok // ignore: cast_nullable_to_non_nullable
+              as String?,
+      desa: freezed == desa
+          ? _value.desa
+          : desa // ignore: cast_nullable_to_non_nullable
+              as String?,
+      idPPL: freezed == idPPL
+          ? _value.idPPL
+          : idPPL // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -116,7 +137,10 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       String keterangan,
       String? fotoUrl,
       List<String>? cangkupan,
-      String? kelompok});
+      String? kecamatan,
+      String? kelompok,
+      String? desa,
+      String? idPPL});
 }
 
 /// @nodoc
@@ -135,7 +159,10 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? keterangan = null,
     Object? fotoUrl = freezed,
     Object? cangkupan = freezed,
+    Object? kecamatan = freezed,
     Object? kelompok = freezed,
+    Object? desa = freezed,
+    Object? idPPL = freezed,
   }) {
     return _then(_$UserImpl(
       uid: null == uid
@@ -162,9 +189,21 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value._cangkupan
           : cangkupan // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      kecamatan: freezed == kecamatan
+          ? _value.kecamatan
+          : kecamatan // ignore: cast_nullable_to_non_nullable
+              as String?,
       kelompok: freezed == kelompok
           ? _value.kelompok
           : kelompok // ignore: cast_nullable_to_non_nullable
+              as String?,
+      desa: freezed == desa
+          ? _value.desa
+          : desa // ignore: cast_nullable_to_non_nullable
+              as String?,
+      idPPL: freezed == idPPL
+          ? _value.idPPL
+          : idPPL // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -180,7 +219,10 @@ class _$UserImpl implements _User {
       required this.keterangan,
       this.fotoUrl,
       final List<String>? cangkupan = const [],
-      this.kelompok})
+      this.kecamatan,
+      this.kelompok,
+      this.desa,
+      this.idPPL})
       : _cangkupan = cangkupan;
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
@@ -208,11 +250,17 @@ class _$UserImpl implements _User {
   }
 
   @override
+  final String? kecamatan;
+  @override
   final String? kelompok;
+  @override
+  final String? desa;
+  @override
+  final String? idPPL;
 
   @override
   String toString() {
-    return 'User(uid: $uid, nama: $nama, email: $email, keterangan: $keterangan, fotoUrl: $fotoUrl, cangkupan: $cangkupan, kelompok: $kelompok)';
+    return 'User(uid: $uid, nama: $nama, email: $email, keterangan: $keterangan, fotoUrl: $fotoUrl, cangkupan: $cangkupan, kecamatan: $kecamatan, kelompok: $kelompok, desa: $desa, idPPL: $idPPL)';
   }
 
   @override
@@ -228,14 +276,28 @@ class _$UserImpl implements _User {
             (identical(other.fotoUrl, fotoUrl) || other.fotoUrl == fotoUrl) &&
             const DeepCollectionEquality()
                 .equals(other._cangkupan, _cangkupan) &&
+            (identical(other.kecamatan, kecamatan) ||
+                other.kecamatan == kecamatan) &&
             (identical(other.kelompok, kelompok) ||
-                other.kelompok == kelompok));
+                other.kelompok == kelompok) &&
+            (identical(other.desa, desa) || other.desa == desa) &&
+            (identical(other.idPPL, idPPL) || other.idPPL == idPPL));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, uid, nama, email, keterangan,
-      fotoUrl, const DeepCollectionEquality().hash(_cangkupan), kelompok);
+  int get hashCode => Object.hash(
+      runtimeType,
+      uid,
+      nama,
+      email,
+      keterangan,
+      fotoUrl,
+      const DeepCollectionEquality().hash(_cangkupan),
+      kecamatan,
+      kelompok,
+      desa,
+      idPPL);
 
   @JsonKey(ignore: true)
   @override
@@ -259,7 +321,10 @@ abstract class _User implements User {
       required final String keterangan,
       final String? fotoUrl,
       final List<String>? cangkupan,
-      final String? kelompok}) = _$UserImpl;
+      final String? kecamatan,
+      final String? kelompok,
+      final String? desa,
+      final String? idPPL}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
@@ -276,7 +341,13 @@ abstract class _User implements User {
   @override
   List<String>? get cangkupan;
   @override
+  String? get kecamatan;
+  @override
   String? get kelompok;
+  @override
+  String? get desa;
+  @override
+  String? get idPPL;
   @override
   @JsonKey(ignore: true)
   _$$UserImplCopyWith<_$UserImpl> get copyWith =>

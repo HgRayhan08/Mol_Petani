@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mol_petani/presentation/misc/constant.dart';
 
 class CardLoginWith extends StatelessWidget {
   final Widget content;
@@ -19,17 +20,17 @@ class CardLoginWith extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.28,
         // padding: const EdgeInsets.all(2),
         decoration: BoxDecoration(
-            color: const Color(0xffECF9FF),
+            color: light,
             border: Border.all(
               width: 2,
               color: Colors.transparent,
             ),
             boxShadow: const [
               BoxShadow(
-                spreadRadius: 3,
-                // blurRadius: 5,
-                offset: Offset(2, 3),
-                color: Color(0xffECF9FF),
+                spreadRadius: 2,
+                blurRadius: 2,
+                offset: Offset(1, 2),
+                color: Color.fromARGB(255, 235, 235, 235),
               )
             ],
             borderRadius: BorderRadius.circular(15)),

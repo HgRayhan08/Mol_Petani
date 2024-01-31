@@ -16,7 +16,10 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
               ?.map((e) => e as String)
               .toList() ??
           const [],
+      kecamatan: json['kecamatan'] as String?,
       kelompok: json['kelompok'] as String?,
+      desa: json['desa'] as String?,
+      idPPL: json['idPPL'] as String?,
     );
 
 Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
@@ -27,5 +30,8 @@ Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
       'keterangan': instance.keterangan,
       'fotoUrl': instance.fotoUrl,
       'cangkupan': instance.cangkupan,
+      'kecamatan': instance.kecamatan,
       'kelompok': instance.kelompok,
+      'desa': instance.desa,
+      'idPPL': instance.idPPL,
     };

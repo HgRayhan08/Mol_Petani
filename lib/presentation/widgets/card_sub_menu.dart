@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mol_petani/presentation/misc/constant.dart';
 
 class CardSubMenu extends StatelessWidget {
   final String image;
@@ -23,9 +24,13 @@ class CardSubMenu extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Card(
-              child: Image.asset(
-                image,
-                width: 70,
+              color: light,
+              child: Padding(
+                padding: const EdgeInsets.all(5),
+                child: Image.asset(
+                  image,
+                  width: 50,
+                ),
               ),
             ),
             SizedBox(
@@ -34,6 +39,7 @@ class CardSubMenu extends StatelessWidget {
               child: Center(
                 child: Text(
                   title,
+                  style: smallReguler.copyWith(fontWeight: FontWeight.w500),
                   textAlign: TextAlign.center,
                 ),
               ),

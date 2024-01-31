@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mol_petani/presentation/page/home_page/home_ppl_page.dart';
 import 'package:mol_petani/presentation/page/profile/ppl_profile_page.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
-import 'package:mol_petani/presentation/provider/user_data_petugas/data_user_petugas_provider.dart';
+import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
 
 class MainPplPage extends ConsumerStatefulWidget {
   const MainPplPage({super.key});
@@ -37,7 +37,7 @@ class _MainPplPageState extends ConsumerState<MainPplPage> {
 
   @override
   Widget build(BuildContext context) {
-    ref.listen(dataUserPetugasProvider, (previous, next) {
+    ref.listen(dataUserProvider, (previous, next) {
       if (previous != null && next is AsyncData && next.value == null) {
         ref.read(routerProvider).goNamed("login-petani");
       } else if (next is AsyncError) {

@@ -9,22 +9,22 @@ Widget subMenuPplPage(context, ref) => Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             CardSubMenu(
-              image: "assets/data_petani.png",
+              image: "assets/registrasi_distributor.png",
               title: "Registrasi Distributor",
               onTap: () {
-                ref.read(routerProvider).goNamed("regis-distributor");
+                ref.read(routerProvider).pushNamed("regis-distributor");
               },
             ),
             CardSubMenu(
-              image: "assets/data_petani.png",
+              image: "assets/registrasi_kelompoktani.png",
               title: "Registrasi Kelompok Tani",
               onTap: () {
-                ref.read(routerProvider).goNamed("regis-kelompok");
+                ref.read(routerProvider).pushNamed("regis-kelompok");
               },
             ),
             CardSubMenu(
-              image: "assets/data_petani.png",
-              title: "Data Petani jauh ini",
+              image: "assets/data_pengajuan_kelompok.png",
+              title: "Pengajuan pupuk Kelompok tani",
               onTap: () {},
             ),
             // CardSubMenu(),
@@ -35,18 +35,18 @@ Widget subMenuPplPage(context, ref) => Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             CardSubMenu(
-              image: "assets/data_petani.png",
-              title: "Data Petani",
+              image: "assets/data_pengajuan_dis.png",
+              title: "Pengajuan Pupuk Distributor",
+              onTap: () {},
+            ),
+            CardSubMenu(
+              image: "assets/pengajuan_kedistributor.png",
+              title: "Data Pengajuan ke Distributor",
               onTap: () {},
             ),
             CardSubMenu(
               image: "assets/data_petani.png",
-              title: "Data Petani jauh ini",
-              onTap: () {},
-            ),
-            CardSubMenu(
-              image: "assets/data_petani.png",
-              title: "Data Petani jauh ini",
+              title: "Data Kelompok Tani",
               onTap: () {},
             ),
             // CardSubMenu(),

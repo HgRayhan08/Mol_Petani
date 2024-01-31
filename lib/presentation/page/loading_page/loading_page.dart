@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
-import 'package:mol_petani/presentation/provider/user_data_petugas/data_user_petugas_provider.dart';
+import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
 
 class LoadingPage extends ConsumerWidget {
   const LoadingPage({super.key});
@@ -9,7 +10,7 @@ class LoadingPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(
-      dataUserPetugasProvider,
+      dataUserProvider,
       (previous, next) {
         if (next is AsyncData) {
           Future.delayed(
@@ -17,21 +18,21 @@ class LoadingPage extends ConsumerWidget {
             () {
               if (next.value != null) {
                 if (ref
-                        .read(dataUserPetugasProvider.notifier)
+                        .read(dataUserProvider.notifier)
                         .state
                         .value!
                         .keterangan ==
                     "Penyuluh Pertanian Lapangan") {
                   ref.read(routerProvider).goNamed("main-ppl");
                 } else if (ref
-                        .read(dataUserPetugasProvider.notifier)
+                        .read(dataUserProvider.notifier)
                         .state
                         .value!
                         .keterangan ==
                     "distributor") {
                   ref.read(routerProvider).goNamed("main-dist");
                 } else if (ref
-                        .read(dataUserPetugasProvider.notifier)
+                        .read(dataUserProvider.notifier)
                         .state
                         .value!
                         .keterangan ==
@@ -61,12 +62,16 @@ class LoadingPage extends ConsumerWidget {
           children: [
             Image.asset(
               "assets/logo.png",
-              width: 300,
-              height: 80,
+              width: MediaQuery.of(context).size.width * 0.8,
+              height: MediaQuery.of(context).size.height * 0.1,
               fit: BoxFit.cover,
             ),
-            const Text(
+            Text(
               "Monitoring Lahan Petani",
+              style: extraLarge.copyWith(
+                color: dark,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ],
         ),
