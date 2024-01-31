@@ -1,5 +1,5 @@
 abstract interface class SharedPrefRepository {
-  Future<void> saveDataLogin(String user);
+  Future<void> saveDataLogin(List<String> user);
   Future<void> removeDataLogin();
-  Future<String> getDataLogin();
+  Future<List<String>?> getDataLogin();
 }

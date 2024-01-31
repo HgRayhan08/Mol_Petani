@@ -91,7 +91,8 @@ class FirebaseUserRepository implements UserRepositoryPetugas {
       "keterangan": keterangan,
       "fotoUrl": fotoUrl,
       "kelompok": kelompok,
-      "desa": desa
+      "desa": desa,
+      "idPPl": idPPl,
     });
 
     DocumentSnapshot<Map<String, dynamic>> result = await users.doc(uid).get();

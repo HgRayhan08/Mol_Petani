@@ -8,19 +8,23 @@ import 'package:mol_petani/domain/usecase/usecase.dart';
 class GetLoginPpl implements UseCase<Result<User>, void> {
   final Authentication _authentication;
   final UserRepositoryPetugas _userRepository;
+  final SharedPrefRepository _sharedPrefRepository;
 
   GetLoginPpl(
       {required Authentication authentication,
-      required UserRepositoryPetugas userRepository})
+      required UserRepositoryPetugas userRepository,
+      required SharedPrefRepository sharedPrefRepository})
       : _authentication = authentication,
-        _userRepository = userRepository;
+        _userRepository = userRepository,
+        _sharedPrefRepository = sharedPrefRepository;
 
   @override
   Future<Result<User>> call(void _) async {
-    String? loginId = _authentication.getLoginPetugas();
+    // String? loginId = _authentication.getLoginPetugas();
+    List<String>? loginId = await _sharedPrefRepository.getDataLogin();
     if (loginId != null) {
       var resultUser = await _userRepository.getUserPpl(
-        uid: loginId,
+        uid: loginId[1],
       );
       if (resultUser.isSuccess) {
         return Result.success(resultUser.resultValue!);

@@ -3,9 +3,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreference implements SharedPrefRepository {
   @override
-  Future<String> getDataLogin() async {
+  Future<List<String>?> getDataLogin() async {
     SharedPreferences sharedPref = await SharedPreferences.getInstance();
-    return sharedPref.getString("dataLogin") ?? "";
+    return sharedPref.getStringList("dataLogin");
   }
 
   @override
@@ -15,8 +15,8 @@ class SharedPreference implements SharedPrefRepository {
   }
 
   @override
-  Future<void> saveDataLogin(String user) async {
+  Future<void> saveDataLogin(List<String> user) async {
     SharedPreferences sharedPref = await SharedPreferences.getInstance();
-    sharedPref.setString("dataLogin", user);
+    sharedPref.setStringList("dataLogin", user);
   }
 }

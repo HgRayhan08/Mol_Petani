@@ -24,21 +24,22 @@ class LoadingPage extends ConsumerWidget {
                         .keterangan ==
                     "Penyuluh Pertanian Lapangan") {
                   ref.read(routerProvider).goNamed("main-ppl");
-                } else if (ref
-                        .read(dataUserProvider.notifier)
-                        .state
-                        .value!
-                        .keterangan ==
-                    "distributor") {
-                  ref.read(routerProvider).goNamed("main-dist");
-                } else if (ref
-                        .read(dataUserProvider.notifier)
-                        .state
-                        .value!
-                        .keterangan ==
-                    "Kelompok Tani") {
-                  ref.read(routerProvider).goNamed("main-kelompok");
                 }
+                //  else if (ref
+                //         .read(dataUserProvider.notifier)
+                //         .state
+                //         .value!
+                //         .keterangan ==
+                //     "distributor") {
+                //   ref.read(routerProvider).goNamed("main-dist");
+                // } else if (ref
+                //         .read(dataUserProvider.notifier)
+                //         .state
+                //         .value!
+                //         .keterangan ==
+                //     "Kelompok Tani") {
+                //   ref.read(routerProvider).goNamed("main-kelompok");
+                // }
               } else {
                 ref.read(routerProvider).goNamed("login-petani");
               }
@@ -73,6 +74,12 @@ class LoadingPage extends ConsumerWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            ElevatedButton(
+              onPressed: () {
+                ref.read(dataUserProvider.notifier).logoutPetugas();
+              },
+              child: const Text("Log out"),
+            )
           ],
         ),
       ),

@@ -41,11 +41,11 @@ class DataUser extends _$DataUser {
     GetLoginPpl getppl = ref.read(getLoginPplProvider);
     var resultppl = await getppl(null);
 
-    GetLoginDistributor getDistributor = ref.read(getLoginDistributorProvider);
-    var resultDis = await getDistributor(null);
+    // GetLoginDistributor getDistributor = ref.read(getLoginDistributorProvider);
+    // var resultDis = await getDistributor(null);
 
-    GetLoginGrup getKelompok = ref.read(getLoginGrupProvider);
-    var resultKelompok = await getKelompok(null);
+    // GetLoginGrup getKelompok = ref.read(getLoginGrupProvider);
+    // var resultKelompok = await getKelompok(null);
 
     if (resultppl.isSuccess) {
       switch (resultppl) {
@@ -55,24 +55,25 @@ class DataUser extends _$DataUser {
         case Failed(message: _):
           return null;
       }
-    } else if (resultDis.isSuccess) {
-      switch (resultDis) {
-        case Success(value: final user):
-          state = AsyncData(user);
-          return user;
-        case Failed(message: _):
-          return null;
-      }
-    } else if (resultKelompok.isSuccess) {
-      switch (resultKelompok) {
-        case Success(value: final user):
-          state = AsyncData(user);
-          return user;
-        case Failed(message: _):
-          return null;
-      }
     }
-    return null;
+    //  else if (resultDis.isSuccess) {
+    //   switch (resultDis) {
+    //     case Success(value: final user):
+    //       state = AsyncData(user);
+    //       return user;
+    //     case Failed(message: _):
+    //       return null;
+    //   }
+    // } else if (resultKelompok.isSuccess) {
+    //   switch (resultKelompok) {
+    //     case Success(value: final user):
+    //       state = AsyncData(user);
+    //       return user;
+    //     case Failed(message: _):
+    //       return null;
+    //   }
+    // }
+    // return null;
   }
 
   Future<void> loginPpl({
@@ -133,14 +134,15 @@ class DataUser extends _$DataUser {
   Future<void> logoutPetugas() async {
     var logoutPpl = ref.read(logoutProvider);
     var result = await logoutPpl(null);
+    state = const AsyncData(null);
 
-    switch (result) {
-      case Success(value: _):
-        state = const AsyncData(null);
-      case Failed(:final message):
-        state = AsyncError(FlutterError(message), StackTrace.current);
-        state = AsyncData(state.valueOrNull);
-    }
+    // switch (result) {
+    //   case Success(value: _):
+    //     state = const AsyncData(null);
+    //   case Failed(:final message):
+    //     state = AsyncError(FlutterError(message), StackTrace.current);
+    //     state = AsyncData(state.valueOrNull);
+    // }
   }
 
   Future<void> registerGrupFarmer({
@@ -165,17 +167,16 @@ class DataUser extends _$DataUser {
         fotoUrl: fotoUrl,
         kelompok: kelompok,
         desa: desa,
-        idPPl: "QPFwS7pOzTO13Gy6zH3rCFLDYTm1",
       ),
     );
-    // switch (result) {
-    //   case Success(value: final user):
-    //     // state = AsyncData(user);
-    //     throw ;
-    //   case Failed(message: final message):
-    //     state = AsyncError(FlutterError(message), StackTrace.current);
-    //   // state = const AsyncData(null);
-    // }
+    switch (result) {
+      case Success(value: final user):
+        print(user);
+        state = AsyncData(user);
+      case Failed(message: final message):
+        state = AsyncError(FlutterError(message), StackTrace.current);
+        state = const AsyncData(null);
+    }
   }
 
   // Future<void> registerPetugas(

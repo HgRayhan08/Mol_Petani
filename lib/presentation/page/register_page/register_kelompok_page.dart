@@ -24,7 +24,7 @@ class RegisterKelompokPage extends ConsumerWidget {
             onPressed: () {
               ref.read(dataUserProvider.notifier).registerGrupFarmer(
                     nama: "kelompok Sukoiber",
-                    email: "kelompoktani2@gmail.com",
+                    email: "kelompoktan4@gmail.com",
                     password: "123456",
                     kelompok: "sukoiber",
                     fotoUrl: "",

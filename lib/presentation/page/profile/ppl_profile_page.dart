@@ -15,17 +15,20 @@ class PplProfilePage extends ConsumerStatefulWidget {
 class _PplProfilePageState extends ConsumerState<PplProfilePage> {
   @override
   Widget build(BuildContext context) {
-    ref.listen(dataUserProvider, (previous, next) {
-      if (previous != null && next is AsyncData && next.value == null) {
-        ref.read(routerProvider).goNamed("login-petani");
-      } else if (next is AsyncError) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(next.error.toString()),
-          ),
-        );
-      }
-    });
+    ref.listen(
+      dataUserProvider,
+      (previous, next) {
+        if (previous != null && next is AsyncData && next.value == null) {
+          ref.read(routerProvider).goNamed("login-petani");
+        } else if (next is AsyncError) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(next.error.toString()),
+            ),
+          );
+        }
+      },
+    );
 
     return Scaffold(
       body: Center(

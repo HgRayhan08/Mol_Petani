@@ -27,7 +27,7 @@ class FirebaseAuthentication implements Authentication {
   Future<Result<void>> logout() async {
     await _firebaseAuth.signOut();
     if (_firebaseAuth.currentUser == null) {
-      return const Result.success(null);
+      return const Result.success("logout");
     } else {
       return const Result.failed("Gagal melakukan log out");
     }
@@ -39,6 +39,7 @@ class FirebaseAuthentication implements Authentication {
     try {
       var userRegistrasi = await _firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: password);
+      _firebaseAuth.signOut();
       return Result.success(userRegistrasi.user!.uid);
     } on firebase_auth.FirebaseAuthException catch (e) {
       return Result.failed("${e.message}");

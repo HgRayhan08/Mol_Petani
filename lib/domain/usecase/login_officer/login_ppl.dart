@@ -9,10 +9,12 @@ import 'package:mol_petani/domain/usecase/usecase.dart';
 class LoginPpl implements UseCase<Result<User>, LoginParams> {
   final Authentication authentication;
   final UserRepositoryPetugas userRepository;
+  final SharedPrefRepository sharedPrefRepository;
   List<String> nama = ["hallo", "apakabar"];
   LoginPpl({
     required this.authentication,
     required this.userRepository,
+    required this.sharedPrefRepository,
   });
   @override
   Future<Result<User>> call(LoginParams params) async {
@@ -22,6 +24,8 @@ class LoginPpl implements UseCase<Result<User>, LoginParams> {
       var userResult =
           await userRepository.getUserPpl(uid: idResult.resultValue!);
       if (userResult.isSuccess) {
+        await sharedPrefRepository.saveDataLogin(
+            [userResult.resultValue!.keterangan, userResult.resultValue!.uid]);
         return switch (userResult) {
           Success(value: final user) => Result.success(user),
           Failed(message: final message) => Result.failed(message),

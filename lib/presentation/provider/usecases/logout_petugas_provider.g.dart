@@ -6,7 +6,7 @@ part of 'logout_petugas_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$logoutHash() => r'9472cbce146aa4d1f84a68336ebcb5bd2f7bb758';
+String _$logoutHash() => r'296efd3d3baeef5773a4caeea77a7f99b4a32b39';
 
 /// See also [logout].
 @ProviderFor(logout)
