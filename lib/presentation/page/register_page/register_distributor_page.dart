@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mol_petani/presentation/page/register_page/method/form_registrasi.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
-import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
 
 class RegisterDistributorPage extends ConsumerWidget {
   RegisterDistributorPage({super.key});

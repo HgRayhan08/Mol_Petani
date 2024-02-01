@@ -10,7 +10,6 @@ class LoginPpl implements UseCase<Result<User>, LoginParams> {
   final Authentication authentication;
   final UserRepositoryPetugas userRepository;
   final SharedPrefRepository sharedPrefRepository;
-  List<String> nama = ["hallo", "apakabar"];
   LoginPpl({
     required this.authentication,
     required this.userRepository,

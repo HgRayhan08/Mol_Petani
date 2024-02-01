@@ -25,7 +25,7 @@ class MainDistributorPage extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("distributor"),
+            const Text("distributor"),
             ElevatedButton(
               onPressed: () {
                 ref.read(dataUserProvider.notifier).logoutPetugas();
