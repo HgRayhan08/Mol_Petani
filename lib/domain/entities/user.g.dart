@@ -12,10 +12,7 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
       email: json['email'] as String,
       keterangan: json['keterangan'] as String,
       fotoUrl: json['fotoUrl'] as String?,
-      cangkupan: (json['cangkupan'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
+      cangkupan: json['cangkupan'] as List<dynamic>? ?? const [],
       kecamatan: json['kecamatan'] as String?,
       kelompok: json['kelompok'] as String?,
       desa: json['desa'] as String?,

@@ -3,7 +3,6 @@ class RegisterOfficerParam {
   final String email;
   final String password;
   final String? fotoUrl;
-  final String keterangan;
   final String? desa;
   final List<String>? cangkupan;
   final String? kelompok;
@@ -14,8 +13,7 @@ class RegisterOfficerParam {
     required this.nama,
     required this.email,
     required this.password,
-    required this.keterangan,
-    required this.desa,
+    this.desa,
     this.fotoUrl,
     this.cangkupan,
     this.kelompok,

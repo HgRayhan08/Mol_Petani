@@ -1,27 +1,25 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'get_login_distributor_provider.dart';
+part of 'get_all_grup_farmer_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$getLoginDistributorHash() =>
-    r'40a9c75a3e24061dbcba44d8dcd5ec083a81bd90';
+String _$getAllGrupFarmerHash() => r'a797a11e3b5cfd570bb93055fd1dd100f1c4649a';
 
-/// See also [getLoginDistributor].
-@ProviderFor(getLoginDistributor)
-final getLoginDistributorProvider =
-    AutoDisposeProvider<GetLoginDistributor>.internal(
-  getLoginDistributor,
-  name: r'getLoginDistributorProvider',
+/// See also [getAllGrupFarmer].
+@ProviderFor(getAllGrupFarmer)
+final getAllGrupFarmerProvider = AutoDisposeProvider<GetAllGrupFarmer>.internal(
+  getAllGrupFarmer,
+  name: r'getAllGrupFarmerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$getLoginDistributorHash,
+      : _$getAllGrupFarmerHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef GetLoginDistributorRef = AutoDisposeProviderRef<GetLoginDistributor>;
+typedef GetAllGrupFarmerRef = AutoDisposeProviderRef<GetAllGrupFarmer>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

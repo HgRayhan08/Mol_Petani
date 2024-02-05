@@ -11,7 +11,7 @@ class User with _$User {
     required String email,
     required String keterangan,
     String? fotoUrl,
-    @Default([]) List<String>? cangkupan,
+    @Default([]) List? cangkupan,
     String? kecamatan,
     String? kelompok,
     String? desa,

@@ -1,46 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mol_petani/data/repository/user_repository_petugas.dart';
+import 'package:mol_petani/data/repository/user_repository.dart';
 import 'package:mol_petani/domain/entities/result.dart';
 import 'package:mol_petani/domain/entities/user.dart';
 
-class FirebaseUserRepository implements UserRepositoryPetugas {
+class FirebaseUserRepository implements UserRepository {
   final FirebaseFirestore _firebaseFirestore;
 
   FirebaseUserRepository({FirebaseFirestore? firebaseFirestore})
       : _firebaseFirestore = firebaseFirestore ?? FirebaseFirestore.instance;
-
-  // @override
-  // Future<Result<User>> createUserofficer({
-  //   required String uid,
-  //   required String nama,
-  //   required String email,
-  //   required String keterangan,
-  //   required String desa,
-  //   String? fotoUrl,
-  //   List<String>? cangkupan,
-  //   String? kelompok,
-  //   required String collection,
-  // }) async {
-  //   CollectionReference<Map<String, dynamic>> users =
-  //       _firebaseFirestore.collection(collection);
-  //   await users.doc(uid).set({
-  //     "uid": uid,
-  //     "nama": nama,
-  //     "email": email,
-  //     "keterangan": keterangan,
-  //     "fotoUrl": fotoUrl,
-  //     "cangkupan": cangkupan,
-  //     "kelompok": kelompok,
-  //     "desa": desa
-  //   });
-
-  //   DocumentSnapshot<Map<String, dynamic>> result = await users.doc(uid).get();
-  //   if (result.exists) {
-  //     return Result.success(User.fromJson(result.data()!));
-  //   } else {
-  //     return const Result.failed("Gagal untuk Membuat create data");
-  //   }
-  // }
 
   @override
   Future<Result<User>> createUserPpl(
@@ -175,6 +142,71 @@ class FirebaseUserRepository implements UserRepositoryPetugas {
       return Result.success(User.fromJson(result.data()!));
     } else {
       return const Result.failed("User Kelompok Tani Not Found");
+    }
+  }
+
+  @override
+  Future<Result<List<User>>> getAllGrupFarm({required String idppl}) async {
+    CollectionReference<Map<String, dynamic>> data =
+        _firebaseFirestore.collection("user_kelompok_tani");
+
+    try {
+      var result = await data.where("idPPl", isEqualTo: idppl).get();
+      if (result.docs.isNotEmpty) {
+        return Result.success(
+          result.docs
+              .map(
+                (e) => User(
+                  uid: e["uid"],
+                  nama: e["nama"],
+                  email: e["email"],
+                  keterangan: e["keterangan"],
+                  idPPL: e["idPPl"],
+                  desa: e["desa"],
+                  fotoUrl: e["fotoUrl"],
+                  kelompok: e["kelompok"],
+                ),
+              )
+              .toList(),
+        );
+      } else {
+        return const Result.success([]);
+      }
+    } catch (e) {
+      return Result.failed(" $e");
+    }
+  }
+
+  @override
+  Future<Result<List<User>>> getAllDistributor({required String idppl}) async {
+    CollectionReference<Map<String, dynamic>> data =
+        _firebaseFirestore.collection("user_Distributor");
+
+    try {
+      var result = await data.where("idPPl", isEqualTo: idppl).get();
+
+      print(result.docs.length);
+      if (result.docs.isNotEmpty) {
+        return Result.success(
+          result.docs
+              .map(
+                (e) => User(
+                  uid: e["uid"],
+                  nama: e["nama"],
+                  email: e["email"],
+                  keterangan: e["keterangan"],
+                  idPPL: e["idPPl"],
+                  fotoUrl: e["fotoUrl"],
+                  cangkupan: e["cangkupan"],
+                ),
+              )
+              .toList(),
+        );
+      } else {
+        return const Result.success([]);
+      }
+    } catch (e) {
+      return Result.failed(" $e");
     }
   }
 }

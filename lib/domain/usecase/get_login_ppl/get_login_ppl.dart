@@ -1,18 +1,18 @@
 import 'package:mol_petani/data/repository/Authentication.dart';
 import 'package:mol_petani/data/repository/shered_pref_repository.dart';
-import 'package:mol_petani/data/repository/user_repository_petugas.dart';
+import 'package:mol_petani/data/repository/user_repository.dart';
 import 'package:mol_petani/domain/entities/result.dart';
 import 'package:mol_petani/domain/entities/user.dart';
 import 'package:mol_petani/domain/usecase/usecase.dart';
 
 class GetLoginPpl implements UseCase<Result<User>, void> {
   // final Authentication _authentication;
-  final UserRepositoryPetugas _userRepository;
+  final UserRepository _userRepository;
   final SharedPrefRepository _sharedPrefRepository;
 
   GetLoginPpl(
       {required Authentication authentication,
-      required UserRepositoryPetugas userRepository,
+      required UserRepository userRepository,
       required SharedPrefRepository sharedPrefRepository})
       :
         // _authentication = authentication,

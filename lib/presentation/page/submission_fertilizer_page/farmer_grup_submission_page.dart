@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter/material.dart';
 import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
 
-class HomeKelompokPage extends ConsumerWidget {
-  const HomeKelompokPage({super.key});
+class FarmerGrupFertilizerPage extends ConsumerWidget {
+  const FarmerGrupFertilizerPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

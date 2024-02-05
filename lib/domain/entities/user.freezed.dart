@@ -25,7 +25,7 @@ mixin _$User {
   String get email => throw _privateConstructorUsedError;
   String get keterangan => throw _privateConstructorUsedError;
   String? get fotoUrl => throw _privateConstructorUsedError;
-  List<String>? get cangkupan => throw _privateConstructorUsedError;
+  List<dynamic>? get cangkupan => throw _privateConstructorUsedError;
   String? get kecamatan => throw _privateConstructorUsedError;
   String? get kelompok => throw _privateConstructorUsedError;
   String? get desa => throw _privateConstructorUsedError;
@@ -47,7 +47,7 @@ abstract class $UserCopyWith<$Res> {
       String email,
       String keterangan,
       String? fotoUrl,
-      List<String>? cangkupan,
+      List<dynamic>? cangkupan,
       String? kecamatan,
       String? kelompok,
       String? desa,
@@ -102,7 +102,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
       cangkupan: freezed == cangkupan
           ? _value.cangkupan
           : cangkupan // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<dynamic>?,
       kecamatan: freezed == kecamatan
           ? _value.kecamatan
           : kecamatan // ignore: cast_nullable_to_non_nullable
@@ -136,7 +136,7 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       String email,
       String keterangan,
       String? fotoUrl,
-      List<String>? cangkupan,
+      List<dynamic>? cangkupan,
       String? kecamatan,
       String? kelompok,
       String? desa,
@@ -188,7 +188,7 @@ class __$$UserImplCopyWithImpl<$Res>
       cangkupan: freezed == cangkupan
           ? _value._cangkupan
           : cangkupan // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<dynamic>?,
       kecamatan: freezed == kecamatan
           ? _value.kecamatan
           : kecamatan // ignore: cast_nullable_to_non_nullable
@@ -218,7 +218,7 @@ class _$UserImpl implements _User {
       required this.email,
       required this.keterangan,
       this.fotoUrl,
-      final List<String>? cangkupan = const [],
+      final List<dynamic>? cangkupan = const [],
       this.kecamatan,
       this.kelompok,
       this.desa,
@@ -238,10 +238,10 @@ class _$UserImpl implements _User {
   final String keterangan;
   @override
   final String? fotoUrl;
-  final List<String>? _cangkupan;
+  final List<dynamic>? _cangkupan;
   @override
   @JsonKey()
-  List<String>? get cangkupan {
+  List<dynamic>? get cangkupan {
     final value = _cangkupan;
     if (value == null) return null;
     if (_cangkupan is EqualUnmodifiableListView) return _cangkupan;
@@ -320,7 +320,7 @@ abstract class _User implements User {
       required final String email,
       required final String keterangan,
       final String? fotoUrl,
-      final List<String>? cangkupan,
+      final List<dynamic>? cangkupan,
       final String? kecamatan,
       final String? kelompok,
       final String? desa,
@@ -339,7 +339,7 @@ abstract class _User implements User {
   @override
   String? get fotoUrl;
   @override
-  List<String>? get cangkupan;
+  List<dynamic>? get cangkupan;
   @override
   String? get kecamatan;
   @override

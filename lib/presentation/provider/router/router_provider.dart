@@ -1,4 +1,6 @@
 import 'package:go_router/go_router.dart';
+import 'package:mol_petani/presentation/page/data_page/data_distributor_page.dart';
+import 'package:mol_petani/presentation/page/data_page/data_grup_farmer_page.dart';
 import 'package:mol_petani/presentation/page/loading_page/loading_page.dart';
 import 'package:mol_petani/presentation/page/login_page/login_distributor_page.dart';
 import 'package:mol_petani/presentation/page/login_page/login_kelompok_page.dart';
@@ -8,7 +10,7 @@ import 'package:mol_petani/presentation/page/main_page/main_distributot_page.dar
 import 'package:mol_petani/presentation/page/main_page/main_kelompok_page.dart';
 import 'package:mol_petani/presentation/page/main_page/main_ppl_page.dart';
 import 'package:mol_petani/presentation/page/register_page/register_distributor_page.dart';
-import 'package:mol_petani/presentation/page/register_page/register_kelompok_page.dart';
+import 'package:mol_petani/presentation/page/register_page/register_grup_farmer_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'router_provider.g.dart';
@@ -63,6 +65,16 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(routes: [
       GoRoute(
         path: "/regis-kelompok",
         name: "regis-kelompok",
-        builder: (context, state) => RegisterKelompokPage(),
+        builder: (context, state) => RegisterGrupFarmerPage(),
       ),
+      GoRoute(
+        path: "/data-grup-farmer",
+        name: "data-grup-farmer",
+        builder: (context, state) => DataGrupFarmerPage(),
+      ),
+      GoRoute(
+        path: "/data-distributor",
+        name: "data-distributor",
+        builder: (context, state) => DataDistributorPage(),
+      )
     ], initialLocation: "/loading", debugLogDiagnostics: false);

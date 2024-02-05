@@ -7,19 +7,23 @@ import 'package:mol_petani/domain/entities/result.dart';
 import 'package:mol_petani/domain/entities/user.dart';
 import 'package:mol_petani/domain/usecase/create_submission_group_fertilizer/create_pengajuan_kelompok_params.dart';
 import 'package:mol_petani/domain/usecase/create_submission_group_fertilizer/create_submission_fertilizer_grup.dart';
+import 'package:mol_petani/domain/usecase/get_all_distributor/get_all_distributor.dart';
+import 'package:mol_petani/domain/usecase/get_all_grup_farmer/get_all_grup_farmer.dart';
 import 'package:mol_petani/domain/usecase/get_login_distributor/get_login_distributor.dart';
 import 'package:mol_petani/domain/usecase/get_login_grup/get_login_grup.dart';
 import 'package:mol_petani/domain/usecase/get_login_ppl/get_login_ppl.dart';
-import 'package:mol_petani/domain/usecase/get_submission_grup/get_submission_grup_fertilizer.dart';
-import 'package:mol_petani/domain/usecase/get_submission_grup/get_submission_param.dart';
+import 'package:mol_petani/domain/usecase/get_all_submission_grup/get_submission_grup_fertilizer.dart';
+import 'package:mol_petani/domain/usecase/get_all_submission_grup/get_submission_param.dart';
 import 'package:mol_petani/domain/usecase/login_officer/login_distributor.dart';
 import 'package:mol_petani/domain/usecase/login_officer/login_grup.dart';
 import 'package:mol_petani/domain/usecase/login_officer/login_params.dart';
 import 'package:mol_petani/domain/usecase/login_officer/login_ppl.dart';
-import 'package:mol_petani/domain/usecase/register_officer/register_petugas.dart';
 import 'package:mol_petani/domain/usecase/register_officer/register_petugas_param.dart';
+import 'package:mol_petani/domain/usecase/register_officer/registrasi_distributor.dart';
 import 'package:mol_petani/domain/usecase/register_officer/registrasi_grup_farmer.dart';
 import 'package:mol_petani/presentation/provider/usecases/create_submission_fertilizer_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/get_all_distributor_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/get_all_grup_farmer_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_login_distributor_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_login_grup_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_login_ppl_provider.dart';
@@ -28,8 +32,8 @@ import 'package:mol_petani/presentation/provider/usecases/login_distributor_prov
 import 'package:mol_petani/presentation/provider/usecases/login_grup_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/login_ppl_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/logout_petugas_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/register_distributor_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/register_grup_farmer_provider.dart';
-import 'package:mol_petani/presentation/provider/usecases/register_officer_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'data_user_provider.g.dart';
@@ -162,7 +166,6 @@ class DataUser extends _$DataUser {
         nama: nama,
         email: email,
         password: password,
-        keterangan: "Kelompok Tani",
         fotoUrl: fotoUrl,
         kelompok: kelompok,
         desa: desa,
@@ -175,6 +178,54 @@ class DataUser extends _$DataUser {
         state = AsyncError(FlutterError(message), StackTrace.current);
         state = const AsyncData(null);
     }
+  }
+
+  Future<String> registerDistributor({
+    required String nama,
+    required String email,
+    required String password,
+    String? subDistrik,
+    List<String>? cangkupan,
+  }) async {
+    state = const AsyncLoading();
+
+    RegisterDistributor registerDistributor =
+        ref.read(registerDistributorProvider);
+
+    var result = await registerDistributor(
+      RegisterOfficerParam(
+          nama: nama,
+          email: email,
+          password: password,
+          fotoUrl: "",
+          cangkupan: cangkupan,
+          kecamatan: subDistrik),
+    );
+    switch (result) {
+      case Success():
+        return "succses create account distributor";
+      case Failed():
+        return "faled create account ";
+    }
+  }
+
+  Future<List<User>> getallGrupFarmer() async {
+    GetAllGrupFarmer grupFarmer = ref.read(getAllGrupFarmerProvider);
+    var result = await grupFarmer(0);
+    if (result case Success(value: final data)) {
+      return data;
+    }
+    return [];
+  }
+
+  Future<List<User>> getallDistributor() async {
+    GetAllDistributor distributor = ref.read(getAllDistributorProvider);
+    var result = await distributor(0);
+    print(result.resultValue!.length);
+    if (result case Success(value: final data)) {
+      return data;
+    }
+    return [];
   }
 
   // Future<void> registerPetugas(
@@ -251,7 +302,7 @@ class DataUser extends _$DataUser {
     GetSubmissionGrupFertilizer pengajuan =
         ref.read(getSubmissionFertilizerGrupProvider);
     var result = await pengajuan(
-      GetSubmissionParams(idKelompok: idKelompok),
+      GetSubmissionParams(idKelompok: "vV2QBBtTSZdkYN4byngCy1svzVz2"),
     );
     if (result case Success(value: final data)) {
       return data;

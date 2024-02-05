@@ -7,7 +7,7 @@ part of 'register_grup_farmer_provider.dart';
 // **************************************************************************
 
 String _$registerGrupFarmerHash() =>
-    r'a248ad49815a3447ce7beab8599022f1a270e48b';
+    r'7225e41bf5f912e60de6940599398953f54461a3';
 
 /// See also [registerGrupFarmer].
 @ProviderFor(registerGrupFarmer)

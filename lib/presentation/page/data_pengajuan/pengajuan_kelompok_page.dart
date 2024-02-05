@@ -18,7 +18,6 @@ class PengajuanKelompokPage extends ConsumerWidget {
             return ListView.builder(
               itemCount: data!.length,
               itemBuilder: (context, index) {
-                // print(snapshot.data![index].idDocument);
                 return Column(
                   children: [
                     Text(data[index].desa),

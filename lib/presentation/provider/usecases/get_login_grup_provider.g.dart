@@ -6,7 +6,7 @@ part of 'get_login_grup_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$getLoginGrupHash() => r'55ebb229c25f4feb5eabc256fe3517f392c9091a';
+String _$getLoginGrupHash() => r'0aa702bbcdd1f8f2e0d293e3c9f82d5ca47c65fb';
 
 /// See also [getLoginGrup].
 @ProviderFor(getLoginGrup)

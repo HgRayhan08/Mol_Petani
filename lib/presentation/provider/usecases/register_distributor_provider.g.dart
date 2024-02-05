@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'get_login_distributor_provider.dart';
+part of 'register_distributor_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$getLoginDistributorHash() =>
-    r'40a9c75a3e24061dbcba44d8dcd5ec083a81bd90';
+String _$registerDistributorHash() =>
+    r'cc9478c89ff61b1897c6e32e8d9f830ed7218e2b';
 
-/// See also [getLoginDistributor].
-@ProviderFor(getLoginDistributor)
-final getLoginDistributorProvider =
-    AutoDisposeProvider<GetLoginDistributor>.internal(
-  getLoginDistributor,
-  name: r'getLoginDistributorProvider',
+/// See also [registerDistributor].
+@ProviderFor(registerDistributor)
+final registerDistributorProvider =
+    AutoDisposeProvider<RegisterDistributor>.internal(
+  registerDistributor,
+  name: r'registerDistributorProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$getLoginDistributorHash,
+      : _$registerDistributorHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef GetLoginDistributorRef = AutoDisposeProviderRef<GetLoginDistributor>;
+typedef RegisterDistributorRef = AutoDisposeProviderRef<RegisterDistributor>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

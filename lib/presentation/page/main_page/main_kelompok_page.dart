@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mol_petani/presentation/page/data_pengajuan/pengajuan_kelompok_page.dart';
-import 'package:mol_petani/presentation/page/home_page/home_kelompok_page.dart';
+import 'package:mol_petani/presentation/page/home_page/home_grup_farmer_page.dart';
 import 'package:mol_petani/presentation/page/profile/ppl_profile_page.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
@@ -18,7 +18,7 @@ class _MainKelompokPageState extends ConsumerState<MainKelompokPage> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
-    HomeKelompokPage(),
+    HomeGrupFarmerPage(),
     PengajuanKelompokPage(),
     Text(
       'Index 2: School',

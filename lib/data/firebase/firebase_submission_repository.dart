@@ -46,8 +46,10 @@ class FirebaseSubmissionFertilizerRepository
 
     try {
       var result = await pengajuan
-          .where("idKelompoktani", isEqualTo: idKelompoktani)
+          .where("idKelompoktani", isEqualTo: "vV2QBBtTSZdkYN4byngCy1svzVz2")
           .get();
+      // print(result.docs.length);
+      // print("object firebase");
       if (result.docs.isNotEmpty) {
         return Result.success(result.docs
             .map(

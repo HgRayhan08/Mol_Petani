@@ -1,19 +1,7 @@
 import 'package:mol_petani/domain/entities/result.dart';
 import 'package:mol_petani/domain/entities/user.dart';
 
-abstract interface class UserRepositoryPetugas {
-  // Future<Result<User>> createUserofficer({
-  //   required String uid,
-  //   required String nama,
-  //   required String email,
-  //   required String collection,
-  //   required String desa,
-  //   String? fotoUrl,
-  //   required String keterangan,
-  //   List<String>? cangkupan,
-  //   String? kelompok,
-  // });
-
+abstract interface class UserRepository {
   Future<Result<User>> createUserPpl({
     required String uid,
     required String nama,
@@ -48,4 +36,7 @@ abstract interface class UserRepositoryPetugas {
   Future<Result<User>> getUserPpl({required String uid});
   Future<Result<User>> getUserDistributor({required String uid});
   Future<Result<User>> getUserGrup({required String uid});
+
+  Future<Result<List<User>>> getAllGrupFarm({required String idppl});
+  Future<Result<List<User>>> getAllDistributor({required String idppl});
 }
