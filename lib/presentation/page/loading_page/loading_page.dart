@@ -47,7 +47,7 @@ class LoadingPage extends ConsumerWidget {
         } else if (next is AsyncError) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
-              content: Text("Error poll"),
+              content: Text("Periksa Jaringan"),
             ),
           );
         }

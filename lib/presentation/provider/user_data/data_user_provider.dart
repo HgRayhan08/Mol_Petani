@@ -1,19 +1,24 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mol_petani/domain/entities/data_pengajuan_pupuk.dart';
 import 'package:mol_petani/domain/entities/petani_pupuk.dart';
 import 'package:mol_petani/domain/entities/result.dart';
 import 'package:mol_petani/domain/entities/user.dart';
-import 'package:mol_petani/domain/usecase/create_submission_group_fertilizer/create_pengajuan_kelompok_params.dart';
-import 'package:mol_petani/domain/usecase/create_submission_group_fertilizer/create_submission_fertilizer_grup.dart';
-import 'package:mol_petani/domain/usecase/get_all_distributor/get_all_distributor.dart';
-import 'package:mol_petani/domain/usecase/get_all_grup_farmer/get_all_grup_farmer.dart';
+import 'package:mol_petani/domain/usecase/create_submission_fertilizer_farmer/create_submission_fertilizer_farmer.dart';
+import 'package:mol_petani/domain/usecase/create_submission_fertilizer_farmer/create_fertilizer_farmer_params.dart';
+import 'package:mol_petani/domain/usecase/create_submission_fertilizer_grup/create_fertilizer_grup_params.dart';
+import 'package:mol_petani/domain/usecase/create_submission_fertilizer_grup/create_submission_fertilizer_grup.dart';
+import 'package:mol_petani/domain/usecase/get_distributor/get_all_distributor.dart';
+import 'package:mol_petani/domain/usecase/get_grup_farmer/get_all_grup_farmer.dart';
+import 'package:mol_petani/domain/usecase/get_submission_fertilizer_farmer/get_submission_farmer_params.dart';
+import 'package:mol_petani/domain/usecase/get_submission_fertilizer_farmer/get_submition_farmer.dart';
+import 'package:mol_petani/domain/usecase/get_submission_fertilizer_grup/get_submission_grup_fertilizer_params.dart';
 import 'package:mol_petani/domain/usecase/get_login_distributor/get_login_distributor.dart';
 import 'package:mol_petani/domain/usecase/get_login_grup/get_login_grup.dart';
 import 'package:mol_petani/domain/usecase/get_login_ppl/get_login_ppl.dart';
-import 'package:mol_petani/domain/usecase/get_all_submission_grup/get_submission_grup_fertilizer.dart';
-import 'package:mol_petani/domain/usecase/get_all_submission_grup/get_submission_param.dart';
+import 'package:mol_petani/domain/usecase/get_submission_fertilizer_grup/get_submission_grup_fertilizer.dart';
 import 'package:mol_petani/domain/usecase/login_officer/login_distributor.dart';
 import 'package:mol_petani/domain/usecase/login_officer/login_grup.dart';
 import 'package:mol_petani/domain/usecase/login_officer/login_params.dart';
@@ -21,12 +26,16 @@ import 'package:mol_petani/domain/usecase/login_officer/login_ppl.dart';
 import 'package:mol_petani/domain/usecase/register_officer/register_petugas_param.dart';
 import 'package:mol_petani/domain/usecase/register_officer/registrasi_distributor.dart';
 import 'package:mol_petani/domain/usecase/register_officer/registrasi_grup_farmer.dart';
-import 'package:mol_petani/presentation/provider/usecases/create_submission_fertilizer_provider.dart';
+import 'package:mol_petani/domain/usecase/upload_image/upload_image.dart';
+import 'package:mol_petani/domain/usecase/upload_image/upload_image_params.dart';
+import 'package:mol_petani/presentation/provider/usecases/create_fertilizer_farmer_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/create_fertilizer_grup_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_all_distributor_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_all_grup_farmer_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_login_distributor_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_login_grup_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_login_ppl_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/get_submission_farmer_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_submission_fertilizer_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/login_distributor_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/login_grup_provider.dart';
@@ -34,6 +43,7 @@ import 'package:mol_petani/presentation/provider/usecases/login_ppl_provider.dar
 import 'package:mol_petani/presentation/provider/usecases/logout_petugas_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/register_distributor_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/register_grup_farmer_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/upload_image_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'data_user_provider.g.dart';
@@ -221,7 +231,6 @@ class DataUser extends _$DataUser {
   Future<List<User>> getallDistributor() async {
     GetAllDistributor distributor = ref.read(getAllDistributorProvider);
     var result = await distributor(0);
-    print(result.resultValue!.length);
     if (result case Success(value: final data)) {
       return data;
     }
@@ -264,46 +273,88 @@ class DataUser extends _$DataUser {
   //   }
   // }
 
-  Future<DataPengajuanPupuk> createPengajuanPupuk({
-    required String idKelompoktani,
+  Future<DataSubmissionFertilizer> createPengajuanPupuk({
     required String namaKetua,
     required String desa,
     required String forYear,
     required String tanggal,
-    List<PetaniPupuk>? petaniPupuk,
+    required String grupFarmer,
   }) async {
     CreateSubmissionFertilizerGrup pengajuan =
         ref.read(createSubmissionFertilizerGrupProvider);
     var result = await pengajuan(
-      CreateSubmissionFertilizerParams(
-        idKelompoktani: idKelompoktani,
-        namaKetua: namaKetua,
-        desa: desa,
-        forYear: forYear,
-        tanggal: tanggal,
-        petaniPupuk: petaniPupuk,
-      ),
+      CreateFertilizerGrupParams(
+          leaderName: namaKetua,
+          village: desa,
+          forYear: forYear,
+          date: tanggal,
+          grupFarmer: grupFarmer),
     );
     if (result case Success(value: final data)) {
       return data;
     } else {
-      return DataPengajuanPupuk(
-        idKelompoktani: "",
-        namaKetua: "",
-        desa: "",
-        forYear: "",
-        tanggal: "",
-      );
+      return DataSubmissionFertilizer(
+          idGrupFarmers: "",
+          leaderName: "",
+          village: "",
+          forYear: "",
+          date: "",
+          grupFarmer: '',
+          keterangan: "",
+          pengajuan: "");
     }
   }
 
-  Future<List<DataPengajuanPupuk>> getPengajuan(
-      {required String idKelompok}) async {
+  Future<List<DataSubmissionFertilizer>> getPengajuan(
+      {required String keterangan, String? uid}) async {
     GetSubmissionGrupFertilizer pengajuan =
         ref.read(getSubmissionFertilizerGrupProvider);
     var result = await pengajuan(
-      GetSubmissionParams(idKelompok: "vV2QBBtTSZdkYN4byngCy1svzVz2"),
-    );
+        GetSubmissionGrupFertilizerParams(keterangan: keterangan, uid: uid));
+    if (result case Success(value: final data)) {
+      return data;
+    }
+    return const [];
+  }
+
+  Future<String> uploadImage({required File imageFile}) async {
+    UploadImage uploadImaged = ref.read(uploadImageProvider);
+    var result = await uploadImaged(UploadImageParams(imageFilel: imageFile));
+    String image = result.resultValue!;
+    return image;
+  }
+
+  Future<String> createSubmissionFarmer({
+    required String idSubmmision,
+    required String namaPetani,
+    required String nik,
+    required double luasLahan,
+    required String fotoKtp,
+    required String fotoKK,
+    required String fotoPajak,
+  }) async {
+    CreateSubmissionFarmer create = ref.read(createSubmissionFarmerProvider);
+    var result = await create(CreateFertilizerFarmerParams(
+        idSubmission: idSubmmision,
+        namaPetani: namaPetani,
+        nik: nik,
+        luasLahan: luasLahan,
+        fotoKtp: fotoKtp,
+        fotoKK: fotoKK,
+        fotoPajak: fotoPajak));
+
+    if (result case Success(value: _)) {
+      return "Sucsess Create Submission Farmer";
+    } else {
+      return "failed Create Submission Farmer";
+    }
+  }
+
+  Future<List<PetaniPupuk>> getDataSubmisiionFarmer(
+      {required String idKelompok}) async {
+    GetSubmissionFarmer pengajuan = ref.read(getSubmissionFarmerProvider);
+    var result =
+        await pengajuan(GetSubmitionFarmerParams(idSubmition: idKelompok));
     if (result case Success(value: final data)) {
       return data;
     }

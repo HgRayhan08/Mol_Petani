@@ -22,17 +22,15 @@ Widget subMenuPpl(context, ref) => Column(
                 ref.read(routerProvider).pushNamed("data-grup-farmer");
               },
             ),
-            // CardSubMenu(
-            //   image: "assets/registrasi_kelompoktani.png",
-            //   title: "Registrasi Kelompok Tani",
-            //   onTap: () {
-            //     ref.read(routerProvider).pushNamed("regis-kelompok");
-            //   },
-            // ),
+
             CardSubMenu(
               image: "assets/data_pengajuan_kelompok.png",
               title: "Pengajuan pupuk Kelompok tani",
-              onTap: () {},
+              onTap: () {
+                ref
+                    .read(routerProvider)
+                    .pushNamed("submission-data-fertilizer-grup");
+              },
             ),
             // CardSubMenu(),
           ],

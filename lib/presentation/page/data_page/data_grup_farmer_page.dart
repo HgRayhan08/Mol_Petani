@@ -29,6 +29,7 @@ class DataGrupFarmerPage extends ConsumerWidget {
               itemBuilder: (context, index) {
                 return CardListtileWidgets(
                   user: data![index],
+                  ontap: () {},
                 );
               },
             );

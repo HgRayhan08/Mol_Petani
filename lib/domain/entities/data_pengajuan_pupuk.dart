@@ -1,21 +1,22 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:mol_petani/domain/entities/petani_pupuk.dart';
 
 part 'data_pengajuan_pupuk.freezed.dart';
 part 'data_pengajuan_pupuk.g.dart';
 
 @freezed
-class DataPengajuanPupuk with _$DataPengajuanPupuk {
-  factory DataPengajuanPupuk({
-    required String idKelompoktani,
-    required String namaKetua,
-    required String desa,
+class DataSubmissionFertilizer with _$DataSubmissionFertilizer {
+  factory DataSubmissionFertilizer({
+    required String idGrupFarmers,
+    required String leaderName,
+    required String village,
     required String forYear,
-    required String tanggal,
-    @Default([]) List<PetaniPupuk>? petaniPupuk,
+    required String date,
+    required String grupFarmer,
+    required String keterangan,
+    required String pengajuan,
     String? idDocument,
-  }) = _DataPengajuanPupuk;
+  }) = _DataSubmissionFertilizer;
 
-  factory DataPengajuanPupuk.fromJson(Map<String, dynamic> json) =>
-      _$DataPengajuanPupukFromJson(json);
+  factory DataSubmissionFertilizer.fromJson(Map<String, dynamic> json) =>
+      _$DataSubmissionFertilizerFromJson(json);
 }

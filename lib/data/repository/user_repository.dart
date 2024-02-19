@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:mol_petani/domain/entities/result.dart';
 import 'package:mol_petani/domain/entities/user.dart';
 
@@ -39,4 +41,6 @@ abstract interface class UserRepository {
 
   Future<Result<List<User>>> getAllGrupFarm({required String idppl});
   Future<Result<List<User>>> getAllDistributor({required String idppl});
+
+  Future<Result<String>> uploadImage({required File imageFile});
 }

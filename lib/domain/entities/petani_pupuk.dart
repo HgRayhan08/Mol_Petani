@@ -6,6 +6,7 @@ part 'petani_pupuk.g.dart';
 @freezed
 class PetaniPupuk with _$PetaniPupuk {
   factory PetaniPupuk({
+    required String idKelompokTani,
     required String namaPetani,
     required String nik,
     required double luasLahan,

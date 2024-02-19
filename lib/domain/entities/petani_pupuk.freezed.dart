@@ -20,6 +20,7 @@ PetaniPupuk _$PetaniPupukFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PetaniPupuk {
+  String get idKelompokTani => throw _privateConstructorUsedError;
   String get namaPetani => throw _privateConstructorUsedError;
   String get nik => throw _privateConstructorUsedError;
   double get luasLahan => throw _privateConstructorUsedError;
@@ -40,7 +41,8 @@ abstract class $PetaniPupukCopyWith<$Res> {
       _$PetaniPupukCopyWithImpl<$Res, PetaniPupuk>;
   @useResult
   $Res call(
-      {String namaPetani,
+      {String idKelompokTani,
+      String namaPetani,
       String nik,
       double luasLahan,
       String fotoKtp,
@@ -61,6 +63,7 @@ class _$PetaniPupukCopyWithImpl<$Res, $Val extends PetaniPupuk>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? idKelompokTani = null,
     Object? namaPetani = null,
     Object? nik = null,
     Object? luasLahan = null,
@@ -69,6 +72,10 @@ class _$PetaniPupukCopyWithImpl<$Res, $Val extends PetaniPupuk>
     Object? fotoPajak = null,
   }) {
     return _then(_value.copyWith(
+      idKelompokTani: null == idKelompokTani
+          ? _value.idKelompokTani
+          : idKelompokTani // ignore: cast_nullable_to_non_nullable
+              as String,
       namaPetani: null == namaPetani
           ? _value.namaPetani
           : namaPetani // ignore: cast_nullable_to_non_nullable
@@ -106,7 +113,8 @@ abstract class _$$PetaniPupukImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String namaPetani,
+      {String idKelompokTani,
+      String namaPetani,
       String nik,
       double luasLahan,
       String fotoKtp,
@@ -125,6 +133,7 @@ class __$$PetaniPupukImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? idKelompokTani = null,
     Object? namaPetani = null,
     Object? nik = null,
     Object? luasLahan = null,
@@ -133,6 +142,10 @@ class __$$PetaniPupukImplCopyWithImpl<$Res>
     Object? fotoPajak = null,
   }) {
     return _then(_$PetaniPupukImpl(
+      idKelompokTani: null == idKelompokTani
+          ? _value.idKelompokTani
+          : idKelompokTani // ignore: cast_nullable_to_non_nullable
+              as String,
       namaPetani: null == namaPetani
           ? _value.namaPetani
           : namaPetani // ignore: cast_nullable_to_non_nullable
@@ -165,7 +178,8 @@ class __$$PetaniPupukImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$PetaniPupukImpl implements _PetaniPupuk {
   _$PetaniPupukImpl(
-      {required this.namaPetani,
+      {required this.idKelompokTani,
+      required this.namaPetani,
       required this.nik,
       required this.luasLahan,
       required this.fotoKtp,
@@ -175,6 +189,8 @@ class _$PetaniPupukImpl implements _PetaniPupuk {
   factory _$PetaniPupukImpl.fromJson(Map<String, dynamic> json) =>
       _$$PetaniPupukImplFromJson(json);
 
+  @override
+  final String idKelompokTani;
   @override
   final String namaPetani;
   @override
@@ -190,7 +206,7 @@ class _$PetaniPupukImpl implements _PetaniPupuk {
 
   @override
   String toString() {
-    return 'PetaniPupuk(namaPetani: $namaPetani, nik: $nik, luasLahan: $luasLahan, fotoKtp: $fotoKtp, fotoKK: $fotoKK, fotoPajak: $fotoPajak)';
+    return 'PetaniPupuk(idKelompokTani: $idKelompokTani, namaPetani: $namaPetani, nik: $nik, luasLahan: $luasLahan, fotoKtp: $fotoKtp, fotoKK: $fotoKK, fotoPajak: $fotoPajak)';
   }
 
   @override
@@ -198,6 +214,8 @@ class _$PetaniPupukImpl implements _PetaniPupuk {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PetaniPupukImpl &&
+            (identical(other.idKelompokTani, idKelompokTani) ||
+                other.idKelompokTani == idKelompokTani) &&
             (identical(other.namaPetani, namaPetani) ||
                 other.namaPetani == namaPetani) &&
             (identical(other.nik, nik) || other.nik == nik) &&
@@ -211,8 +229,8 @@ class _$PetaniPupukImpl implements _PetaniPupuk {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, namaPetani, nik, luasLahan, fotoKtp, fotoKK, fotoPajak);
+  int get hashCode => Object.hash(runtimeType, idKelompokTani, namaPetani, nik,
+      luasLahan, fotoKtp, fotoKK, fotoPajak);
 
   @JsonKey(ignore: true)
   @override
@@ -230,7 +248,8 @@ class _$PetaniPupukImpl implements _PetaniPupuk {
 
 abstract class _PetaniPupuk implements PetaniPupuk {
   factory _PetaniPupuk(
-      {required final String namaPetani,
+      {required final String idKelompokTani,
+      required final String namaPetani,
       required final String nik,
       required final double luasLahan,
       required final String fotoKtp,
@@ -240,6 +259,8 @@ abstract class _PetaniPupuk implements PetaniPupuk {
   factory _PetaniPupuk.fromJson(Map<String, dynamic> json) =
       _$PetaniPupukImpl.fromJson;
 
+  @override
+  String get idKelompokTani;
   @override
   String get namaPetani;
   @override

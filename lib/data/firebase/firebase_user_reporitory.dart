@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:mol_petani/data/repository/user_repository.dart';
 import 'package:mol_petani/domain/entities/result.dart';
 import 'package:mol_petani/domain/entities/user.dart';
+import 'package:path/path.dart';
 
 class FirebaseUserRepository implements UserRepository {
   final FirebaseFirestore _firebaseFirestore;
@@ -207,6 +211,26 @@ class FirebaseUserRepository implements UserRepository {
       }
     } catch (e) {
       return Result.failed(" $e");
+    }
+  }
+
+  @override
+  Future<Result<String>> uploadImage({required File imageFile}) async {
+    String fileName = basename(imageFile.path);
+
+    Reference reference = FirebaseStorage.instance.ref().child(fileName);
+
+    try {
+      await reference.putFile(imageFile);
+      String dowloadUrl = await reference.getDownloadURL();
+      // print(dowloadUrl);
+      if (dowloadUrl.isNotEmpty) {
+        return Result.success(dowloadUrl);
+      } else {
+        return const Result.failed("Falled Upload Image");
+      }
+    } catch (e) {
+      return const Result.failed("Falled poll");
     }
   }
 }

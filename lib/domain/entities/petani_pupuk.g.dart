@@ -8,6 +8,7 @@ part of 'petani_pupuk.dart';
 
 _$PetaniPupukImpl _$$PetaniPupukImplFromJson(Map<String, dynamic> json) =>
     _$PetaniPupukImpl(
+      idKelompokTani: json['idKelompokTani'] as String,
       namaPetani: json['namaPetani'] as String,
       nik: json['nik'] as String,
       luasLahan: (json['luasLahan'] as num).toDouble(),
@@ -18,6 +19,7 @@ _$PetaniPupukImpl _$$PetaniPupukImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$PetaniPupukImplToJson(_$PetaniPupukImpl instance) =>
     <String, dynamic>{
+      'idKelompokTani': instance.idKelompokTani,
       'namaPetani': instance.namaPetani,
       'nik': instance.nik,
       'luasLahan': instance.luasLahan,

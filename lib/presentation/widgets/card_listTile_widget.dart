@@ -1,23 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mol_petani/domain/entities/user.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
 
 class CardListtileWidgets extends StatelessWidget {
   final User user;
   final bool cangkupan;
+  final bool trailing;
+  final Function() ontap;
+  final double rounded;
   const CardListtileWidgets({
     super.key,
     required this.user,
     this.cangkupan = false,
+    this.trailing = false,
+    required this.ontap,
+    this.rounded = 15,
   });
 
   @override
   Widget build(BuildContext context) {
     return Card(
       color: blueLight,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(rounded),
+        ),
+      ),
       margin: const EdgeInsets.symmetric(vertical: 6),
       child: ListTile(
-        // contentPadding: const EdgeInsets.all(0),
+        onTap: ontap,
         leading: Container(
           width: 44,
           height: 44,
@@ -63,12 +75,16 @@ class CardListtileWidgets extends StatelessWidget {
                       );
                     }),
               )
-
-            // ? Text(user.cangkupan![1])
             : Text(
                 user.kelompok!,
                 style: smallReguler.copyWith(color: light, fontSize: 16),
               ),
+        trailing: trailing == true
+            ? const Icon(
+                Icons.arrow_forward_ios_rounded,
+                size: 30,
+              )
+            : const SizedBox(),
       ),
     );
   }

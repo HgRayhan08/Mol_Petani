@@ -30,6 +30,7 @@ class DataDistributorPage extends ConsumerWidget {
                 return CardListtileWidgets(
                   user: data![index],
                   cangkupan: true,
+                  ontap: () {},
                 );
                 // return Text("data");
               },

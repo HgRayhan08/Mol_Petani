@@ -14,46 +14,52 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-DataPengajuanPupuk _$DataPengajuanPupukFromJson(Map<String, dynamic> json) {
-  return _DataPengajuanPupuk.fromJson(json);
+DataSubmissionFertilizer _$DataSubmissionFertilizerFromJson(
+    Map<String, dynamic> json) {
+  return _DataSubmissionFertilizer.fromJson(json);
 }
 
 /// @nodoc
-mixin _$DataPengajuanPupuk {
-  String get idKelompoktani => throw _privateConstructorUsedError;
-  String get namaKetua => throw _privateConstructorUsedError;
-  String get desa => throw _privateConstructorUsedError;
+mixin _$DataSubmissionFertilizer {
+  String get idGrupFarmers => throw _privateConstructorUsedError;
+  String get leaderName => throw _privateConstructorUsedError;
+  String get village => throw _privateConstructorUsedError;
   String get forYear => throw _privateConstructorUsedError;
-  String get tanggal => throw _privateConstructorUsedError;
-  List<PetaniPupuk>? get petaniPupuk => throw _privateConstructorUsedError;
+  String get date => throw _privateConstructorUsedError;
+  String get grupFarmer => throw _privateConstructorUsedError;
+  String get keterangan => throw _privateConstructorUsedError;
+  String get pengajuan => throw _privateConstructorUsedError;
   String? get idDocument => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DataPengajuanPupukCopyWith<DataPengajuanPupuk> get copyWith =>
+  $DataSubmissionFertilizerCopyWith<DataSubmissionFertilizer> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DataPengajuanPupukCopyWith<$Res> {
-  factory $DataPengajuanPupukCopyWith(
-          DataPengajuanPupuk value, $Res Function(DataPengajuanPupuk) then) =
-      _$DataPengajuanPupukCopyWithImpl<$Res, DataPengajuanPupuk>;
+abstract class $DataSubmissionFertilizerCopyWith<$Res> {
+  factory $DataSubmissionFertilizerCopyWith(DataSubmissionFertilizer value,
+          $Res Function(DataSubmissionFertilizer) then) =
+      _$DataSubmissionFertilizerCopyWithImpl<$Res, DataSubmissionFertilizer>;
   @useResult
   $Res call(
-      {String idKelompoktani,
-      String namaKetua,
-      String desa,
+      {String idGrupFarmers,
+      String leaderName,
+      String village,
       String forYear,
-      String tanggal,
-      List<PetaniPupuk>? petaniPupuk,
+      String date,
+      String grupFarmer,
+      String keterangan,
+      String pengajuan,
       String? idDocument});
 }
 
 /// @nodoc
-class _$DataPengajuanPupukCopyWithImpl<$Res, $Val extends DataPengajuanPupuk>
-    implements $DataPengajuanPupukCopyWith<$Res> {
-  _$DataPengajuanPupukCopyWithImpl(this._value, this._then);
+class _$DataSubmissionFertilizerCopyWithImpl<$Res,
+        $Val extends DataSubmissionFertilizer>
+    implements $DataSubmissionFertilizerCopyWith<$Res> {
+  _$DataSubmissionFertilizerCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -63,39 +69,49 @@ class _$DataPengajuanPupukCopyWithImpl<$Res, $Val extends DataPengajuanPupuk>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? idKelompoktani = null,
-    Object? namaKetua = null,
-    Object? desa = null,
+    Object? idGrupFarmers = null,
+    Object? leaderName = null,
+    Object? village = null,
     Object? forYear = null,
-    Object? tanggal = null,
-    Object? petaniPupuk = freezed,
+    Object? date = null,
+    Object? grupFarmer = null,
+    Object? keterangan = null,
+    Object? pengajuan = null,
     Object? idDocument = freezed,
   }) {
     return _then(_value.copyWith(
-      idKelompoktani: null == idKelompoktani
-          ? _value.idKelompoktani
-          : idKelompoktani // ignore: cast_nullable_to_non_nullable
+      idGrupFarmers: null == idGrupFarmers
+          ? _value.idGrupFarmers
+          : idGrupFarmers // ignore: cast_nullable_to_non_nullable
               as String,
-      namaKetua: null == namaKetua
-          ? _value.namaKetua
-          : namaKetua // ignore: cast_nullable_to_non_nullable
+      leaderName: null == leaderName
+          ? _value.leaderName
+          : leaderName // ignore: cast_nullable_to_non_nullable
               as String,
-      desa: null == desa
-          ? _value.desa
-          : desa // ignore: cast_nullable_to_non_nullable
+      village: null == village
+          ? _value.village
+          : village // ignore: cast_nullable_to_non_nullable
               as String,
       forYear: null == forYear
           ? _value.forYear
           : forYear // ignore: cast_nullable_to_non_nullable
               as String,
-      tanggal: null == tanggal
-          ? _value.tanggal
-          : tanggal // ignore: cast_nullable_to_non_nullable
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
               as String,
-      petaniPupuk: freezed == petaniPupuk
-          ? _value.petaniPupuk
-          : petaniPupuk // ignore: cast_nullable_to_non_nullable
-              as List<PetaniPupuk>?,
+      grupFarmer: null == grupFarmer
+          ? _value.grupFarmer
+          : grupFarmer // ignore: cast_nullable_to_non_nullable
+              as String,
+      keterangan: null == keterangan
+          ? _value.keterangan
+          : keterangan // ignore: cast_nullable_to_non_nullable
+              as String,
+      pengajuan: null == pengajuan
+          ? _value.pengajuan
+          : pengajuan // ignore: cast_nullable_to_non_nullable
+              as String,
       idDocument: freezed == idDocument
           ? _value.idDocument
           : idDocument // ignore: cast_nullable_to_non_nullable
@@ -105,67 +121,82 @@ class _$DataPengajuanPupukCopyWithImpl<$Res, $Val extends DataPengajuanPupuk>
 }
 
 /// @nodoc
-abstract class _$$DataPengajuanPupukImplCopyWith<$Res>
-    implements $DataPengajuanPupukCopyWith<$Res> {
-  factory _$$DataPengajuanPupukImplCopyWith(_$DataPengajuanPupukImpl value,
-          $Res Function(_$DataPengajuanPupukImpl) then) =
-      __$$DataPengajuanPupukImplCopyWithImpl<$Res>;
+abstract class _$$DataSubmissionFertilizerImplCopyWith<$Res>
+    implements $DataSubmissionFertilizerCopyWith<$Res> {
+  factory _$$DataSubmissionFertilizerImplCopyWith(
+          _$DataSubmissionFertilizerImpl value,
+          $Res Function(_$DataSubmissionFertilizerImpl) then) =
+      __$$DataSubmissionFertilizerImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String idKelompoktani,
-      String namaKetua,
-      String desa,
+      {String idGrupFarmers,
+      String leaderName,
+      String village,
       String forYear,
-      String tanggal,
-      List<PetaniPupuk>? petaniPupuk,
+      String date,
+      String grupFarmer,
+      String keterangan,
+      String pengajuan,
       String? idDocument});
 }
 
 /// @nodoc
-class __$$DataPengajuanPupukImplCopyWithImpl<$Res>
-    extends _$DataPengajuanPupukCopyWithImpl<$Res, _$DataPengajuanPupukImpl>
-    implements _$$DataPengajuanPupukImplCopyWith<$Res> {
-  __$$DataPengajuanPupukImplCopyWithImpl(_$DataPengajuanPupukImpl _value,
-      $Res Function(_$DataPengajuanPupukImpl) _then)
+class __$$DataSubmissionFertilizerImplCopyWithImpl<$Res>
+    extends _$DataSubmissionFertilizerCopyWithImpl<$Res,
+        _$DataSubmissionFertilizerImpl>
+    implements _$$DataSubmissionFertilizerImplCopyWith<$Res> {
+  __$$DataSubmissionFertilizerImplCopyWithImpl(
+      _$DataSubmissionFertilizerImpl _value,
+      $Res Function(_$DataSubmissionFertilizerImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? idKelompoktani = null,
-    Object? namaKetua = null,
-    Object? desa = null,
+    Object? idGrupFarmers = null,
+    Object? leaderName = null,
+    Object? village = null,
     Object? forYear = null,
-    Object? tanggal = null,
-    Object? petaniPupuk = freezed,
+    Object? date = null,
+    Object? grupFarmer = null,
+    Object? keterangan = null,
+    Object? pengajuan = null,
     Object? idDocument = freezed,
   }) {
-    return _then(_$DataPengajuanPupukImpl(
-      idKelompoktani: null == idKelompoktani
-          ? _value.idKelompoktani
-          : idKelompoktani // ignore: cast_nullable_to_non_nullable
+    return _then(_$DataSubmissionFertilizerImpl(
+      idGrupFarmers: null == idGrupFarmers
+          ? _value.idGrupFarmers
+          : idGrupFarmers // ignore: cast_nullable_to_non_nullable
               as String,
-      namaKetua: null == namaKetua
-          ? _value.namaKetua
-          : namaKetua // ignore: cast_nullable_to_non_nullable
+      leaderName: null == leaderName
+          ? _value.leaderName
+          : leaderName // ignore: cast_nullable_to_non_nullable
               as String,
-      desa: null == desa
-          ? _value.desa
-          : desa // ignore: cast_nullable_to_non_nullable
+      village: null == village
+          ? _value.village
+          : village // ignore: cast_nullable_to_non_nullable
               as String,
       forYear: null == forYear
           ? _value.forYear
           : forYear // ignore: cast_nullable_to_non_nullable
               as String,
-      tanggal: null == tanggal
-          ? _value.tanggal
-          : tanggal // ignore: cast_nullable_to_non_nullable
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
               as String,
-      petaniPupuk: freezed == petaniPupuk
-          ? _value._petaniPupuk
-          : petaniPupuk // ignore: cast_nullable_to_non_nullable
-              as List<PetaniPupuk>?,
+      grupFarmer: null == grupFarmer
+          ? _value.grupFarmer
+          : grupFarmer // ignore: cast_nullable_to_non_nullable
+              as String,
+      keterangan: null == keterangan
+          ? _value.keterangan
+          : keterangan // ignore: cast_nullable_to_non_nullable
+              as String,
+      pengajuan: null == pengajuan
+          ? _value.pengajuan
+          : pengajuan // ignore: cast_nullable_to_non_nullable
+              as String,
       idDocument: freezed == idDocument
           ? _value.idDocument
           : idDocument // ignore: cast_nullable_to_non_nullable
@@ -176,123 +207,122 @@ class __$$DataPengajuanPupukImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$DataPengajuanPupukImpl implements _DataPengajuanPupuk {
-  _$DataPengajuanPupukImpl(
-      {required this.idKelompoktani,
-      required this.namaKetua,
-      required this.desa,
+class _$DataSubmissionFertilizerImpl implements _DataSubmissionFertilizer {
+  _$DataSubmissionFertilizerImpl(
+      {required this.idGrupFarmers,
+      required this.leaderName,
+      required this.village,
       required this.forYear,
-      required this.tanggal,
-      final List<PetaniPupuk>? petaniPupuk = const [],
-      this.idDocument})
-      : _petaniPupuk = petaniPupuk;
+      required this.date,
+      required this.grupFarmer,
+      required this.keterangan,
+      required this.pengajuan,
+      this.idDocument});
 
-  factory _$DataPengajuanPupukImpl.fromJson(Map<String, dynamic> json) =>
-      _$$DataPengajuanPupukImplFromJson(json);
+  factory _$DataSubmissionFertilizerImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DataSubmissionFertilizerImplFromJson(json);
 
   @override
-  final String idKelompoktani;
+  final String idGrupFarmers;
   @override
-  final String namaKetua;
+  final String leaderName;
   @override
-  final String desa;
+  final String village;
   @override
   final String forYear;
   @override
-  final String tanggal;
-  final List<PetaniPupuk>? _petaniPupuk;
+  final String date;
   @override
-  @JsonKey()
-  List<PetaniPupuk>? get petaniPupuk {
-    final value = _petaniPupuk;
-    if (value == null) return null;
-    if (_petaniPupuk is EqualUnmodifiableListView) return _petaniPupuk;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final String grupFarmer;
+  @override
+  final String keterangan;
+  @override
+  final String pengajuan;
   @override
   final String? idDocument;
 
   @override
   String toString() {
-    return 'DataPengajuanPupuk(idKelompoktani: $idKelompoktani, namaKetua: $namaKetua, desa: $desa, forYear: $forYear, tanggal: $tanggal, petaniPupuk: $petaniPupuk, idDocument: $idDocument)';
+    return 'DataSubmissionFertilizer(idGrupFarmers: $idGrupFarmers, leaderName: $leaderName, village: $village, forYear: $forYear, date: $date, grupFarmer: $grupFarmer, keterangan: $keterangan, pengajuan: $pengajuan, idDocument: $idDocument)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DataPengajuanPupukImpl &&
-            (identical(other.idKelompoktani, idKelompoktani) ||
-                other.idKelompoktani == idKelompoktani) &&
-            (identical(other.namaKetua, namaKetua) ||
-                other.namaKetua == namaKetua) &&
-            (identical(other.desa, desa) || other.desa == desa) &&
+            other is _$DataSubmissionFertilizerImpl &&
+            (identical(other.idGrupFarmers, idGrupFarmers) ||
+                other.idGrupFarmers == idGrupFarmers) &&
+            (identical(other.leaderName, leaderName) ||
+                other.leaderName == leaderName) &&
+            (identical(other.village, village) || other.village == village) &&
             (identical(other.forYear, forYear) || other.forYear == forYear) &&
-            (identical(other.tanggal, tanggal) || other.tanggal == tanggal) &&
-            const DeepCollectionEquality()
-                .equals(other._petaniPupuk, _petaniPupuk) &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.grupFarmer, grupFarmer) ||
+                other.grupFarmer == grupFarmer) &&
+            (identical(other.keterangan, keterangan) ||
+                other.keterangan == keterangan) &&
+            (identical(other.pengajuan, pengajuan) ||
+                other.pengajuan == pengajuan) &&
             (identical(other.idDocument, idDocument) ||
                 other.idDocument == idDocument));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      idKelompoktani,
-      namaKetua,
-      desa,
-      forYear,
-      tanggal,
-      const DeepCollectionEquality().hash(_petaniPupuk),
-      idDocument);
+  int get hashCode => Object.hash(runtimeType, idGrupFarmers, leaderName,
+      village, forYear, date, grupFarmer, keterangan, pengajuan, idDocument);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DataPengajuanPupukImplCopyWith<_$DataPengajuanPupukImpl> get copyWith =>
-      __$$DataPengajuanPupukImplCopyWithImpl<_$DataPengajuanPupukImpl>(
-          this, _$identity);
+  _$$DataSubmissionFertilizerImplCopyWith<_$DataSubmissionFertilizerImpl>
+      get copyWith => __$$DataSubmissionFertilizerImplCopyWithImpl<
+          _$DataSubmissionFertilizerImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DataPengajuanPupukImplToJson(
+    return _$$DataSubmissionFertilizerImplToJson(
       this,
     );
   }
 }
 
-abstract class _DataPengajuanPupuk implements DataPengajuanPupuk {
-  factory _DataPengajuanPupuk(
-      {required final String idKelompoktani,
-      required final String namaKetua,
-      required final String desa,
+abstract class _DataSubmissionFertilizer implements DataSubmissionFertilizer {
+  factory _DataSubmissionFertilizer(
+      {required final String idGrupFarmers,
+      required final String leaderName,
+      required final String village,
       required final String forYear,
-      required final String tanggal,
-      final List<PetaniPupuk>? petaniPupuk,
-      final String? idDocument}) = _$DataPengajuanPupukImpl;
+      required final String date,
+      required final String grupFarmer,
+      required final String keterangan,
+      required final String pengajuan,
+      final String? idDocument}) = _$DataSubmissionFertilizerImpl;
 
-  factory _DataPengajuanPupuk.fromJson(Map<String, dynamic> json) =
-      _$DataPengajuanPupukImpl.fromJson;
+  factory _DataSubmissionFertilizer.fromJson(Map<String, dynamic> json) =
+      _$DataSubmissionFertilizerImpl.fromJson;
 
   @override
-  String get idKelompoktani;
+  String get idGrupFarmers;
   @override
-  String get namaKetua;
+  String get leaderName;
   @override
-  String get desa;
+  String get village;
   @override
   String get forYear;
   @override
-  String get tanggal;
+  String get date;
   @override
-  List<PetaniPupuk>? get petaniPupuk;
+  String get grupFarmer;
+  @override
+  String get keterangan;
+  @override
+  String get pengajuan;
   @override
   String? get idDocument;
   @override
   @JsonKey(ignore: true)
-  _$$DataPengajuanPupukImplCopyWith<_$DataPengajuanPupukImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DataSubmissionFertilizerImplCopyWith<_$DataSubmissionFertilizerImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

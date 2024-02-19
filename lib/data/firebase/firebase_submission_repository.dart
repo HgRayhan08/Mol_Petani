@@ -12,55 +12,61 @@ class FirebaseSubmissionFertilizerRepository
       : _firebaseFirestore = firebaseFirestore ?? FirebaseFirestore.instance;
 
   @override
-  Future<Result<DataPengajuanPupuk>> createSubmissionFertilizer(
-      {required String idkelompoktani,
-      required String namaKetua,
-      required String desa,
-      required String forYear,
-      required String tanggal,
-      List<PetaniPupuk>? petaniPupuk}) async {
+  Future<Result<DataSubmissionFertilizer>> createSubmissionFertilizer({
+    required String idGrupFarmers,
+    required String leaderName,
+    required String village,
+    required String forYear,
+    required String date,
+    required String grupFarmer,
+    required String keterangan,
+  }) async {
     CollectionReference<Map<String, dynamic>> pengajuan =
         _firebaseFirestore.collection("Pengajuan_pupuk_petani");
     await pengajuan.doc().set({
-      "idKelompoktani": idkelompoktani,
-      "namaKetua": namaKetua,
-      "desa": desa,
+      "idGrupFarmers": idGrupFarmers,
+      "leaderName": leaderName,
+      "grupFarmer": grupFarmer,
+      "village": village,
       "forYear": forYear,
-      "tanggal": tanggal,
-      "petaniPupuk": petaniPupuk,
+      "date": date,
+      "keterangan": keterangan,
+      "Pengajuan": 0
     });
 
     DocumentSnapshot<Map<String, dynamic>> result = await pengajuan.doc().get();
+
     if (result.exists) {
-      return Result.success(DataPengajuanPupuk.fromJson(result.data()!));
+      return Result.success(DataSubmissionFertilizer.fromJson(result.data()!));
     } else {
       return const Result.failed("Gagal Membuat pengajuan");
     }
   }
 
   @override
-  Future<Result<List<DataPengajuanPupuk>>> getSubmissionFertilizerGrup(
-      {required String idKelompoktani}) async {
+  Future<Result<List<DataSubmissionFertilizer>>> getSubmissionFertilizerGrup(
+      {required String idKelompoktani, required String keterangan}) async {
     CollectionReference<Map<String, dynamic>> pengajuan =
         _firebaseFirestore.collection("Pengajuan_pupuk_petani");
-
     try {
       var result = await pengajuan
-          .where("idKelompoktani", isEqualTo: "vV2QBBtTSZdkYN4byngCy1svzVz2")
+          .where("idGrupFarmers", isEqualTo: idKelompoktani)
+          .where("keterangan", isEqualTo: keterangan)
           .get();
-      // print(result.docs.length);
-      // print("object firebase");
+
       if (result.docs.isNotEmpty) {
         return Result.success(result.docs
             .map(
-              (e) => DataPengajuanPupuk(
-                idDocument: result.docs.single.id,
-                idKelompoktani: e["idKelompoktani"],
-                namaKetua: e["namaKetua"],
-                desa: e["desa"],
+              (e) => DataSubmissionFertilizer(
+                idDocument: e.id,
+                idGrupFarmers: e["idGrupFarmers"],
+                leaderName: e["leaderName"],
+                village: e["village"],
                 forYear: e["forYear"],
-                tanggal: e["tanggal"],
-                petaniPupuk: e["petaniPupuk"],
+                date: e["date"],
+                grupFarmer: e["grupFarmer"],
+                keterangan: e["keterangan"],
+                pengajuan: e["Pengajuan"],
               ),
             )
             .toList());
@@ -73,16 +79,81 @@ class FirebaseSubmissionFertilizerRepository
   }
 
   @override
-  Future<Result<DataPengajuanPupuk>> getDetailSubmissionFertilizer(
+  Future<Result<DataSubmissionFertilizer>> getDetailSubmissionFertilizer(
       {required String id}) async {
     DocumentReference<Map<String, dynamic>> documentReference =
         _firebaseFirestore.doc("Pengajuan_pupuk_petani/$id");
     DocumentSnapshot<Map<String, dynamic>> resultData =
         await documentReference.get();
     if (resultData.exists) {
-      return Result.success(DataPengajuanPupuk.fromJson(resultData.data()!));
+      return Result.success(
+          DataSubmissionFertilizer.fromJson(resultData.data()!));
     } else {
       return const Result.failed("Data Pupuk tidak tersedia");
+    }
+  }
+
+  @override
+  Future<Result<PetaniPupuk>> createFertilizerFarmer({
+    required String idSubmission,
+    required String idKelompokTani,
+    required String namaPetani,
+    required String nik,
+    required double luasLahan,
+    required String fotoKtp,
+    required String fotoKK,
+    required String fotoPajak,
+  }) async {
+    CollectionReference<Map<String, dynamic>> submission =
+        _firebaseFirestore.collection("Data_Pengajuan_pupuk_petani");
+    await submission.doc().set({
+      "idSubmission": idSubmission,
+      "idKelompokTani": idKelompokTani,
+      "namaPetani": namaPetani,
+      "nik": nik,
+      "luasLahan": luasLahan,
+      "fotoKtp": fotoKtp,
+      "fotoKK": fotoKK,
+      "fotoPajak": fotoPajak,
+    });
+    DocumentSnapshot<Map<String, dynamic>> result =
+        await submission.doc().get();
+    if (result.exists) {
+      return Result.success(PetaniPupuk.fromJson(result.data()!));
+    } else {
+      return const Result.failed("Gagal Membuat pengajuan");
+    }
+  }
+
+  @override
+  Future<Result<List<PetaniPupuk>>> getDataSubmissionFarmer(
+    String idDocumennt,
+  ) async {
+    CollectionReference<Map<String, dynamic>> pengajuan =
+        _firebaseFirestore.collection("Data_Pengajuan_pupuk_petani");
+    try {
+      var result =
+          await pengajuan.where("idSubmission", isEqualTo: idDocumennt).get();
+
+      if (result.docs.isNotEmpty) {
+        return Result.success(result.docs
+            .map(
+              (e) => PetaniPupuk(
+                idKelompokTani: e["idKelompokTani"],
+                namaPetani: e["namaPetani"],
+                nik: e["nik"],
+                luasLahan: e["luasLahan"],
+                fotoKtp: e["fotoKtp"],
+                fotoKK: e["fotoKK"],
+                fotoPajak: e["fotoPajak"],
+              ),
+            )
+            .toList());
+      } else {
+        return const Result.success([]);
+      }
+    } catch (e) {
+      return Result.failed("message $e");
     }
   }
 }

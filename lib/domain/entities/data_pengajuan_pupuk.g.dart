@@ -6,29 +6,30 @@ part of 'data_pengajuan_pupuk.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DataPengajuanPupukImpl _$$DataPengajuanPupukImplFromJson(
+_$DataSubmissionFertilizerImpl _$$DataSubmissionFertilizerImplFromJson(
         Map<String, dynamic> json) =>
-    _$DataPengajuanPupukImpl(
-      idKelompoktani: json['idKelompoktani'] as String,
-      namaKetua: json['namaKetua'] as String,
-      desa: json['desa'] as String,
+    _$DataSubmissionFertilizerImpl(
+      idGrupFarmers: json['idGrupFarmers'] as String,
+      leaderName: json['leaderName'] as String,
+      village: json['village'] as String,
       forYear: json['forYear'] as String,
-      tanggal: json['tanggal'] as String,
-      petaniPupuk: (json['petaniPupuk'] as List<dynamic>?)
-              ?.map((e) => PetaniPupuk.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          const [],
+      date: json['date'] as String,
+      grupFarmer: json['grupFarmer'] as String,
+      keterangan: json['keterangan'] as String,
+      pengajuan: json['pengajuan'] as String,
       idDocument: json['idDocument'] as String?,
     );
 
-Map<String, dynamic> _$$DataPengajuanPupukImplToJson(
-        _$DataPengajuanPupukImpl instance) =>
+Map<String, dynamic> _$$DataSubmissionFertilizerImplToJson(
+        _$DataSubmissionFertilizerImpl instance) =>
     <String, dynamic>{
-      'idKelompoktani': instance.idKelompoktani,
-      'namaKetua': instance.namaKetua,
-      'desa': instance.desa,
+      'idGrupFarmers': instance.idGrupFarmers,
+      'leaderName': instance.leaderName,
+      'village': instance.village,
       'forYear': instance.forYear,
-      'tanggal': instance.tanggal,
-      'petaniPupuk': instance.petaniPupuk,
+      'date': instance.date,
+      'grupFarmer': instance.grupFarmer,
+      'keterangan': instance.keterangan,
+      'pengajuan': instance.pengajuan,
       'idDocument': instance.idDocument,
     };

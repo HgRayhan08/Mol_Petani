@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'create_submission_fertilizer_provider.dart';
+part of 'create_fertilizer_grup_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
 String _$createSubmissionFertilizerGrupHash() =>
-    r'316d6b56a8432d5cc72e62344490c280b61ce7ae';
+    r'aa7d00aa5da9681b4b37ca8a59e51c10d783d7dc';
 
 /// See also [createSubmissionFertilizerGrup].
 @ProviderFor(createSubmissionFertilizerGrup)
