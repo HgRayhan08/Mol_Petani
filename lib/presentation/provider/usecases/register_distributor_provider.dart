@@ -1,4 +1,4 @@
-import 'package:mol_petani/domain/usecase/register_officer/registrasi_distributor.dart';
+import 'package:mol_petani/domain/usecase/register_distributor/registrasi_distributor.dart';
 import 'package:mol_petani/presentation/provider/repository/authentication/authentication_provider.dart';
 import 'package:mol_petani/presentation/provider/repository/shared_pref_repository/shared_pref_repository_provider.dart';
 import 'package:mol_petani/presentation/provider/repository/user_repository/user_repository_provider.dart';

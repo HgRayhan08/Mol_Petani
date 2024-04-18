@@ -121,7 +121,11 @@ class FirebaseUserRepository implements UserRepository {
   @override
   Future<Result<UserFarmer>> createFarmer({
     required String idGrupFarmer,
+<<<<<<< HEAD
     required String name,
+=======
+    required String nama,
+>>>>>>> e00a71047e96058666e1d03b7f659d20f7901442
     required String village,
     required String nik,
     required String kartuKeluarga,
@@ -134,7 +138,11 @@ class FirebaseUserRepository implements UserRepository {
     await users.doc().set({
       "idGrupFarmer": idGrupFarmer,
       "idUserFarmer": "",
+<<<<<<< HEAD
       "nama": name,
+=======
+      "nama": nama,
+>>>>>>> e00a71047e96058666e1d03b7f659d20f7901442
       "grupFarmer": "",
       "village": village,
       "email": "",

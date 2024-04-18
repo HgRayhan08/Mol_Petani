@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
-import 'package:mol_petani/presentation/widgets/card_login_with.dart';
+import 'package:mol_petani/presentation/widgets_tidak/card_login_with.dart';
 
 Widget loginWith(
   ref, {
