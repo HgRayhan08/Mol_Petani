@@ -6,22 +6,22 @@ part of 'register_grup_farmer_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$registerGrupFarmerHash() =>
-    r'7225e41bf5f912e60de6940599398953f54461a3';
+String _$registerFarmerGrupHash() =>
+    r'0074cb9b53f4205bf06a7a44d38b002680c6d9bc';
 
-/// See also [registerGrupFarmer].
-@ProviderFor(registerGrupFarmer)
-final registerGrupFarmerProvider =
-    AutoDisposeProvider<RegisterGrupFarmer>.internal(
-  registerGrupFarmer,
-  name: r'registerGrupFarmerProvider',
+/// See also [registerFarmerGrup].
+@ProviderFor(registerFarmerGrup)
+final registerFarmerGrupProvider =
+    AutoDisposeProvider<RegisterFarmerGrup>.internal(
+  registerFarmerGrup,
+  name: r'registerFarmerGrupProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$registerGrupFarmerHash,
+      : _$registerFarmerGrupHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef RegisterGrupFarmerRef = AutoDisposeProviderRef<RegisterGrupFarmer>;
+typedef RegisterFarmerGrupRef = AutoDisposeProviderRef<RegisterFarmerGrup>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

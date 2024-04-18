@@ -32,7 +32,7 @@ class _TextFieldCustomState extends State<TextFieldCustom> {
           widget.title,
           style: regulerReguler.copyWith(fontWeight: FontWeight.w700),
         ),
-        Container(
+        SizedBox(
           width: widget.width,
           child: TextFormField(
             controller: widget.controller,
