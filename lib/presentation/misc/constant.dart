@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 // Colors
+const Color background = Color(0xffF4F9F9);
 const Color dark = Color(0xff272932);
 const Color greenLeaf = Color(0xff02B856);
 const Color blueLight = Color(0xff00B7C2);

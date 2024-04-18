@@ -2,48 +2,37 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-import 'package:mol_petani/domain/entities/data_pengajuan_pupuk.dart';
-import 'package:mol_petani/domain/entities/petani_pupuk.dart';
 import 'package:mol_petani/domain/entities/result.dart';
-import 'package:mol_petani/domain/entities/user.dart';
-import 'package:mol_petani/domain/usecase/create_submission_fertilizer_farmer/create_submission_fertilizer_farmer.dart';
-import 'package:mol_petani/domain/usecase/create_submission_fertilizer_farmer/create_fertilizer_farmer_params.dart';
-import 'package:mol_petani/domain/usecase/create_submission_fertilizer_grup/create_fertilizer_grup_params.dart';
-import 'package:mol_petani/domain/usecase/create_submission_fertilizer_grup/create_submission_fertilizer_grup.dart';
+import 'package:mol_petani/domain/entities/submission_kuota_fertilizer.dart';
+import 'package:mol_petani/domain/entities/user_distributor.dart';
+import 'package:mol_petani/domain/entities/user_farmer_grup.dart';
+import 'package:mol_petani/domain/usecase/get_data_kuota_fertilizer/get_data_kuota.dart';
+import 'package:mol_petani/domain/usecase/get_data_kuota_fertilizer/kuota_on_distributor_params.dart';
 import 'package:mol_petani/domain/usecase/get_distributor/get_all_distributor.dart';
 import 'package:mol_petani/domain/usecase/get_grup_farmer/get_all_grup_farmer.dart';
-import 'package:mol_petani/domain/usecase/get_submission_fertilizer_farmer/get_submission_farmer_params.dart';
-import 'package:mol_petani/domain/usecase/get_submission_fertilizer_farmer/get_submition_farmer.dart';
-import 'package:mol_petani/domain/usecase/get_submission_fertilizer_grup/get_submission_grup_fertilizer_params.dart';
+import 'package:mol_petani/domain/usecase/get_login_farmer_grup/get_login_farmer_grup.dart';
 import 'package:mol_petani/domain/usecase/get_login_distributor/get_login_distributor.dart';
-import 'package:mol_petani/domain/usecase/get_login_grup/get_login_grup.dart';
 import 'package:mol_petani/domain/usecase/get_login_ppl/get_login_ppl.dart';
-import 'package:mol_petani/domain/usecase/get_submission_fertilizer_grup/get_submission_grup_fertilizer.dart';
 import 'package:mol_petani/domain/usecase/login_officer/login_distributor.dart';
 import 'package:mol_petani/domain/usecase/login_officer/login_grup.dart';
 import 'package:mol_petani/domain/usecase/login_officer/login_params.dart';
 import 'package:mol_petani/domain/usecase/login_officer/login_ppl.dart';
-import 'package:mol_petani/domain/usecase/register_officer/register_petugas_param.dart';
-import 'package:mol_petani/domain/usecase/register_officer/registrasi_distributor.dart';
-import 'package:mol_petani/domain/usecase/register_officer/registrasi_grup_farmer.dart';
-import 'package:mol_petani/domain/usecase/upload_image/upload_image.dart';
-import 'package:mol_petani/domain/usecase/upload_image/upload_image_params.dart';
-import 'package:mol_petani/presentation/provider/usecases/create_fertilizer_farmer_provider.dart';
-import 'package:mol_petani/presentation/provider/usecases/create_fertilizer_grup_provider.dart';
+import 'package:mol_petani/domain/usecase/register_distributor/register_distributor_parms.dart';
+import 'package:mol_petani/domain/usecase/register_distributor/registrasi_distributor.dart';
+import 'package:mol_petani/domain/usecase/register_farmer_grup/register_farmer_grup_params.dart';
+import 'package:mol_petani/domain/usecase/register_farmer_grup/registrasi_farmer_grup.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_all_distributor_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_all_grup_farmer_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/get_data_kuota_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_login_distributor_provider.dart';
-import 'package:mol_petani/presentation/provider/usecases/get_login_grup_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/get_login_farmer_grup_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_login_ppl_provider.dart';
-import 'package:mol_petani/presentation/provider/usecases/get_submission_farmer_provider.dart';
-import 'package:mol_petani/presentation/provider/usecases/get_submission_fertilizer_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/login_distributor_provider.dart';
-import 'package:mol_petani/presentation/provider/usecases/login_grup_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/login_farmer_grup_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/login_ppl_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/logout_petugas_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/register_distributor_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/register_grup_farmer_provider.dart';
-import 'package:mol_petani/presentation/provider/usecases/upload_image_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'data_user_provider.g.dart';
@@ -51,37 +40,34 @@ part 'data_user_provider.g.dart';
 @Riverpod(keepAlive: true)
 class DataUser extends _$DataUser {
   @override
-  Future<User?> build() async {
+  Future<Map<String, dynamic>?> build() async {
     GetLoginPpl getppl = ref.read(getLoginPplProvider);
     var resultppl = await getppl(null);
 
     GetLoginDistributor getDistributor = ref.read(getLoginDistributorProvider);
     var resultDis = await getDistributor(null);
 
-    GetLoginGrup getKelompok = ref.read(getLoginGrupProvider);
+    GetLoginFarmerGrup getKelompok = ref.read(getLoginFarmerGrupProvider);
     var resultKelompok = await getKelompok(null);
 
     if (resultppl.isSuccess) {
       switch (resultppl) {
         case Success(value: final user):
-          state = AsyncData(user);
-          return user;
+          return user.toJson();
         case Failed(message: _):
           return null;
       }
     } else if (resultDis.isSuccess) {
       switch (resultDis) {
         case Success(value: final user):
-          state = AsyncData(user);
-          return user;
+          return user.toJson();
         case Failed(message: _):
           return null;
       }
     } else if (resultKelompok.isSuccess) {
       switch (resultKelompok) {
         case Success(value: final user):
-          state = AsyncData(user);
-          return user;
+          return user.toJson();
         case Failed(message: _):
           return null;
       }
@@ -100,7 +86,15 @@ class DataUser extends _$DataUser {
     var result = await login(LoginParams(email: email, password: password));
     switch (result) {
       case Success(value: final user):
-        state = AsyncData(user);
+        state = AsyncData({
+          "uid": user.uid,
+          "name": user.name,
+          "email": user.email,
+          "information": user.information,
+          "fotoUrl": user.fotoUrl,
+          "scope": user.scope,
+          "subdistrict": user.subdistrict,
+        });
       case Failed(:final message):
         state = AsyncError(FlutterError(message), StackTrace.current);
         state = const AsyncData(null);
@@ -118,7 +112,15 @@ class DataUser extends _$DataUser {
     var result = await login(LoginParams(email: email, password: password));
     switch (result) {
       case Success(value: final user):
-        state = AsyncData(user);
+        state = AsyncData({
+          "idPpl": user.idPPL,
+          "uid": user.uid,
+          "name": user.name,
+          "email": user.email,
+          "information": user.information,
+          "fotoUrl": user.fotoUrl,
+          "scope": user.scope,
+        });
       case Failed(message: final mesage):
         state = AsyncError(FlutterError(mesage), StackTrace.current);
         state = const AsyncData(null);
@@ -131,13 +133,20 @@ class DataUser extends _$DataUser {
   }) async {
     state = const AsyncLoading();
 
-    LoginGrup login = ref.read(loginGrupProvider);
+    LoginFarmerGrup login = ref.read(loginFarmerGrupProvider);
 
     var result = await login(LoginParams(email: email, password: password));
 
     switch (result) {
       case Success(value: final user):
-        state = AsyncData(user);
+        state = AsyncData({
+          "idPpl": user.idPPL,
+          "uid": user.uid,
+          "name": user.name,
+          "email": user.email,
+          "information": user.information,
+          "fotoUrl": user.fotoUrl,
+        });
       case Failed(message: final message):
         state = AsyncError(FlutterError(message), StackTrace.current);
         state = const AsyncData(null);
@@ -148,42 +157,45 @@ class DataUser extends _$DataUser {
     var logoutPpl = ref.read(logoutProvider);
     await logoutPpl(null);
     state = const AsyncData(null);
-
-    // switch (result) {
-    //   case Success(value: _):
-    //     state = const AsyncData(null);
-    //   case Failed(:final message):
-    //     state = AsyncError(FlutterError(message), StackTrace.current);
-    //     state = AsyncData(state.valueOrNull);
-    // }
   }
 
   Future<void> registerGrupFarmer({
     required String nama,
     required String email,
     required String password,
-    required String desa,
-    String? fotoUrl,
-    String? kelompok,
+    required String village,
+    required String familyIdentificationNumber,
+    required File fotoUrl,
+    required String kelompok,
+    required int mobileNumber,
   }) async {
     state = const AsyncLoading();
 
-    RegisterGrupFarmer registrasiKelompok =
-        ref.read(registerGrupFarmerProvider);
+    RegisterFarmerGrup registrasiKelompok =
+        ref.read(registerFarmerGrupProvider);
 
     var result = await registrasiKelompok(
-      RegisterOfficerParam(
-        nama: nama,
-        email: email,
-        password: password,
-        fotoUrl: fotoUrl,
-        kelompok: kelompok,
-        desa: desa,
-      ),
+      RegisterFarmerGrupParams(
+          name: nama,
+          email: email,
+          password: password,
+          fotoUrl: fotoUrl,
+          farmerGrup: kelompok,
+          village: village,
+          mobileNumber: mobileNumber,
+          familyIdentificationNumber: familyIdentificationNumber),
     );
     switch (result) {
       case Success(value: final user):
-        state = AsyncData(user);
+        state = AsyncData({
+          "uid": user.uid,
+          "name": user.name,
+          "email": user.email,
+          "information": user.information,
+          "fotoUrl": user.fotoUrl,
+          "scope": user.scope,
+          "subdistrict": user.subdistrict,
+        });
       case Failed(message: final message):
         state = AsyncError(FlutterError(message), StackTrace.current);
         state = const AsyncData(null);
@@ -194,8 +206,11 @@ class DataUser extends _$DataUser {
     required String nama,
     required String email,
     required String password,
-    String? subDistrik,
-    List<String>? cangkupan,
+    required String address,
+    required String familyIdentificationNumber,
+    List<String>? scope,
+    required File image,
+    required int mobileNumber,
   }) async {
     state = const AsyncLoading();
 
@@ -203,13 +218,16 @@ class DataUser extends _$DataUser {
         ref.read(registerDistributorProvider);
 
     var result = await registerDistributor(
-      RegisterOfficerParam(
-          nama: nama,
-          email: email,
-          password: password,
-          fotoUrl: "",
-          cangkupan: cangkupan,
-          kecamatan: subDistrik),
+      RegisterDistributorParams(
+        name: nama,
+        email: email,
+        password: password,
+        fotoUrl: image,
+        scope: scope!,
+        familyIdentificationNumber: familyIdentificationNumber,
+        address: address,
+        mobileNumber: mobileNumber,
+      ),
     );
     switch (result) {
       case Success():
@@ -219,7 +237,7 @@ class DataUser extends _$DataUser {
     }
   }
 
-  Future<List<User>> getallGrupFarmer() async {
+  Future<List<UserFarmerGroup>> getallGrupFarmer() async {
     GetAllGrupFarmer grupFarmer = ref.read(getAllGrupFarmerProvider);
     var result = await grupFarmer(0);
     if (result case Success(value: final data)) {
@@ -228,9 +246,9 @@ class DataUser extends _$DataUser {
     return [];
   }
 
-  Future<List<User>> getallDistributor() async {
+  Future<List<UserDistrubutor>> getallDistributor() async {
     GetAllDistributor distributor = ref.read(getAllDistributorProvider);
-    var result = await distributor(0);
+    var result = await distributor(null);
     if (result case Success(value: final data)) {
       return data;
     }
@@ -273,91 +291,12 @@ class DataUser extends _$DataUser {
   //   }
   // }
 
-  Future<DataSubmissionFertilizer> createPengajuanPupuk({
-    required String namaKetua,
-    required String desa,
-    required String forYear,
-    required String tanggal,
-    required String grupFarmer,
-  }) async {
-    CreateSubmissionFertilizerGrup pengajuan =
-        ref.read(createSubmissionFertilizerGrupProvider);
-    var result = await pengajuan(
-      CreateFertilizerGrupParams(
-          leaderName: namaKetua,
-          village: desa,
-          forYear: forYear,
-          date: tanggal,
-          grupFarmer: grupFarmer),
-    );
-    if (result case Success(value: final data)) {
-      return data;
-    } else {
-      return DataSubmissionFertilizer(
-          idGrupFarmers: "",
-          leaderName: "",
-          village: "",
-          forYear: "",
-          date: "",
-          grupFarmer: '',
-          keterangan: "",
-          pengajuan: "");
-    }
-  }
+  // Future<String> uploadImage({required File imageFile}) async {
+  //   UploadImage uploadImaged = ref.read(uploadImageProvider);
+  //   var result = await uploadImaged(UploadImageParams(imageFilel: imageFile));
+  //   String image = result.resultValue!;
+  //   return image;
+  // }
 
-  Future<List<DataSubmissionFertilizer>> getPengajuan(
-      {required String keterangan, String? uid}) async {
-    GetSubmissionGrupFertilizer pengajuan =
-        ref.read(getSubmissionFertilizerGrupProvider);
-    var result = await pengajuan(
-        GetSubmissionGrupFertilizerParams(keterangan: keterangan, uid: uid));
-    if (result case Success(value: final data)) {
-      return data;
-    }
-    return const [];
-  }
 
-  Future<String> uploadImage({required File imageFile}) async {
-    UploadImage uploadImaged = ref.read(uploadImageProvider);
-    var result = await uploadImaged(UploadImageParams(imageFilel: imageFile));
-    String image = result.resultValue!;
-    return image;
-  }
-
-  Future<String> createSubmissionFarmer({
-    required String idSubmmision,
-    required String namaPetani,
-    required String nik,
-    required double luasLahan,
-    required String fotoKtp,
-    required String fotoKK,
-    required String fotoPajak,
-  }) async {
-    CreateSubmissionFarmer create = ref.read(createSubmissionFarmerProvider);
-    var result = await create(CreateFertilizerFarmerParams(
-        idSubmission: idSubmmision,
-        namaPetani: namaPetani,
-        nik: nik,
-        luasLahan: luasLahan,
-        fotoKtp: fotoKtp,
-        fotoKK: fotoKK,
-        fotoPajak: fotoPajak));
-
-    if (result case Success(value: _)) {
-      return "Sucsess Create Submission Farmer";
-    } else {
-      return "failed Create Submission Farmer";
-    }
-  }
-
-  Future<List<PetaniPupuk>> getDataSubmisiionFarmer(
-      {required String idKelompok}) async {
-    GetSubmissionFarmer pengajuan = ref.read(getSubmissionFarmerProvider);
-    var result =
-        await pengajuan(GetSubmitionFarmerParams(idSubmition: idKelompok));
-    if (result case Success(value: final data)) {
-      return data;
-    }
-    return const [];
-  }
 }

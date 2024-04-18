@@ -17,26 +17,12 @@ class LoadingPage extends ConsumerWidget {
             const Duration(milliseconds: 1500),
             () {
               if (next.value != null) {
-                if (ref
-                        .read(dataUserProvider.notifier)
-                        .state
-                        .value!
-                        .keterangan ==
+                if (next.value!["information"] ==
                     "Penyuluh Pertanian Lapangan") {
                   ref.read(routerProvider).goNamed("main-ppl");
-                } else if (ref
-                        .read(dataUserProvider.notifier)
-                        .state
-                        .value!
-                        .keterangan ==
-                    "distributor") {
+                } else if (next.value!["information"] == "Distributor") {
                   ref.read(routerProvider).goNamed("main-dist");
-                } else if (ref
-                        .read(dataUserProvider.notifier)
-                        .state
-                        .value!
-                        .keterangan ==
-                    "Kelompok Tani") {
+                } else if (next.value!["information"] == "Kelompok Tani") {
                   ref.read(routerProvider).goNamed("main-kelompok");
                 }
               } else {

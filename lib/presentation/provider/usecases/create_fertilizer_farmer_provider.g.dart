@@ -6,23 +6,23 @@ part of 'create_fertilizer_farmer_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$createSubmissionFarmerHash() =>
-    r'92e74f3f949dc13ebb43261ef123cd9cad43babf';
+String _$createFertilizerFarmerHash() =>
+    r'2542823adf0ce2852cc60fc0fb48a7fe5dbed1cf';
 
-/// See also [createSubmissionFarmer].
-@ProviderFor(createSubmissionFarmer)
-final createSubmissionFarmerProvider =
-    AutoDisposeProvider<CreateSubmissionFarmer>.internal(
-  createSubmissionFarmer,
-  name: r'createSubmissionFarmerProvider',
+/// See also [createFertilizerFarmer].
+@ProviderFor(createFertilizerFarmer)
+final createFertilizerFarmerProvider =
+    AutoDisposeProvider<CreateFertilizerFarmer>.internal(
+  createFertilizerFarmer,
+  name: r'createFertilizerFarmerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$createSubmissionFarmerHash,
+      : _$createFertilizerFarmerHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef CreateSubmissionFarmerRef
-    = AutoDisposeProviderRef<CreateSubmissionFarmer>;
+typedef CreateFertilizerFarmerRef
+    = AutoDisposeProviderRef<CreateFertilizerFarmer>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
