@@ -1,15 +1,32 @@
 import 'package:go_router/go_router.dart';
+import 'package:mol_petani/domain/entities/report.dart';
 import 'package:mol_petani/domain/entities/submission_fertilizer_group.dart';
 import 'package:mol_petani/domain/entities/submission_kuota_fertilizer.dart';
 import 'package:mol_petani/domain/entities/supporting_data_fertilizer.dart';
 import 'package:mol_petani/domain/entities/user_distributor.dart';
+import 'package:mol_petani/domain/entities/user_farmer.dart';
 import 'package:mol_petani/domain/entities/user_farmer_grup.dart';
+import 'package:mol_petani/presentation/page/all_home_page/home_farmer_page.dart';
+import 'package:mol_petani/presentation/page/all_main_page/main_farmer_page.dart';
+import 'package:mol_petani/presentation/page/all_news.dart/news_page.dart';
+import 'package:mol_petani/presentation/page/all_news_web_view/news_web_view_page.dart';
+import 'package:mol_petani/presentation/page/distributor_detail_history_submission_kuota/distributor_detail_history_kuota_page.dart';
 import 'package:mol_petani/presentation/page/distributor_detail_kuota_fertilizer/distriutor_detail_kuota_fertilizer_page.dart';
 import 'package:mol_petani/presentation/page/distributor_forms_sends_fertilizer/distributor_forms_sends_page.dart';
+import 'package:mol_petani/presentation/page/distributor_history_submission_kuota/distributor_history_submission_kuota_page.dart';
 import 'package:mol_petani/presentation/page/distributor_submission_kuota/distributor_submission_kuoata_page.dart';
+import 'package:mol_petani/presentation/page/farmer_create_report/farmer_create_report_page.dart';
+import 'package:mol_petani/presentation/page/farmer_report/farmer_report_page.dart';
 import 'package:mol_petani/presentation/page/group_accepted_kuota_fertilizer/group_accepted_kuota_fertilizer_page.dart';
+import 'package:mol_petani/presentation/page/group_data_farmer/group_data_farmer_page.dart';
 import 'package:mol_petani/presentation/page/group_detail_accepted_kuota/group_detail_accepted_kuota_page.dart';
+import 'package:mol_petani/presentation/page/group_detail_data_farmer/group_detail_data_farmer_page.dart';
+import 'package:mol_petani/presentation/page/group_detail_member_farmer_group/group_detail_member_farmer_group_page.dart';
 import 'package:mol_petani/presentation/page/group_form_fertilizer_received/group_forms_received_page.dart';
+import 'package:mol_petani/presentation/page/group_forms_data_farmer/group_forms_data_farmer_page.dart';
+import 'package:mol_petani/presentation/page/group_member_farmer_group/group_member_farmer_group_page.dart';
+import 'package:mol_petani/presentation/page/group_register_account_farmer/group_register_account_farmer_page.dart';
+import 'package:mol_petani/presentation/page/all_detail_complaint_report/ppl_detail_complaint_report_page.dart';
 import 'package:mol_petani/presentation/page/ppl_detail_monitoring_fertilizer/ppl_detail_monitoring_fertilizer_page.dart';
 import 'package:mol_petani/presentation/page/ppl_detail_submission_fertilizer_group/ppl_detail_submission_fertilizer_group_page.dart';
 import 'package:mol_petani/presentation/page/ppl_detail_supporting_data/ppl_detail_supporting_data_page.dart';
@@ -29,11 +46,11 @@ import 'package:mol_petani/presentation/page/ppl_distributor_data/ppl_distributo
 import 'package:mol_petani/presentation/page/ppl_farmer_grup_data/ppl_farmer_grup_data_page.dart';
 import 'package:mol_petani/presentation/page/data_submission_farmer/data_submission_farmer.dart';
 import 'package:mol_petani/presentation/page/group_detail_submission_fertilizer_group/grup_detail_submission_fertilizer_grup_page.dart';
-import 'package:mol_petani/presentation/page/loading_page/loading_page.dart';
-import 'package:mol_petani/presentation/page/login_page/login_distributor_page.dart';
-import 'package:mol_petani/presentation/page/login_page/login_kelompok_page.dart';
-import 'package:mol_petani/presentation/page/login_page/login_petani_page.dart';
-import 'package:mol_petani/presentation/page/login_page/login_ppl_page.dart';
+import 'package:mol_petani/presentation/page/all_loading_page/loading_page.dart';
+import 'package:mol_petani/presentation/page/all_login_page/login_distributor_page.dart';
+import 'package:mol_petani/presentation/page/all_login_page/login_kelompok_page.dart';
+import 'package:mol_petani/presentation/page/farmer_login/login_petani_page.dart';
+import 'package:mol_petani/presentation/page/all_login_page/login_ppl_page.dart';
 import 'package:mol_petani/presentation/page/all_main_page/main_distributot_page.dart';
 import 'package:mol_petani/presentation/page/all_main_page/main_kelompok_page.dart';
 import 'package:mol_petani/presentation/page/all_main_page/main_ppl_page.dart';
@@ -42,6 +59,7 @@ import 'package:mol_petani/presentation/page/ppl_register_farmer_grup/register_g
 import 'package:mol_petani/presentation/page/group_form_submission_group/group_form_submission_group_page.dart';
 import 'package:mol_petani/presentation/page/group_submisson_fertilizer_group/group_submission_fertilizer_group_page.dart';
 import 'package:mol_petani/presentation/page/submission_fertilizer_ppl/submission_fertilizer_ppl_page.dart';
+import 'package:mol_petani/presentation/provider/submission_fertilizer/submission_fertilizer_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'router_provider.g.dart';
@@ -73,6 +91,17 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(routes: [
         name: "login-dis",
         builder: (context, state) => LoginDistributorPage(),
       ),
+      GoRoute(
+        path: "/news",
+        name: "news",
+        builder: (context, state) => const Newspage(),
+      ),
+      GoRoute(
+        path: "/news-web",
+        name: "news-web",
+        builder: (context, state) => NewsWebViewPage(state.extra as String),
+      ),
+
       // home penyuluh pertanian lapangan
       GoRoute(
         path: "/main-ppl",
@@ -135,12 +164,14 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(routes: [
           GoRoute(
             path: "monitoring-fertilizer-group",
             name: "monitoring-fertilizer-group",
-            builder: (context, state) => PplMonitoringFertilizerGroupPage(),
+            builder: (context, state) =>
+                const PplMonitoringFertilizerGroupPage(),
           ),
           GoRoute(
             path: "detail-monitoring-fertilizer",
             name: "detail-monitoring-fertilizer",
-            builder: (context, state) => PplDetailMonitorinngFertilizerPage(),
+            builder: (context, state) =>
+                const PplDetailMonitorinngFertilizerPage(),
           ),
           GoRoute(
             path: "monitoring-distribusi-fertilizer",
@@ -165,6 +196,13 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(routes: [
             name: "monitoring-submission-distributor",
             builder: (context, state) => PplMonitoringSubmissionDistributor(
                 state.extra as SubmissionKuotaFertilizer),
+          ),
+          GoRoute(
+            path: "detail-complaint",
+            name: "detail-complaint",
+            builder: (context, state) => PplDetailComplaintReportPage(
+              state.extra as Report,
+            ),
           )
         ],
       ),
@@ -178,7 +216,8 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(routes: [
             GoRoute(
               path: "distributor-submission-fertilzer",
               name: "distributor-submission-fertilzer",
-              builder: (context, state) => DistributorSubmissionKuotaPage(),
+              builder: (context, state) =>
+                  const DistributorSubmissionKuotaPage(),
             ),
             GoRoute(
               path: "detail-submission-fertilzer",
@@ -192,70 +231,31 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(routes: [
               builder: (context, state) => DistributorFormsSendsPage(
                   state.extra as SubmissionKuotaFertilizer),
             ),
+            GoRoute(
+              path: "distributor-history-kuota",
+              name: "distributor-history-kuota",
+              builder: (context, state) =>
+                  const DistributorHistorySubissionKuotaPage(),
+            ),
+            GoRoute(
+              path: "detail-distributor-history",
+              name: "detail-distributor-history",
+              builder: (context, state) => DistributorDetailHistoryKuotaPage(
+                state.extra as SubmissionKuotaFertilizer,
+              ),
+            ),
           ]),
 
-      // home farmer group
+      // home farmer
       GoRoute(
-          path: "/main-kelompok",
-          name: "main-kelompok",
-          builder: (context, state) => const MainKelompokPage(),
+          path: "/main-farmer",
+          name: "main-farmer",
+          builder: (context, state) => const MainFarmerPage(),
           routes: [
             GoRoute(
-              path: "create-submission-grup",
-              name: "create-submission-grup",
-              builder: (context, state) => const GroupFormSubmissionGroupPage(),
-            ),
-            GoRoute(
-              path: "create-submission-farmer",
-              name: "create-submission-farmer",
-              builder: (context, state) =>
-                  GroupFormSubmissionFarmerSupportingDataPage(
-                state.extra as DataSubmissionGroup,
-              ),
-            ),
-            GoRoute(
-              path: "submission-fertilizer-group",
-              name: "submission-fertilizer-group",
-              builder: (context, state) =>
-                  const GroupSubmissionFertilizerGroup(),
-            ),
-            GoRoute(
-              path: "detail-submission-grup",
-              name: "detail-submission-grup",
-              builder: (context, state) =>
-                  GroupDetailSubmissionFertilizerGroupPage(
-                state.extra as DataSubmissionGroup,
-              ),
-            ),
-            GoRoute(
-              path: "detail-supporting-grup",
-              name: "detail-supporting-grup",
-              builder: (context, state) => GroupDetailSupportingDataPage(
-                  state.extra as SupportingDataFertilizer),
-            ),
-            GoRoute(
-              path: "history-submission-grup",
-              name: "history-submission-grup",
-              builder: (context, state) =>
-                  const GroupHistorySubmissionFertilizerPage(),
-            ),
-            GoRoute(
-              path: "accepted-fertilizer-grup",
-              name: "accepted-fertilizer-grup",
-              builder: (context, state) =>
-                  const GroupAcceptedKuotaFertilizerPage(),
-            ),
-            GoRoute(
-              path: "detail-accepted-grup",
-              name: "detail-accepted-grup",
-              builder: (context, state) => GroupDetailAcceptedKuotaPage(
-                  state.extra as SubmissionKuotaFertilizer),
-            ),
-            GoRoute(
-              path: "forms-received-group",
-              name: "forms-receiver-group",
-              builder: (context, state) => GroupFormsReceivedPage(
-                  state.extra as SubmissionKuotaFertilizer),
+              path: "farmer-create-report",
+              name: "farmer-create-report",
+              builder: (context, state) => const FarmerCreateReportPage(),
             ),
           ]),
 
@@ -269,7 +269,7 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(routes: [
       GoRoute(
         path: "/all-submission-grup",
         name: "all-submission-grup",
-        builder: (context, state) => PplSubmissionFertilizerGroupPage(),
+        builder: (context, state) => const PplSubmissionFertilizerGroupPage(),
       ),
       // GoRoute(
       //   path: "/detail-fertilizer-farmer",

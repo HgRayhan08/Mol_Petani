@@ -68,7 +68,8 @@ class GroupDetailSupportingDataPage extends ConsumerWidget {
           ),
           Expanded(
             child: ListView(
-              padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+              padding: EdgeInsets.only(
+                  left: width * 0.05, right: width * 0.05, bottom: 20),
               children: [
                 const TitleWidget(
                   title: "Kartu Tanda Pengenal",

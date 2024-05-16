@@ -1,6 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mol_petani/domain/entities/user_distributor.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
@@ -40,7 +39,7 @@ class PplDetailDistributorPage extends ConsumerWidget {
                 height: width * 0.25,
                 decoration: const BoxDecoration(
                   color: Colors.amber,
-                  borderRadius: const BorderRadius.all(
+                  borderRadius: BorderRadius.all(
                     Radius.circular(30),
                   ),
                 ),

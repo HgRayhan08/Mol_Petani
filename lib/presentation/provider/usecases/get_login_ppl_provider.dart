@@ -8,6 +8,5 @@ part 'get_login_ppl_provider.g.dart';
 
 @riverpod
 GetLoginPpl getLoginPpl(GetLoginPplRef ref) => GetLoginPpl(
-    authentication: ref.watch(authenticationProvider),
     userRepository: ref.watch(userRepositoryProvider),
     sharedPrefRepository: ref.watch(sharedPrefRepositoryProvider));

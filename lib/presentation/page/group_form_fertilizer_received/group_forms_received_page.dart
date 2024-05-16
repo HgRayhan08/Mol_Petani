@@ -1,6 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:mol_petani/domain/entities/submission_kuota_fertilizer.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/provider/submission_fertilizer/submission_fertilizer_provider.dart';

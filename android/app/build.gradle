@@ -24,6 +24,7 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.skripsi.mol_petani"
+    // compileSdkVersion 31
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 

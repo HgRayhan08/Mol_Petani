@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mol_petani/presentation/page/group_submisson_fertilizer_group/group_submission_fertilizer_group_page.dart';
 import 'package:mol_petani/presentation/page/all_home_page/home_farmer_group_page.dart';
-import 'package:mol_petani/presentation/page/profile/ppl_profile_page.dart';
+import 'package:mol_petani/presentation/page/profile/distributor_profile_page.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
 
@@ -24,7 +24,7 @@ class _MainKelompokPageState extends ConsumerState<MainKelompokPage> {
       'Index 2: School',
       style: optionStyle,
     ),
-    PplProfilePage()
+    DistributorProfilePage()
   ];
 
   void _onItemTapped(int index) {

@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:mol_petani/presentation/page/all_home_page/home_distributor_page.dart';
 import 'package:mol_petani/presentation/page/distributor_sends_fertilizer/distributor_sends_fertilizer_page.dart';
 import 'package:mol_petani/presentation/page/distributor_submission_kuota/distributor_submission_kuoata_page.dart';
-import 'package:mol_petani/presentation/page/profile/ppl_profile_page.dart';
+import 'package:mol_petani/presentation/page/profile/distributor_profile_page.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
+import 'package:mol_petani/presentation/widgets/news_widget.dart';
 
 class MainDistributorPage extends ConsumerStatefulWidget {
   const MainDistributorPage({super.key});
@@ -17,13 +18,14 @@ class MainDistributorPage extends ConsumerStatefulWidget {
 
 class _MainDistributorPageState extends ConsumerState<MainDistributorPage> {
   int _selectedIndex = 0;
+  // ignore: unused_field
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     HomeDistributorPage(),
     DistributorSubmissionKuotaPage(),
     DistributorSendsFertilizerPage(),
-    PplProfilePage()
+    DistributorProfilePage()
   ];
 
   void _onItemTapped(int index) {

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mol_petani/domain/entities/supporting_data_fertilizer.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
 
 class ListTileSubmissionWidget extends StatelessWidget {

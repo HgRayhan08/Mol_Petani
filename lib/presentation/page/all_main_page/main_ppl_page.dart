@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mol_petani/presentation/page/all_home_page/home_ppl_page.dart';
-import 'package:mol_petani/presentation/page/profile/ppl_profile_page.dart';
+import 'package:mol_petani/presentation/page/ppl_complaint_report/ppl_complaint_report_page.dart';
+import 'package:mol_petani/presentation/page/profile/distributor_profile_page.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
 
@@ -18,15 +19,12 @@ class _MainPplPageState extends ConsumerState<MainPplPage> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     HomePplPage(),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
+    PplComplaintReportPage(),
     Text(
       'Index 2: School',
       style: optionStyle,
     ),
-    PplProfilePage()
+    DistributorProfilePage()
   ];
 
   void _onItemTapped(int index) {

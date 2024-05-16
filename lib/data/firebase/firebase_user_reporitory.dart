@@ -121,16 +121,16 @@ class FirebaseUserRepository implements UserRepository {
   @override
   Future<Result<UserFarmer>> createFarmer({
     required String idGrupFarmer,
-<<<<<<< HEAD
     required String name,
-=======
-    required String nama,
->>>>>>> e00a71047e96058666e1d03b7f659d20f7901442
     required String village,
     required String nik,
     required String kartuKeluarga,
     required String luasLahan,
     required String jenisKelamin,
+    required String noHp,
+    required String dateOfBirth,
+    required String idPPL,
+    required String grupFarmer,
   }) async {
     CollectionReference<Map<String, dynamic>> users =
         _firebaseFirestore.collection("User_Farmer");
@@ -138,11 +138,9 @@ class FirebaseUserRepository implements UserRepository {
     await users.doc().set({
       "idGrupFarmer": idGrupFarmer,
       "idUserFarmer": "",
-<<<<<<< HEAD
-      "nama": name,
-=======
-      "nama": nama,
->>>>>>> e00a71047e96058666e1d03b7f659d20f7901442
+      "idPPL": "",
+      "name": name,
+      "information": "Petani",
       "grupFarmer": "",
       "village": village,
       "email": "",
@@ -150,6 +148,8 @@ class FirebaseUserRepository implements UserRepository {
       "kartuKeluarga": kartuKeluarga,
       "luasLahan": luasLahan,
       "jenisKelamin": jenisKelamin,
+      "noHp": noHp,
+      "dateOfBirth": dateOfBirth,
     });
     DocumentSnapshot<Map<String, dynamic>> result = await users.doc().get();
     if (result.exists) {
@@ -169,7 +169,6 @@ class FirebaseUserRepository implements UserRepository {
 
     DocumentSnapshot<Map<String, dynamic>> result =
         await documentReference.get();
-
     if (result.exists) {
       return Result.success(UserPpl.fromJson(result.data()!));
     } else {
@@ -207,6 +206,18 @@ class FirebaseUserRepository implements UserRepository {
   }
 
   @override
+  Future<Result<UserFarmer>> getUserFarmer({required String idUser}) async {
+    CollectionReference<Map<String, dynamic>> data =
+        _firebaseFirestore.collection("User_Farmer");
+    var result = await data.where("idUserFarmer", isEqualTo: idUser).get();
+    if (result.docs.single.exists) {
+      return Result.success(UserFarmer.fromJson(result.docs.single.data()));
+    } else {
+      return const Result.failed("error");
+    }
+  }
+
+  @override
   Future<Result<List<UserFarmerGroup>>> getAllFarmerGrup(
       {required String idppl}) async {
     CollectionReference<Map<String, dynamic>> data =
@@ -219,16 +230,17 @@ class FirebaseUserRepository implements UserRepository {
           result.docs
               .map(
                 (e) => UserFarmerGroup(
-                    uid: e["uid"],
-                    name: e["name"],
-                    email: e["email"],
-                    information: e["information"],
-                    familyIdentificationNumber: e["familyIdentificationNumber"],
-                    village: e["village"],
-                    fotoUrl: e["fotoUrl"],
-                    farmerGrup: e["farmerGrup"],
-                    idPPL: e["idPPL"],
-                    mobileNumber: e["mobileNumber"]),
+                  uid: e["uid"],
+                  name: e["name"],
+                  email: e["email"],
+                  information: e["information"],
+                  familyIdentificationNumber: e["familyIdentificationNumber"],
+                  village: e["village"],
+                  fotoUrl: e["fotoUrl"],
+                  farmerGrup: e["farmerGrup"],
+                  idPPL: e["idPPL"],
+                  mobileNumber: e["mobileNumber"],
+                ),
               )
               .toList(),
         );
@@ -274,6 +286,47 @@ class FirebaseUserRepository implements UserRepository {
   }
 
   @override
+  Future<Result<List<UserFarmer>>> getAllMemberFarmerGroup({
+    required String idFarmerGroup,
+  }) async {
+    CollectionReference<Map<String, dynamic>> user =
+        _firebaseFirestore.collection("User_Farmer");
+    try {
+      var result =
+          await user.where("idGrupFarmer", isEqualTo: idFarmerGroup).get();
+      if (result.docs.isNotEmpty) {
+        return Result.success(
+          result.docs
+              .map(
+                (e) => UserFarmer(
+                  idDocument: e.id,
+                  idGrupFarmer: e["idGrupFarmer"],
+                  idUserFarmer: e["idUserFarmer"],
+                  idPPL: e["idPPL"],
+                  name: e["name"],
+                  information: e["information"],
+                  grupFarmer: e["grupFarmer"],
+                  village: e["village"],
+                  email: e["email"],
+                  nik: e["nik"],
+                  kartuKeluarga: e["kartuKeluarga"],
+                  luasLahan: e["luasLahan"],
+                  jenisKelamin: e["jenisKelamin"],
+                  dateOfBirth: e["dateOfBirth"],
+                  noHp: e["noHp"],
+                ),
+              )
+              .toList(),
+        );
+      } else {
+        return const Result.failed("failed add data");
+      }
+    } catch (e) {
+      return const Result.failed("failed get data");
+    }
+  }
+
+  @override
   Future<String> uploadImage({required File imageFile}) async {
     String fileName = basename(imageFile.path);
 
@@ -293,13 +346,80 @@ class FirebaseUserRepository implements UserRepository {
   }
 
   @override
-  Future<String> updateInformationFarmer({
+  Future<Result<String>> updateAccountFarmer({
     required String idDocument,
     required String email,
-    required String idFarmer,
+    required String idUserFarmer,
+  }) async {
+    CollectionReference<Map<String, dynamic>> data =
+        _firebaseFirestore.collection("User_Farmer");
+    await data.doc(idDocument).update({
+      "email": email,
+      "idUserFarmer": idUserFarmer,
+    });
+    DocumentSnapshot<Map<String, dynamic>> result = await data.doc().get();
+    if (result.exists) {
+      return const Result.success("Success");
+    } else {
+      return const Result.failed("fail to update");
+    }
+  }
+
+  @override
+  Future<Result<List<UserFarmer>>> getAllFarmer() async {
+    CollectionReference<Map<String, dynamic>> user =
+        await _firebaseFirestore.collection("User_Farmer");
+    var result = await user.get();
+
+    if (result.docs.isNotEmpty) {
+      return Result.success(
+        result.docs
+            .map(
+              (e) => UserFarmer(
+                idDocument: e.id,
+                idGrupFarmer: e["idGrupFarmer"],
+                idUserFarmer: e["idUserFarmer"],
+                idPPL: e["idPPL"],
+                name: e["name"],
+                information: e["information"],
+                grupFarmer: e["grupFarmer"],
+                village: e["village"],
+                email: e["email"],
+                nik: e["nik"],
+                kartuKeluarga: e["kartuKeluarga"],
+                luasLahan: e["luasLahan"],
+                jenisKelamin: e["jenisKelamin"],
+                dateOfBirth: e["dateOfBirth"],
+                noHp: e["noHp"],
+              ),
+            )
+            .toList(),
+      );
+    } else {
+      return const Result.failed("message");
+    }
+  }
+
+  @override
+  Future<Result<String>> addMemberFarmergroup({
+    required String idDocument,
+    required String idFarmerGroup,
     required String grupFarmer,
-  }) {
-    // TODO: implement updateInformationFarmer
-    throw UnimplementedError();
+    required String idPPL,
+  }) async {
+    print(idDocument);
+    CollectionReference<Map<String, dynamic>> data =
+        _firebaseFirestore.collection("User_Farmer");
+    await data.doc(idDocument).update({
+      "idGrupFarmer": idFarmerGroup,
+      "grupFarmer": grupFarmer,
+      "idPPL": idPPL
+    });
+    DocumentSnapshot<Map<String, dynamic>> result = await data.doc().get();
+    if (result.exists) {
+      return const Result.success("Success");
+    } else {
+      return const Result.failed("fail to update");
+    }
   }
 }

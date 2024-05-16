@@ -22,10 +22,14 @@ UserFarmer _$UserFarmerFromJson(Map<String, dynamic> json) {
 mixin _$UserFarmer {
   String get idGrupFarmer => throw _privateConstructorUsedError;
   String get idUserFarmer => throw _privateConstructorUsedError;
-  String get nama => throw _privateConstructorUsedError;
+  String get idPPL => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get dateOfBirth => throw _privateConstructorUsedError;
+  String get information => throw _privateConstructorUsedError;
   String get grupFarmer => throw _privateConstructorUsedError;
   String get village => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  String get noHp => throw _privateConstructorUsedError;
   String get nik => throw _privateConstructorUsedError;
   String get kartuKeluarga => throw _privateConstructorUsedError;
   String get luasLahan => throw _privateConstructorUsedError;
@@ -47,10 +51,14 @@ abstract class $UserFarmerCopyWith<$Res> {
   $Res call(
       {String idGrupFarmer,
       String idUserFarmer,
-      String nama,
+      String idPPL,
+      String name,
+      String dateOfBirth,
+      String information,
       String grupFarmer,
       String village,
       String email,
+      String noHp,
       String nik,
       String kartuKeluarga,
       String luasLahan,
@@ -73,10 +81,14 @@ class _$UserFarmerCopyWithImpl<$Res, $Val extends UserFarmer>
   $Res call({
     Object? idGrupFarmer = null,
     Object? idUserFarmer = null,
-    Object? nama = null,
+    Object? idPPL = null,
+    Object? name = null,
+    Object? dateOfBirth = null,
+    Object? information = null,
     Object? grupFarmer = null,
     Object? village = null,
     Object? email = null,
+    Object? noHp = null,
     Object? nik = null,
     Object? kartuKeluarga = null,
     Object? luasLahan = null,
@@ -92,9 +104,21 @@ class _$UserFarmerCopyWithImpl<$Res, $Val extends UserFarmer>
           ? _value.idUserFarmer
           : idUserFarmer // ignore: cast_nullable_to_non_nullable
               as String,
-      nama: null == nama
-          ? _value.nama
-          : nama // ignore: cast_nullable_to_non_nullable
+      idPPL: null == idPPL
+          ? _value.idPPL
+          : idPPL // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      dateOfBirth: null == dateOfBirth
+          ? _value.dateOfBirth
+          : dateOfBirth // ignore: cast_nullable_to_non_nullable
+              as String,
+      information: null == information
+          ? _value.information
+          : information // ignore: cast_nullable_to_non_nullable
               as String,
       grupFarmer: null == grupFarmer
           ? _value.grupFarmer
@@ -107,6 +131,10 @@ class _$UserFarmerCopyWithImpl<$Res, $Val extends UserFarmer>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      noHp: null == noHp
+          ? _value.noHp
+          : noHp // ignore: cast_nullable_to_non_nullable
               as String,
       nik: null == nik
           ? _value.nik
@@ -143,10 +171,14 @@ abstract class _$$UserFarmerImplCopyWith<$Res>
   $Res call(
       {String idGrupFarmer,
       String idUserFarmer,
-      String nama,
+      String idPPL,
+      String name,
+      String dateOfBirth,
+      String information,
       String grupFarmer,
       String village,
       String email,
+      String noHp,
       String nik,
       String kartuKeluarga,
       String luasLahan,
@@ -167,10 +199,14 @@ class __$$UserFarmerImplCopyWithImpl<$Res>
   $Res call({
     Object? idGrupFarmer = null,
     Object? idUserFarmer = null,
-    Object? nama = null,
+    Object? idPPL = null,
+    Object? name = null,
+    Object? dateOfBirth = null,
+    Object? information = null,
     Object? grupFarmer = null,
     Object? village = null,
     Object? email = null,
+    Object? noHp = null,
     Object? nik = null,
     Object? kartuKeluarga = null,
     Object? luasLahan = null,
@@ -186,9 +222,21 @@ class __$$UserFarmerImplCopyWithImpl<$Res>
           ? _value.idUserFarmer
           : idUserFarmer // ignore: cast_nullable_to_non_nullable
               as String,
-      nama: null == nama
-          ? _value.nama
-          : nama // ignore: cast_nullable_to_non_nullable
+      idPPL: null == idPPL
+          ? _value.idPPL
+          : idPPL // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      dateOfBirth: null == dateOfBirth
+          ? _value.dateOfBirth
+          : dateOfBirth // ignore: cast_nullable_to_non_nullable
+              as String,
+      information: null == information
+          ? _value.information
+          : information // ignore: cast_nullable_to_non_nullable
               as String,
       grupFarmer: null == grupFarmer
           ? _value.grupFarmer
@@ -201,6 +249,10 @@ class __$$UserFarmerImplCopyWithImpl<$Res>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      noHp: null == noHp
+          ? _value.noHp
+          : noHp // ignore: cast_nullable_to_non_nullable
               as String,
       nik: null == nik
           ? _value.nik
@@ -232,10 +284,14 @@ class _$UserFarmerImpl implements _UserFarmer {
   _$UserFarmerImpl(
       {required this.idGrupFarmer,
       required this.idUserFarmer,
-      required this.nama,
+      required this.idPPL,
+      required this.name,
+      required this.dateOfBirth,
+      required this.information,
       required this.grupFarmer,
       required this.village,
       required this.email,
+      required this.noHp,
       required this.nik,
       required this.kartuKeluarga,
       required this.luasLahan,
@@ -250,13 +306,21 @@ class _$UserFarmerImpl implements _UserFarmer {
   @override
   final String idUserFarmer;
   @override
-  final String nama;
+  final String idPPL;
+  @override
+  final String name;
+  @override
+  final String dateOfBirth;
+  @override
+  final String information;
   @override
   final String grupFarmer;
   @override
   final String village;
   @override
   final String email;
+  @override
+  final String noHp;
   @override
   final String nik;
   @override
@@ -270,7 +334,7 @@ class _$UserFarmerImpl implements _UserFarmer {
 
   @override
   String toString() {
-    return 'UserFarmer(idGrupFarmer: $idGrupFarmer, idUserFarmer: $idUserFarmer, nama: $nama, grupFarmer: $grupFarmer, village: $village, email: $email, nik: $nik, kartuKeluarga: $kartuKeluarga, luasLahan: $luasLahan, jenisKelamin: $jenisKelamin, idDocument: $idDocument)';
+    return 'UserFarmer(idGrupFarmer: $idGrupFarmer, idUserFarmer: $idUserFarmer, idPPL: $idPPL, name: $name, dateOfBirth: $dateOfBirth, information: $information, grupFarmer: $grupFarmer, village: $village, email: $email, noHp: $noHp, nik: $nik, kartuKeluarga: $kartuKeluarga, luasLahan: $luasLahan, jenisKelamin: $jenisKelamin, idDocument: $idDocument)';
   }
 
   @override
@@ -282,11 +346,17 @@ class _$UserFarmerImpl implements _UserFarmer {
                 other.idGrupFarmer == idGrupFarmer) &&
             (identical(other.idUserFarmer, idUserFarmer) ||
                 other.idUserFarmer == idUserFarmer) &&
-            (identical(other.nama, nama) || other.nama == nama) &&
+            (identical(other.idPPL, idPPL) || other.idPPL == idPPL) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.dateOfBirth, dateOfBirth) ||
+                other.dateOfBirth == dateOfBirth) &&
+            (identical(other.information, information) ||
+                other.information == information) &&
             (identical(other.grupFarmer, grupFarmer) ||
                 other.grupFarmer == grupFarmer) &&
             (identical(other.village, village) || other.village == village) &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.noHp, noHp) || other.noHp == noHp) &&
             (identical(other.nik, nik) || other.nik == nik) &&
             (identical(other.kartuKeluarga, kartuKeluarga) ||
                 other.kartuKeluarga == kartuKeluarga) &&
@@ -304,10 +374,14 @@ class _$UserFarmerImpl implements _UserFarmer {
       runtimeType,
       idGrupFarmer,
       idUserFarmer,
-      nama,
+      idPPL,
+      name,
+      dateOfBirth,
+      information,
       grupFarmer,
       village,
       email,
+      noHp,
       nik,
       kartuKeluarga,
       luasLahan,
@@ -332,10 +406,14 @@ abstract class _UserFarmer implements UserFarmer {
   factory _UserFarmer(
       {required final String idGrupFarmer,
       required final String idUserFarmer,
-      required final String nama,
+      required final String idPPL,
+      required final String name,
+      required final String dateOfBirth,
+      required final String information,
       required final String grupFarmer,
       required final String village,
       required final String email,
+      required final String noHp,
       required final String nik,
       required final String kartuKeluarga,
       required final String luasLahan,
@@ -350,13 +428,21 @@ abstract class _UserFarmer implements UserFarmer {
   @override
   String get idUserFarmer;
   @override
-  String get nama;
+  String get idPPL;
+  @override
+  String get name;
+  @override
+  String get dateOfBirth;
+  @override
+  String get information;
   @override
   String get grupFarmer;
   @override
   String get village;
   @override
   String get email;
+  @override
+  String get noHp;
   @override
   String get nik;
   @override

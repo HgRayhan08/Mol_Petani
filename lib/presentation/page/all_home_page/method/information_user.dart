@@ -28,7 +28,7 @@ AppBar informationUser(context, ref) => AppBar(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Hi! ${ref.watch(dataUserProvider.notifier).state.value!["name"]}",
+                        "Hi! ${ref.watch(dataUserProvider.notifier).state.value![""]}",
                         style: extraLarge.copyWith(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,

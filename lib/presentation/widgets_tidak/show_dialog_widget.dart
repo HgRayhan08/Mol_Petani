@@ -6,8 +6,6 @@ import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'dart:io';
 
-import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
-
 class ShowDialogWidget extends ConsumerStatefulWidget {
   late XFile? xfile;
 

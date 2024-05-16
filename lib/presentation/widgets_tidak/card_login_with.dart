@@ -4,10 +4,12 @@ import 'package:mol_petani/presentation/misc/constant.dart';
 class CardLoginWith extends StatelessWidget {
   final Widget content;
   final Function() onTap;
+  final num width;
   const CardLoginWith({
     super.key,
     required this.content,
     required this.onTap,
+    this.width = 0.28,
   });
 
   @override
@@ -17,7 +19,7 @@ class CardLoginWith extends StatelessWidget {
       child: Container(
         alignment: Alignment.center,
         height: 50,
-        width: MediaQuery.of(context).size.width * 0.28,
+        width: MediaQuery.of(context).size.width * width,
         // padding: const EdgeInsets.all(2),
         decoration: BoxDecoration(
             color: light,

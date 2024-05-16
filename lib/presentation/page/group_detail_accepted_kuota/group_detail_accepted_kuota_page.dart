@@ -2,7 +2,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:mol_petani/domain/entities/submission_kuota_fertilizer.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
-import 'package:mol_petani/presentation/page/group_detail_accepted_kuota/method/kuota_information_group.dart';
 import 'package:mol_petani/presentation/page/group_detail_accepted_kuota/method/submission_innformation.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 

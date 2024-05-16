@@ -29,24 +29,25 @@ class CreateFertilizerFarmer
     String imageKk = await userRepository.uploadImage(imageFile: params.fotoKK);
     String imagePajak =
         await userRepository.uploadImage(imageFile: params.fotoPajak);
-    // if (imagektp.isNotEmpty || imageKk.isNotEmpty || imagePajak.isNotEmpty) {
-    var result = await submissionFretilizerRepository.additionalDataSubmission(
-      idSubmission: params.idSubmission,
-      idKelompokTani: idUser![1],
-      namaPetani: params.namaPetani,
-      nik: params.nik,
-      luasLahan: params.luasLahan,
-      fotoKtp: imagektp,
-      fotoKK: imageKk,
-      fotoPajak: imagePajak,
-    );
-    if (result.isSuccess) {
-      return Result.success(result.resultValue!);
+    if (imagektp.isNotEmpty || imageKk.isNotEmpty || imagePajak.isNotEmpty) {
+      var result =
+          await submissionFretilizerRepository.additionalDataSubmission(
+        idSubmission: params.idSubmission,
+        idKelompokTani: idUser![1],
+        namaPetani: params.namaPetani,
+        nik: params.nik,
+        luasLahan: params.luasLahan,
+        fotoKtp: imagektp,
+        fotoKK: imageKk,
+        fotoPajak: imagePajak,
+      );
+      if (result.isSuccess) {
+        return Result.success(result.resultValue!);
+      } else {
+        return Result.failed(result.errorMessage!);
+      }
     } else {
-      return Result.failed(result.errorMessage!);
+      return const Result.failed("message");
     }
-    // } else {
-    //   return Result.failed("message");
-    // }
   }
 }

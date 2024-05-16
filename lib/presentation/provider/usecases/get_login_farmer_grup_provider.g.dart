@@ -7,7 +7,7 @@ part of 'get_login_farmer_grup_provider.dart';
 // **************************************************************************
 
 String _$getLoginFarmerGrupHash() =>
-    r'e7f36578f91f0e7248613ce03c8f4e78caadef1c';
+    r'c50156584a1e50642ebc8e5d17886f1f90cbef9b';
 
 /// See also [getLoginFarmerGrup].
 @ProviderFor(getLoginFarmerGrup)

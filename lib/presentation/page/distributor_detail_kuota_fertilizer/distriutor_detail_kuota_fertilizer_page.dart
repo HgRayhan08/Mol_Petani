@@ -114,7 +114,6 @@ class _DistributorDetailKuotaFertilizerPageState
                     }
                   }
                 : () {
-                    print("Submission");
                     ref.read(routerProvider).pushNamed("forms-sends-fertilizer",
                         extra: widget.data);
                   },

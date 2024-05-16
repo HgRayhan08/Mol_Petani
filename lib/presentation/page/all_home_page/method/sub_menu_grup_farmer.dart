@@ -8,12 +8,16 @@ Widget subMenuGrupFarmer(context, ref) => Row(
         CardSubMenu(
           image: "assets/farmer.png",
           title: "Data Petani",
-          onTap: () {},
+          onTap: () {
+            ref.read(routerProvider).goNamed("data-farmer");
+          },
         ),
         CardSubMenu(
           image: "assets/data_grup_farmers.png",
           title: "Data Kelompok Tani",
-          onTap: () {},
+          onTap: () {
+            ref.read(routerProvider).goNamed("member-farmer-group");
+          },
         ),
         CardSubMenu(
           image: "assets/maps.png",

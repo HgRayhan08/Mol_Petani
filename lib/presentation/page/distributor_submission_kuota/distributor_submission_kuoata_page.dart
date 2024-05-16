@@ -38,9 +38,14 @@ class _DistributorSubmissionKuotaPageState
         actions: [
           Padding(
             padding: EdgeInsets.only(right: width * 0.05),
-            child: Icon(
-              Icons.history,
-              size: width * 0.08,
+            child: IconButton(
+              onPressed: () {
+                ref.read(routerProvider).pushNamed("distributor-history-kuota");
+              },
+              icon: Icon(
+                Icons.history,
+                size: width * 0.08,
+              ),
             ),
           ),
         ],
@@ -57,7 +62,6 @@ class _DistributorSubmissionKuotaPageState
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             var data = snapshot.data!;
-            print(data.length);
             return ListView.builder(
               padding: EdgeInsets.all(width * 0.05),
               itemCount: data.length,

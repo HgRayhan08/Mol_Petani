@@ -6,7 +6,6 @@ import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/data_submission_farmer/method/info_create_submission.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/provider/submission_fertilizer/submission_fertilizer_provider.dart';
-import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
 
 class DataSubmissionFarmer extends ConsumerWidget {
   final DataSubmissionGroup data;

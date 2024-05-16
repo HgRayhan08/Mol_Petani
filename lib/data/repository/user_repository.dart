@@ -49,22 +49,37 @@ abstract interface class UserRepository {
     required String kartuKeluarga,
     required String luasLahan,
     required String jenisKelamin,
+    required String noHp,
+    required String dateOfBirth,
+    required String idPPL,
+    required String grupFarmer,
   });
 
   Future<Result<UserPpl>> getUserPpl({required String uid});
   Future<Result<UserDistrubutor>> getUserDistributor({required String uid});
   Future<Result<UserFarmerGroup>> getUserFarmerGrup({required String uid});
-
+  Future<Result<UserFarmer>> getUserFarmer({required String idUser});
   Future<Result<List<UserFarmerGroup>>> getAllFarmerGrup(
       {required String idppl});
   Future<Result<List<UserDistrubutor>>> getAllDistributor(
       {required String idppl});
+  Future<Result<List<UserFarmer>>> getAllFarmer();
+  Future<Result<List<UserFarmer>>> getAllMemberFarmerGroup({
+    required String idFarmerGroup,
+  });
 
   Future<String> uploadImage({required File imageFile});
-  Future<String> updateInformationFarmer({
+
+  Future<Result<String>> updateAccountFarmer({
     required String idDocument,
     required String email,
-    required String idFarmer,
+    required String idUserFarmer,
+  });
+
+  Future<Result<String>> addMemberFarmergroup({
+    required String idDocument,
+    required String idFarmerGroup,
     required String grupFarmer,
+    required String idPPL,
   });
 }
