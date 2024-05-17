@@ -18,28 +18,27 @@ Widget stackImageProfile(ref, width, height) => SizedBox(
             child: Container(
               width: width * 0.25,
               height: width * 0.25,
-              decoration: const BoxDecoration(
-                color: Colors.amber,
-                borderRadius: BorderRadius.all(
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(
                   Radius.circular(100),
                 ),
-                // image: DecorationImage(
-                //   fit: BoxFit.cover,
-                //   image: ref
-                //               .watch(dataUserProvider.notifier)
-                //               .state
-                //               .value!["fotoUrl"] !=
-                //           ""
-                //       ? NetworkImage(
-                //           ref
-                //               .watch(dataUserProvider.notifier)
-                //               .state
-                //               .value!["fotoUrl"],
-                //         ) as ImageProvider
-                //       : const AssetImage(
-                //           ("assets/user.png"),
-                //         ),
-                // ),
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: ref
+                              .watch(dataUserProvider.notifier)
+                              .state
+                              .value!["fotoUrl"] !=
+                          ""
+                      ? NetworkImage(
+                          ref
+                              .watch(dataUserProvider.notifier)
+                              .state
+                              .value!["fotoUrl"],
+                        ) as ImageProvider
+                      : const AssetImage(
+                          ("assets/user.png"),
+                        ),
+                ),
               ),
             ),
           ),

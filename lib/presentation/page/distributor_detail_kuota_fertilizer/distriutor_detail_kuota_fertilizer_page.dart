@@ -27,7 +27,14 @@ class _DistributorDetailKuotaFertilizerPageState
       appBar: AppBar(
         title: Text(
           "Detail Pengajuan Pupuk",
-          style: regulerReguler,
+          style: largeReguler.copyWith(fontWeight: FontWeight.bold),
+        ),
+        surfaceTintColor: Colors.transparent,
+        shadowColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        shape: const Border(
+          bottom: BorderSide(color: Colors.black12),
         ),
       ),
       body: ListView(

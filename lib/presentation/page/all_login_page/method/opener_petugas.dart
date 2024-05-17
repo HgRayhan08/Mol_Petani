@@ -9,7 +9,7 @@ Widget openerPetugas({required String title}) => Column(
         ),
         Text(
           title,
-          style: regulerReguler.copyWith(
+          style: largeReguler.copyWith(
             fontWeight: FontWeight.w500,
           ),
         ),

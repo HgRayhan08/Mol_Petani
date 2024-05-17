@@ -40,25 +40,17 @@ class _DistributorProfilePageState
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
-      //   body: Center(
-      //     child: Column(
-      //       mainAxisAlignment: MainAxisAlignment.center,
-      //       children: [
-      //         const Text("Halaman main"),
-      //         ElevatedButton(
-      //           onPressed: () {
-      //             ref.read(dataUserProvider.notifier).logoutPetugas();
-      //           },
-      //           child: const Text("Log out"),
-      //         )
-      //       ],
-      //     ),
-      //   ),
       appBar: AppBar(
         backgroundColor: blueLight,
+        surfaceTintColor: Colors.transparent,
+        shadowColor: Colors.transparent,
+        elevation: 0.0,
         title: Text(
           "User Profile",
-          style: largeReguler.copyWith(color: Colors.white),
+          style: largeReguler.copyWith(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
       body: Column(

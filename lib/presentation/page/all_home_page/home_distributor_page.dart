@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
@@ -20,9 +22,17 @@ class HomeDistributorPage extends ConsumerWidget {
           "assets/logo.png",
           width: width * 0.4,
         ),
+        surfaceTintColor: Colors.transparent,
+        shadowColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        shape: const Border(
+          bottom: BorderSide(color: Colors.black12),
+        ),
       ),
       body: ListView(
-        padding: EdgeInsets.only(left: width * 0.05, right: width * 0.05),
+        padding: EdgeInsets.only(
+            left: width * 0.05, right: width * 0.05, top: height * 0.01),
         children: [
           Row(
             children: [
@@ -30,10 +40,27 @@ class HomeDistributorPage extends ConsumerWidget {
                 width: width * 0.16,
                 height: width * 0.16,
                 margin: EdgeInsets.only(right: width * 0.03),
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   color: blueLight,
-                  borderRadius: BorderRadius.all(
+                  borderRadius: const BorderRadius.all(
                     Radius.circular(100),
+                  ),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: ref
+                                .watch(dataUserProvider.notifier)
+                                .state
+                                .value!["fotoUrl"] !=
+                            ""
+                        ? NetworkImage(
+                            ref
+                                .watch(dataUserProvider.notifier)
+                                .state
+                                .value!["fotoUrl"],
+                          ) as ImageProvider
+                        : const AssetImage(
+                            ("assets/user.png"),
+                          ),
                   ),
                 ),
               ),
@@ -63,8 +90,8 @@ class HomeDistributorPage extends ConsumerWidget {
             width,
             height,
             dataOrder: ref
-                .read(fertilizerSubmissionProvider.notifier)
-                .getSubmissionFarmerGroup(keterangan: ""),
+                .watch(fertilizerSubmissionProvider.notifier)
+                .getKuotaBaseonDistributor(keterangan: "", informationSend: ""),
             dataSend: ref
                 .watch(fertilizerSubmissionProvider.notifier)
                 .getKuotaBaseonDistributor(
@@ -72,7 +99,7 @@ class HomeDistributorPage extends ConsumerWidget {
           ),
           Container(
             margin: EdgeInsets.only(top: height * 0.01),
-            height: height * 0.5,
+            height: height * 0.7,
             child: const NewsWidget(
               amounnt: 3,
             ),

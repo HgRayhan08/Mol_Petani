@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
+import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/all_login_page/method/form_login.dart';
 import 'package:mol_petani/presentation/page/all_login_page/method/login_with.dart';
 import 'package:mol_petani/presentation/page/all_login_page/method/opener_petugas.dart';
@@ -53,6 +54,13 @@ class LoginDistributorPage extends ConsumerWidget {
           switch (ref.watch(dataUserProvider)) {
             AsyncData(:final value) => value == null
                 ? ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      backgroundColor: const Color(0xff7BD3EA),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
                     onPressed: () {
                       if (emailControler.text == "" ||
                           passwordControler.text == "") {
@@ -67,7 +75,11 @@ class LoginDistributorPage extends ConsumerWidget {
                             password: passwordControler.text);
                       }
                     },
-                    child: const Text("Login"))
+                    child: Text(
+                      "Login",
+                      style: buttonReguler.copyWith(
+                          fontWeight: FontWeight.bold, color: light),
+                    ))
                 : const Center(
                     child: CircularProgressIndicator(),
                   ),
@@ -96,7 +108,7 @@ class LoginDistributorPage extends ConsumerWidget {
             thrid: "Kelompok Tani",
             toPagethrid: "login-kelompok",
           ),
-          SizedBox(height: mediaHeight * 0.12),
+          SizedBox(height: mediaHeight * 0.08),
           textBottomPetugas(title: "Distributor"),
         ],
       ),

@@ -10,6 +10,8 @@ class Newspage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -18,7 +20,17 @@ class Newspage extends ConsumerWidget {
           },
           icon: const Icon(Icons.arrow_back_ios),
         ),
-        title: Text("Berita", style: largeReguler),
+        title: Text(
+          "Berita",
+          style: largeReguler.copyWith(fontWeight: FontWeight.bold),
+        ),
+        surfaceTintColor: Colors.transparent,
+        shadowColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        shape: const Border(
+          bottom: BorderSide(color: Colors.black12),
+        ),
       ),
       body: FutureBuilder(
         future: ref.watch(newsApiProviderProvider.notifier).getarticle(),
@@ -26,6 +38,10 @@ class Newspage extends ConsumerWidget {
           if (snapshot.hasData) {
             var data = snapshot.data!.articles;
             return ListView.builder(
+              padding: EdgeInsets.symmetric(
+                horizontal: width * 0.05,
+                vertical: height * 0.01,
+              ),
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
               physics: const ClampingScrollPhysics(),

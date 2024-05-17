@@ -18,7 +18,14 @@ class DistributorDetailHistoryKuotaPage extends ConsumerWidget {
       appBar: AppBar(
         title: Text(
           "Detail History",
-          style: regulerReguler,
+          style: largeReguler.copyWith(fontWeight: FontWeight.bold),
+        ),
+        surfaceTintColor: Colors.transparent,
+        shadowColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        shape: const Border(
+          bottom: BorderSide(color: Colors.black12),
         ),
       ),
       body: ListView(
@@ -52,7 +59,7 @@ class DistributorDetailHistoryKuotaPage extends ConsumerWidget {
             data: data,
           ),
           SizedBox(
-            height: height * 0.05,
+            height: height * 0.04,
           ),
           Text("Information Pengiriman", style: regulerReguler),
           informationDetailSend(width, height, data: data),

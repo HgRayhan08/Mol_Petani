@@ -15,17 +15,6 @@ class DistributorSubmissionKuotaPage extends ConsumerStatefulWidget {
 
 class _DistributorSubmissionKuotaPageState
     extends ConsumerState<DistributorSubmissionKuotaPage> {
-  // final RefreshController _refreshController =
-  //     RefreshController(initialRefresh: false);
-
-  // void _onRefresh() async {
-  //   // monitor network fetch
-  //   await ref
-  //       .watch(fertilizerSubmissionProvider.notifier)
-  //       .getKuotaBaseonDistributor(keterangan: "");
-  //   _refreshController.refreshCompleted();
-  // }
-
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -33,7 +22,14 @@ class _DistributorSubmissionKuotaPageState
       appBar: AppBar(
         title: Text(
           "Pengajuan Pupuk Distributor",
-          style: regulerReguler,
+          style: largeReguler.copyWith(fontWeight: FontWeight.bold),
+        ),
+        surfaceTintColor: Colors.transparent,
+        shadowColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        shape: const Border(
+          bottom: BorderSide(color: Colors.black12),
         ),
         actions: [
           Padding(
@@ -50,12 +46,7 @@ class _DistributorSubmissionKuotaPageState
           ),
         ],
       ),
-      body:
-          // SmartRefresher(
-          //   controller: _refreshController,
-          //   onRefresh: _onRefresh,
-          //   child:
-          FutureBuilder(
+      body: FutureBuilder(
         future: ref
             .watch(fertilizerSubmissionProvider.notifier)
             .getKuotaBaseonDistributor(keterangan: "", informationSend: ""),

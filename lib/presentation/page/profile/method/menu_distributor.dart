@@ -10,30 +10,52 @@ Widget menuDistributor(ref, width, height, {required Function() onTapLogout}) =>
           ListTile(
             onTap: () {},
             leading: const CircleAvatar(
-              child: Icon(Icons.person),
+              backgroundColor: dark,
+              child: Icon(
+                Icons.person,
+                color: Colors.white,
+              ),
             ),
-            title: Text("My Detail User", style: regulerReguler),
+            title: Text("My Detail User",
+                style: regulerReguler.copyWith(fontWeight: FontWeight.bold)),
           ),
           ListTile(
             onTap: () {},
             leading: const CircleAvatar(
-              child: Icon(Icons.info),
+              backgroundColor: dark,
+              child: Icon(
+                Icons.info,
+                color: Colors.white,
+              ),
             ),
-            title: Text("Information", style: regulerReguler),
+            title: Text("Information",
+                style: regulerReguler.copyWith(fontWeight: FontWeight.bold)),
           ),
           ListTile(
             onTap: () {},
             leading: const CircleAvatar(
-              child: Icon(Icons.privacy_tip),
+              backgroundColor: dark,
+              child: Icon(
+                Icons.privacy_tip,
+                color: Colors.white,
+              ),
             ),
-            title: Text("Privacy", style: regulerReguler),
+            title: Text("Privacy",
+                style: regulerReguler.copyWith(fontWeight: FontWeight.bold)),
           ),
           ListTile(
             onTap: () {},
             leading: const CircleAvatar(
-              child: Icon(Icons.security),
+              backgroundColor: dark,
+              child: Icon(
+                Icons.security,
+                color: Colors.white,
+              ),
             ),
-            title: Text("Security", style: regulerReguler),
+            title: Text(
+              "Security",
+              style: regulerReguler.copyWith(fontWeight: FontWeight.bold),
+            ),
           ),
           SizedBox(
             height: height * 0.05,
@@ -41,10 +63,16 @@ Widget menuDistributor(ref, width, height, {required Function() onTapLogout}) =>
           ListTile(
             onTap: onTapLogout,
             leading: const CircleAvatar(
-              backgroundColor: blueLight,
-              child: Icon(Icons.logout),
+              backgroundColor: dark,
+              child: Icon(
+                Icons.logout,
+                color: Colors.white,
+              ),
             ),
-            title: Text("logout", style: regulerReguler),
+            title: Text(
+              "logout",
+              style: regulerReguler.copyWith(fontWeight: FontWeight.bold),
+            ),
           )
         ],
       ),

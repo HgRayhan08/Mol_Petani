@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mol_petani/domain/entities/submission_fertilizer_group.dart';
 import 'package:mol_petani/domain/entities/submission_kuota_fertilizer.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
 
@@ -8,7 +7,7 @@ Widget informationOrderFertilizer(
   ref,
   width,
   height, {
-  required Future<List<DataSubmissionGroup?>> dataOrder,
+  required Future<List<SubmissionKuotaFertilizer>> dataOrder,
   required Future<List<SubmissionKuotaFertilizer>> dataSend,
 }) =>
     Row(
@@ -47,7 +46,6 @@ Widget informationOrderFertilizer(
                     ),
                     Text(
                       data!.length.toString(),
-                      // snapshot.data!.length.toString(),
                       style: largeReguler.copyWith(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,

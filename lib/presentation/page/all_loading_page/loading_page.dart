@@ -34,7 +34,6 @@ class LoadingPage extends ConsumerWidget {
             },
           );
         } else if (next is AsyncError) {
-          print(next.asError!.error.toString());
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(next.asError!.error.toString()),
@@ -65,17 +64,11 @@ class LoadingPage extends ConsumerWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            // Text(ref
-            //         .read(dataUserProvider.notifier)
-            //         .state
-            //         .value!["information"] ??
-            //     ""),
             ElevatedButton(
-              onPressed: () {
-                ref.read(dataUserProvider.notifier).logoutPetugas();
-              },
-              child: const Text("Log out"),
-            )
+                onPressed: () {
+                  ref.read(dataUserProvider.notifier).logoutPetugas();
+                },
+                child: Text("sas"))
           ],
         ),
       ),

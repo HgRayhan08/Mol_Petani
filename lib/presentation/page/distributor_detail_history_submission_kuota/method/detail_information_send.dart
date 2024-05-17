@@ -38,6 +38,32 @@ Widget informationDetailSend(width, height,
               fontWeight: FontWeight.bold,
             ),
           ),
+          SizedBox(
+            height: height * 0.02,
+          ),
+          Text(
+            "Jumlah Pengiriman Urea",
+            style: regulerReguler,
+          ),
+          Text(
+            data.ureaSend.toString(),
+            style: regulerReguler.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(
+            height: height * 0.02,
+          ),
+          Text(
+            "Jumlah Pengiriman Poska",
+            style: regulerReguler,
+          ),
+          Text(
+            data.poskasend.toString(),
+            style: regulerReguler.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ],
       ),
     );

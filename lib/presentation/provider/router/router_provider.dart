@@ -6,7 +6,6 @@ import 'package:mol_petani/domain/entities/supporting_data_fertilizer.dart';
 import 'package:mol_petani/domain/entities/user_distributor.dart';
 import 'package:mol_petani/domain/entities/user_farmer.dart';
 import 'package:mol_petani/domain/entities/user_farmer_grup.dart';
-import 'package:mol_petani/presentation/page/all_home_page/home_farmer_page.dart';
 import 'package:mol_petani/presentation/page/all_main_page/main_farmer_page.dart';
 import 'package:mol_petani/presentation/page/all_news.dart/news_page.dart';
 import 'package:mol_petani/presentation/page/all_news_web_view/news_web_view_page.dart';
@@ -16,7 +15,6 @@ import 'package:mol_petani/presentation/page/distributor_forms_sends_fertilizer/
 import 'package:mol_petani/presentation/page/distributor_history_submission_kuota/distributor_history_submission_kuota_page.dart';
 import 'package:mol_petani/presentation/page/distributor_submission_kuota/distributor_submission_kuoata_page.dart';
 import 'package:mol_petani/presentation/page/farmer_create_report/farmer_create_report_page.dart';
-import 'package:mol_petani/presentation/page/farmer_report/farmer_report_page.dart';
 import 'package:mol_petani/presentation/page/group_accepted_kuota_fertilizer/group_accepted_kuota_fertilizer_page.dart';
 import 'package:mol_petani/presentation/page/group_data_farmer/group_data_farmer_page.dart';
 import 'package:mol_petani/presentation/page/group_detail_accepted_kuota/group_detail_accepted_kuota_page.dart';
@@ -206,6 +204,107 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(routes: [
           )
         ],
       ),
+
+      // home farmer group
+      GoRoute(
+          path: "/main-kelompok",
+          name: "main-kelompok",
+          builder: (context, state) => const MainKelompokPage(),
+          routes: [
+            GoRoute(
+              path: "create-submission-grup",
+              name: "create-submission-grup",
+              builder: (context, state) => const GroupFormSubmissionGroupPage(),
+            ),
+            GoRoute(
+              path: "create-submission-farmer",
+              name: "create-submission-farmer",
+              builder: (context, state) =>
+                  GroupFormSubmissionFarmerSupportingDataPage(
+                state.extra as DataSubmissionGroup,
+              ),
+            ),
+            GoRoute(
+              path: "submission-fertilizer-group",
+              name: "submission-fertilizer-group",
+              builder: (context, state) =>
+                  const GroupSubmissionFertilizerGroup(),
+            ),
+            GoRoute(
+              path: "detail-submission-grup",
+              name: "detail-submission-grup",
+              builder: (context, state) =>
+                  GroupDetailSubmissionFertilizerGroupPage(
+                state.extra as DataSubmissionGroup,
+              ),
+            ),
+            GoRoute(
+              path: "detail-supporting-grup",
+              name: "detail-supporting-grup",
+              builder: (context, state) => GroupDetailSupportingDataPage(
+                  state.extra as SupportingDataFertilizer),
+            ),
+            GoRoute(
+              path: "history-submission-grup",
+              name: "history-submission-grup",
+              builder: (context, state) =>
+                  const GroupHistorySubmissionFertilizerPage(),
+            ),
+            GoRoute(
+              path: "accepted-fertilizer-grup",
+              name: "accepted-fertilizer-grup",
+              builder: (context, state) =>
+                  const GroupAcceptedKuotaFertilizerPage(),
+            ),
+            GoRoute(
+              path: "detail-accepted-grup",
+              name: "detail-accepted-grup",
+              builder: (context, state) => GroupDetailAcceptedKuotaPage(
+                  state.extra as SubmissionKuotaFertilizer),
+            ),
+            GoRoute(
+              path: "forms-received-group",
+              name: "forms-receiver-group",
+              builder: (context, state) => GroupFormsReceivedPage(
+                  state.extra as SubmissionKuotaFertilizer),
+            ),
+            GoRoute(
+              path: "data-farmer",
+              name: "data-farmer",
+              builder: (context, state) => const GroupDataFarmerpage(),
+            ),
+            GoRoute(
+              path: "detail-data-farmer",
+              name: "detail-data-farmer",
+              builder: (context, state) => GroupDetailDataFarmerPage(
+                state.extra as UserFarmer,
+              ),
+            ),
+            GoRoute(
+              path: "detail-member-group",
+              name: "detail-member-group",
+              builder: (context, state) => GroupDetailMemberFarmerGroupPage(
+                state.extra as UserFarmer,
+              ),
+            ),
+            GoRoute(
+              path: "forms-data-farmer",
+              name: "forms-data-farmer",
+              builder: (context, state) => const GroupFormsDataFarmer(),
+            ),
+            GoRoute(
+              path: "member-farmer-group",
+              name: "member-farmer-group",
+              builder: (context, state) => const GroupMemberFarmerGroupPage(),
+            ),
+            GoRoute(
+              path: "register-account-farmer",
+              name: "register-account-farmer",
+              builder: (context, state) => GroupRegisterAccountFarmerPage(
+                state.extra as UserFarmer,
+              ),
+            ),
+          ]),
 
       // Home distributor
       GoRoute(

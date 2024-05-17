@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
+import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/all_home_page/home_distributor_page.dart';
 import 'package:mol_petani/presentation/page/distributor_sends_fertilizer/distributor_sends_fertilizer_page.dart';
 import 'package:mol_petani/presentation/page/distributor_submission_kuota/distributor_submission_kuoata_page.dart';
@@ -52,41 +53,53 @@ class _MainDistributorPageState extends ConsumerState<MainDistributorPage> {
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Image(
-              image: AssetImage("assets/data_pengajuan_kelompok.png"),
-              width: 25,
-              height: 25,
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 1,
             ),
-            label: 'Pengajuan',
-          ),
-          BottomNavigationBarItem(
-            icon: Image(
-              image: AssetImage("assets/data_pengajuan_kelompok.png"),
-              width: 25,
-              height: 25,
+          ],
+        ),
+        child: BottomNavigationBar(
+          backgroundColor: background,
+          elevation: 100,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home_outlined),
+              label: 'Home',
             ),
-            label: 'Pengirimman',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_2_outlined),
-            label: "profile",
-          )
-        ],
-        currentIndex: _selectedIndex,
-        selectedFontSize: 14,
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
-        selectedItemColor: Colors.amber[800],
-        unselectedItemColor: Colors.black,
-        onTap: _onItemTapped,
-        type: BottomNavigationBarType.fixed,
+            BottomNavigationBarItem(
+              icon: Image(
+                image: AssetImage("assets/data_pengajuan_kelompok.png"),
+                width: 25,
+                height: 25,
+              ),
+              label: 'Pengajuan',
+            ),
+            BottomNavigationBarItem(
+              icon: Image(
+                image: AssetImage("assets/data_pengajuan_kelompok.png"),
+                width: 25,
+                height: 25,
+              ),
+              label: 'Pengirimman',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person_2_outlined),
+              label: "profile",
+            )
+          ],
+          currentIndex: _selectedIndex,
+          selectedFontSize: 14,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          selectedItemColor: Colors.amber[800],
+          unselectedItemColor: Colors.black,
+          onTap: _onItemTapped,
+          type: BottomNavigationBarType.fixed,
+        ),
       ),
     );
   }
