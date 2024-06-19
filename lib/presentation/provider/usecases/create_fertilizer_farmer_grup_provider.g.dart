@@ -7,7 +7,7 @@ part of 'create_fertilizer_farmer_grup_provider.dart';
 // **************************************************************************
 
 String _$createFertilizerFarmerGrupHash() =>
-    r'68e34f758904ee8db971ae20a06fa208a7664264';
+    r'061b559042e5aa25ac6a4b7f004195b3fe97c757';
 
 /// See also [createFertilizerFarmerGrup].
 @ProviderFor(createFertilizerFarmerGrup)

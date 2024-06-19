@@ -37,9 +37,9 @@ class GroupDetailSubmissionFertilizerGroupPage extends ConsumerWidget {
             ),
             child: Column(
               children: [
-                ProcessSubmissionWidget(
-                  submission: data.submission,
-                ),
+                // ProcessSubmissionWidget(
+                //   submission: data.submission,
+                // ),
                 SizedBox(
                   height: height * 0.015,
                 ),

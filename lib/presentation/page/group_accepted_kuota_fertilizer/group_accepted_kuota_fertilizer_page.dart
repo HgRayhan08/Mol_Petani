@@ -21,7 +21,7 @@ class GroupAcceptedKuotaFertilizerPage extends ConsumerWidget {
       body: FutureBuilder(
         future: ref
             .read(fertilizerSubmissionProvider.notifier)
-            .getDataKuotaAccepted(),
+            .getDristirbutionGroupFarmer(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             var data = snapshot.data!;
@@ -31,14 +31,14 @@ class GroupAcceptedKuotaFertilizerPage extends ConsumerWidget {
               itemBuilder: (context, index) {
                 return ListTileKuotaWidget(
                   width: width,
-                  title: data[index].grupFarmer,
-                  subTitle: data[index].distributorName,
-                  year: data[index].forYear,
-                  submission: data[index].submission.toString(),
+                  title: data[index].nameGroupFarmer,
+                  subTitle: data[index].leaderName,
+                  year: data[index].year,
+                  submission: data[index].send.toString(),
                   onTap: () {
                     ref
                         .read(routerProvider)
-                        .pushNamed("detail-accepted-grup", extra: data[index]);
+                        .goNamed("detail-accepted-grup", extra: data[index]);
                   },
                 );
               },

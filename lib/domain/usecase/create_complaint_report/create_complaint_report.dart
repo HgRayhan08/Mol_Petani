@@ -23,7 +23,6 @@ class CreateComplaintReport
       idGrupFarmer: user![4],
       idPPL: user[2],
       idFarmer: user[1],
-      idDataFarmer: user[6],
       groupFarmer: user[3],
       nameFarmer: user[5],
       information: "Submission",

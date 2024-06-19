@@ -1,5 +1,5 @@
 class GetSubmissionFarmerGroupParams {
-  final String keterangan;
+  final String idGroupFarmer;
 
-  GetSubmissionFarmerGroupParams({required this.keterangan});
+  GetSubmissionFarmerGroupParams({required this.idGroupFarmer});
 }

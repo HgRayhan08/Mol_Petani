@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mol_petani/presentation/page/all_home_page/home_farmer_page.dart';
+import 'package:mol_petani/presentation/page/farmer_accepted_fertilizer/farmer_accepted_fertilizer_page.dart';
 import 'package:mol_petani/presentation/page/farmer_report/farmer_report_page.dart';
 import 'package:mol_petani/presentation/page/profile/distributor_profile_page.dart';
+import 'package:mol_petani/presentation/page/profile/farmer_profile_page.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
 
@@ -15,16 +17,12 @@ class MainFarmerPage extends ConsumerStatefulWidget {
 
 class _MainFarmerPageState extends ConsumerState<MainFarmerPage> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+
   static const List<Widget> _widgetOptions = <Widget>[
     HomeFarmerPage(),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
+    FarmerAcceptedFertilizerpage(),
     FarmerReportPage(),
-    DistributorProfilePage()
+    FarmerProfilePage()
   ];
 
   void _onItemTapped(int index) {
@@ -37,7 +35,7 @@ class _MainFarmerPageState extends ConsumerState<MainFarmerPage> {
   Widget build(BuildContext context) {
     ref.listen(dataUserProvider, (previous, next) {
       if (previous != null && next is AsyncData && next.value == null) {
-        ref.read(routerProvider).goNamed("login-petani");
+        ref.read(routerProvider).goNamed("user-login");
       } else if (next is AsyncError) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

@@ -1,4 +1,4 @@
-import 'package:mol_petani/data/repository/submission_repository.dart';
+import 'package:mol_petani/data/repository/fertilizer_repository.dart';
 import 'package:mol_petani/domain/entities/supporting_data_fertilizer.dart';
 import 'package:mol_petani/domain/entities/result.dart';
 import 'package:mol_petani/domain/usecase/get_fertilizer_farmer/get_submission_farmer_params.dart';
@@ -8,7 +8,7 @@ class GetFertilizerFarmer
     implements
         UseCase<Result<List<SupportingDataFertilizer>>,
             GetSubmitionFarmerParams> {
-  final SubmissionFretilizerRepository submissionFretilizerRepository;
+  final FertilizerRepository submissionFretilizerRepository;
 
   GetFertilizerFarmer({required this.submissionFretilizerRepository});
   @override

@@ -7,7 +7,7 @@ part of 'get_submission_farmer_group_provider.dart';
 // **************************************************************************
 
 String _$getSubmissionFarmerGroupHash() =>
-    r'a06803a610b8a47a9c460574340a90116ca11d70';
+    r'8d7eb60e3f8362d8f163abf388810c02231c3e50';
 
 /// See also [getSubmissionFarmerGroup].
 @ProviderFor(getSubmissionFarmerGroup)

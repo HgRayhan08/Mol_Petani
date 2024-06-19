@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/all_home_page/home_distributor_page.dart';
 import 'package:mol_petani/presentation/page/distributor_sends_fertilizer/distributor_sends_fertilizer_page.dart';
-import 'package:mol_petani/presentation/page/distributor_submission_kuota/distributor_submission_kuoata_page.dart';
+import 'package:mol_petani/presentation/page/ppl_data_group_farmer/ppl_data_group_farmer_page.dart';
 import 'package:mol_petani/presentation/page/profile/distributor_profile_page.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
@@ -24,8 +24,8 @@ class _MainDistributorPageState extends ConsumerState<MainDistributorPage> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     HomeDistributorPage(),
-    DistributorSubmissionKuotaPage(),
     DistributorSendsFertilizerPage(),
+    PplDatGroupFarmmerPage(),
     DistributorProfilePage()
   ];
 
@@ -39,7 +39,7 @@ class _MainDistributorPageState extends ConsumerState<MainDistributorPage> {
   Widget build(BuildContext context) {
     ref.listen(dataUserProvider, (previous, next) {
       if (previous != null && next is AsyncData && next.value == null) {
-        ref.read(routerProvider).goNamed("login-petani");
+        ref.read(routerProvider).goNamed("user-login");
       } else if (next is AsyncError) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -76,15 +76,11 @@ class _MainDistributorPageState extends ConsumerState<MainDistributorPage> {
                 width: 25,
                 height: 25,
               ),
-              label: 'Pengajuan',
+              label: 'Pengirimman',
             ),
             BottomNavigationBarItem(
-              icon: Image(
-                image: AssetImage("assets/data_pengajuan_kelompok.png"),
-                width: 25,
-                height: 25,
-              ),
-              label: 'Pengirimman',
+              icon: Icon(Icons.person),
+              label: "Petani",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person_2_outlined),

@@ -6,6 +6,7 @@ Widget formRegisterFarmerGrup(
   TextEditingController? emailcontroler,
   TextEditingController? passwordcontroler,
   TextEditingController? namecontroler,
+  TextEditingController? leadernameController,
   TextEditingController? grupcontroler,
   TextEditingController? vilagecontroler,
   TextEditingController? nikControler,
@@ -15,9 +16,17 @@ Widget formRegisterFarmerGrup(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TextFieldCustom(
-          title: "Username",
+          title: "Nama Kelompok tani",
           hinttext: 'Enter Your Username',
           controller: namecontroler!,
+        ),
+        SizedBox(
+          height: mediaQueryHeight * 0.01,
+        ),
+        TextFieldCustom(
+          title: "Ketua Kelompok Tani",
+          hinttext: 'Enter Your Username',
+          controller: leadernameController!,
         ),
         SizedBox(
           height: mediaQueryHeight * 0.01,

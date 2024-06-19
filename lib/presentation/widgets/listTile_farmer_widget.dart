@@ -21,7 +21,7 @@ class ListTileFarmerWidget extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: EdgeInsets.only(),
+        margin: EdgeInsets.only(top: height * 0.02),
         padding: EdgeInsets.symmetric(
             horizontal: width * 0.04, vertical: width * 0.03),
         decoration: const BoxDecoration(

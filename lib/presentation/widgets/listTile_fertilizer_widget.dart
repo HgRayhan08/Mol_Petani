@@ -57,10 +57,10 @@ class ListTileFertilizer extends StatelessWidget {
                   data.forYear,
                   style: regulerReguler.copyWith(fontWeight: FontWeight.bold),
                 ),
-                Text(
-                  "Penngajuan ${data.submission.toString()}",
-                  style: regulerReguler,
-                )
+                // Text(
+                //   "Penngajuan ${data.submission.toString()}",
+                //   style: regulerReguler,
+                // )
               ],
             ),
           ],

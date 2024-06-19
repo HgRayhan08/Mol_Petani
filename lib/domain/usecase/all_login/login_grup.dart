@@ -30,6 +30,7 @@ class LoginFarmerGrup implements UseCase<Result<UserFarmerGroup>, LoginParams> {
           userResult.resultValue!.uid,
           userResult.resultValue!.idPPL,
           userResult.resultValue!.farmerGrup,
+          userResult.resultValue!.leaderName,
         ]);
         return switch (userResult) {
           Success(value: final user) => Result.success(user),

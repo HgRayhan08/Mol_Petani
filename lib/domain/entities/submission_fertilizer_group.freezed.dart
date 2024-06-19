@@ -28,7 +28,6 @@ mixin _$DataSubmissionGroup {
   String get date => throw _privateConstructorUsedError;
   String get grupFarmer => throw _privateConstructorUsedError;
   String get information => throw _privateConstructorUsedError;
-  int get submission => throw _privateConstructorUsedError;
   String? get idDocument => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -52,7 +51,6 @@ abstract class $DataSubmissionGroupCopyWith<$Res> {
       String date,
       String grupFarmer,
       String information,
-      int submission,
       String? idDocument});
 }
 
@@ -77,7 +75,6 @@ class _$DataSubmissionGroupCopyWithImpl<$Res, $Val extends DataSubmissionGroup>
     Object? date = null,
     Object? grupFarmer = null,
     Object? information = null,
-    Object? submission = null,
     Object? idDocument = freezed,
   }) {
     return _then(_value.copyWith(
@@ -113,10 +110,6 @@ class _$DataSubmissionGroupCopyWithImpl<$Res, $Val extends DataSubmissionGroup>
           ? _value.information
           : information // ignore: cast_nullable_to_non_nullable
               as String,
-      submission: null == submission
-          ? _value.submission
-          : submission // ignore: cast_nullable_to_non_nullable
-              as int,
       idDocument: freezed == idDocument
           ? _value.idDocument
           : idDocument // ignore: cast_nullable_to_non_nullable
@@ -142,7 +135,6 @@ abstract class _$$DataSubmissionGroupImplCopyWith<$Res>
       String date,
       String grupFarmer,
       String information,
-      int submission,
       String? idDocument});
 }
 
@@ -165,7 +157,6 @@ class __$$DataSubmissionGroupImplCopyWithImpl<$Res>
     Object? date = null,
     Object? grupFarmer = null,
     Object? information = null,
-    Object? submission = null,
     Object? idDocument = freezed,
   }) {
     return _then(_$DataSubmissionGroupImpl(
@@ -201,10 +192,6 @@ class __$$DataSubmissionGroupImplCopyWithImpl<$Res>
           ? _value.information
           : information // ignore: cast_nullable_to_non_nullable
               as String,
-      submission: null == submission
-          ? _value.submission
-          : submission // ignore: cast_nullable_to_non_nullable
-              as int,
       idDocument: freezed == idDocument
           ? _value.idDocument
           : idDocument // ignore: cast_nullable_to_non_nullable
@@ -225,7 +212,6 @@ class _$DataSubmissionGroupImpl implements _DataSubmissionGroup {
       required this.date,
       required this.grupFarmer,
       required this.information,
-      required this.submission,
       this.idDocument});
 
   factory _$DataSubmissionGroupImpl.fromJson(Map<String, dynamic> json) =>
@@ -248,13 +234,11 @@ class _$DataSubmissionGroupImpl implements _DataSubmissionGroup {
   @override
   final String information;
   @override
-  final int submission;
-  @override
   final String? idDocument;
 
   @override
   String toString() {
-    return 'DataSubmissionGroup(idGrupFarmers: $idGrupFarmers, idPPL: $idPPL, leaderName: $leaderName, village: $village, forYear: $forYear, date: $date, grupFarmer: $grupFarmer, information: $information, submission: $submission, idDocument: $idDocument)';
+    return 'DataSubmissionGroup(idGrupFarmers: $idGrupFarmers, idPPL: $idPPL, leaderName: $leaderName, village: $village, forYear: $forYear, date: $date, grupFarmer: $grupFarmer, information: $information, idDocument: $idDocument)';
   }
 
   @override
@@ -274,8 +258,6 @@ class _$DataSubmissionGroupImpl implements _DataSubmissionGroup {
                 other.grupFarmer == grupFarmer) &&
             (identical(other.information, information) ||
                 other.information == information) &&
-            (identical(other.submission, submission) ||
-                other.submission == submission) &&
             (identical(other.idDocument, idDocument) ||
                 other.idDocument == idDocument));
   }
@@ -283,7 +265,7 @@ class _$DataSubmissionGroupImpl implements _DataSubmissionGroup {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, idGrupFarmers, idPPL, leaderName,
-      village, forYear, date, grupFarmer, information, submission, idDocument);
+      village, forYear, date, grupFarmer, information, idDocument);
 
   @JsonKey(ignore: true)
   @override
@@ -310,7 +292,6 @@ abstract class _DataSubmissionGroup implements DataSubmissionGroup {
       required final String date,
       required final String grupFarmer,
       required final String information,
-      required final int submission,
       final String? idDocument}) = _$DataSubmissionGroupImpl;
 
   factory _DataSubmissionGroup.fromJson(Map<String, dynamic> json) =
@@ -332,8 +313,6 @@ abstract class _DataSubmissionGroup implements DataSubmissionGroup {
   String get grupFarmer;
   @override
   String get information;
-  @override
-  int get submission;
   @override
   String? get idDocument;
   @override

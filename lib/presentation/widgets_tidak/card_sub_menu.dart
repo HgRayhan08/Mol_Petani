@@ -14,11 +14,13 @@ class CardSubMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
-        width: 100,
-        height: 130,
+        width: width * 0.2,
+        height: height * 0.15,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.start,

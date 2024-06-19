@@ -29,6 +29,7 @@ class LoginDistributor
           dataResult.resultValue!.information,
           dataResult.resultValue!.uid,
           dataResult.resultValue!.name,
+          dataResult.resultValue!.idPPL,
         ]);
         return switch (dataResult) {
           Success(value: final user) => Result.success(user),

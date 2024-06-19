@@ -27,7 +27,7 @@ class _DistributorProfilePageState
       dataUserProvider,
       (previous, next) {
         if (previous != null && next is AsyncData && next.value == null) {
-          ref.read(routerProvider).goNamed("login-petani");
+          ref.read(routerProvider).goNamed("user-login");
         } else if (next is AsyncError) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(

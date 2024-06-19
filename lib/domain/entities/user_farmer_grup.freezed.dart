@@ -22,6 +22,7 @@ UserFarmerGroup _$UserFarmerGroupFromJson(Map<String, dynamic> json) {
 mixin _$UserFarmerGroup {
   String get uid => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  String get leaderName => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get information => throw _privateConstructorUsedError;
   String get familyIdentificationNumber => throw _privateConstructorUsedError;
@@ -46,6 +47,7 @@ abstract class $UserFarmerGroupCopyWith<$Res> {
   $Res call(
       {String uid,
       String name,
+      String leaderName,
       String email,
       String information,
       String familyIdentificationNumber,
@@ -71,6 +73,7 @@ class _$UserFarmerGroupCopyWithImpl<$Res, $Val extends UserFarmerGroup>
   $Res call({
     Object? uid = null,
     Object? name = null,
+    Object? leaderName = null,
     Object? email = null,
     Object? information = null,
     Object? familyIdentificationNumber = null,
@@ -88,6 +91,10 @@ class _$UserFarmerGroupCopyWithImpl<$Res, $Val extends UserFarmerGroup>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      leaderName: null == leaderName
+          ? _value.leaderName
+          : leaderName // ignore: cast_nullable_to_non_nullable
               as String,
       email: null == email
           ? _value.email
@@ -136,6 +143,7 @@ abstract class _$$UserFarmerGroupImplCopyWith<$Res>
   $Res call(
       {String uid,
       String name,
+      String leaderName,
       String email,
       String information,
       String familyIdentificationNumber,
@@ -159,6 +167,7 @@ class __$$UserFarmerGroupImplCopyWithImpl<$Res>
   $Res call({
     Object? uid = null,
     Object? name = null,
+    Object? leaderName = null,
     Object? email = null,
     Object? information = null,
     Object? familyIdentificationNumber = null,
@@ -176,6 +185,10 @@ class __$$UserFarmerGroupImplCopyWithImpl<$Res>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      leaderName: null == leaderName
+          ? _value.leaderName
+          : leaderName // ignore: cast_nullable_to_non_nullable
               as String,
       email: null == email
           ? _value.email
@@ -219,6 +232,7 @@ class _$UserFarmerGroupImpl implements _UserFarmerGroup {
   _$UserFarmerGroupImpl(
       {required this.uid,
       required this.name,
+      required this.leaderName,
       required this.email,
       required this.information,
       required this.familyIdentificationNumber,
@@ -235,6 +249,8 @@ class _$UserFarmerGroupImpl implements _UserFarmerGroup {
   final String uid;
   @override
   final String name;
+  @override
+  final String leaderName;
   @override
   final String email;
   @override
@@ -254,7 +270,7 @@ class _$UserFarmerGroupImpl implements _UserFarmerGroup {
 
   @override
   String toString() {
-    return 'UserFarmerGroup(uid: $uid, name: $name, email: $email, information: $information, familyIdentificationNumber: $familyIdentificationNumber, fotoUrl: $fotoUrl, farmerGrup: $farmerGrup, village: $village, idPPL: $idPPL, mobileNumber: $mobileNumber)';
+    return 'UserFarmerGroup(uid: $uid, name: $name, leaderName: $leaderName, email: $email, information: $information, familyIdentificationNumber: $familyIdentificationNumber, fotoUrl: $fotoUrl, farmerGrup: $farmerGrup, village: $village, idPPL: $idPPL, mobileNumber: $mobileNumber)';
   }
 
   @override
@@ -264,6 +280,8 @@ class _$UserFarmerGroupImpl implements _UserFarmerGroup {
             other is _$UserFarmerGroupImpl &&
             (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.leaderName, leaderName) ||
+                other.leaderName == leaderName) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.information, information) ||
                 other.information == information) &&
@@ -286,6 +304,7 @@ class _$UserFarmerGroupImpl implements _UserFarmerGroup {
       runtimeType,
       uid,
       name,
+      leaderName,
       email,
       information,
       familyIdentificationNumber,
@@ -314,6 +333,7 @@ abstract class _UserFarmerGroup implements UserFarmerGroup {
   factory _UserFarmerGroup(
       {required final String uid,
       required final String name,
+      required final String leaderName,
       required final String email,
       required final String information,
       required final String familyIdentificationNumber,
@@ -330,6 +350,8 @@ abstract class _UserFarmerGroup implements UserFarmerGroup {
   String get uid;
   @override
   String get name;
+  @override
+  String get leaderName;
   @override
   String get email;
   @override

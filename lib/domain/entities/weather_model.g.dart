@@ -8,13 +8,13 @@ part of 'weather_model.dart';
 
 _$WeatherDataImpl _$$WeatherDataImplFromJson(Map<String, dynamic> json) =>
     _$WeatherDataImpl(
-      queryCost: json['queryCost'] as int,
+      queryCost: (json['queryCost'] as num).toInt(),
       latitude: (json['latitude'] as num).toDouble(),
       longitude: (json['longitude'] as num).toDouble(),
       resolvedAddress: json['resolvedAddress'] as String,
       address: json['address'] as String,
       timezone: json['timezone'] as String,
-      tzoffset: json['tzoffset'] as int,
+      tzoffset: (json['tzoffset'] as num).toInt(),
       days: json['days'] as List<dynamic>,
       stations: json['stations'] as Map<String, dynamic>,
     );

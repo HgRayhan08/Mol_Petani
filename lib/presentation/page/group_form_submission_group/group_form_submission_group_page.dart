@@ -97,7 +97,7 @@ class _GroupFormSubmissionGroupPageState
                       namaKetua: nameControler.text,
                       desa: villageControler.text,
                       forYear: tahunControler.text,
-                      tanggal: date.toString(),
+                      tanggal: DateFormat("dd-MM-yyyy").format(date).toString(),
                       grupFarmer: grupControler.text,
                     );
                 ScaffoldMessenger.of(context).showSnackBar(

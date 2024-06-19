@@ -81,7 +81,7 @@ class _FarmerCreateReportPageState
               await ref.read(reportProviderProvider.notifier).createReport(
                   reporting: judulControler.text,
                   reportingDetail: deskripsiController.text);
-              ref.read(routerProvider).pop();
+              // ref.read(routerProvider).pop();
             },
             child: Text(
               "Submit",

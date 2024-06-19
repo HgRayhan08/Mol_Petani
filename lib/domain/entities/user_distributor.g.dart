@@ -18,7 +18,7 @@ _$UserDistrubutorImpl _$$UserDistrubutorImplFromJson(
       fotoUrl: json['fotoUrl'] as String?,
       address: json['address'] as String,
       scope: json['scope'] as List<dynamic>? ?? const [],
-      mobileNumber: json['mobileNumber'] as int,
+      mobileNumber: (json['mobileNumber'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$UserDistrubutorImplToJson(

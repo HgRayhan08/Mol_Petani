@@ -16,11 +16,11 @@ Widget submissionInformation(width, height,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Penyuluh Pertanian Lapangan",
+            "Distributor",
             style: regulerReguler,
           ),
           Text(
-            data!.pplName,
+            data!.nameDistributor,
             style: regulerReguler.copyWith(
               fontWeight: FontWeight.bold,
             ),
@@ -33,7 +33,7 @@ Widget submissionInformation(width, height,
             style: regulerReguler,
           ),
           Text(
-            "Kelompok ${data.grupFarmer}",
+            "Kelompok ${data.nameGroupFarmer}",
             style: regulerReguler.copyWith(
               fontWeight: FontWeight.bold,
             ),
@@ -42,11 +42,11 @@ Widget submissionInformation(width, height,
             height: height * 0.02,
           ),
           Text(
-            "Distributor",
+            "Ketua Kelompok Tani",
             style: regulerReguler,
           ),
           Text(
-            data.distributorName,
+            data.leaderName,
             style: regulerReguler.copyWith(
               fontWeight: FontWeight.bold,
             ),
@@ -59,7 +59,7 @@ Widget submissionInformation(width, height,
             style: regulerReguler,
           ),
           Text(
-            data.dateOfFilling,
+            data.sendDate,
             style: regulerReguler.copyWith(
               fontWeight: FontWeight.bold,
             ),

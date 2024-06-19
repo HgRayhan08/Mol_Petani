@@ -32,6 +32,7 @@ class RegisterFarmerGrup
         var createData = await _userRepository.createUserFarmerGrup(
           uid: createAkun.resultValue!,
           name: params.name,
+          leaderName: params.leaderName,
           email: params.email,
           information: "Kelompok Tani",
           fotoUrl: image.toString(),

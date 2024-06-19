@@ -1,12 +1,12 @@
 import 'package:intl/intl.dart';
-import 'package:mol_petani/data/repository/submission_repository.dart';
+import 'package:mol_petani/data/repository/fertilizer_repository.dart';
 import 'package:mol_petani/domain/entities/result.dart';
 import 'package:mol_petani/domain/usecase/update_information_submission_distributor/update_submission_distributor_params.dart';
 import 'package:mol_petani/domain/usecase/usecase.dart';
 
 class UpdateSubmissionDistributor
     implements UseCase<Result<String>, UpdateSubmissionDistributorParams> {
-  final SubmissionFretilizerRepository submission;
+  final FertilizerRepository submission;
 
   UpdateSubmissionDistributor({required this.submission});
 

@@ -25,13 +25,13 @@ Widget kuotaInformationGroup(width, height,
                 "Pengajuan Pupuk Urea",
                 style: regulerReguler.copyWith(fontSize: 13),
               ),
-              Text(
-                "${data!.ureaSubmission.toString()} Kg",
-                style: extraLarge.copyWith(
-                  color: dark,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              // Text(
+              //   "${data!.ureaSubmission.toString()} Kg",
+              //   style: extraLarge.copyWith(
+              //     color: dark,
+              //     fontWeight: FontWeight.bold,
+              //   ),
+              // ),
             ],
           ),
         ),
@@ -53,13 +53,13 @@ Widget kuotaInformationGroup(width, height,
                 "Pengajuan Pupuk Poska",
                 style: regulerReguler.copyWith(fontSize: 13),
               ),
-              Text(
-                "${data.poskaSubmission.toString()} Kg",
-                style: extraLarge.copyWith(
-                  color: dark,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              // Text(
+              //   "${data.poskaSubmission.toString()} Kg",
+              //   style: extraLarge.copyWith(
+              //     color: dark,
+              //     fontWeight: FontWeight.bold,
+              //   ),
+              // ),
             ],
           ),
         )

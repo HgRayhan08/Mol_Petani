@@ -11,6 +11,7 @@ _$UserFarmerGroupImpl _$$UserFarmerGroupImplFromJson(
     _$UserFarmerGroupImpl(
       uid: json['uid'] as String,
       name: json['name'] as String,
+      leaderName: json['leaderName'] as String,
       email: json['email'] as String,
       information: json['information'] as String,
       familyIdentificationNumber: json['familyIdentificationNumber'] as String,
@@ -18,7 +19,7 @@ _$UserFarmerGroupImpl _$$UserFarmerGroupImplFromJson(
       farmerGrup: json['farmerGrup'] as String,
       village: json['village'] as String,
       idPPL: json['idPPL'] as String,
-      mobileNumber: json['mobileNumber'] as int,
+      mobileNumber: (json['mobileNumber'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$UserFarmerGroupImplToJson(
@@ -26,6 +27,7 @@ Map<String, dynamic> _$$UserFarmerGroupImplToJson(
     <String, dynamic>{
       'uid': instance.uid,
       'name': instance.name,
+      'leaderName': instance.leaderName,
       'email': instance.email,
       'information': instance.information,
       'familyIdentificationNumber': instance.familyIdentificationNumber,

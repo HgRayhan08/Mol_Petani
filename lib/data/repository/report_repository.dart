@@ -1,3 +1,4 @@
+import 'package:mol_petani/domain/entities/pest_report.dart';
 import 'package:mol_petani/domain/entities/report.dart';
 import 'package:mol_petani/domain/entities/result.dart';
 
@@ -6,7 +7,6 @@ abstract interface class ReportRepository {
     required String idGrupFarmer,
     required String idPPL,
     required String idFarmer,
-    required String idDataFarmer,
     required String groupFarmer,
     required String nameFarmer,
     required String information,
@@ -20,4 +20,28 @@ abstract interface class ReportRepository {
     required String idPPL,
     required String information,
   });
+
+  Future<Result<String>> updateStatusComplaint({required String idDocument});
+
+  Future<Result<PestReport>> createReportHama({
+    required String idPPL,
+    required String idFarmerGroup,
+    required String idUserFarmer,
+    required String nameFarmerGroup,
+    required String name,
+    required String submissionDate,
+    required String reporting,
+    required String detailReporting,
+  });
+
+  Future<Result<List<PestReport>>> getSubmissionReportHama({
+    required String idFarmerGroup,
+    required String information,
+  });
+
+  Future<Result<List<PestReport>>> getReportHama({
+    required String idPPL,
+    required String information,
+  });
+  Future<Result<String>> updateStatusPestReport({required String idDocument});
 }

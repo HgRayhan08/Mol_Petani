@@ -14,7 +14,6 @@ class DataSubmissionGroup with _$DataSubmissionGroup {
     required String date,
     required String grupFarmer,
     required String information,
-    required int submission,
     String? idDocument,
   }) = _DataSubmissionGroup;
 

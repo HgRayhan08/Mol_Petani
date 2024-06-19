@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mol_petani/presentation/page/all_home_page/home_ppl_page.dart';
 import 'package:mol_petani/presentation/page/ppl_complaint_report/ppl_complaint_report_page.dart';
+import 'package:mol_petani/presentation/page/ppl_pest_report/ppl_pest_reporting_page.dart';
 import 'package:mol_petani/presentation/page/profile/distributor_profile_page.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
@@ -15,15 +16,10 @@ class MainPplPage extends ConsumerStatefulWidget {
 
 class _MainPplPageState extends ConsumerState<MainPplPage> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     HomePplPage(),
     PplComplaintReportPage(),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
+    PplPestReportingPage(),
     DistributorProfilePage()
   ];
 
@@ -37,7 +33,7 @@ class _MainPplPageState extends ConsumerState<MainPplPage> {
   Widget build(BuildContext context) {
     ref.listen(dataUserProvider, (previous, next) {
       if (previous != null && next is AsyncData && next.value == null) {
-        ref.read(routerProvider).goNamed("login-petani");
+        ref.read(routerProvider).goNamed("user-login");
       } else if (next is AsyncError) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -62,8 +58,8 @@ class _MainPplPageState extends ConsumerState<MainPplPage> {
             label: 'Laporan',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.map_sharp),
-            label: 'Maps',
+            icon: Icon(Icons.insert_comment_outlined),
+            label: 'Hama',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),

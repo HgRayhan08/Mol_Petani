@@ -6,6 +6,7 @@ part 'report.g.dart';
 @freezed
 class Report with _$Report {
   factory Report({
+    String? idDocument,
     required String idGrupFarmer,
     required String idPPL,
     required String idFarmer,

@@ -65,15 +65,15 @@ class DataSubmissionFarmer extends ConsumerWidget {
           ),
         ],
       ),
-      floatingActionButton: data.submission != "Selesai"
-          ? IconButton(
-              onPressed: () {
-                ref
-                    .read(routerProvider)
-                    .pushNamed("create-submission-farmer", extra: data);
-              },
-              icon: const Icon(Icons.add))
-          : null,
+      // floatingActionButton: data.submission != "Selesai"
+      //     ? IconButton(
+      //         onPressed: () {
+      //           ref
+      //               .read(routerProvider)
+      //               .pushNamed("create-submission-farmer", extra: data);
+      //         },
+      //         icon: const Icon(Icons.add))
+      //     : null,
     );
   }
 }

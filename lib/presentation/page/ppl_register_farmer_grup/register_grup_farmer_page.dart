@@ -12,6 +12,7 @@ class RegisterGrupFarmerPage extends ConsumerStatefulWidget {
   final TextEditingController emailControler = TextEditingController();
   final TextEditingController passwordControler = TextEditingController();
   final TextEditingController nameControler = TextEditingController();
+  final TextEditingController leaderNameController = TextEditingController();
   final TextEditingController grupFarmerKontroler = TextEditingController();
   final TextEditingController vilageControler = TextEditingController();
   final TextEditingController nikControler = TextEditingController();
@@ -109,6 +110,7 @@ class _RegisterGrupFarmerPageState
             emailcontroler: widget.emailControler,
             passwordcontroler: widget.passwordControler,
             namecontroler: widget.nameControler,
+            leadernameController: widget.leaderNameController,
             grupcontroler: widget.grupFarmerKontroler,
             vilagecontroler: widget.vilageControler,
             nikControler: widget.nikControler,
@@ -133,6 +135,7 @@ class _RegisterGrupFarmerPageState
               } else {
                 ref.read(dataUserProvider.notifier).registerGrupFarmer(
                       nama: widget.nameControler.text,
+                      leaderName: widget.leaderNameController.text,
                       email: widget.emailControler.text,
                       password: widget.passwordControler.text,
                       kelompok: widget.grupFarmerKontroler.text,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mol_petani/presentation/page/group_distribution_fertilizer_farmer/group_distribution_fertilizer_farmer_page.dart';
 import 'package:mol_petani/presentation/page/group_submisson_fertilizer_group/group_submission_fertilizer_group_page.dart';
 import 'package:mol_petani/presentation/page/all_home_page/home_farmer_group_page.dart';
 import 'package:mol_petani/presentation/page/profile/distributor_profile_page.dart';
@@ -20,11 +21,8 @@ class _MainKelompokPageState extends ConsumerState<MainKelompokPage> {
   static const List<Widget> _widgetOptions = <Widget>[
     HomeFarmerGroupPage(),
     GroupSubmissionFertilizerGroup(),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
-    DistributorProfilePage()
+    GroupDistributionFertilizerFarmerPage(),
+    DistributorProfilePage(),
   ];
 
   void _onItemTapped(int index) {
@@ -37,7 +35,7 @@ class _MainKelompokPageState extends ConsumerState<MainKelompokPage> {
   Widget build(BuildContext context) {
     ref.listen(dataUserProvider, (previous, next) {
       if (previous != null && next is AsyncData && next.value == null) {
-        ref.read(routerProvider).goNamed("login-petani");
+        ref.read(routerProvider).goNamed("user-login");
       } else if (next is AsyncError) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

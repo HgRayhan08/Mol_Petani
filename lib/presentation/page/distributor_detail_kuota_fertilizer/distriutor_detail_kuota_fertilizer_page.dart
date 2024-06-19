@@ -47,11 +47,11 @@ class _DistributorDetailKuotaFertilizerPageState
           SizedBox(
             height: height * 0.01,
           ),
-          kuotaInformation(
-            width,
-            height,
-            data: widget.data,
-          ),
+          // kuotaInformation(
+          //   width,
+          //   height,
+          //   data: widget.data,
+          // ),
           SizedBox(
             height: height * 0.05,
           ),
@@ -62,11 +62,11 @@ class _DistributorDetailKuotaFertilizerPageState
           SizedBox(
             height: height * 0.01,
           ),
-          informationSubmission(
-            width,
-            height,
-            data: widget.data,
-          ),
+          // informationSubmission(
+          //   width,
+          //   height,
+          //   data: widget.data,
+          // ),
           SizedBox(
             height: height * 0.5,
           ),
@@ -95,15 +95,15 @@ class _DistributorDetailKuotaFertilizerPageState
                             TextButton(
                               child: const Text('Yes'),
                               onPressed: () async {
-                                await ref
-                                    .read(fertilizerSubmissionProvider.notifier)
-                                    .updateSubmissionFertilizer(
-                                        idDocument:
-                                            widget.data.idDocument.toString());
-                                setState(() {
-                                  isSunmission == true;
-                                });
-                                Navigator.of(context).pop();
+                                // await ref
+                                //     .read(fertilizerSubmissionProvider.notifier)
+                                //     .updateSubmissionFertilizer(
+                                //         idDocument:
+                                //             widget.data.idDocument.toString());
+                                // setState(() {
+                                //   isSunmission == true;
+                                // });
+                                // Navigator.of(context).pop();
                               },
                             ),
                             TextButton(

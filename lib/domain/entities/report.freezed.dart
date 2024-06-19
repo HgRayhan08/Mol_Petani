@@ -20,6 +20,7 @@ Report _$ReportFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Report {
+  String? get idDocument => throw _privateConstructorUsedError;
   String get idGrupFarmer => throw _privateConstructorUsedError;
   String get idPPL => throw _privateConstructorUsedError;
   String get idFarmer => throw _privateConstructorUsedError;
@@ -43,7 +44,8 @@ abstract class $ReportCopyWith<$Res> {
       _$ReportCopyWithImpl<$Res, Report>;
   @useResult
   $Res call(
-      {String idGrupFarmer,
+      {String? idDocument,
+      String idGrupFarmer,
       String idPPL,
       String idFarmer,
       String groupFarmer,
@@ -69,6 +71,7 @@ class _$ReportCopyWithImpl<$Res, $Val extends Report>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? idDocument = freezed,
     Object? idGrupFarmer = null,
     Object? idPPL = null,
     Object? idFarmer = null,
@@ -82,6 +85,10 @@ class _$ReportCopyWithImpl<$Res, $Val extends Report>
     Object? completionDate = null,
   }) {
     return _then(_value.copyWith(
+      idDocument: freezed == idDocument
+          ? _value.idDocument
+          : idDocument // ignore: cast_nullable_to_non_nullable
+              as String?,
       idGrupFarmer: null == idGrupFarmer
           ? _value.idGrupFarmer
           : idGrupFarmer // ignore: cast_nullable_to_non_nullable
@@ -138,7 +145,8 @@ abstract class _$$ReportImplCopyWith<$Res> implements $ReportCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String idGrupFarmer,
+      {String? idDocument,
+      String idGrupFarmer,
       String idPPL,
       String idFarmer,
       String groupFarmer,
@@ -162,6 +170,7 @@ class __$$ReportImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? idDocument = freezed,
     Object? idGrupFarmer = null,
     Object? idPPL = null,
     Object? idFarmer = null,
@@ -175,6 +184,10 @@ class __$$ReportImplCopyWithImpl<$Res>
     Object? completionDate = null,
   }) {
     return _then(_$ReportImpl(
+      idDocument: freezed == idDocument
+          ? _value.idDocument
+          : idDocument // ignore: cast_nullable_to_non_nullable
+              as String?,
       idGrupFarmer: null == idGrupFarmer
           ? _value.idGrupFarmer
           : idGrupFarmer // ignore: cast_nullable_to_non_nullable
@@ -227,7 +240,8 @@ class __$$ReportImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ReportImpl implements _Report {
   _$ReportImpl(
-      {required this.idGrupFarmer,
+      {this.idDocument,
+      required this.idGrupFarmer,
       required this.idPPL,
       required this.idFarmer,
       required this.groupFarmer,
@@ -242,6 +256,8 @@ class _$ReportImpl implements _Report {
   factory _$ReportImpl.fromJson(Map<String, dynamic> json) =>
       _$$ReportImplFromJson(json);
 
+  @override
+  final String? idDocument;
   @override
   final String idGrupFarmer;
   @override
@@ -267,7 +283,7 @@ class _$ReportImpl implements _Report {
 
   @override
   String toString() {
-    return 'Report(idGrupFarmer: $idGrupFarmer, idPPL: $idPPL, idFarmer: $idFarmer, groupFarmer: $groupFarmer, nameFarmer: $nameFarmer, information: $information, reporting: $reporting, reportingDetail: $reportingDetail, submissionDate: $submissionDate, acceptedDate: $acceptedDate, completionDate: $completionDate)';
+    return 'Report(idDocument: $idDocument, idGrupFarmer: $idGrupFarmer, idPPL: $idPPL, idFarmer: $idFarmer, groupFarmer: $groupFarmer, nameFarmer: $nameFarmer, information: $information, reporting: $reporting, reportingDetail: $reportingDetail, submissionDate: $submissionDate, acceptedDate: $acceptedDate, completionDate: $completionDate)';
   }
 
   @override
@@ -275,6 +291,8 @@ class _$ReportImpl implements _Report {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ReportImpl &&
+            (identical(other.idDocument, idDocument) ||
+                other.idDocument == idDocument) &&
             (identical(other.idGrupFarmer, idGrupFarmer) ||
                 other.idGrupFarmer == idGrupFarmer) &&
             (identical(other.idPPL, idPPL) || other.idPPL == idPPL) &&
@@ -302,6 +320,7 @@ class _$ReportImpl implements _Report {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      idDocument,
       idGrupFarmer,
       idPPL,
       idFarmer,
@@ -330,7 +349,8 @@ class _$ReportImpl implements _Report {
 
 abstract class _Report implements Report {
   factory _Report(
-      {required final String idGrupFarmer,
+      {final String? idDocument,
+      required final String idGrupFarmer,
       required final String idPPL,
       required final String idFarmer,
       required final String groupFarmer,
@@ -344,6 +364,8 @@ abstract class _Report implements Report {
 
   factory _Report.fromJson(Map<String, dynamic> json) = _$ReportImpl.fromJson;
 
+  @override
+  String? get idDocument;
   @override
   String get idGrupFarmer;
   @override

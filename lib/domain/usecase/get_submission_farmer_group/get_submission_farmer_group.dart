@@ -1,5 +1,5 @@
 import 'package:mol_petani/data/repository/shered_pref_repository.dart';
-import 'package:mol_petani/data/repository/submission_repository.dart';
+import 'package:mol_petani/data/repository/fertilizer_repository.dart';
 import 'package:mol_petani/domain/entities/submission_fertilizer_group.dart';
 import 'package:mol_petani/domain/entities/result.dart';
 import 'package:mol_petani/domain/usecase/get_submission_farmer_group/get_fertilizer_farmer_grup_params.dart';
@@ -9,7 +9,7 @@ class GetSubmissionFarmerGroup
     implements
         UseCase<Result<List<DataSubmissionGroup>>,
             GetSubmissionFarmerGroupParams> {
-  final SubmissionFretilizerRepository submissionFretilizerRepository;
+  final FertilizerRepository submissionFretilizerRepository;
   final SharedPrefRepository sharedPrefRepository;
 
   GetSubmissionFarmerGroup(
@@ -22,7 +22,7 @@ class GetSubmissionFarmerGroup
     List<String>? idUser = await sharedPrefRepository.getDataLogin();
     var data = await submissionFretilizerRepository.getSubmissionFarmerGroup(
       idPPL: idUser![1],
-      information: params.keterangan,
+      idGroupFarmer: params.idGroupFarmer,
     );
     return switch (data) {
       Success(value: final data) => Result.success(data),

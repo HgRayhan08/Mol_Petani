@@ -29,7 +29,7 @@ class LoadingPage extends ConsumerWidget {
                   ref.read(routerProvider).goNamed("main-farmer");
                 }
               } else {
-                ref.read(routerProvider).goNamed("login-petani");
+                ref.read(routerProvider).goNamed("user-login");
               }
             },
           );
@@ -64,11 +64,11 @@ class LoadingPage extends ConsumerWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            ElevatedButton(
-                onPressed: () {
-                  ref.read(dataUserProvider.notifier).logoutPetugas();
-                },
-                child: Text("sas"))
+            // ElevatedButton(
+            //     onPressed: () {
+            //       ref.read(dataUserProvider.notifier).logoutPetugas();
+            //     },
+            //     child: Text("sas"))
           ],
         ),
       ),

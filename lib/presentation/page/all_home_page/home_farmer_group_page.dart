@@ -15,7 +15,10 @@ class HomeFarmerGroupPage extends ConsumerWidget {
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.03,
           ),
-          subMenuGrupFarmer(context, ref),
+          SizedBox(
+            width: double.infinity,
+            child: subMenuGrupFarmer(context, ref),
+          ),
         ],
       ),
     );

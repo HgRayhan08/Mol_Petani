@@ -22,17 +22,4 @@ extension BuildContextExtension on BuildContext {
       // child: const Text('Show Dialog'),
     );
   }
-  // void buildShowDialog() => ScaffoldMessenger.of(this).showSnackBar(AlertDialog(
-  //       title: Text("data"),
-  //       actions: <Widget>[
-  //         TextButton(
-  //           onPressed: () => Navigator.pop(this, 'Cancel'),
-  //           child: const Text('Cancel'),
-  //         ),
-  //         TextButton(
-  //           onPressed: () => Navigator.pop(this, 'OK'),
-  //           child: const Text('OK'),
-  //         ),
-  //       ],
-  //     ) as SnackBar);
 }

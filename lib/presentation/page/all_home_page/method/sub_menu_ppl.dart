@@ -26,7 +26,9 @@ Widget subMenuPpl(context, ref) => Column(
               image: "assets/data_pengajuan_kelompok.png",
               title: "Pengajuan pupuk Kelompok tani",
               onTap: () {
-                ref.read(routerProvider).pushNamed("all-submission-grup");
+                ref
+                    .read(routerProvider)
+                    .pushNamed("collection-submission-group");
               },
             ),
             // CardSubMenu(),
@@ -40,19 +42,21 @@ Widget subMenuPpl(context, ref) => Column(
               image: "assets/data_pengajuan_dis.png",
               title: "Data Petani",
               onTap: () {
-                ref.read(routerProvider).pushNamed("submission-fertilizer-ppl");
+                ref.read(routerProvider).pushNamed("data-farmer-ppl");
               },
             ),
             CardSubMenu(
-              image: "assets/pengajuan_kedistributor.png",
-              title: "Data Pengajuan ke Distributor",
-              onTap: () {},
+              image: "assets/maps.png",
+              title: "Lokasi Sawah Petani",
+              onTap: () {
+                ref.read(routerProvider).goNamed("maps-page");
+              },
             ),
             CardSubMenu(
               image: "assets/monitor_pupuk.png",
               title: "Monitoring Pupuk Kelompok",
               onTap: () {
-                ref.read(routerProvider).goNamed("monitoring-fertilizer-group");
+                ref.read(routerProvider).goNamed("monitoring-page");
               },
             ),
             // CardSubMenu(),

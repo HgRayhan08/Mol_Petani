@@ -1,43 +1,53 @@
 import 'dart:io';
 
+import 'package:mol_petani/domain/entities/distribution_fertilizer_farmer.dart';
 import 'package:mol_petani/domain/entities/submission_kuota_fertilizer.dart';
 import 'package:mol_petani/domain/entities/supporting_data_fertilizer.dart';
 import 'package:mol_petani/domain/entities/result.dart';
 import 'package:mol_petani/domain/entities/submission_fertilizer_group.dart';
-import 'package:mol_petani/domain/usecase/create_fertilizer_farmer/create_fertilizer_farmer.dart';
-import 'package:mol_petani/domain/usecase/create_fertilizer_farmer/create_fertilizer_farmer_params.dart';
+import 'package:mol_petani/domain/entities/user_farmer_grup.dart';
+import 'package:mol_petani/domain/usecase/create_acception_fertilizer_group/acception_fertilizer_group_params.dart';
+import 'package:mol_petani/domain/usecase/create_acception_fertilizer_group/create_acception_fertilizer_group.dart';
+import 'package:mol_petani/domain/usecase/create_additional_fertilizer_group/create_additional_fertilizer_group.dart';
+import 'package:mol_petani/domain/usecase/create_additional_fertilizer_group/create_fertilizer_farmer_params.dart';
+import 'package:mol_petani/domain/usecase/create_send_fertilizer_farmer/create_send_fertilizer_farmer.dart';
+import 'package:mol_petani/domain/usecase/create_send_fertilizer_farmer/send_farmer_params.dart';
+import 'package:mol_petani/domain/usecase/create_send_fertilizer_group/create_send_fertilizer_group.dart';
 import 'package:mol_petani/domain/usecase/create_fertilizer_farmer_grup/create_fertilizer_farmer_grup.dart';
 import 'package:mol_petani/domain/usecase/create_fertilizer_farmer_grup/create_fertilizer_grup_params.dart';
-import 'package:mol_petani/domain/usecase/create_fertilizer_kuota/create_submission_kuota_fertilizer.dart';
-import 'package:mol_petani/domain/usecase/create_fertilizer_kuota/submission_kuota_params.dart';
-import 'package:mol_petani/domain/usecase/get_data_kuota_accepted/get_kuota_accepted.dart';
-import 'package:mol_petani/domain/usecase/get_data_kuota_fertilizer/get_data_kuota.dart';
-import 'package:mol_petani/domain/usecase/get_data_kuota_fertilizer/kuota_on_distributor_params.dart';
+import 'package:mol_petani/domain/usecase/create_send_fertilizer_group/send_group_params.dart';
+import 'package:mol_petani/domain/usecase/get_accept_fertilizer_farmer/get_acceptd_fertilizer_farmer.dart';
+import 'package:mol_petani/domain/usecase/get_data_monitoring/get_data_monitoring.dart';
+import 'package:mol_petani/domain/usecase/get_distribution_group_farmer/get_distribution_group_farmer.dart';
 import 'package:mol_petani/domain/usecase/get_fertilizer_farmer/get_fertilizer_farmer.dart';
 import 'package:mol_petani/domain/usecase/get_fertilizer_farmer/get_submission_farmer_params.dart';
 import 'package:mol_petani/domain/usecase/get_fertilizer_farmer_grup/get_fertilizer_farmer_grup.dart';
 import 'package:mol_petani/domain/usecase/get_fertilizer_farmer_grup/get_fertilizer_farmer_grup_params.dart';
-import 'package:mol_petani/domain/usecase/get_kuota_fertilizer_submission/get_kuota_fertilizzer_submission.dart';
+import 'package:mol_petani/domain/usecase/get_distribution_fertilizer_group/get_distribution_fertilizer_group.dart';
+import 'package:mol_petani/domain/usecase/get_grup_farmer/get_all_grup_farmer.dart';
+import 'package:mol_petani/domain/usecase/get_grup_farmer/group_farmer_params.dart';
+import 'package:mol_petani/domain/usecase/get_history_distribution_fertilizer_group/get_history_distribution_fertilizer_group.dart';
+import 'package:mol_petani/domain/usecase/get_send_fertilizer_farmer/get_send_fertilizer_farmer.dart';
 import 'package:mol_petani/domain/usecase/get_submission_farmer_group/get_fertilizer_farmer_grup_params.dart';
 import 'package:mol_petani/domain/usecase/get_submission_farmer_group/get_submission_farmer_group.dart';
-import 'package:mol_petani/domain/usecase/upate_accepted_group/update_accepted_group.dart';
-import 'package:mol_petani/domain/usecase/upate_accepted_group/update_accepted_group_params.dart';
-import 'package:mol_petani/domain/usecase/update_information_submission_distributor/update_submission_distributor.dart';
-import 'package:mol_petani/domain/usecase/update_information_submission_distributor/update_submission_distributor_params.dart';
-import 'package:mol_petani/domain/usecase/update_send_fertilizer/update_send_fertilizer.dart';
-import 'package:mol_petani/domain/usecase/update_send_fertilizer/update_send_fertilizer_params.dart';
+import 'package:mol_petani/domain/usecase/upate_send_fertilizer_group/update_send_fertilizer_group.dart';
+import 'package:mol_petani/domain/usecase/upate_send_fertilizer_group/accept_fertilizer_group.dart';
+import 'package:mol_petani/presentation/provider/usecases/create_acception_fertilizer_group_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/create_send_fertilizer_farmer_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/create_send_fertilizer_group_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/create_fertilizer_farmer_grup_provider.dart';
-import 'package:mol_petani/presentation/provider/usecases/create_fertilizer_farmer_provider.dart';
-import 'package:mol_petani/presentation/provider/usecases/create_fertilizer_kuota_provider.dart';
-import 'package:mol_petani/presentation/provider/usecases/get_data_kuota_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/create_additional_fertilizer_farmer_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/get_accept_fertilizer_farmer_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/get_all_grup_farmer_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/get_data_monitoring_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/get_distribution_fertilizer_group_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/get_distribution_group_farmer_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_fertilizer_farmer_grup_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_fertilizer_farmer_provider.dart';
-import 'package:mol_petani/presentation/provider/usecases/get_kuota_accepted_provider.dart';
-import 'package:mol_petani/presentation/provider/usecases/get_kuota_fertilizer_submission_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/get_history_distribution_fertilizer_group_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/get_send_fertilizer_farmer_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_submission_farmer_group_provider.dart';
-import 'package:mol_petani/presentation/provider/usecases/update_accepted_group_provider.dart';
-import 'package:mol_petani/presentation/provider/usecases/update_send_fertilizer_provider.dart';
-import 'package:mol_petani/presentation/provider/usecases/update_submission_distributor_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/update_send_fertilizer_group_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part "submission_fertilizer_provider.g.dart";
@@ -47,6 +57,45 @@ class FertilizerSubmission extends _$FertilizerSubmission {
   @override
   FutureOr<String> build() {
     return "";
+  }
+
+  // group Farmer
+  Future<String> createSubmissionFarmer({
+    required String idSubmmision,
+    required String namaPetani,
+    required String nik,
+    required double luasLahan,
+    required File fotoKtp,
+    required File fotoKK,
+    required File fotoPajak,
+  }) async {
+    CreateAdditionalFertilizerGroup create =
+        ref.read(createAdditionalFertilizerGroupProvider);
+    var result = await create(CreateFertilizerFarmerParams(
+        idSubmission: idSubmmision,
+        namaPetani: namaPetani,
+        nik: nik,
+        luasLahan: luasLahan,
+        fotoKtp: fotoKtp,
+        fotoKK: fotoKK,
+        fotoPajak: fotoPajak));
+
+    if (result case Success(value: _)) {
+      return "Sucsess Create Submission Farmer";
+    } else {
+      return "failed Create Submission Farmer";
+    }
+  }
+
+  Future<List<SupportingDataFertilizer>> getDataSubmisiionFarmer(
+      {required String idKelompok}) async {
+    GetFertilizerFarmer pengajuan = ref.read(getFertilizerFarmerProvider);
+    var result =
+        await pengajuan(GetSubmitionFarmerParams(idSubmition: idKelompok));
+    if (result case Success(value: final data)) {
+      return data;
+    }
+    return const [];
   }
 
   Future<List<DataSubmissionGroup>> getSubmissionFertilizerFarmerGrup(
@@ -90,168 +139,328 @@ class FertilizerSubmission extends _$FertilizerSubmission {
         date: "",
         grupFarmer: '',
         information: "",
-        submission: 0,
       );
     }
   }
 
-  Future<String> createSubmissionFarmer({
-    required String idSubmmision,
-    required String namaPetani,
-    required String nik,
-    required double luasLahan,
-    required File fotoKtp,
-    required File fotoKK,
-    required File fotoPajak,
-  }) async {
-    CreateFertilizerFarmer create = ref.read(createFertilizerFarmerProvider);
-    var result = await create(CreateFertilizerFarmerParams(
-        idSubmission: idSubmmision,
-        namaPetani: namaPetani,
-        nik: nik,
-        luasLahan: luasLahan,
-        fotoKtp: fotoKtp,
-        fotoKK: fotoKK,
-        fotoPajak: fotoPajak));
-
-    if (result case Success(value: _)) {
-      return "Sucsess Create Submission Farmer";
+  Future<List<SubmissionKuotaFertilizer>> getDristirbutionGroupFarmer() async {
+    GetDistributionGroupFarmer data =
+        ref.read(getDistributionGroupFarmerProvider);
+    var result = await data(null);
+    if (result.isSuccess) {
+      return result.resultValue!;
     } else {
-      return "failed Create Submission Farmer";
+      return [];
     }
   }
 
-  Future<List<SupportingDataFertilizer>> getDataSubmisiionFarmer(
-      {required String idKelompok}) async {
-    GetFertilizerFarmer pengajuan = ref.read(getFertilizerFarmerProvider);
-    var result =
-        await pengajuan(GetSubmitionFarmerParams(idSubmition: idKelompok));
-    if (result case Success(value: final data)) {
-      return data;
+  Future<String> createSendFertilizerFarmer({
+    required String idGroupFarmer,
+    required String idUserFarmer,
+    required String idPPL,
+    required String farmerName,
+    required String year,
+    required String distribution,
+    required int ureaDistribution,
+    required int poskaDistribution,
+  }) async {
+    CreateSendFertilizerFarmer create =
+        ref.read(createSendFertilizerFarmerProvider);
+    var result = await create(
+      SendFarmerParams(
+          idUserFarmer: idUserFarmer,
+          idPPL: idPPL,
+          farmerName: farmerName,
+          year: year,
+          distribution: distribution,
+          ureaDistribution: ureaDistribution,
+          poskaDistribution: poskaDistribution),
+    );
+    if (result.isSuccess) {
+      return "Succes create send farmer";
+    } else {
+      return "failed create send farmer";
     }
-    return const [];
   }
+
+  Future<List<DistributionFertilizerFarmer>> getSendFertilizerFarmer(
+      {required String idFarmer}) async {
+    GetSendFertilizerFarmer getData = ref.read(getSendFertilizerFarmerProvider);
+    var result = await getData(idFarmer);
+    if (result.isSuccess) {
+      return result.resultValue!;
+    } else {
+      return [];
+    }
+  }
+
+  Future<String> updateAcceptionFertilizerGroup(
+      {required String idDocument,
+      required int acceptUrea,
+      required int acceptPoska,
+      required String nameAcceptGroupFarmer,
+      required String nameSendDistributor}) async {
+    CreateAcceptionFertilizerGroup create =
+        ref.read(createAcceptionFertilizerGroupProvider);
+    var result = await create(AcceptionFertilizerGroupParams(
+        idDocument: idDocument,
+        acceptUrea: acceptUrea,
+        acceptPoska: acceptPoska,
+        nameAcceptGroupFarmer: nameAcceptGroupFarmer,
+        nameSendDistributor: nameSendDistributor));
+    if (result.isSuccess) {
+      return "Update Acception fertilizer is Succses";
+    } else {
+      return "Failed update Acception";
+    }
+  }
+
+  // end group farmer
+
+  // ppl
 
   Future<List<DataSubmissionGroup>> getSubmissionFarmerGroup(
-      {required String keterangan}) async {
+      {required String idGroupFarmer}) async {
     GetSubmissionFarmerGroup pengajuan =
         ref.read(getSubmissionFarmerGroupProvider);
-    var result =
-        await pengajuan(GetSubmissionFarmerGroupParams(keterangan: keterangan));
+    var result = await pengajuan(
+        GetSubmissionFarmerGroupParams(idGroupFarmer: idGroupFarmer));
     if (result case Success(value: final data)) {
       return data;
     }
     return const [];
   }
 
-  Future<Result<SubmissionKuotaFertilizer>> createSubmissionKuotaFertilizer({
-    required String idGrup,
-    required String idSubmission,
-    required String leaderName,
-    required String distributorName,
-    required String grupFarmer,
-    required String village,
-    required int submission,
-    required int urea,
-    required int poska,
-    required String forYear,
-  }) async {
-    CreateFertilizerKuota create = ref.read(createFertilizerKuotaProvider);
-    var result = await create(
-      SubmissionKuotaParams(
-        idGrup: idGrup,
-        idSubmission: idSubmission,
-        leaderName: leaderName,
-        distributorName: distributorName,
-        grupFarmer: grupFarmer,
-        village: village,
-        submission: submission,
-        urea: urea,
-        poska: poska,
-        forYear: forYear,
-      ),
-    );
-    if (result case Success(value: final data)) {
-      return Result.success(data);
+  Future<List<SubmissionKuotaFertilizer>> dataMonitoring(
+      {required String idGroupFarmer}) async {
+    GetDataMonitoring data = ref.read(getDataMonitoringProvider);
+    var result = await data(idGroupFarmer);
+    if (result.isSuccess) {
+      return result.resultValue!;
     } else {
-      return const Result.failed("Create Submission kuota is falled");
+      return [];
     }
   }
+  // end ppl
 
-  Future<List<SubmissionKuotaFertilizer>> getKuotaBaseonDistributor(
-      {required String keterangan, required String informationSend}) async {
-    GetDataKuota kuota = ref.read(getDataKuotaProvider);
-    var result = await kuota(KuotaOnDistributorParams(
-      keterangan: keterangan,
-      informationSend: informationSend,
-    ));
-    if (result case Success(value: final data)) {
-      return data;
-    }
-    return const [];
-  }
+  // distributor
 
-  Future<String> updateSubmissionFertilizer(
-      {required String idDocument}) async {
-    UpdateSubmissionDistributor update =
-        ref.read(updateSubmissionDistributorProvider);
-    var result =
-        await update(UpdateSubmissionDistributorParams(idDocument: idDocument));
-    return result.toString();
-  }
-
-  Future<List<SubmissionKuotaFertilizer>> getDataKuotaAccepted() async {
-    GetKuotaAccepted data = ref.read(getKuotaAcceptedProvider);
-    var result = await data(0);
-    if (result case Success(value: final data)) {
-      return data;
-    }
-    return const [];
-  }
-
-  Future<String> updateAcceptedGroup({
-    required String idDocument,
-    required int poskaReceived,
-    required int ureaReceived,
-    required String sendName,
-    required String recipientName,
+  Future<String> createSendFertilizerGroup({
+    required String idGroupFarmer,
+    required String nameDistributor,
+    required String year,
+    required int send,
+    required int sendUrea,
+    required int sendPoska,
   }) async {
-    UpdateAcceptedGroup update = ref.read(updateAcceptedGroupProvider);
-    var result = await update(UpdateAcceptedGroupparams(
-      ureaUpdate: ureaReceived,
-      poskaUpdate: poskaReceived,
+    CreateSendFertilizerGroup create =
+        ref.read(createSendFertilizerGroupProvider);
+
+    var result = await create(SendGroupParams(
+        idGroupFarmer: idGroupFarmer,
+        nameDistributor: nameDistributor,
+        year: year,
+        send: send,
+        sendUrea: sendUrea,
+        sendPoska: sendPoska));
+    if (result.isSuccess) {
+      return "Create Succes";
+    } else {
+      return "Failed Create";
+    }
+  }
+
+  Future<List<SubmissionKuotaFertilizer>>
+      getdistributionFertilizerGroup() async {
+    GetDistributionFertilizerGroup data =
+        ref.read(getDistributionFertilizerGroupProvider);
+    var result = await data(null);
+    if (result.isSuccess) {
+      return result.resultValue!;
+    } else {
+      return [];
+    }
+  }
+
+  Future<List<SubmissionKuotaFertilizer>>
+      getHistorydistributionFertilizerGroup() async {
+    GetHistoryDistributionFertilizerGroup data =
+        ref.read(getHistoryDistributionFertilizerGroupProvider);
+    var result = await data(null);
+    if (result.isSuccess) {
+      return result.resultValue!;
+    } else {
+      return [];
+    }
+  }
+
+  Future<List<UserFarmerGroup>> getallGrupFarmer() async {
+    GetAllGrupFarmer grupFarmer = ref.read(getAllGrupFarmerProvider);
+    var result = await grupFarmer(GroupFarmerParams(idPPL: 3));
+    if (result case Success(value: final data)) {
+      return data;
+    }
+    return [];
+  }
+
+  // end Distributor
+
+  // farmer
+  Future<String> updateSendFertilizerGroup({
+    required String idDocument,
+    required int acceptUrea,
+    required int acceptPoska,
+    required String plant,
+  }) async {
+    UpdateSendFertilizerGroup update =
+        ref.read(updateSendFertilizerGroupProvider);
+    var result = await update(AcceptFertilizerGroup(
       idDocument: idDocument,
-      sendName: sendName,
-      recipientName: recipientName,
+      plant: plant,
+      acceptUrea: acceptUrea,
+      acceptPoska: acceptPoska,
     ));
-    return result.toString();
-  }
-
-  Future<String> updateSendFertilizer({
-    required String idDocument,
-    required int ureaSend,
-    required int poskaSend,
-    required String sendName,
-    required String recipientName,
-  }) async {
-    UpdateSendFertilizer update = ref.read(updateSendFertilizerProvider);
-    var result = await update(UpdateSendFertilizerParams(
-        idDocument: idDocument,
-        ureaSend: ureaSend,
-        poskaSend: poskaSend,
-        sendName: sendName,
-        recipientName: recipientName));
-    return result.toString();
-  }
-
-  Future<List<SubmissionKuotaFertilizer>> getKuotaFertilizer() async {
-    GetKuotaFertilizerSubmission data =
-        ref.read(getKuotaFertilizerSubmissionProvider);
-
-    var result = await data(0);
-    if (result case Success(value: final data)) {
-      return data;
+    if (result.isSuccess) {
+      return "Sucsses Update data send fertilizer";
+    } else {
+      return "Failed update data";
     }
-    return const [];
   }
+
+  Future<List<DistributionFertilizerFarmer>> getAcceptFertilizerFarmer() async {
+    GetAcceptFertilizerFarmer getData =
+        ref.read(getAcceptFertilizerFarmerProvider);
+    var result = await getData(null);
+    if (result.isSuccess) {
+      return result.resultValue!;
+    } else {
+      return [];
+    }
+  }
+
+  // end Farmer
+
+  // Future<String> updateSubmission(
+  //     {required String idDocument, required int submission}) async {
+  //   UpdateFertilizerSubmisson update =
+  //       ref.read(updateFertilizerSubmissonProvider);
+  //   var result = await update(
+  //       UpdateSubmissionParams(idDocument: idDocument, submission: submission));
+  //   if (result.isSuccess) {
+  //     return "Succes Update";
+  //   } else {
+  //     return "Failed Update";
+  //   }
+  // }
+
+  // Future<Result<SubmissionKuotaFertilizer>> createSubmissionKuotaFertilizer({
+  //   required String idGrup,
+  //   required String idSubmission,
+  //   required String leaderName,
+  //   required String distributorName,
+  //   required String grupFarmer,
+  //   required String village,
+  //   required int submission,
+  //   required int urea,
+  //   required int poska,
+  //   required String forYear,
+  // }) async {
+  //   CreateFertilizerKuota create = ref.read(createFertilizerKuotaProvider);
+  //   var result = await create(
+  //     SubmissionKuotaParams(
+  //       idGrup: idGrup,
+  //       idSubmission: idSubmission,
+  //       leaderName: leaderName,
+  //       distributorName: distributorName,
+  //       grupFarmer: grupFarmer,
+  //       village: village,
+  //       submission: submission,
+  //       urea: urea,
+  //       poska: poska,
+  //       forYear: forYear,
+  //     ),
+  //   );
+  //   if (result case Success(value: final data)) {
+  //     return Result.success(data);
+  //   } else {
+  //     return const Result.failed("Create Submission kuota is falled");
+  //   }
+  // }
+
+  // Future<List<SubmissionKuotaFertilizer>> getKuotaBaseonDistributor(
+  //     {required String keterangan, required String informationSend}) async {
+  //   GetDataKuota kuota = ref.read(getDataKuotaProvider);
+  //   var result = await kuota(KuotaOnDistributorParams(
+  //     keterangan: keterangan,
+  //     informationSend: informationSend,
+  //   ));
+  //   if (result case Success(value: final data)) {
+  //     return data;
+  //   }
+  //   return const [];
+  // }
+
+  // Future<String> updateSubmissionFertilizer(
+  //     {required String idDocument}) async {
+  //   UpdateSubmissionDistributor update =
+  //       ref.read(updateSubmissionDistributorProvider);
+  //   var result =
+  //       await update(UpdateSubmissionDistributorParams(idDocument: idDocument));
+  //   return result.toString();
+  // }
+
+  // Future<List<SubmissionKuotaFertilizer>> getDataKuotaAccepted() async {
+  //   GetKuotaAccepted data = ref.read(getKuotaAcceptedProvider);
+  //   var result = await data(0);
+  //   if (result case Success(value: final data)) {
+  //     return data;
+  //   }
+  //   return const [];
+  // }
+
+  // Future<String> updateAcceptedGroup({
+  //   required String idDocument,
+  //   required int poskaReceived,
+  //   required int ureaReceived,
+  //   required String sendName,
+  //   required String recipientName,
+  // }) async {
+  //   UpdateAcceptedGroup update = ref.read(updateAcceptedGroupProvider);
+  //   var result = await update(UpdateAcceptedGroupparams(
+  //     ureaUpdate: ureaReceived,
+  //     poskaUpdate: poskaReceived,
+  //     idDocument: idDocument,
+  //     sendName: sendName,
+  //     recipientName: recipientName,
+  //   ));
+  //   return result.toString();
+  // }
+
+  // Future<String> updateSendFertilizer({
+  //   required String idDocument,
+  //   required int ureaSend,
+  //   required int poskaSend,
+  //   required String sendName,
+  //   required String recipientName,
+  // }) async {
+  //   UpdateSendFertilizer update = ref.read(updateSendFertilizerProvider);
+  //   var result = await update(UpdateSendFertilizerParams(
+  //       idDocument: idDocument,
+  //       ureaSend: ureaSend,
+  //       poskaSend: poskaSend,
+  //       sendName: sendName,
+  //       recipientName: recipientName));
+  //   return result.toString();
+  // }
+
+  // Future<List<SubmissionKuotaFertilizer>> getKuotaFertilizer() async {
+  //   GetKuotaFertilizerSubmission data =
+  //       ref.read(getKuotaFertilizerSubmissionProvider);
+
+  //   var result = await data(0);
+  //   if (result case Success(value: final data)) {
+  //     return data;
+  //   }
+  //   return const [];
+  // }
 }

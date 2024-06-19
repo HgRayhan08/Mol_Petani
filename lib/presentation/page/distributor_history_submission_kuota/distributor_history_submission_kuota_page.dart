@@ -25,39 +25,39 @@ class DistributorHistorySubissionKuotaPage extends ConsumerWidget {
           bottom: BorderSide(color: Colors.black12),
         ),
       ),
-      body: FutureBuilder(
-        future: ref
-            .watch(fertilizerSubmissionProvider.notifier)
-            .getKuotaBaseonDistributor(
-                keterangan: "Selesai", informationSend: "Selesai"),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            var data = snapshot.data!;
-            return ListView.builder(
-                padding: EdgeInsets.symmetric(horizontal: width * 0.05),
-                itemCount: data.length,
-                itemBuilder: (context, index) {
-                  return ListTileKuotaWidget(
-                    width: width,
-                    title: data[index].grupFarmer,
-                    subTitle: data[index].pplName,
-                    year: data[index].forYear,
-                    submission: data[index].submission.toString(),
-                    onTap: () {
-                      ref.read(routerProvider).pushNamed(
-                            "detail-distributor-history",
-                            extra: data[index],
-                          );
-                    },
-                  );
-                });
-          } else {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
-      ),
+      // body: FutureBuilder(
+      //   future: ref
+      //       .watch(fertilizerSubmissionProvider.notifier)
+      //       .getKuotaBaseonDistributor(
+      //           keterangan: "Selesai", informationSend: "Selesai"),
+      //   builder: (context, snapshot) {
+      //     if (snapshot.hasData) {
+      //       var data = snapshot.data!;
+      //       return ListView.builder(
+      //           padding: EdgeInsets.symmetric(horizontal: width * 0.05),
+      //           itemCount: data.length,
+      //           itemBuilder: (context, index) {
+      //             return ListTileKuotaWidget(
+      //               width: width,
+      //               title: data[index].grupFarmer,
+      //               subTitle: data[index].pplName,
+      //               year: data[index].forYear,
+      //               submission: data[index].submission.toString(),
+      //               onTap: () {
+      //                 ref.read(routerProvider).pushNamed(
+      //                       "detail-distributor-history",
+      //                       extra: data[index],
+      //                     );
+      //               },
+      //             );
+      //           });
+      //     } else {
+      //       return const Center(
+      //         child: CircularProgressIndicator(),
+      //       );
+      //     }
+      //   },
+      // ),
     );
   }
 }

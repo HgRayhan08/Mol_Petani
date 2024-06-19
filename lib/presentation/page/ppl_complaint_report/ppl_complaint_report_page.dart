@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:mol_petani/presentation/provider/report/report_provider.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
-import 'package:mol_petani/presentation/widgets/listTile_complaint_widget.dart';
+import 'package:mol_petani/presentation/widgets/listile_reporting_widget.dart';
 
 class PplComplaintReportPage extends ConsumerWidget {
   const PplComplaintReportPage({super.key});
@@ -24,16 +24,15 @@ class PplComplaintReportPage extends ConsumerWidget {
                 padding: EdgeInsets.symmetric(horizontal: width * 0.05),
                 itemCount: data.length,
                 itemBuilder: (context, index) {
-                  return ListTileComplaintWidget(
-                    title: data[index].reporting,
+                  return ListTileReportingWidget(
+                    title: data[index].groupFarmer,
                     subtitle: data[index].nameFarmer,
                     trailing: data[index].submissionDate,
                     onTap: () {
-                      print("object");
-                      // ref.read(routerProvider).pushNamed(
-                      //       "detail-complaint",
-                      //       extra: data[index],
-                      //     );
+                      ref.read(routerProvider).pushNamed(
+                            "ppl-detail-complaint-reporting",
+                            extra: data[index],
+                          );
                     },
                   );
                 },

@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:mol_petani/presentation/provider/report/report_provider.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
-import 'package:mol_petani/presentation/widgets/listTile_complaint_widget.dart';
+import 'package:mol_petani/presentation/widgets/listile_reporting_widget.dart';
 
 class FarmerReportPage extends ConsumerWidget {
   const FarmerReportPage({super.key});
@@ -22,13 +22,13 @@ class FarmerReportPage extends ConsumerWidget {
               padding: EdgeInsets.symmetric(horizontal: width * 0.05),
               itemCount: data.length,
               itemBuilder: (context, index) {
-                return ListTileComplaintWidget(
+                return ListTileReportingWidget(
                   title: data[index].reporting,
                   subtitle: data[index].submissionDate,
                   trailing: data[index].information,
                   onTap: () {
                     ref.read(routerProvider).pushNamed(
-                          "detail-complaint",
+                          "farmer-detail-complaint-reporting",
                           extra: data[index],
                         );
                   },

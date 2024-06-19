@@ -20,6 +20,7 @@ abstract interface class UserRepository {
   Future<Result<UserFarmerGroup>> createUserFarmerGrup(
       {required String uid,
       required String name,
+      required String leaderName,
       required String email,
       required String information,
       required String familyIdentificationNumber,

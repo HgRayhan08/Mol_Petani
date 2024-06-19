@@ -84,19 +84,19 @@ class HomeDistributorPage extends ConsumerWidget {
           SizedBox(
             height: height * 0.03,
           ),
-          informationOrderFertilizer(
-            context,
-            ref,
-            width,
-            height,
-            dataOrder: ref
-                .watch(fertilizerSubmissionProvider.notifier)
-                .getKuotaBaseonDistributor(keterangan: "", informationSend: ""),
-            dataSend: ref
-                .watch(fertilizerSubmissionProvider.notifier)
-                .getKuotaBaseonDistributor(
-                    keterangan: "Proses", informationSend: "Proses"),
-          ),
+          // informationOrderFertilizer(
+          //   context,
+          //   ref,
+          //   width,
+          //   height,
+          // dataOrder: ref
+          //     .watch(fertilizerSubmissionProvider.notifier)
+          //     .getKuotaBaseonDistributor(keterangan: "", informationSend: ""),
+          // dataSend: ref
+          //     .watch(fertilizerSubmissionProvider.notifier)
+          //     .getKuotaBaseonDistributor(
+          //         keterangan: "Proses", informationSend: "Proses"),
+          // ),
           Container(
             margin: EdgeInsets.only(top: height * 0.01),
             height: height * 0.7,

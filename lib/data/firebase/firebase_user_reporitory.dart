@@ -49,6 +49,7 @@ class FirebaseUserRepository implements UserRepository {
   Future<Result<UserFarmerGroup>> createUserFarmerGrup(
       {required String uid,
       required String name,
+      required String leaderName,
       required String email,
       required String information,
       required String familyIdentificationNumber,
@@ -62,6 +63,7 @@ class FirebaseUserRepository implements UserRepository {
     await users.doc(uid).set({
       "uid": uid,
       "name": name,
+      "leaderName": leaderName,
       "email": email,
       "information": information,
       "familyIdentificationNumber": familyIdentificationNumber,
@@ -232,6 +234,7 @@ class FirebaseUserRepository implements UserRepository {
                 (e) => UserFarmerGroup(
                   uid: e["uid"],
                   name: e["name"],
+                  leaderName: e["leaderName"],
                   email: e["email"],
                   information: e["information"],
                   familyIdentificationNumber: e["familyIdentificationNumber"],
@@ -407,7 +410,6 @@ class FirebaseUserRepository implements UserRepository {
     required String grupFarmer,
     required String idPPL,
   }) async {
-    print(idDocument);
     CollectionReference<Map<String, dynamic>> data =
         _firebaseFirestore.collection("User_Farmer");
     await data.doc(idDocument).update({

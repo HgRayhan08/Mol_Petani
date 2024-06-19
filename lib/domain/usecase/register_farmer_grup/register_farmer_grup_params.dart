@@ -2,6 +2,7 @@ import 'dart:io';
 
 class RegisterFarmerGrupParams {
   final String name;
+  final String leaderName;
   final String email;
   final String password;
   final String familyIdentificationNumber;
@@ -11,6 +12,7 @@ class RegisterFarmerGrupParams {
   final int mobileNumber;
   RegisterFarmerGrupParams({
     required this.name,
+    required this.leaderName,
     required this.email,
     required this.password,
     required this.familyIdentificationNumber,

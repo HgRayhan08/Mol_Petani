@@ -7,6 +7,7 @@ part of 'report.dart';
 // **************************************************************************
 
 _$ReportImpl _$$ReportImplFromJson(Map<String, dynamic> json) => _$ReportImpl(
+      idDocument: json['idDocument'] as String?,
       idGrupFarmer: json['idGrupFarmer'] as String,
       idPPL: json['idPPL'] as String,
       idFarmer: json['idFarmer'] as String,
@@ -22,6 +23,7 @@ _$ReportImpl _$$ReportImplFromJson(Map<String, dynamic> json) => _$ReportImpl(
 
 Map<String, dynamic> _$$ReportImplToJson(_$ReportImpl instance) =>
     <String, dynamic>{
+      'idDocument': instance.idDocument,
       'idGrupFarmer': instance.idGrupFarmer,
       'idPPL': instance.idPPL,
       'idFarmer': instance.idFarmer,

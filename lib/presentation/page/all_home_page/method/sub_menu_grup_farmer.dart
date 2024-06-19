@@ -26,5 +26,12 @@ Widget subMenuGrupFarmer(context, ref) => Row(
             ref.read(routerProvider).goNamed("accepted-fertilizer-grup");
           },
         ),
+        CardSubMenu(
+          image: "assets/maps.png",
+          title: "Laporan Hama Penyakit",
+          onTap: () {
+            ref.read(routerProvider).goNamed("report-hama");
+          },
+        ),
       ],
     );

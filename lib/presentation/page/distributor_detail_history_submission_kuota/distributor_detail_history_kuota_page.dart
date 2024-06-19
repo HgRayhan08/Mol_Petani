@@ -38,11 +38,11 @@ class DistributorDetailHistoryKuotaPage extends ConsumerWidget {
           SizedBox(
             height: height * 0.01,
           ),
-          detailKuotaInformation(
-            width,
-            height,
-            data: data,
-          ),
+          // detailKuotaInformation(
+          //   width,
+          //   height,
+          //   data: data,
+          // ),
           SizedBox(
             height: height * 0.05,
           ),
@@ -53,16 +53,16 @@ class DistributorDetailHistoryKuotaPage extends ConsumerWidget {
           SizedBox(
             height: height * 0.01,
           ),
-          detailInformation(
-            width,
-            height,
-            data: data,
-          ),
+          // detailInformation(
+          //   width,
+          //   height,
+          //   data: data,
+          // ),
           SizedBox(
             height: height * 0.04,
           ),
           Text("Information Pengiriman", style: regulerReguler),
-          informationDetailSend(width, height, data: data),
+          // informationDetailSend(width, height, data: data),
         ],
       ),
     );

@@ -11,9 +11,11 @@ import 'package:mol_petani/domain/usecase/create_farmer/create_farmer.dart';
 import 'package:mol_petani/domain/usecase/create_farmer/create_farmer_params.dart';
 import 'package:mol_petani/domain/usecase/create_member_farmer_group/create_member_farmer_group.dart';
 import 'package:mol_petani/domain/usecase/create_member_farmer_group/create_member_farmer_group_params.dart';
+import 'package:mol_petani/domain/usecase/delete_member_farmer_group/delete_member_farmer_group.dart';
 import 'package:mol_petani/domain/usecase/get_distributor/get_all_distributor.dart';
 import 'package:mol_petani/domain/usecase/get_farmer/get_all_farmer.dart';
 import 'package:mol_petani/domain/usecase/get_grup_farmer/get_all_grup_farmer.dart';
+import 'package:mol_petani/domain/usecase/get_grup_farmer/group_farmer_params.dart';
 import 'package:mol_petani/domain/usecase/get_login_farmer/get_login_farmer.dart';
 import 'package:mol_petani/domain/usecase/get_login_farmer_grup/get_login_farmer_grup.dart';
 import 'package:mol_petani/domain/usecase/get_login_distributor/get_login_distributor.dart';
@@ -31,6 +33,7 @@ import 'package:mol_petani/domain/usecase/update_account_farmer/update_accoun_fa
 import 'package:mol_petani/domain/usecase/update_account_farmer/update_account_farmer.dart';
 import 'package:mol_petani/presentation/provider/usecases/create_farmer_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/create_member_farmer_group_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/delete_member_farmer_group_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_all_distributor_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_all_farmer_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_all_grup_farmer_provider.dart';
@@ -57,8 +60,6 @@ class DataUser extends _$DataUser {
   Future<Map<String, dynamic>?> build() async {
     GetLoginPpl getppl = ref.read(getLoginPplProvider);
     var resultppl = await getppl(0);
-    // print("object");
-    // print(resultppl.resultValue);
 
     GetLoginDistributor getDistributor = ref.read(getLoginDistributorProvider);
     var resultDis = await getDistributor(0);
@@ -66,15 +67,9 @@ class DataUser extends _$DataUser {
     GetLoginFarmerGrup getKelompok = ref.read(getLoginFarmerGrupProvider);
     var resultKelompok = await getKelompok(0);
 
-    // print("object");
-    print(resultppl.resultValue);
     if (resultppl.isSuccess) {
-      print("inni adalah");
-      // print(" hallo ${resultppl.resultValue}");
       switch (resultppl) {
         case Success(value: final user):
-          print(" ini $user");
-
           return user.toJson();
         case Failed(message: _):
           return null;
@@ -93,13 +88,6 @@ class DataUser extends _$DataUser {
         case Failed(message: _):
           return null;
       }
-      // } else if (resultFarmer.isSuccess) {
-      //   switch (resultFarmer) {
-      //     case Success(value: final user):
-      //       return user.toJson();
-      //     case Failed(message: _):
-      //       return null;
-      //   }
     } else {
       GetLoginFarmer getLoginFarmer = ref.read(getLoginFarmerProvider);
       var resultFarmer = await getLoginFarmer(0);
@@ -109,118 +97,94 @@ class DataUser extends _$DataUser {
         case Failed(message: _):
           return null;
       }
-      // print("null");
-      // return null;
     }
   }
 
-  Future<void> loginPpl({
-    required String email,
-    required String password,
-  }) async {
+  Future<void> loginUser(
+      {required String email,
+      required String password,
+      required String user}) async {
     state = const AsyncLoading();
+    if (user == "Penyuluh Pertanian Lapangan") {
+      LoginPpl login = ref.read(loginPplProvider);
+      var result = await login(LoginParams(email: email, password: password));
+      switch (result) {
+        case Success(value: final user):
+          state = AsyncData({
+            "uid": user.uid,
+            "name": user.name,
+            "email": user.email,
+            "information": user.information,
+            "fotoUrl": user.fotoUrl,
+            "scope": user.scope,
+            "subdistrict": user.subdistrict,
+          });
+        // return;
+        case Failed(:final message):
+          state = AsyncError(FlutterError(message), StackTrace.current);
+          state = const AsyncData(null);
+      }
+    } else if (user == "Kelompok Tani") {
+      LoginFarmerGrup login = ref.read(loginFarmerGrupProvider);
 
-    LoginPpl login = ref.read(loginPplProvider);
+      var result = await login(LoginParams(email: email, password: password));
 
-    var result = await login(LoginParams(email: email, password: password));
-    // print(result.resultValue);
-    switch (result) {
-      case Success(value: final user):
-        state = AsyncData({
-          "uid": user.uid,
-          "name": user.name,
-          "email": user.email,
-          "information": user.information,
-          "fotoUrl": user.fotoUrl,
-          "scope": user.scope,
-          "subdistrict": user.subdistrict,
-        });
-      // return;
-      case Failed(:final message):
-        state = AsyncError(FlutterError(message), StackTrace.current);
-        state = const AsyncData(null);
-    }
-  }
+      switch (result) {
+        case Success(value: final user):
+          state = AsyncData({
+            "idPpl": user.idPPL,
+            "uid": user.uid,
+            "name": user.name,
+            "email": user.email,
+            "information": user.information,
+            "fotoUrl": user.fotoUrl,
+          });
+        // return;
+        case Failed(message: final message):
+          state = AsyncError(FlutterError(message), StackTrace.current);
+          state = const AsyncData(null);
+      }
+    } else if (user == "Distributor") {
+      LoginDistributor login = ref.read(loginDistributorProvider);
 
-  Future<void> loginDistributor({
-    required String email,
-    required String password,
-  }) async {
-    state = const AsyncLoading();
+      var result = await login(LoginParams(email: email, password: password));
+      switch (result) {
+        case Success(value: final user):
+          state = AsyncData({
+            "idPpl": user.idPPL,
+            "uid": user.uid,
+            "name": user.name,
+            "email": user.email,
+            "information": user.information,
+            "fotoUrl": user.fotoUrl,
+            "scope": user.scope,
+          });
+        // return;
+        case Failed(message: final mesage):
+          state = AsyncError(FlutterError(mesage), StackTrace.current);
+          state = const AsyncData(null);
+      }
+    } else if (user == "Petani") {
+      LoginFarmer login = ref.read(loginFarmerProvider);
 
-    LoginDistributor login = ref.read(loginDistributorProvider);
+      var result = await login(LoginParams(email: email, password: password));
 
-    var result = await login(LoginParams(email: email, password: password));
-    switch (result) {
-      case Success(value: final user):
-        state = AsyncData({
-          "idPpl": user.idPPL,
-          "uid": user.uid,
-          "name": user.name,
-          "email": user.email,
-          "information": user.information,
-          "fotoUrl": user.fotoUrl,
-          "scope": user.scope,
-        });
-      // return;
-      case Failed(message: final mesage):
-        state = AsyncError(FlutterError(mesage), StackTrace.current);
-        state = const AsyncData(null);
-    }
-  }
-
-  Future<void> loginKelompok({
-    required String email,
-    required String password,
-  }) async {
-    state = const AsyncLoading();
-
-    LoginFarmerGrup login = ref.read(loginFarmerGrupProvider);
-
-    var result = await login(LoginParams(email: email, password: password));
-
-    switch (result) {
-      case Success(value: final user):
-        state = AsyncData({
-          "idPpl": user.idPPL,
-          "uid": user.uid,
-          "name": user.name,
-          "email": user.email,
-          "information": user.information,
-          "fotoUrl": user.fotoUrl,
-        });
-      // return;
-      case Failed(message: final message):
-        state = AsyncError(FlutterError(message), StackTrace.current);
-        state = const AsyncData(null);
-    }
-  }
-
-  Future<void> loginFarmer({
-    required String email,
-    required String password,
-  }) async {
-    state = const AsyncLoading();
-
-    LoginFarmer login = ref.read(loginFarmerProvider);
-
-    var result = await login(LoginParams(email: email, password: password));
-
-    switch (result) {
-      case Success(value: final user):
-        state = AsyncData({
-          "idPpl": user.idPPL,
-          "uid": user.idUserFarmer,
-          "name": user.name,
-          "email": user.email,
-          "information": user.information,
-          "grupFarmer": user.grupFarmer,
-        });
-      // return;
-      case Failed(message: final message):
-        state = AsyncError(FlutterError(message), StackTrace.current);
-        state = const AsyncData(null);
-    }
+      switch (result) {
+        case Success(value: final user):
+          state = AsyncData({
+            "idPpl": user.idPPL,
+            "uid": user.idUserFarmer,
+            "name": user.name,
+            "email": user.email,
+            "information": user.information,
+            "grupFarmer": user.grupFarmer,
+          });
+        // return;
+        case Failed(message: final message):
+          state = AsyncError(FlutterError(message), StackTrace.current);
+          state = const AsyncData(null);
+      }
+    } else {}
   }
 
   Future<void> logoutPetugas() async {
@@ -231,6 +195,7 @@ class DataUser extends _$DataUser {
 
   Future<void> registerGrupFarmer({
     required String nama,
+    required String leaderName,
     required String email,
     required String password,
     required String village,
@@ -247,6 +212,7 @@ class DataUser extends _$DataUser {
     var result = await registrasiKelompok(
       RegisterFarmerGrupParams(
           name: nama,
+          leaderName: leaderName,
           email: email,
           password: password,
           fotoUrl: fotoUrl,
@@ -309,7 +275,7 @@ class DataUser extends _$DataUser {
 
   Future<List<UserFarmerGroup>> getallGrupFarmer() async {
     GetAllGrupFarmer grupFarmer = ref.read(getAllGrupFarmerProvider);
-    var result = await grupFarmer(0);
+    var result = await grupFarmer(GroupFarmerParams(idPPL: 1));
     if (result case Success(value: final data)) {
       return data;
     }
@@ -383,6 +349,18 @@ class DataUser extends _$DataUser {
         return "Update success";
       case Failed():
         return "Update failed";
+    }
+  }
+
+  Future<String> deleteMemberFarmerGroup({required String idDocument}) async {
+    DeleteMemberFarmerGroup add = ref.read(deleteMemberFarmerGroupProvider);
+    var result =
+        await add(CreateMemberFarmerGroupParams(idDocument: idDocument));
+    switch (result) {
+      case Success():
+        return "Delete is success";
+      case Failed():
+        return "Delete failed";
     }
   }
 

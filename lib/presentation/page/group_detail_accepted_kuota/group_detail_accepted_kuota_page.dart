@@ -21,22 +21,25 @@ class GroupDetailAcceptedKuotaPage extends ConsumerWidget {
         ),
       ),
       body: ListView(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
         padding: EdgeInsets.only(
             left: width * 0.05, right: width * 0.05, top: height * 0.015),
         children: [
-          SizedBox(
-            height: height * 0.03,
-          ),
+          // SizedBox(
+          //   height: height * 0.01,
+          // ),
+          Text(data.idDocument.toString()),
           Text(
             "Information Pengiriman Pupuk",
-            style: regulerReguler,
+            style: largeReguler,
           ),
           SizedBox(
-            height: height * 0.005,
+            height: height * 0.02,
           ),
           submissionInformation(width, height, data: data),
           SizedBox(
-            height: height * 0.32,
+            height: height * 0.37,
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -45,7 +48,7 @@ class GroupDetailAcceptedKuotaPage extends ConsumerWidget {
             onPressed: () {
               ref
                   .read(routerProvider)
-                  .pushNamed("forms-receiver-group", extra: data);
+                  .pushNamed("forms-acception-group", extra: data);
             },
             child: Text(
               "Penerimaaan",
