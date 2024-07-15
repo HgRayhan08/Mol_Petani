@@ -16,6 +16,7 @@ import 'package:mol_petani/domain/usecase/create_send_fertilizer_group/create_se
 import 'package:mol_petani/domain/usecase/create_fertilizer_farmer_grup/create_fertilizer_farmer_grup.dart';
 import 'package:mol_petani/domain/usecase/create_fertilizer_farmer_grup/create_fertilizer_grup_params.dart';
 import 'package:mol_petani/domain/usecase/create_send_fertilizer_group/send_group_params.dart';
+import 'package:mol_petani/domain/usecase/delete_send_fertilizer/delete_send_fertilizer.dart';
 import 'package:mol_petani/domain/usecase/get_accept_fertilizer_farmer/get_acceptd_fertilizer_farmer.dart';
 import 'package:mol_petani/domain/usecase/get_data_monitoring/get_data_monitoring.dart';
 import 'package:mol_petani/domain/usecase/get_distribution_group_farmer/get_distribution_group_farmer.dart';
@@ -26,17 +27,21 @@ import 'package:mol_petani/domain/usecase/get_fertilizer_farmer_grup/get_fertili
 import 'package:mol_petani/domain/usecase/get_distribution_fertilizer_group/get_distribution_fertilizer_group.dart';
 import 'package:mol_petani/domain/usecase/get_grup_farmer/get_all_grup_farmer.dart';
 import 'package:mol_petani/domain/usecase/get_grup_farmer/group_farmer_params.dart';
+import 'package:mol_petani/domain/usecase/get_history_distribution_farmer_group/get_history_distribution_farmer_group.dart';
 import 'package:mol_petani/domain/usecase/get_history_distribution_fertilizer_group/get_history_distribution_fertilizer_group.dart';
 import 'package:mol_petani/domain/usecase/get_send_fertilizer_farmer/get_send_fertilizer_farmer.dart';
 import 'package:mol_petani/domain/usecase/get_submission_farmer_group/get_fertilizer_farmer_grup_params.dart';
 import 'package:mol_petani/domain/usecase/get_submission_farmer_group/get_submission_farmer_group.dart';
-import 'package:mol_petani/domain/usecase/upate_send_fertilizer_group/update_send_fertilizer_group.dart';
-import 'package:mol_petani/domain/usecase/upate_send_fertilizer_group/accept_fertilizer_group.dart';
+import 'package:mol_petani/domain/usecase/upate_reception_fertilizer/reception_fertilizer_params.dart';
+import 'package:mol_petani/domain/usecase/upate_reception_fertilizer/update_reception_fertilizer.dart';
+import 'package:mol_petani/domain/usecase/update_send_fertilizer/update_send_fertilizer.dart';
+import 'package:mol_petani/domain/usecase/update_send_fertilizer/update_sends_params.dart';
 import 'package:mol_petani/presentation/provider/usecases/create_acception_fertilizer_group_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/create_send_fertilizer_farmer_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/create_send_fertilizer_group_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/create_fertilizer_farmer_grup_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/create_additional_fertilizer_farmer_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/delete_send_fertilizer_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_accept_fertilizer_farmer_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_all_grup_farmer_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_data_monitoring_provider.dart';
@@ -44,10 +49,12 @@ import 'package:mol_petani/presentation/provider/usecases/get_distribution_ferti
 import 'package:mol_petani/presentation/provider/usecases/get_distribution_group_farmer_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_fertilizer_farmer_grup_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_fertilizer_farmer_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/get_history_distribution_farmer_group_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_history_distribution_fertilizer_group_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_send_fertilizer_farmer_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_submission_farmer_group_provider.dart';
-import 'package:mol_petani/presentation/provider/usecases/update_send_fertilizer_group_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/update_reception_fertilizer_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/update_send_fertilizer_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part "submission_fertilizer_provider.g.dart";
@@ -146,6 +153,18 @@ class FertilizerSubmission extends _$FertilizerSubmission {
   Future<List<SubmissionKuotaFertilizer>> getDristirbutionGroupFarmer() async {
     GetDistributionGroupFarmer data =
         ref.read(getDistributionGroupFarmerProvider);
+    var result = await data(null);
+    if (result.isSuccess) {
+      return result.resultValue!;
+    } else {
+      return [];
+    }
+  }
+
+  Future<List<SubmissionKuotaFertilizer>>
+      getHistoryDristirbutionFarmerGroup() async {
+    GetHistoryDistributionFarmerGroup data =
+        ref.read(getHistoryDistributionFarmerGroupProvider);
     var result = await data(null);
     if (result.isSuccess) {
       return result.resultValue!;
@@ -303,25 +322,59 @@ class FertilizerSubmission extends _$FertilizerSubmission {
     return [];
   }
 
+  Future<String> updateSendFertilizer({
+    required int send,
+    required int sendUrea,
+    required int sendPoska,
+    required String idDocument,
+  }) async {
+    UpdateSendFertilizer update = ref.read(updateSendFertilizerProvider);
+    var result = await update(UpdateSendsParams(
+        send: send,
+        sendUrea: sendUrea,
+        sendPoska: sendPoska,
+        idDocument: idDocument));
+    if (result.isSuccess) {
+      return "Sucsses Update data send fertilizer";
+    } else {
+      return "Failed update data";
+    }
+  }
+
+  Future<String> deleteSendFertilizer({required String idDocument}) async {
+    DeleteSendFertilizer delete = ref.read(deleteSendFertilizerProvider);
+    var result = await delete(idDocument);
+    await ref
+        .watch(fertilizerSubmissionProvider.notifier)
+        .getdistributionFertilizerGroup();
+
+    switch (result) {
+      case Success():
+        return "success Delete";
+      case Failed():
+        return "failed Delete";
+    }
+  }
+
   // end Distributor
 
   // farmer
-  Future<String> updateSendFertilizerGroup({
+  Future<String> updateReceptionFertilizerGroup({
     required String idDocument,
     required int acceptUrea,
     required int acceptPoska,
     required String plant,
   }) async {
-    UpdateSendFertilizerGroup update =
-        ref.read(updateSendFertilizerGroupProvider);
-    var result = await update(AcceptFertilizerGroup(
+    UpdateReceptionFertilizer update =
+        ref.read(updateReceptionFertilizerProvider);
+    var result = await update(ReceptionFertilizerParams(
       idDocument: idDocument,
       plant: plant,
       acceptUrea: acceptUrea,
       acceptPoska: acceptPoska,
     ));
     if (result.isSuccess) {
-      return "Sucsses Update data send fertilizer";
+      return "Sucsses Update data reception fertilizer";
     } else {
       return "Failed update data";
     }

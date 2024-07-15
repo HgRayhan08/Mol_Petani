@@ -1,6 +1,6 @@
 class WeatherDataParams {
-  final String latitude;
-  final String longitude;
+  final double latitude;
+  final double longitude;
 
   WeatherDataParams({required this.latitude, required this.longitude});
 }

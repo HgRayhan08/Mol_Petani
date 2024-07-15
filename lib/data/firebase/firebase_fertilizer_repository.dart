@@ -159,34 +159,6 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
     }
   }
 
-  // @override
-  // Future<Result<String>> updateAcceptedFertilizer({
-  //   required String idDocument,
-  //   required int acceptUrea,
-  //   required int acceptPoska,
-  //   required String nameAcceptGroupFarmer,
-  //   required String nameSendDistributor,
-  //   required String acceptDate,
-  // }) async {
-  //   CollectionReference<Map<String, dynamic>> data =
-  //       _firebaseFirestore.collection("Fertilizer_Distribution_Kuota");
-
-  //   await data.doc(idDocument).update({
-  //     "nameAcceptGroupFarmer": nameAcceptGroupFarmer,
-  //     "nameSendDistributor": nameSendDistributor,
-  //     "acceptDate": acceptDate,
-  //     "information": "Selesai",
-  //     "acceptUrea": acceptUrea,
-  //     "acceptPoska": acceptPoska
-  //   });
-  //   DocumentSnapshot<Map<String, dynamic>> result = await data.doc().get();
-  //   if (result.exists) {
-  //     return const Result.success("Success");
-  //   } else {
-  //     return const Result.failed("fail to update");
-  //   }
-  // }
-
   @override
   Future<Result<List<SubmissionKuotaFertilizer>>> getDistributionGroupFarmer({
     required String idPPL,
@@ -198,7 +170,7 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
     var result = await data
         .where("idPPL", isEqualTo: idPPL)
         .where("idGroupFarmer", isEqualTo: idGroupFarmer)
-        .where("information", isEqualTo: "Send")
+        .where("information", isEqualTo: information)
         .get();
     if (result.docs.isNotEmpty) {
       return Result.success(result.docs
@@ -329,6 +301,39 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
       return const Result.failed("fail to update");
     }
   }
+
+  @override
+  Future<Result<String>> updateDistributionFertilizerFarmer(
+      {required String urea,
+      required String poska,
+      required String idDocument}) async {
+    CollectionReference<Map<String, dynamic>> update =
+        _firebaseFirestore.collection("Fertilizer_Distribution_Kuota");
+    await update.doc(idDocument).update({
+      "sendUrea": urea,
+      "sendPoska": poska,
+    });
+    DocumentSnapshot<Map<String, dynamic>> result = await update.doc().get();
+    if (result.exists) {
+      return const Result.success("Success");
+    } else {
+      return const Result.failed("fail to update");
+    }
+  }
+
+  @override
+  Future<Result<String>> deletedistributor({required String idDocument}) async {
+    CollectionReference<Map<String, dynamic>> data =
+        _firebaseFirestore.collection("Distribution_Fertilizer_Farmer");
+    await data.doc(idDocument).delete();
+    DocumentSnapshot<Map<String, dynamic>> result = await data.doc().get();
+    if (result.exists) {
+      return const Result.success('Document successfully deleted');
+    } else {
+      return const Result.failed('Failed to delete document');
+    }
+  }
+
   // end group farmer
 
   // ppl
@@ -454,26 +459,26 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
     }
   }
 
-  @override
-  Future<Result<String>> updateSubmissionkuota({
-    required String idDocument,
-    required String information,
-    required String prosesDate,
-  }) async {
-    CollectionReference<Map<String, dynamic>> kuotaData =
-        _firebaseFirestore.collection("Fertilizer_Kuota_Data");
-    await kuotaData.doc(idDocument).update({
-      "information": information,
-      "informationSend": "Proses",
-      "prosesDate": prosesDate,
-    });
-    DocumentSnapshot<Map<String, dynamic>> result = await kuotaData.doc().get();
-    if (result.exists) {
-      return const Result.success("Success");
-    } else {
-      return const Result.failed("fail to update");
-    }
-  }
+  // @override
+  // Future<Result<String>> updateSubmissionkuota({
+  //   required String idDocument,
+  //   required String information,
+  //   required String prosesDate,
+  // }) async {
+  //   CollectionReference<Map<String, dynamic>> kuotaData =
+  //       _firebaseFirestore.collection("Fertilizer_Kuota_Data");
+  //   await kuotaData.doc(idDocument).update({
+  //     "information": information,
+  //     "informationSend": "Proses",
+  //     "prosesDate": prosesDate,
+  //   });
+  //   DocumentSnapshot<Map<String, dynamic>> result = await kuotaData.doc().get();
+  //   if (result.exists) {
+  //     return const Result.success("Success");
+  //   } else {
+  //     return const Result.failed("fail to update");
+  //   }
+  // }
 
   @override
   Future<Result<List<SubmissionKuotaFertilizer>>>
@@ -494,6 +499,7 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
       return Result.success(result.docs
           .map(
             (e) => SubmissionKuotaFertilizer(
+              idDocument: e.id,
               idPPL: e["idPPL"],
               idGroupFarmer: e["idGroupFarmer"],
               idDistributor: e["idDistributor"],
@@ -519,11 +525,45 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
     }
   }
 
+  @override
+  Future<Result<String>> updateSendFertilizer(
+      {required int send,
+      required int sendUrea,
+      required int sendPoska,
+      required String idDocument}) async {
+    CollectionReference<Map<String, dynamic>> update =
+        _firebaseFirestore.collection("Fertilizer_Distribution_Kuota");
+
+    await update.doc(idDocument).update({
+      "send": send,
+      "sendUrea": sendUrea,
+      "sendPoska": sendPoska,
+    });
+    DocumentSnapshot<Map<String, dynamic>> result = await update.doc().get();
+    if (result.exists) {
+      return const Result.success("Success");
+    } else {
+      return const Result.failed("fail to update");
+    }
+  }
+
+  @override
+  Future<Result<String>> deleteSend({required String idDocument}) async {
+    CollectionReference<Map<String, dynamic>> data =
+        _firebaseFirestore.collection("Fertilizer_Distribution_Kuota");
+    await data.doc(idDocument).delete();
+    DocumentSnapshot<Map<String, dynamic>> result = await data.doc().get();
+    if (result.exists) {
+      return const Result.success('Document successfully deleted');
+    } else {
+      return const Result.failed('Failed to delete document');
+    }
+  }
   // end Distributor
 
   // Farmer
   @override
-  Future<Result<String>> updateSendFertilizer({
+  Future<Result<String>> updateReceptionFertilizer({
     required String idDocument,
     required String pickupDate,
     required String plant,

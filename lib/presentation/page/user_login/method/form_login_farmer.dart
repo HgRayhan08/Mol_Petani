@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/widgets/text_field_custom.dart';
+import 'package:mol_petani/presentation/widgets/text_field_email_widget.dart';
+import 'package:mol_petani/presentation/widgets/text_field_password_widget.dart';
 
 Widget formLoginFarmer(
   context, {
+  Key? key,
   TextEditingController? email,
   TextEditingController? password,
 }) =>
-    Padding(
-      padding: const EdgeInsets.only(bottom: 40),
+    Form(
+      key: key,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TextFieldCustom(
+          TextFieldEmailWidget(
             title: "Email",
             hinttext: "Example@gmail.com",
             controller: email!,
@@ -20,7 +23,7 @@ Widget formLoginFarmer(
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.02,
           ),
-          TextFieldCustom(
+          TextFieldPasswordWidget(
             title: "Password",
             hinttext: "Masukan Password",
             controller: password!,

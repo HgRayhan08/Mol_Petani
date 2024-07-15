@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mol_petani/presentation/misc/build_context_alert_information.dart';
 import 'package:mol_petani/presentation/page/user_login/mobile/mobile_login_farmer.dart';
 import 'package:mol_petani/presentation/page/user_login/website/website_login_farmer.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
@@ -12,14 +12,14 @@ class UserLoginPage extends ConsumerWidget {
   final TextEditingController passwordControler = TextEditingController();
   UserLoginPage({super.key});
 
-  Widget _buildAndroid(BuildContext context) {
+  Widget _buildAndroid(BuildContext context, WidgetRef ref) {
     return MobileLoginFarmer(
       emailControler: emailControler,
       passwordControler: passwordControler,
     );
   }
 
-  Widget _buildAios(BuildContext context) {
+  Widget _buildAios(BuildContext context, WidgetRef ref) {
     return CupertinoPageScaffold(
       child: MobileLoginFarmer(
         emailControler: emailControler,
@@ -28,7 +28,7 @@ class UserLoginPage extends ConsumerWidget {
     );
   }
 
-  Widget _buildWebsite(BuildContext context) {
+  Widget _buildWebsite(BuildContext context, WidgetRef ref) {
     return WebsiteLoginFarmer(
       emailControler: emailControler,
       passwordControler: passwordControler,
@@ -53,11 +53,8 @@ class UserLoginPage extends ConsumerWidget {
             }
           }
         } else if (next is AsyncError) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text("Error poll"),
-            ),
-          );
+          context.buildAlertInformation(
+              title: "Peringatan", subTitle: "Akun Tidak Ditemukan");
         }
       },
     );

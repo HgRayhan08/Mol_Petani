@@ -23,6 +23,8 @@ abstract interface class ReportRepository {
 
   Future<Result<String>> updateStatusComplaint({required String idDocument});
 
+  Future<Result<String>> deleteComplaint({required String idDocument});
+
   Future<Result<PestReport>> createReportHama({
     required String idPPL,
     required String idFarmerGroup,
@@ -44,4 +46,6 @@ abstract interface class ReportRepository {
     required String information,
   });
   Future<Result<String>> updateStatusPestReport({required String idDocument});
+
+    Future<Result<String>> deletePest({required String idDocument});
 }

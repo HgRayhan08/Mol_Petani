@@ -29,7 +29,7 @@ class CreateSendFertilizerGroup
         idGroupFarmer: params.idGroupFarmer,
         idDistributor: user[1],
         sendDate: DateFormat("dd-MM-yyyy").format(date).toString(),
-        leaderName: dataGrupFarmer.resultValue!.name,
+        leaderName: dataGrupFarmer.resultValue!.leaderName,
         nameDistributor: params.nameDistributor,
         nameGroupFarmer: dataGrupFarmer.resultValue!.farmerGrup,
         year: params.year,

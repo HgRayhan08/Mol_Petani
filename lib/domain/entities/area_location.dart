@@ -10,6 +10,7 @@ class AreaLocation with _$AreaLocation {
     required String farmerName,
     required String idUserFarmer,
     required String idPPL,
+    String? idDocument,
     @LatLngConverter() required List<LatLng> point,
   }) = _AreaLocation;
 

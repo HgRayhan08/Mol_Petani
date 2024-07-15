@@ -7,7 +7,6 @@ part 'user_farmer_grup.g.dart';
 class UserFarmerGroup with _$UserFarmerGroup {
   factory UserFarmerGroup({
     required String uid,
-    required String name,
     required String leaderName,
     required String email,
     required String information,

@@ -76,59 +76,21 @@ class WeatherProvider extends _$WeatherProvider {
     }
   }
 
-  Future<Result<WeatherData>> getWeatherData(context) async {
+  Future<Result<WeatherModel>> getWeatherData(context) async {
     GetWeatherData weatherData = ref.read(getWeatherDataProvider);
     final position = await getCurrentPosition(context);
     // state = const AsyncLoading();
     var result = await weatherData(
       WeatherDataParams(
-        latitude: position.latitude.toString(),
-        longitude: position.longitude.toString(),
+        latitude: position.latitude,
+        longitude: position.longitude,
       ),
     );
-    // print(result.resultValue);
     switch (result) {
       case Success():
-        return Result.success(result.resultValue!.first);
+        return Result.success(result.value);
       case Failed(:final message):
         return Result.failed(message);
-      // return WeatherModel(
-      //     queryCost: 0,
-      //     latitude: 0,
-      //     longitude: 0,
-      //     resolvedAddress: "",
-      //     address: "",
-      //     timezone: "",
-      //     tzoffset: 0,
-      //     description: "",
-      //     days: [],
-      //     alerts: [],
-      //     stations: {},
-      //     currentConditions: CurrentConditions(
-      //         datetime: "",
-      //         datetimeEpoch: 0,
-      //         temp: 0,
-      //         feelslike: 0,
-      //         humidity: 0,
-      //         dew: 0,
-      //         precip: 0,
-      //         precipprob: 0,
-      //         snow: 0,
-      //         snowdepth: 0,
-      //         preciptype: 0,
-      //         windgust: 0,
-      //         windspeed: 0,
-      //         winddir: 0,
-      //         pressure: 0,
-      //         visibility: 0,
-      //         cloudcover: 0,
-      //         solarradiation: 0,
-      //         solarenergy: 0,
-      //         uvindex: 0,
-      //         conditions: Conditions.OVERCAST,
-      //         icon: Icon(),
-      //         stations: [],
-      //         source: Source.COMB));
     }
   }
 }

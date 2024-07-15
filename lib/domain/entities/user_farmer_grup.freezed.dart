@@ -21,7 +21,6 @@ UserFarmerGroup _$UserFarmerGroupFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserFarmerGroup {
   String get uid => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
   String get leaderName => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get information => throw _privateConstructorUsedError;
@@ -46,7 +45,6 @@ abstract class $UserFarmerGroupCopyWith<$Res> {
   @useResult
   $Res call(
       {String uid,
-      String name,
       String leaderName,
       String email,
       String information,
@@ -72,7 +70,6 @@ class _$UserFarmerGroupCopyWithImpl<$Res, $Val extends UserFarmerGroup>
   @override
   $Res call({
     Object? uid = null,
-    Object? name = null,
     Object? leaderName = null,
     Object? email = null,
     Object? information = null,
@@ -87,10 +84,6 @@ class _$UserFarmerGroupCopyWithImpl<$Res, $Val extends UserFarmerGroup>
       uid: null == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
               as String,
       leaderName: null == leaderName
           ? _value.leaderName
@@ -142,7 +135,6 @@ abstract class _$$UserFarmerGroupImplCopyWith<$Res>
   @useResult
   $Res call(
       {String uid,
-      String name,
       String leaderName,
       String email,
       String information,
@@ -166,7 +158,6 @@ class __$$UserFarmerGroupImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? uid = null,
-    Object? name = null,
     Object? leaderName = null,
     Object? email = null,
     Object? information = null,
@@ -181,10 +172,6 @@ class __$$UserFarmerGroupImplCopyWithImpl<$Res>
       uid: null == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
               as String,
       leaderName: null == leaderName
           ? _value.leaderName
@@ -231,7 +218,6 @@ class __$$UserFarmerGroupImplCopyWithImpl<$Res>
 class _$UserFarmerGroupImpl implements _UserFarmerGroup {
   _$UserFarmerGroupImpl(
       {required this.uid,
-      required this.name,
       required this.leaderName,
       required this.email,
       required this.information,
@@ -247,8 +233,6 @@ class _$UserFarmerGroupImpl implements _UserFarmerGroup {
 
   @override
   final String uid;
-  @override
-  final String name;
   @override
   final String leaderName;
   @override
@@ -270,7 +254,7 @@ class _$UserFarmerGroupImpl implements _UserFarmerGroup {
 
   @override
   String toString() {
-    return 'UserFarmerGroup(uid: $uid, name: $name, leaderName: $leaderName, email: $email, information: $information, familyIdentificationNumber: $familyIdentificationNumber, fotoUrl: $fotoUrl, farmerGrup: $farmerGrup, village: $village, idPPL: $idPPL, mobileNumber: $mobileNumber)';
+    return 'UserFarmerGroup(uid: $uid, leaderName: $leaderName, email: $email, information: $information, familyIdentificationNumber: $familyIdentificationNumber, fotoUrl: $fotoUrl, farmerGrup: $farmerGrup, village: $village, idPPL: $idPPL, mobileNumber: $mobileNumber)';
   }
 
   @override
@@ -279,7 +263,6 @@ class _$UserFarmerGroupImpl implements _UserFarmerGroup {
         (other.runtimeType == runtimeType &&
             other is _$UserFarmerGroupImpl &&
             (identical(other.uid, uid) || other.uid == uid) &&
-            (identical(other.name, name) || other.name == name) &&
             (identical(other.leaderName, leaderName) ||
                 other.leaderName == leaderName) &&
             (identical(other.email, email) || other.email == email) &&
@@ -303,7 +286,6 @@ class _$UserFarmerGroupImpl implements _UserFarmerGroup {
   int get hashCode => Object.hash(
       runtimeType,
       uid,
-      name,
       leaderName,
       email,
       information,
@@ -332,7 +314,6 @@ class _$UserFarmerGroupImpl implements _UserFarmerGroup {
 abstract class _UserFarmerGroup implements UserFarmerGroup {
   factory _UserFarmerGroup(
       {required final String uid,
-      required final String name,
       required final String leaderName,
       required final String email,
       required final String information,
@@ -348,8 +329,6 @@ abstract class _UserFarmerGroup implements UserFarmerGroup {
 
   @override
   String get uid;
-  @override
-  String get name;
   @override
   String get leaderName;
   @override

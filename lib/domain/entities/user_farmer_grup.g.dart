@@ -10,7 +10,6 @@ _$UserFarmerGroupImpl _$$UserFarmerGroupImplFromJson(
         Map<String, dynamic> json) =>
     _$UserFarmerGroupImpl(
       uid: json['uid'] as String,
-      name: json['name'] as String,
       leaderName: json['leaderName'] as String,
       email: json['email'] as String,
       information: json['information'] as String,
@@ -26,7 +25,6 @@ Map<String, dynamic> _$$UserFarmerGroupImplToJson(
         _$UserFarmerGroupImpl instance) =>
     <String, dynamic>{
       'uid': instance.uid,
-      'name': instance.name,
       'leaderName': instance.leaderName,
       'email': instance.email,
       'information': instance.information,

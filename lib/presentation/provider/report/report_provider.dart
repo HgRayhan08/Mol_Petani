@@ -5,6 +5,9 @@ import 'package:mol_petani/domain/usecase/create_complaint_report/create_report_
 import 'package:mol_petani/domain/usecase/create_complaint_report/create_complaint_report.dart';
 import 'package:mol_petani/domain/usecase/create_report_hama/create_report_hama.dart';
 import 'package:mol_petani/domain/usecase/create_report_hama/report_hama_params.dart';
+import 'package:mol_petani/domain/usecase/delete_complaint/delete_complaint.dart';
+import 'package:mol_petani/domain/usecase/delete_pest/delete_pest.dart';
+import 'package:mol_petani/domain/usecase/delete_send_fertilizer/delete_send_fertilizer.dart';
 import 'package:mol_petani/domain/usecase/get_complaint_report.dart/get_complaint_report.dart';
 import 'package:mol_petani/domain/usecase/get_complaint_report_farmer/get_complaint_report_farmer.dart';
 import 'package:mol_petani/domain/usecase/get_history_pest_report/get_hostory_pest_report.dart';
@@ -15,6 +18,9 @@ import 'package:mol_petani/domain/usecase/update_status_complaint/update_status_
 import 'package:mol_petani/domain/usecase/update_status_pest_report/update_ststus_pest_report.dart';
 import 'package:mol_petani/presentation/provider/usecases/create_complaint_report_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/create_report_hama_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/delete_complaint_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/delete_pest_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/delete_send_fertilizer_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_complaint_report_farmer_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_complaint_report_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_history_pest_report_provider.dart';
@@ -80,6 +86,17 @@ class ReportProvider extends _$ReportProvider {
     }
   }
 
+  Future<String> deleteComplaint({required String idDocument}) async {
+    DeleteComplaint delete = ref.read(deleteComplaintProvider);
+    var result = await delete(idDocument);
+    switch (result) {
+      case Success():
+        return "success Delete";
+      case Failed():
+        return "failed Delete";
+    }
+  }
+
 // Hama
   Future<String> createReportHama({
     required String reporting,
@@ -130,7 +147,7 @@ class ReportProvider extends _$ReportProvider {
     }
   }
 
-  Future<List<PestReport>> getHistorySubmissionPestReport() async {
+  Future<List<Report>> getHistoryComplaint() async {
     GetHistorySubmissionPestReport report =
         ref.read(getHistorySubmissionPestReportProvider);
     var result = await report(null);
@@ -148,6 +165,28 @@ class ReportProvider extends _$ReportProvider {
       return result.resultValue!;
     } else {
       return "Failed Update Data";
+    }
+  }
+
+  Future<String> deletePest({required String idDocument}) async {
+    DeletePest delete = ref.read(deletePestProvider);
+    var result = await delete(idDocument);
+    switch (result) {
+      case Success():
+        return "success Delete";
+      case Failed():
+        return "failed Delete";
+    }
+  }
+
+  Future<String> deleteSend({required String idDocument}) async {
+    DeleteSendFertilizer delete = ref.read(deleteSendFertilizerProvider);
+    var result = await delete(idDocument);
+    switch (result) {
+      case Success():
+        return "success Delete";
+      case Failed():
+        return "failed Delete";
     }
   }
 }

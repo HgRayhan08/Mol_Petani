@@ -11,6 +11,7 @@ _$AreaLocationImpl _$$AreaLocationImplFromJson(Map<String, dynamic> json) =>
       farmerName: json['farmerName'] as String,
       idUserFarmer: json['idUserFarmer'] as String,
       idPPL: json['idPPL'] as String,
+      idDocument: json['idDocument'] as String?,
       point: (json['point'] as List<dynamic>)
           .map((e) =>
               const LatLngConverter().fromJson(e as Map<String, dynamic>))
@@ -22,5 +23,6 @@ Map<String, dynamic> _$$AreaLocationImplToJson(_$AreaLocationImpl instance) =>
       'farmerName': instance.farmerName,
       'idUserFarmer': instance.idUserFarmer,
       'idPPL': instance.idPPL,
+      'idDocument': instance.idDocument,
       'point': instance.point.map(const LatLngConverter().toJson).toList(),
     };

@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DropdownLogin extends ConsumerStatefulWidget {
   final double width;
+  final double? wisthContainer;
   final double height;
   final String? selectedValue;
   final Function(String?)? onChanged;
@@ -14,6 +15,7 @@ class DropdownLogin extends ConsumerStatefulWidget {
     required this.height,
     this.selectedValue,
     this.onChanged,
+    this.wisthContainer = 140,
   }) : super(key: key);
 
   @override
@@ -70,7 +72,7 @@ class _DropdownLoginState extends ConsumerState<DropdownLogin> {
         buttonStyleData: ButtonStyleData(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           height: widget.height * 0.06,
-          width: 140,
+          width: widget.wisthContainer,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
@@ -80,14 +82,14 @@ class _DropdownLoginState extends ConsumerState<DropdownLogin> {
         ),
         dropdownStyleData: DropdownStyleData(
           // maxHeight: widget.height * 0.5,
-          width: widget.width * 0.8,
+          width: widget.width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
           ),
           scrollbarTheme: ScrollbarThemeData(
             radius: const Radius.circular(40),
-            thickness: WidgetStateProperty.all(6),
-            thumbVisibility: WidgetStateProperty.all(true),
+            thickness: MaterialStateProperty.all(6),
+            thumbVisibility: MaterialStateProperty.all(true),
           ),
         ),
         menuItemStyleData: MenuItemStyleData(

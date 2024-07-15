@@ -14,10 +14,12 @@ class ListTileFertilizer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
     return GestureDetector(
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.all(15),
+        margin: EdgeInsets.only(top: height * 0.02),
         decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(

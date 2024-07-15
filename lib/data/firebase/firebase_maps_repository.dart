@@ -109,4 +109,17 @@ class FirebaseMapsRepository implements MapsRepository {
       return Result.failed("Error: $e");
     }
   }
+
+  @override
+  Future<Result<String>> deleteLocation({required String idDocument}) async {
+    CollectionReference<Map<String, dynamic>> data =
+        _firebaseFirestore.collection("Agricultural_Location_Data");
+    await data.doc(idDocument).delete();
+    DocumentSnapshot<Map<String, dynamic>> result = await data.doc().get();
+    if (result.exists) {
+      return const Result.success('Document successfully deleted');
+    } else {
+      return const Result.failed('Failed to delete document');
+    }
+  }
 }

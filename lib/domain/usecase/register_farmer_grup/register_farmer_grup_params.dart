@@ -1,7 +1,7 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 class RegisterFarmerGrupParams {
-  final String name;
   final String leaderName;
   final String email;
   final String password;
@@ -10,8 +10,9 @@ class RegisterFarmerGrupParams {
   final String farmerGrup;
   final String village;
   final int mobileNumber;
+  Uint8List? webfotourl;
+
   RegisterFarmerGrupParams({
-    required this.name,
     required this.leaderName,
     required this.email,
     required this.password,
@@ -20,5 +21,6 @@ class RegisterFarmerGrupParams {
     required this.village,
     required this.fotoUrl,
     required this.mobileNumber,
+    this.webfotourl,
   });
 }

@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:mol_petani/domain/entities/result.dart';
 import 'package:mol_petani/domain/entities/user_distributor.dart';
@@ -19,7 +20,6 @@ abstract interface class UserRepository {
 
   Future<Result<UserFarmerGroup>> createUserFarmerGrup(
       {required String uid,
-      required String name,
       required String leaderName,
       required String email,
       required String information,
@@ -38,12 +38,12 @@ abstract interface class UserRepository {
       required String familyIdentificationNumber,
       required String idPPL,
       String? fotoUrl,
+      required String toko,
       required String address,
       required List<String> scope,
       required int mobileNumber});
 
   Future<Result<UserFarmer>> createFarmer({
-    required String idGrupFarmer,
     required String name,
     required String village,
     required String nik,
@@ -52,8 +52,6 @@ abstract interface class UserRepository {
     required String jenisKelamin,
     required String noHp,
     required String dateOfBirth,
-    required String idPPL,
-    required String grupFarmer,
   });
 
   Future<Result<UserPpl>> getUserPpl({required String uid});
@@ -70,6 +68,8 @@ abstract interface class UserRepository {
   });
 
   Future<String> uploadImage({required File imageFile});
+  Future<String> uploadImageWeb(
+      {required String imageFile, required Uint8List webFile});
 
   Future<Result<String>> updateAccountFarmer({
     required String idDocument,
@@ -83,4 +83,8 @@ abstract interface class UserRepository {
     required String grupFarmer,
     required String idPPL,
   });
+
+  Future<Result<String>> deleteDistributor({required String idDocument});
+  Future<Result<String>> deleteFarmerGroup({required String idDocument});
+  Future<Result<String>> deleteFarmer({required String idDocument});
 }

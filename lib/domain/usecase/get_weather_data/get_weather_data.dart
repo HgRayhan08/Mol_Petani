@@ -6,39 +6,23 @@ import 'package:mol_petani/domain/usecase/get_weather_data/weather_data_params.d
 import 'package:mol_petani/domain/usecase/usecase.dart';
 
 class GetWeatherData
-    implements UseCase<Result<List<WeatherData>>, WeatherDataParams> {
+    implements UseCase<Result<WeatherModel>, WeatherDataParams> {
   final OpenWeatherRepository weather;
 
   GetWeatherData({required this.weather});
+
   @override
-  Future<Result<List<WeatherData>>> call(WeatherDataParams params) async {
-    DateTime date = DateTime.now();
-    print(" ini");
-    var dataWeather = await weather.getWeatherData(
-      latitude: params.latitude,
-      longitude: params.longitude,
-      date: DateFormat("yyyy-MM-dd").format(date).toString(),
-    );
-    // print("object");
-    print(" ini adalah data $dataWeather");
-    // if (dataWeather != null) {
-    //   return Result.success(dataWeather);
-    // } else {
-    //   return Result.failed("message");
-    // }
-    switch (dataWeather) {
-      case Success():
-        return Result.success(dataWeather.resultValue!);
-      case Failed():
-        return Result.failed("message");
-      // Success(value: final movieDetail) => Result.success(movieDetail),
-      // Failed(:final message) => Result.failed(message)
+  Future<Result<WeatherModel>> call(WeatherDataParams params) async {
+    try {
+      final dataWeather =
+          await weather.feactWeather(params.latitude, params.longitude);
+      if (dataWeather != null) {
+        return Result.success(dataWeather);
+      } else {
+        return const Result.failed("No data available");
+      }
+    } catch (e) {
+      return Result.failed("Failed to fetch weather data: $e");
     }
-    // ;
-    // if (dataWeather != "") {
-    // return Result.success(dataWeather);
-    // } else {
-    // return const Result.failed("Failed get data");
-    // }
   }
 }

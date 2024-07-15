@@ -128,6 +128,19 @@ class MonitoringReport implements ReportRepository {
     }
   }
 
+  @override
+  Future<Result<String>> deleteComplaint({required String idDocument}) async {
+    CollectionReference<Map<String, dynamic>> data =
+        _firebaseFirestore.collection("Complaint_Report");
+    await data.doc(idDocument).delete();
+    DocumentSnapshot<Map<String, dynamic>> result = await data.doc().get();
+    if (result.exists) {
+      return const Result.success('Document successfully deleted');
+    } else {
+      return const Result.failed('Failed to delete document');
+    }
+  }
+
   // REPORT HAMA
   @override
   Future<Result<PestReport>> createReportHama({
@@ -243,6 +256,19 @@ class MonitoringReport implements ReportRepository {
       return const Result.success("Succses update information");
     } else {
       return const Result.failed("Failed update data");
+    }
+  }
+
+  @override
+  Future<Result<String>> deletePest({required String idDocument}) async {
+    CollectionReference<Map<String, dynamic>> data =
+        _firebaseFirestore.collection("Hama_Report");
+    await data.doc(idDocument).delete();
+    DocumentSnapshot<Map<String, dynamic>> result = await data.doc().get();
+    if (result.exists) {
+      return const Result.success('Document successfully deleted');
+    } else {
+      return const Result.failed('Failed to delete document');
     }
   }
 }

@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
 import 'package:mol_petani/domain/entities/result.dart';
 import 'package:mol_petani/domain/entities/user_distributor.dart';
 import 'package:mol_petani/domain/entities/user_farmer.dart';
@@ -11,7 +10,10 @@ import 'package:mol_petani/domain/usecase/create_farmer/create_farmer.dart';
 import 'package:mol_petani/domain/usecase/create_farmer/create_farmer_params.dart';
 import 'package:mol_petani/domain/usecase/create_member_farmer_group/create_member_farmer_group.dart';
 import 'package:mol_petani/domain/usecase/create_member_farmer_group/create_member_farmer_group_params.dart';
+import 'package:mol_petani/domain/usecase/delete_farmer/delete_farmer.dart';
+import 'package:mol_petani/domain/usecase/delete_farmer_group/delete_farmer_group.dart';
 import 'package:mol_petani/domain/usecase/delete_member_farmer_group/delete_member_farmer_group.dart';
+import 'package:mol_petani/domain/usecase/detele_distributor/delete_distributor.dart';
 import 'package:mol_petani/domain/usecase/get_distributor/get_all_distributor.dart';
 import 'package:mol_petani/domain/usecase/get_farmer/get_all_farmer.dart';
 import 'package:mol_petani/domain/usecase/get_grup_farmer/get_all_grup_farmer.dart';
@@ -33,6 +35,9 @@ import 'package:mol_petani/domain/usecase/update_account_farmer/update_accoun_fa
 import 'package:mol_petani/domain/usecase/update_account_farmer/update_account_farmer.dart';
 import 'package:mol_petani/presentation/provider/usecases/create_farmer_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/create_member_farmer_group_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/delete_distributor_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/delete_farmer_group_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/delete_farmer_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/delete_member_farmer_group_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_all_distributor_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_all_farmer_provider.dart';
@@ -134,7 +139,7 @@ class DataUser extends _$DataUser {
           state = AsyncData({
             "idPpl": user.idPPL,
             "uid": user.uid,
-            "name": user.name,
+            "name": user.leaderName,
             "email": user.email,
             "information": user.information,
             "fotoUrl": user.fotoUrl,
@@ -194,7 +199,6 @@ class DataUser extends _$DataUser {
   }
 
   Future<void> registerGrupFarmer({
-    required String nama,
     required String leaderName,
     required String email,
     required String password,
@@ -203,6 +207,7 @@ class DataUser extends _$DataUser {
     required File fotoUrl,
     required String kelompok,
     required int mobileNumber,
+    Uint8List? webfotourl,
   }) async {
     state = const AsyncLoading();
 
@@ -211,7 +216,7 @@ class DataUser extends _$DataUser {
 
     var result = await registrasiKelompok(
       RegisterFarmerGrupParams(
-          name: nama,
+          webfotourl: webfotourl,
           leaderName: leaderName,
           email: email,
           password: password,
@@ -246,25 +251,30 @@ class DataUser extends _$DataUser {
     required String familyIdentificationNumber,
     List<String>? scope,
     required File image,
+    required String toko,
     required int mobileNumber,
+    Uint8List? webfotourl,
   }) async {
     state = const AsyncLoading();
 
     RegisterDistributor registerDistributor =
         ref.read(registerDistributorProvider);
-
+    // Uint8List imageData = await image.readAsBytes();
     var result = await registerDistributor(
       RegisterDistributorParams(
         name: nama,
         email: email,
         password: password,
         fotoUrl: image,
+        toko: toko,
         scope: scope!,
         familyIdentificationNumber: familyIdentificationNumber,
         address: address,
         mobileNumber: mobileNumber,
+        webfotourl: webfotourl,
       ),
     );
+    print(result.resultValue);
     switch (result) {
       case Success():
         return "succses create account distributor";
@@ -382,46 +392,36 @@ class DataUser extends _$DataUser {
     }
   }
 
-  // Future<void> registerPetugas(
-  //     {required String nama,
-  //     required String email,
-  //     required String password,
-  //     required String keterangan,
-  //     required String desa,
-  //     List<String>? cangkupan,
-  //     required String collection,
-  //     String? fotoUrl,
-  //     String? idPPl,
-  //     String? kelompok}) async {
-  //   state = const AsyncLoading();
+  Future<String> deleteDistributor({required String idDocument}) async {
+    DeleteDistributor delete = ref.read(deleteDistributorProvider);
+    var result = await delete(idDocument);
+    switch (result) {
+      case Success():
+        return "success Delete";
+      case Failed():
+        return "failed Delete";
+    }
+  }
 
-  //   RegisterOfficer registerPetugas = ref.read(registerOfficerProvider);
+  Future<String> deleteFarmerGroup({required String idDocument}) async {
+    DeleteFarmerGroup delete = ref.read(deleteFarmerGroupProvider);
+    var result = await delete(idDocument);
+    switch (result) {
+      case Success():
+        return "success Delete";
+      case Failed():
+        return "failed Delete";
+    }
+  }
 
-  //   var result = await registerPetugas(RegisterOfficerParam(
-  //     nama: nama,
-  //     email: email,
-  //     password: password,
-  //     keterangan: keterangan,
-  //     collection: collection,
-  //     cangkupan: cangkupan,
-  //     fotoUrl: fotoUrl,
-  //     kelompok: kelompok,
-  //     desa: desa,
-  //     idPPl: idPPl,
-  //   ));
-  //   switch (result) {
-  //     case Success(value: final user):
-  //       state = AsyncData(user);
-  //     case Failed(:final message):
-  //       state = AsyncError(FlutterError(message), StackTrace.current);
-  //       state = const AsyncData(null);
-  //   }
-  // }
-
-  // Future<String> uploadImage({required File imageFile}) async {
-  //   UploadImage uploadImaged = ref.read(uploadImageProvider);
-  //   var result = await uploadImaged(UploadImageParams(imageFilel: imageFile));
-  //   String image = result.resultValue!;
-  //   return image;
-  // }
+  Future<String> deleteFarmer({required String idDocument}) async {
+    DeleteFarmer delete = ref.read(deleteFarmerProvider);
+    var result = await delete(idDocument);
+    switch (result) {
+      case Success():
+        return "success Delete";
+      case Failed():
+        return "failed Delete";
+    }
+  }
 }

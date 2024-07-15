@@ -1,25 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dialogs/flutter_dialogs.dart';
+import 'package:mol_petani/presentation/misc/constant.dart';
 
 extension BuildContextExtension on BuildContext {
-  void buildShowDialog(
-      {required Function() onTapCancel, required Function() onTapSucces}) {
-    showDialog(
+  void buildShowDialog({
+    Function()? onTapCancel,
+    required String berhasil,
+    required Function() onTapSucces,
+    required String judul,
+    required String keterangan,
+  }) {
+    showPlatformDialog(
       context: this,
-      builder: (BuildContext context) => AlertDialog(
-        title: const Text('Log out'),
-        content: const Text('Apakah kamu yakin?'),
+      builder: (context) => BasicDialogAlert(
+        title: Text(
+          judul,
+          style: regulerReguler,
+        ),
+        content: Text(
+          keterangan,
+          style: regulerReguler,
+        ),
         actions: <Widget>[
-          TextButton(
-            onPressed: onTapCancel,
-            child: const Text('Cancel'),
+          BasicDialogAction(
+            title: Text(
+              "Batal",
+              style: regulerReguler,
+            ),
+            onPressed: () {
+              Navigator.pop(context, false);
+            },
           ),
-          TextButton(
-            onPressed: onTapSucces,
-            child: const Text('Log out'),
-          ),
+          BasicDialogAction(
+              title: Text(
+                berhasil,
+                style: regulerReguler,
+              ),
+              onPressed: onTapSucces),
         ],
       ),
-      // child: const Text('Show Dialog'),
     );
   }
 }

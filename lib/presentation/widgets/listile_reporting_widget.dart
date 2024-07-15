@@ -26,25 +26,27 @@ class ListTileReportingWidget extends StatelessWidget {
           bottomRight: Radius.circular(20),
         ),
       ),
-      child: ListTile(
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(20),
+      child: Material(
+        child: ListTile(
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(20),
+            ),
           ),
+          title: Text(
+            title,
+            style: regulerReguler,
+          ),
+          subtitle: Text(
+            subtitle,
+            style: regulerReguler,
+          ),
+          trailing: Text(
+            trailing,
+            style: regulerReguler.copyWith(fontSize: 14),
+          ),
+          onTap: onTap,
         ),
-        title: Text(
-          title,
-          style: regulerReguler,
-        ),
-        subtitle: Text(
-          subtitle,
-          style: regulerReguler,
-        ),
-        trailing: Text(
-          trailing,
-          style: regulerReguler.copyWith(fontSize: 14),
-        ),
-        onTap: onTap,
       ),
     );
   }

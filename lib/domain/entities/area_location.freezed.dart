@@ -23,6 +23,7 @@ mixin _$AreaLocation {
   String get farmerName => throw _privateConstructorUsedError;
   String get idUserFarmer => throw _privateConstructorUsedError;
   String get idPPL => throw _privateConstructorUsedError;
+  String? get idDocument => throw _privateConstructorUsedError;
   @LatLngConverter()
   List<LatLng> get point => throw _privateConstructorUsedError;
 
@@ -42,6 +43,7 @@ abstract class $AreaLocationCopyWith<$Res> {
       {String farmerName,
       String idUserFarmer,
       String idPPL,
+      String? idDocument,
       @LatLngConverter() List<LatLng> point});
 }
 
@@ -61,6 +63,7 @@ class _$AreaLocationCopyWithImpl<$Res, $Val extends AreaLocation>
     Object? farmerName = null,
     Object? idUserFarmer = null,
     Object? idPPL = null,
+    Object? idDocument = freezed,
     Object? point = null,
   }) {
     return _then(_value.copyWith(
@@ -76,6 +79,10 @@ class _$AreaLocationCopyWithImpl<$Res, $Val extends AreaLocation>
           ? _value.idPPL
           : idPPL // ignore: cast_nullable_to_non_nullable
               as String,
+      idDocument: freezed == idDocument
+          ? _value.idDocument
+          : idDocument // ignore: cast_nullable_to_non_nullable
+              as String?,
       point: null == point
           ? _value.point
           : point // ignore: cast_nullable_to_non_nullable
@@ -96,6 +103,7 @@ abstract class _$$AreaLocationImplCopyWith<$Res>
       {String farmerName,
       String idUserFarmer,
       String idPPL,
+      String? idDocument,
       @LatLngConverter() List<LatLng> point});
 }
 
@@ -113,6 +121,7 @@ class __$$AreaLocationImplCopyWithImpl<$Res>
     Object? farmerName = null,
     Object? idUserFarmer = null,
     Object? idPPL = null,
+    Object? idDocument = freezed,
     Object? point = null,
   }) {
     return _then(_$AreaLocationImpl(
@@ -128,6 +137,10 @@ class __$$AreaLocationImplCopyWithImpl<$Res>
           ? _value.idPPL
           : idPPL // ignore: cast_nullable_to_non_nullable
               as String,
+      idDocument: freezed == idDocument
+          ? _value.idDocument
+          : idDocument // ignore: cast_nullable_to_non_nullable
+              as String?,
       point: null == point
           ? _value._point
           : point // ignore: cast_nullable_to_non_nullable
@@ -143,6 +156,7 @@ class _$AreaLocationImpl implements _AreaLocation {
       {required this.farmerName,
       required this.idUserFarmer,
       required this.idPPL,
+      this.idDocument,
       @LatLngConverter() required final List<LatLng> point})
       : _point = point;
 
@@ -155,6 +169,8 @@ class _$AreaLocationImpl implements _AreaLocation {
   final String idUserFarmer;
   @override
   final String idPPL;
+  @override
+  final String? idDocument;
   final List<LatLng> _point;
   @override
   @LatLngConverter()
@@ -166,7 +182,7 @@ class _$AreaLocationImpl implements _AreaLocation {
 
   @override
   String toString() {
-    return 'AreaLocation(farmerName: $farmerName, idUserFarmer: $idUserFarmer, idPPL: $idPPL, point: $point)';
+    return 'AreaLocation(farmerName: $farmerName, idUserFarmer: $idUserFarmer, idPPL: $idPPL, idDocument: $idDocument, point: $point)';
   }
 
   @override
@@ -179,13 +195,15 @@ class _$AreaLocationImpl implements _AreaLocation {
             (identical(other.idUserFarmer, idUserFarmer) ||
                 other.idUserFarmer == idUserFarmer) &&
             (identical(other.idPPL, idPPL) || other.idPPL == idPPL) &&
+            (identical(other.idDocument, idDocument) ||
+                other.idDocument == idDocument) &&
             const DeepCollectionEquality().equals(other._point, _point));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, farmerName, idUserFarmer, idPPL,
-      const DeepCollectionEquality().hash(_point));
+      idDocument, const DeepCollectionEquality().hash(_point));
 
   @JsonKey(ignore: true)
   @override
@@ -206,6 +224,7 @@ abstract class _AreaLocation implements AreaLocation {
           {required final String farmerName,
           required final String idUserFarmer,
           required final String idPPL,
+          final String? idDocument,
           @LatLngConverter() required final List<LatLng> point}) =
       _$AreaLocationImpl;
 
@@ -218,6 +237,8 @@ abstract class _AreaLocation implements AreaLocation {
   String get idUserFarmer;
   @override
   String get idPPL;
+  @override
+  String? get idDocument;
   @override
   @LatLngConverter()
   List<LatLng> get point;

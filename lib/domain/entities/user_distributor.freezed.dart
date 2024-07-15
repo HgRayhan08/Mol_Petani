@@ -28,6 +28,7 @@ mixin _$UserDistrubutor {
   String get idPPL => throw _privateConstructorUsedError;
   String? get fotoUrl => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
+  String get toko => throw _privateConstructorUsedError;
   List<dynamic>? get scope => throw _privateConstructorUsedError;
   int get mobileNumber => throw _privateConstructorUsedError;
 
@@ -52,6 +53,7 @@ abstract class $UserDistrubutorCopyWith<$Res> {
       String idPPL,
       String? fotoUrl,
       String address,
+      String toko,
       List<dynamic>? scope,
       int mobileNumber});
 }
@@ -77,6 +79,7 @@ class _$UserDistrubutorCopyWithImpl<$Res, $Val extends UserDistrubutor>
     Object? idPPL = null,
     Object? fotoUrl = freezed,
     Object? address = null,
+    Object? toko = null,
     Object? scope = freezed,
     Object? mobileNumber = null,
   }) {
@@ -113,6 +116,10 @@ class _$UserDistrubutorCopyWithImpl<$Res, $Val extends UserDistrubutor>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
+      toko: null == toko
+          ? _value.toko
+          : toko // ignore: cast_nullable_to_non_nullable
+              as String,
       scope: freezed == scope
           ? _value.scope
           : scope // ignore: cast_nullable_to_non_nullable
@@ -142,6 +149,7 @@ abstract class _$$UserDistrubutorImplCopyWith<$Res>
       String idPPL,
       String? fotoUrl,
       String address,
+      String toko,
       List<dynamic>? scope,
       int mobileNumber});
 }
@@ -165,6 +173,7 @@ class __$$UserDistrubutorImplCopyWithImpl<$Res>
     Object? idPPL = null,
     Object? fotoUrl = freezed,
     Object? address = null,
+    Object? toko = null,
     Object? scope = freezed,
     Object? mobileNumber = null,
   }) {
@@ -201,6 +210,10 @@ class __$$UserDistrubutorImplCopyWithImpl<$Res>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
+      toko: null == toko
+          ? _value.toko
+          : toko // ignore: cast_nullable_to_non_nullable
+              as String,
       scope: freezed == scope
           ? _value._scope
           : scope // ignore: cast_nullable_to_non_nullable
@@ -225,6 +238,7 @@ class _$UserDistrubutorImpl implements _UserDistrubutor {
       required this.idPPL,
       this.fotoUrl,
       required this.address,
+      required this.toko,
       final List<dynamic>? scope = const [],
       required this.mobileNumber})
       : _scope = scope;
@@ -248,6 +262,8 @@ class _$UserDistrubutorImpl implements _UserDistrubutor {
   final String? fotoUrl;
   @override
   final String address;
+  @override
+  final String toko;
   final List<dynamic>? _scope;
   @override
   @JsonKey()
@@ -264,7 +280,7 @@ class _$UserDistrubutorImpl implements _UserDistrubutor {
 
   @override
   String toString() {
-    return 'UserDistrubutor(uid: $uid, name: $name, email: $email, information: $information, familyIdentificationNumber: $familyIdentificationNumber, idPPL: $idPPL, fotoUrl: $fotoUrl, address: $address, scope: $scope, mobileNumber: $mobileNumber)';
+    return 'UserDistrubutor(uid: $uid, name: $name, email: $email, information: $information, familyIdentificationNumber: $familyIdentificationNumber, idPPL: $idPPL, fotoUrl: $fotoUrl, address: $address, toko: $toko, scope: $scope, mobileNumber: $mobileNumber)';
   }
 
   @override
@@ -284,6 +300,7 @@ class _$UserDistrubutorImpl implements _UserDistrubutor {
             (identical(other.idPPL, idPPL) || other.idPPL == idPPL) &&
             (identical(other.fotoUrl, fotoUrl) || other.fotoUrl == fotoUrl) &&
             (identical(other.address, address) || other.address == address) &&
+            (identical(other.toko, toko) || other.toko == toko) &&
             const DeepCollectionEquality().equals(other._scope, _scope) &&
             (identical(other.mobileNumber, mobileNumber) ||
                 other.mobileNumber == mobileNumber));
@@ -301,6 +318,7 @@ class _$UserDistrubutorImpl implements _UserDistrubutor {
       idPPL,
       fotoUrl,
       address,
+      toko,
       const DeepCollectionEquality().hash(_scope),
       mobileNumber);
 
@@ -329,6 +347,7 @@ abstract class _UserDistrubutor implements UserDistrubutor {
       required final String idPPL,
       final String? fotoUrl,
       required final String address,
+      required final String toko,
       final List<dynamic>? scope,
       required final int mobileNumber}) = _$UserDistrubutorImpl;
 
@@ -351,6 +370,8 @@ abstract class _UserDistrubutor implements UserDistrubutor {
   String? get fotoUrl;
   @override
   String get address;
+  @override
+  String get toko;
   @override
   List<dynamic>? get scope;
   @override

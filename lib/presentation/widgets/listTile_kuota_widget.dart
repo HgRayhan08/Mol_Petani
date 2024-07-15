@@ -5,6 +5,7 @@ class ListTileKuotaWidget extends StatelessWidget {
   const ListTileKuotaWidget({
     super.key,
     required this.width,
+    required this.height,
     required this.title,
     required this.subTitle,
     required this.year,
@@ -17,6 +18,7 @@ class ListTileKuotaWidget extends StatelessWidget {
   final String year;
   final String submission;
   final double width;
+  final double height;
   final Function() onTap;
 
   @override
@@ -25,6 +27,7 @@ class ListTileKuotaWidget extends StatelessWidget {
       onTap: onTap,
       child: Container(
         padding: EdgeInsets.all(width * 0.02),
+        margin: EdgeInsets.only(top: height * 0.01),
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(25),

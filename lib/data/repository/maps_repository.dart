@@ -14,4 +14,6 @@ abstract interface class MapsRepository {
 
   Future<Result<List<AreaLocation>>> getLocationFarmer(
       {required String idUserFarmer});
+
+  Future<Result<String>> deleteLocation({required String idDocument});
 }

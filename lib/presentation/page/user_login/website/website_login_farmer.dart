@@ -1,12 +1,13 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
+import 'package:mol_petani/presentation/misc/build_context_alert_information.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
+import 'package:mol_petani/presentation/page/user_login/method/dropdown_login.dart';
 import 'package:mol_petani/presentation/page/user_login/method/form_login_farmer.dart';
-import 'package:mol_petani/presentation/page/user_login/method/login_width_in_farmer.dart';
 import 'package:mol_petani/presentation/page/user_login/method/opener_petani.dart';
 import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
 
-class WebsiteLoginFarmer extends ConsumerWidget {
+class WebsiteLoginFarmer extends ConsumerStatefulWidget {
   final TextEditingController emailControler;
   final TextEditingController passwordControler;
   const WebsiteLoginFarmer({
@@ -16,7 +17,14 @@ class WebsiteLoginFarmer extends ConsumerWidget {
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<WebsiteLoginFarmer> createState() => _WebsiteLoginFarmerState();
+}
+
+class _WebsiteLoginFarmerState extends ConsumerState<WebsiteLoginFarmer> {
+  String? selectedValue;
+  final _formKey = GlobalKey<FormState>();
+  @override
+  Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -60,13 +68,30 @@ class WebsiteLoginFarmer extends ConsumerWidget {
                     right: width * 0.1,
                   ),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       openerPetani(context),
+                      DropdownLogin(
+                        wisthContainer: width * 0.3,
+                        width: width * 0.3,
+                        height: height,
+                        onChanged: (String? value) {
+                          setState(() {
+                            selectedValue = value;
+                          });
+                        },
+                      ),
+                      SizedBox(height: height * 0.02),
                       formLoginFarmer(
                         context,
-                        email: emailControler,
-                        password: passwordControler,
+                        key: _formKey,
+                        email: widget.emailControler,
+                        password: widget.passwordControler,
                       ),
+                      SizedBox(height: height * 0.03),
+                      const Divider(),
+                      SizedBox(height: height * 0.03),
                       switch (ref.watch(dataUserProvider)) {
                         AsyncData(:final value) => value == null
                             ? ElevatedButton(
@@ -81,11 +106,24 @@ class WebsiteLoginFarmer extends ConsumerWidget {
                                   ),
                                 ),
                                 onPressed: () {
-                                  // ref
-                                  //     .read(dataUserProvider.notifier)
-                                  //     .loginFarmer(
-                                  //         email: emailControler.text,
-                                  //         password: passwordControler.text);
+                                  if (_formKey.currentState!.validate()) {
+                                    if (widget.emailControler.text == "" ||
+                                        widget.passwordControler.text == "") {
+                                      context.buildAlertInformation(
+                                          title: "Peringatan",
+                                          subTitle:
+                                              "Harap masukkan alamat email dan kata sandi dengan benar.");
+                                    } else {
+                                      ref
+                                          .read(dataUserProvider.notifier)
+                                          .loginUser(
+                                            email: widget.emailControler.text,
+                                            password:
+                                                widget.passwordControler.text,
+                                            user: selectedValue!,
+                                          );
+                                    }
+                                  }
                                 },
                                 child: Text(
                                   "Login",
@@ -102,6 +140,26 @@ class WebsiteLoginFarmer extends ConsumerWidget {
                             child: CircularProgressIndicator(),
                           ),
                       },
+                      SizedBox(height: height * 0.03),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(double.infinity, height * 0.05),
+                          padding:
+                              EdgeInsets.symmetric(vertical: width * 0.012),
+                          backgroundColor: const Color(0xff7BD3EA),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        onPressed: () {},
+                        child: Text(
+                          "Registrasi",
+                          style: buttonReguler.copyWith(
+                            color: light,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -112,15 +170,6 @@ class WebsiteLoginFarmer extends ConsumerWidget {
                   padding: EdgeInsets.only(
                     left: width * 0.05,
                     right: width * 0.05,
-                  ),
-                  child: loginWithInFarmer(
-                    ref,
-                    first: "Penyuluh Pertanian Lapangan",
-                    toPageFirst: "login-ppl",
-                    seccond: "Distributor",
-                    toPageSecond: "login-dis",
-                    thrid: "Kelompok Tani",
-                    toPagethrid: "login-kelompok",
                   ),
                 ),
               ],

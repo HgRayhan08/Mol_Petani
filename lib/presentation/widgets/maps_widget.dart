@@ -6,64 +6,93 @@ import 'package:mol_petani/presentation/provider/maps/maps_provider.dart';
 
 class MapsWidget extends ConsumerWidget {
   final String idUserFarmer;
-  const MapsWidget({super.key, required this.idUserFarmer});
+  bool? isDelete;
+  final double width;
+  MapsWidget(
+      {super.key,
+      required this.idUserFarmer,
+      this.isDelete = false,
+      required this.width});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+    String? idDocument;
     return SizedBox(
-      height: 200,
-      width: MediaQuery.of(context).size.width,
-      child: FlutterMap(
-        options: const MapOptions(
-          initialCenter: LatLng(-7.636249, 112.215799),
-          initialZoom: 14,
-        ),
-        children: [
-          TileLayer(
-            urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-            userAgentPackageName: 'com.example.app',
-          ),
-          FutureBuilder(
-            future: ref
-                .watch(mapsProviderProvider.notifier)
-                .getLocationFarmer(idUserFarmer: idUserFarmer),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if (snapshot.hasData && snapshot.data!.isSuccess) {
-                var data = snapshot.data!.resultValue;
-                if (data == null || data.isEmpty) {
-                  return const Center(
-                    child: Text('No locations found'),
-                  );
-                }
+      height: height * 0.3,
+      width: width,
+      child: FutureBuilder(
+        future: ref
+            .watch(mapsProviderProvider.notifier)
+            .getLocationFarmer(idUserFarmer: idUserFarmer),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return Center(child: Text('Error: ${snapshot.error}'));
+          } else if (snapshot.hasData) {
+            var data = snapshot.data!.resultValue!;
 
-                // Menggunakan PolygonLayer untuk menampilkan poligon
-                return PolygonLayer(
-                  polygons: data.map(
-                    (location) {
-                      return Polygon(
-                        points: location.point,
-                        color: Colors.redAccent,
-                        borderColor: Colors.redAccent,
-                        borderStrokeWidth: 3.0,
-                        label: location.farmerName,
-                        labelStyle:
-                            TextStyle(color: Colors.black, fontSize: 20),
-                      );
-                    },
-                  ).toList(),
-                );
-              } else {
-                return const Center(
-                  child: Text('Failed to load locations'),
-                );
-              }
-            },
-          ),
-        ],
+            return Column(
+              children: [
+                Expanded(
+                  child: FlutterMap(
+                    options: const MapOptions(
+                      initialCenter: LatLng(-7.636249, 112.215799),
+                      initialZoom: 14,
+                    ),
+                    children: [
+                      TileLayer(
+                        urlTemplate:
+                            'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                        userAgentPackageName: 'com.example.app',
+                      ),
+                      PolygonLayer(
+                        polygons: data.map(
+                          (location) {
+                            idDocument = location.idDocument;
+                            return Polygon(
+                              points: location.point,
+                              color: Colors.redAccent.withOpacity(0.5),
+                              borderColor: Colors.redAccent,
+                              borderStrokeWidth: 3.0,
+                              label: location.farmerName,
+                              labelStyle: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 12,
+                              ),
+                            );
+                          },
+                        ).toList(),
+                      ),
+                    ],
+                  ),
+                ),
+                isDelete == false
+                    ? ElevatedButton(
+                        onPressed: () {
+                          if (idDocument != null) {
+                            ref
+                                .read(mapsProviderProvider.notifier)
+                                .deletepointLocaion(idDocument: idDocument!);
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text("No document to delete."),
+                              ),
+                            );
+                          }
+                        },
+                        child: const Text("Hapus Data"),
+                      )
+                    : Container(),
+              ],
+            );
+          } else {
+            return const Center(child: Text("Data Tidak Dapat ditampilkan"));
+          }
+        },
       ),
     );
   }

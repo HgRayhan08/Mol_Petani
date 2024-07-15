@@ -65,6 +65,15 @@ abstract interface class FertilizerRepository {
     required String idFarmer,
     required String idGroupFarmer,
   });
+
+  Future<Result<String>> updateDistributionFertilizerFarmer({
+    required String urea,
+    required String poska,
+    required String idDocument,
+  });
+
+  Future<Result<String>> deletedistributor({required String idDocument});
+
   // end Group farmer
 
   // ppl
@@ -91,6 +100,13 @@ abstract interface class FertilizerRepository {
     required int sendPoska,
   });
 
+  Future<Result<String>> updateSendFertilizer({
+    required int send,
+    required int sendUrea,
+    required int sendPoska,
+    required String idDocument,
+  });
+
   Future<Result<List<SubmissionKuotaFertilizer>>>
       getDistributionFertilizerGroup({
     required String idPPL,
@@ -98,14 +114,16 @@ abstract interface class FertilizerRepository {
     required String information,
   });
 
-  Future<Result<String>> updateSubmissionkuota({
-    required String idDocument,
-    required String information,
-    required String prosesDate,
-  });
+  Future<Result<String>> deleteSend({required String idDocument});
+
+  // Future<Result<String>> updateSubmissionkuota({
+  //   required String idDocument,
+  //   required String information,
+  //   required String prosesDate,
+  // });
 
   // Farmer
-  Future<Result<String>> updateSendFertilizer({
+  Future<Result<String>> updateReceptionFertilizer({
     required String idDocument,
     required String pickupDate,
     required String plant,

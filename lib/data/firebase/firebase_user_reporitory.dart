@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -48,7 +49,6 @@ class FirebaseUserRepository implements UserRepository {
   @override
   Future<Result<UserFarmerGroup>> createUserFarmerGrup(
       {required String uid,
-      required String name,
       required String leaderName,
       required String email,
       required String information,
@@ -62,7 +62,6 @@ class FirebaseUserRepository implements UserRepository {
         _firebaseFirestore.collection("User_Farmer_Grup");
     await users.doc(uid).set({
       "uid": uid,
-      "name": name,
       "leaderName": leaderName,
       "email": email,
       "information": information,
@@ -92,6 +91,7 @@ class FirebaseUserRepository implements UserRepository {
     required String familyIdentificationNumber,
     required String idPPL,
     String? fotoUrl,
+    required String toko,
     required String address,
     required List<String> scope,
     required int mobileNumber,
@@ -105,12 +105,13 @@ class FirebaseUserRepository implements UserRepository {
       "information": information,
       "fotoUrl": fotoUrl,
       "scope": scope,
+      "toko": toko,
       "idPPL": idPPL,
       "familyIdentificationNumber": familyIdentificationNumber,
       "address": address,
       "mobileNumber": mobileNumber,
     });
-
+    print("berhasil create");
     DocumentSnapshot<Map<String, dynamic>> result = await users.doc(uid).get();
     if (result.exists) {
       return Result.success(UserDistrubutor.fromJson(result.data()!));
@@ -122,7 +123,6 @@ class FirebaseUserRepository implements UserRepository {
 
   @override
   Future<Result<UserFarmer>> createFarmer({
-    required String idGrupFarmer,
     required String name,
     required String village,
     required String nik,
@@ -131,14 +131,12 @@ class FirebaseUserRepository implements UserRepository {
     required String jenisKelamin,
     required String noHp,
     required String dateOfBirth,
-    required String idPPL,
-    required String grupFarmer,
   }) async {
     CollectionReference<Map<String, dynamic>> users =
         _firebaseFirestore.collection("User_Farmer");
 
     await users.doc().set({
-      "idGrupFarmer": idGrupFarmer,
+      "idGrupFarmer": "",
       "idUserFarmer": "",
       "idPPL": "",
       "name": name,
@@ -233,7 +231,6 @@ class FirebaseUserRepository implements UserRepository {
               .map(
                 (e) => UserFarmerGroup(
                   uid: e["uid"],
-                  name: e["name"],
                   leaderName: e["leaderName"],
                   email: e["email"],
                   information: e["information"],
@@ -270,6 +267,7 @@ class FirebaseUserRepository implements UserRepository {
                 uid: e["uid"],
                 name: e["name"],
                 email: e["email"],
+                toko: e["toko"],
                 information: e["information"],
                 familyIdentificationNumber: e["familyIdentificationNumber"],
                 idPPL: e["idPPL"],
@@ -337,6 +335,26 @@ class FirebaseUserRepository implements UserRepository {
 
     try {
       await reference.putFile(imageFile);
+      String dowloadUrl = await reference.getDownloadURL();
+      if (dowloadUrl.isNotEmpty) {
+        return dowloadUrl;
+      } else {
+        return "Falled Upload Image";
+      }
+    } catch (e) {
+      return "Falled poll";
+    }
+  }
+
+  Future<String> uploadImageWeb(
+      {required String imageFile, required Uint8List webFile}) async {
+    String fileName = basename(imageFile);
+
+    Reference reference = FirebaseStorage.instance.ref().child(fileName);
+
+    SettableMetadata metadata = SettableMetadata(contentType: 'image/jpeg');
+    try {
+      await reference.putData(webFile, metadata);
       String dowloadUrl = await reference.getDownloadURL();
       if (dowloadUrl.isNotEmpty) {
         return dowloadUrl;
@@ -422,6 +440,45 @@ class FirebaseUserRepository implements UserRepository {
       return const Result.success("Success");
     } else {
       return const Result.failed("fail to update");
+    }
+  }
+
+  @override
+  Future<Result<String>> deleteDistributor({required String idDocument}) async {
+    CollectionReference<Map<String, dynamic>> data =
+        _firebaseFirestore.collection("User_Distributor");
+    await data.doc(idDocument).delete();
+    DocumentSnapshot<Map<String, dynamic>> result = await data.doc().get();
+    if (result.exists) {
+      return const Result.success('Document successfully deleted');
+    } else {
+      return const Result.failed('Failed to delete document');
+    }
+  }
+
+  @override
+  Future<Result<String>> deleteFarmerGroup({required String idDocument}) async {
+    CollectionReference<Map<String, dynamic>> data =
+        _firebaseFirestore.collection("User_Farmer_Grup");
+    await data.doc(idDocument).delete();
+    DocumentSnapshot<Map<String, dynamic>> result = await data.doc().get();
+    if (result.exists) {
+      return const Result.success('Document successfully deleted');
+    } else {
+      return const Result.failed('Failed to delete document');
+    }
+  }
+
+  @override
+  Future<Result<String>> deleteFarmer({required String idDocument}) async {
+    CollectionReference<Map<String, dynamic>> data =
+        _firebaseFirestore.collection("User_Farmer");
+    await data.doc(idDocument).delete();
+    DocumentSnapshot<Map<String, dynamic>> result = await data.doc().get();
+    if (result.exists) {
+      return const Result.success('Document successfully deleted');
+    } else {
+      return const Result.failed('Failed to delete document');
     }
   }
 }

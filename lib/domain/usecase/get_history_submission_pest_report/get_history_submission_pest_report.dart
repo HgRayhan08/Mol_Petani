@@ -1,11 +1,11 @@
 import 'package:mol_petani/data/repository/report_repository.dart';
 import 'package:mol_petani/data/repository/shered_pref_repository.dart';
-import 'package:mol_petani/domain/entities/pest_report.dart';
+import 'package:mol_petani/domain/entities/report.dart';
 import 'package:mol_petani/domain/entities/result.dart';
 import 'package:mol_petani/domain/usecase/usecase.dart';
 
 class GetHistorySubmissionPestReport
-    implements UseCase<Result<List<PestReport>>, void> {
+    implements UseCase<Result<List<Report>>, void> {
   final ReportRepository reportRepository;
   final SharedPrefRepository sharedPrefRepository;
 
@@ -15,10 +15,10 @@ class GetHistorySubmissionPestReport
   });
 
   @override
-  Future<Result<List<PestReport>>> call(void params) async {
+  Future<Result<List<Report>>> call(void params) async {
     List<String>? user = await sharedPrefRepository.getDataLogin();
-    var result = await reportRepository.getSubmissionReportHama(
-      idFarmerGroup: user![1],
+    var result = await reportRepository.getReportFarmer(
+      idPPL: user![1],
       information: "Terima",
     );
     return switch (result) {

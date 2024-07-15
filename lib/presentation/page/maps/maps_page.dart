@@ -124,7 +124,7 @@ class _MapsPageState extends ConsumerState<MapsPage> {
         children: [
           SizedBox(
             height: height -
-                AppBar().preferredSize.height -
+                (AppBar().preferredSize.height * 2) -
                 MediaQuery.of(context).padding.top,
             width: MediaQuery.of(context).size.width,
             child: FlutterMap(
