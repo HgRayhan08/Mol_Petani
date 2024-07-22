@@ -9,14 +9,13 @@ class Report with _$Report {
     String? idDocument,
     required String idGrupFarmer,
     required String idPPL,
-    required String idFarmer,
-    required String groupFarmer,
+    required String idUserFarmer,
+    required String farmerGroup,
     required String nameFarmer,
     required String information,
     required String reporting,
-    required String reportingDetail,
+    required String detailReporting,
     required String submissionDate,
-    required String acceptedDate,
     required String completionDate,
   }) = _Report;
 

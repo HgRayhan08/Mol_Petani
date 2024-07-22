@@ -125,13 +125,9 @@ class _TableHistoryAcceptedKuotaState
           rows = data.asMap().entries.map<PlutoRow>((e) {
             return PlutoRow(
               cells: {
-                'no': PlutoCell(
-                    value:
-                        e.key + 1), // Assuming 'no' is a property in your data
-                'name': PlutoCell(
-                    value: e.value
-                        .leaderName), // Assuming 'name' is a property in your data
-                'address': PlutoCell(value: e.value.nameGroupFarmer),
+                'no': PlutoCell(value: e.key + 1),
+                'name': PlutoCell(value: e.value.leaderName),
+                'address': PlutoCell(value: e.value.nameFarmerGroup),
                 'year': PlutoCell(value: e.value.year),
                 'action': PlutoCell(value: e.value),
               },

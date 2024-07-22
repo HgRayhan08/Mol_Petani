@@ -135,9 +135,9 @@ class _TableDistributionDataState extends ConsumerState<TableDistributionData> {
                         e.key + 1), // Assuming 'no' is a property in your data
                 'nik': PlutoCell(
                     value: e.value
-                        .familyIdentificationNumber), // Assuming 'name' is a property in your data
+                        .nik), // Assuming 'name' is a property in your data
                 'nama': PlutoCell(value: e.value.name),
-                'nomor': PlutoCell(value: e.value.mobileNumber),
+                'nomor': PlutoCell(value: e.value.noHp),
                 'action': PlutoCell(value: e.value),
               },
             );

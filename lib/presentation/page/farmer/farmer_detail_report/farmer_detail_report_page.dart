@@ -4,13 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:mol_petani/domain/entities/report.dart';
 import 'package:mol_petani/presentation/misc/build_context_alert_dialog.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
-import 'package:mol_petani/presentation/page/farmer/farmer_detail_report/method/information_report.dart';
 import 'package:mol_petani/presentation/page/farmer/farmer_detail_report/mobile/mobile_detail_report.dart';
 import 'package:mol_petani/presentation/page/farmer/farmer_detail_report/website/website_detail_report.dart';
 import 'package:mol_petani/presentation/provider/report/report_provider.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/widgets/appbar_custom_widget.dart';
-import 'package:mol_petani/presentation/widgets/button_submission_widget.dart';
 import 'package:mol_petani/presentation/widgets/platform_widget.dart';
 
 class FarmerDetailReportPage extends ConsumerWidget {
@@ -32,7 +30,7 @@ class FarmerDetailReportPage extends ConsumerWidget {
           height: height,
           width: width,
           title: "detail Pelaporan",
-          content: data.groupFarmer,
+          content: data.farmerGroup,
           subContext: Text(
             " Keterangan : ${data.information}",
             style: regulerReguler.copyWith(color: Colors.white),

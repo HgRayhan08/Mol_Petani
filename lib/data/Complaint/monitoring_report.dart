@@ -27,14 +27,13 @@ class MonitoringReport implements ReportRepository {
     await create.doc().set({
       "idGrupFarmer": idGrupFarmer,
       "idPPL": idPPL,
-      "idFarmer": idFarmer,
-      "groupFarmer": groupFarmer,
+      "idUserFarmer": idFarmer,
+      "farmerGroup": groupFarmer,
       "nameFarmer": nameFarmer,
       "information": information,
       "reporting": reporting,
-      "reportingDetail": reportingDetail,
+      "detailReporting": reportingDetail,
       "submissionDate": submissionDate,
-      "acceptedDate": "",
       "completionDate": "",
     });
     DocumentSnapshot<Map<String, dynamic>> result = await create.doc().get();
@@ -58,14 +57,13 @@ class MonitoringReport implements ReportRepository {
                   idDocument: e.id,
                   idGrupFarmer: e["idGrupFarmer"],
                   idPPL: e["idPPL"],
-                  idFarmer: e["idFarmer"],
-                  groupFarmer: e["groupFarmer"],
+                  idUserFarmer: e["idUserFarmer"],
+                  farmerGroup: e["groupFarmer"],
                   nameFarmer: e["nameFarmer"],
                   information: e["information"],
                   reporting: e["reporting"],
-                  reportingDetail: e["reportingDetail"],
+                  detailReporting: e["detailReporting"],
                   submissionDate: e["submissionDate"],
-                  acceptedDate: e["acceptedDate"],
                   completionDate: e["completionDate"]))
               .toList(),
         );
@@ -95,14 +93,13 @@ class MonitoringReport implements ReportRepository {
                   idDocument: e.id,
                   idGrupFarmer: e["idGrupFarmer"],
                   idPPL: e["idPPL"],
-                  idFarmer: e["idFarmer"],
-                  groupFarmer: e["groupFarmer"],
+                  idUserFarmer: e["idUserFarmer"],
+                  farmerGroup: e["groupFarmer"],
                   nameFarmer: e["nameFarmer"],
                   information: e["information"],
                   reporting: e["reporting"],
-                  reportingDetail: e["reportingDetail"],
+                  detailReporting: e["detailReporting"],
                   submissionDate: e["submissionDate"],
-                  acceptedDate: e["acceptedDate"],
                   completionDate: e["completionDate"]))
               .toList(),
         );

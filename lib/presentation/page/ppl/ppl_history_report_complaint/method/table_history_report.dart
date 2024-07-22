@@ -119,7 +119,7 @@ class _TableHistoryReportState extends ConsumerState<TableHistoryReport> {
               cells: {
                 'no': PlutoCell(value: e.key + 1),
                 'nama': PlutoCell(value: e.value.nameFarmer),
-                'kelompok': PlutoCell(value: e.value.groupFarmer),
+                'kelompok': PlutoCell(value: e.value.farmerGroup),
                 'tanggal': PlutoCell(value: e.value.completionDate),
                 'status': PlutoCell(value: e.value.information),
                 'action': PlutoCell(value: e.value),

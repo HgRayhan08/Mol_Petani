@@ -29,7 +29,7 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
       "idGrupFarmers": idGrupFarmers,
       "idPPL": idPPL,
       "leaderName": leaderName,
-      "grupFarmer": grupFarmer,
+      "farmerGroup": grupFarmer,
       "village": village,
       "forYear": forYear,
       "date": date,
@@ -65,7 +65,7 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
                 village: e["village"],
                 forYear: e["forYear"],
                 date: e["date"],
-                grupFarmer: e["grupFarmer"],
+                farmerFroup: e["grupFarmer"],
                 information: e["information"],
               ),
             )
@@ -98,6 +98,7 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
   Future<Result<SupportingDataFertilizer>> additionalDataSubmission({
     required String idSubmission,
     required String idKelompokTani,
+    required String idPpl,
     required String namaPetani,
     required String nik,
     required double luasLahan,
@@ -108,9 +109,9 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
     CollectionReference<Map<String, dynamic>> submission =
         _firebaseFirestore.collection("Addantional_Data_Fertilizer_Submission");
     await submission.doc().set({
-      "idSubmission": idSubmission,
-      "idKelompokTani": idKelompokTani,
-      "namaPetani": namaPetani,
+      "idPpl": idPpl,
+      "idFarmerGroup": idKelompokTani,
+      "farmerName": namaPetani,
       "nik": nik,
       "luasLahan": luasLahan,
       "fotoKtp": fotoKtp,
@@ -140,13 +141,15 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
         return Result.success(result.docs
             .map(
               (e) => SupportingDataFertilizer(
-                idKelompokTani: e["idKelompokTani"],
-                namaPetani: e["namaPetani"],
+                idPpl: e["idPpl"],
+                idFarmerGroup: e["idFarmerGroup"],
+                farmername: e["farmername"],
                 nik: e["nik"],
                 luasLahan: e["luasLahan"],
                 fotoKtp: e["fotoKtp"],
                 fotoKK: e["fotoKK"],
                 fotoPajak: e["fotoPajak"],
+                idDocument: e.id,
               ),
             )
             .toList());
@@ -177,7 +180,7 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
             (e) => SubmissionKuotaFertilizer(
               idDocument: e.id,
               idPPL: e["idPPL"],
-              idGroupFarmer: e["idGroupFarmer"],
+              idFarmerGroup: e["idGroupFarmer"],
               idDistributor: e["idDistributor"],
               information: e["information"],
               year: e["year"],
@@ -186,8 +189,8 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
               acceptDate: e["acceptDate"],
               nameDistributor: e["nameDistributor"],
               leaderName: e["leaderName"],
-              nameGroupFarmer: e["nameGroupFarmer"],
-              nameAcceptGroupFarmer: e["nameAcceptGroupFarmer"],
+              nameFarmerGroup: e["nameGroupFarmer"],
+              nameAcceptFarmerGroup: e["nameAcceptGroupFarmer"],
               nameSendDistributor: e["nameSendDistributor"],
               sendUrea: e["sendUrea"],
               sendPoska: e["sendPoska"],
@@ -253,7 +256,7 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
         result.docs
             .map((e) => DistributionFertilizerFarmer(
                   idDocumennt: e.id,
-                  idGroupFarmer: e["idGroupFarmer"],
+                  idFarmerGroup: e["idGroupFarmer"],
                   idUserFarmer: e["idUserFarmer"],
                   idPPL: e["idPPL"],
                   farmerName: e["farmerName"],
@@ -358,7 +361,7 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
                 village: e["village"],
                 forYear: e["forYear"],
                 date: e["date"],
-                grupFarmer: e["grupFarmer"],
+                farmerFroup: e["grupFarmer"],
                 information: e["information"],
               ),
             )
@@ -386,7 +389,7 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
             .map(
               (e) => SubmissionKuotaFertilizer(
                 idPPL: e["idPPL"],
-                idGroupFarmer: e["idGroupFarmer"],
+                idFarmerGroup: e["idGroupFarmer"],
                 idDistributor: e["idDistributor"],
                 information: e["information"],
                 year: e["year"],
@@ -395,8 +398,8 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
                 acceptDate: e["acceptDate"],
                 leaderName: e["leaderName"],
                 nameDistributor: e["nameDistributor"],
-                nameGroupFarmer: e["nameGroupFarmer"],
-                nameAcceptGroupFarmer: e["nameAcceptGroupFarmer"],
+                nameFarmerGroup: e["nameGroupFarmer"],
+                nameAcceptFarmerGroup: e["nameAcceptGroupFarmer"],
                 nameSendDistributor: e["nameSendDistributor"],
                 sendUrea: e["sendUrea"],
                 sendPoska: e["sendPoska"],
@@ -433,7 +436,7 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
         _firebaseFirestore.collection('Fertilizer_Distribution_Kuota');
     await create.doc().set({
       "idPPL": idPPL,
-      "idGroupFarmer": idGroupFarmer,
+      "idFarmerGroup": idGroupFarmer,
       "idDistributor": idDistributor,
       "information": "Send",
       "year": year,
@@ -442,8 +445,8 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
       "acceptDate": "",
       "leaderName": leaderName,
       "nameDistributor": nameDistributor,
-      "nameGroupFarmer": nameGroupFarmer,
-      "nameAcceptGroupFarmer": "",
+      "nameFarmerGroup": nameGroupFarmer,
+      "nameAcceptFarmerGroup": "",
       "nameSendDistributor": "",
       "sendUrea": sendUrea,
       "sendPoska": sendPoska,
@@ -500,7 +503,7 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
             (e) => SubmissionKuotaFertilizer(
               idDocument: e.id,
               idPPL: e["idPPL"],
-              idGroupFarmer: e["idGroupFarmer"],
+              idFarmerGroup: e["idGroupFarmer"],
               idDistributor: e["idDistributor"],
               information: e["information"],
               year: e["year"],
@@ -509,8 +512,8 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
               acceptDate: e["acceptDate"],
               leaderName: e["leaderName"],
               nameDistributor: e["nameDistributor"],
-              nameGroupFarmer: e["nameGroupFarmer"],
-              nameAcceptGroupFarmer: e["nameAcceptGroupFarmer"],
+              nameFarmerGroup: e["nameGroupFarmer"],
+              nameAcceptFarmerGroup: e["nameAcceptGroupFarmer"],
               nameSendDistributor: e["nameSendDistributor"],
               sendUrea: e["sendUrea"],
               sendPoska: e["sendPoska"],
@@ -602,7 +605,7 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
         result.docs
             .map((e) => DistributionFertilizerFarmer(
                   idDocumennt: e.id,
-                  idGroupFarmer: e["idGroupFarmer"],
+                  idFarmerGroup: e["idGroupFarmer"],
                   idUserFarmer: e['idUserFarmer'],
                   idPPL: e["idPPL"],
                   farmerName: e["farmerName"],

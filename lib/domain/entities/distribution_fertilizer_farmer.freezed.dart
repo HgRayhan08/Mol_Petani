@@ -22,9 +22,9 @@ DistributionFertilizerFarmer _$DistributionFertilizerFarmerFromJson(
 /// @nodoc
 mixin _$DistributionFertilizerFarmer {
   String? get idDocumennt => throw _privateConstructorUsedError;
-  String get idGroupFarmer => throw _privateConstructorUsedError;
-  String get idUserFarmer => throw _privateConstructorUsedError;
   String get idPPL => throw _privateConstructorUsedError;
+  String get idFarmerGroup => throw _privateConstructorUsedError;
+  String get idUserFarmer => throw _privateConstructorUsedError;
   String get farmerName => throw _privateConstructorUsedError;
   String get year => throw _privateConstructorUsedError;
   String get distribution => throw _privateConstructorUsedError;
@@ -53,9 +53,9 @@ abstract class $DistributionFertilizerFarmerCopyWith<$Res> {
   @useResult
   $Res call(
       {String? idDocumennt,
-      String idGroupFarmer,
-      String idUserFarmer,
       String idPPL,
+      String idFarmerGroup,
+      String idUserFarmer,
       String farmerName,
       String year,
       String distribution,
@@ -84,9 +84,9 @@ class _$DistributionFertilizerFarmerCopyWithImpl<$Res,
   @override
   $Res call({
     Object? idDocumennt = freezed,
-    Object? idGroupFarmer = null,
-    Object? idUserFarmer = null,
     Object? idPPL = null,
+    Object? idFarmerGroup = null,
+    Object? idUserFarmer = null,
     Object? farmerName = null,
     Object? year = null,
     Object? distribution = null,
@@ -104,17 +104,17 @@ class _$DistributionFertilizerFarmerCopyWithImpl<$Res,
           ? _value.idDocumennt
           : idDocumennt // ignore: cast_nullable_to_non_nullable
               as String?,
-      idGroupFarmer: null == idGroupFarmer
-          ? _value.idGroupFarmer
-          : idGroupFarmer // ignore: cast_nullable_to_non_nullable
+      idPPL: null == idPPL
+          ? _value.idPPL
+          : idPPL // ignore: cast_nullable_to_non_nullable
+              as String,
+      idFarmerGroup: null == idFarmerGroup
+          ? _value.idFarmerGroup
+          : idFarmerGroup // ignore: cast_nullable_to_non_nullable
               as String,
       idUserFarmer: null == idUserFarmer
           ? _value.idUserFarmer
           : idUserFarmer // ignore: cast_nullable_to_non_nullable
-              as String,
-      idPPL: null == idPPL
-          ? _value.idPPL
-          : idPPL // ignore: cast_nullable_to_non_nullable
               as String,
       farmerName: null == farmerName
           ? _value.farmerName
@@ -175,9 +175,9 @@ abstract class _$$DistributionFertilizerFarmerImplCopyWith<$Res>
   @useResult
   $Res call(
       {String? idDocumennt,
-      String idGroupFarmer,
-      String idUserFarmer,
       String idPPL,
+      String idFarmerGroup,
+      String idUserFarmer,
       String farmerName,
       String year,
       String distribution,
@@ -205,9 +205,9 @@ class __$$DistributionFertilizerFarmerImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? idDocumennt = freezed,
-    Object? idGroupFarmer = null,
-    Object? idUserFarmer = null,
     Object? idPPL = null,
+    Object? idFarmerGroup = null,
+    Object? idUserFarmer = null,
     Object? farmerName = null,
     Object? year = null,
     Object? distribution = null,
@@ -225,17 +225,17 @@ class __$$DistributionFertilizerFarmerImplCopyWithImpl<$Res>
           ? _value.idDocumennt
           : idDocumennt // ignore: cast_nullable_to_non_nullable
               as String?,
-      idGroupFarmer: null == idGroupFarmer
-          ? _value.idGroupFarmer
-          : idGroupFarmer // ignore: cast_nullable_to_non_nullable
+      idPPL: null == idPPL
+          ? _value.idPPL
+          : idPPL // ignore: cast_nullable_to_non_nullable
+              as String,
+      idFarmerGroup: null == idFarmerGroup
+          ? _value.idFarmerGroup
+          : idFarmerGroup // ignore: cast_nullable_to_non_nullable
               as String,
       idUserFarmer: null == idUserFarmer
           ? _value.idUserFarmer
           : idUserFarmer // ignore: cast_nullable_to_non_nullable
-              as String,
-      idPPL: null == idPPL
-          ? _value.idPPL
-          : idPPL // ignore: cast_nullable_to_non_nullable
               as String,
       farmerName: null == farmerName
           ? _value.farmerName
@@ -291,9 +291,9 @@ class _$DistributionFertilizerFarmerImpl
     implements _DistributionFertilizerFarmer {
   _$DistributionFertilizerFarmerImpl(
       {this.idDocumennt,
-      required this.idGroupFarmer,
-      required this.idUserFarmer,
       required this.idPPL,
+      required this.idFarmerGroup,
+      required this.idUserFarmer,
       required this.farmerName,
       required this.year,
       required this.distribution,
@@ -313,11 +313,11 @@ class _$DistributionFertilizerFarmerImpl
   @override
   final String? idDocumennt;
   @override
-  final String idGroupFarmer;
+  final String idPPL;
+  @override
+  final String idFarmerGroup;
   @override
   final String idUserFarmer;
-  @override
-  final String idPPL;
   @override
   final String farmerName;
   @override
@@ -343,7 +343,7 @@ class _$DistributionFertilizerFarmerImpl
 
   @override
   String toString() {
-    return 'DistributionFertilizerFarmer(idDocumennt: $idDocumennt, idGroupFarmer: $idGroupFarmer, idUserFarmer: $idUserFarmer, idPPL: $idPPL, farmerName: $farmerName, year: $year, distribution: $distribution, information: $information, distribusiDate: $distribusiDate, pickupDate: $pickupDate, plant: $plant, ureaDistribution: $ureaDistribution, poskaDistribution: $poskaDistribution, ureaPickup: $ureaPickup, poskaPickup: $poskaPickup)';
+    return 'DistributionFertilizerFarmer(idDocumennt: $idDocumennt, idPPL: $idPPL, idFarmerGroup: $idFarmerGroup, idUserFarmer: $idUserFarmer, farmerName: $farmerName, year: $year, distribution: $distribution, information: $information, distribusiDate: $distribusiDate, pickupDate: $pickupDate, plant: $plant, ureaDistribution: $ureaDistribution, poskaDistribution: $poskaDistribution, ureaPickup: $ureaPickup, poskaPickup: $poskaPickup)';
   }
 
   @override
@@ -353,11 +353,11 @@ class _$DistributionFertilizerFarmerImpl
             other is _$DistributionFertilizerFarmerImpl &&
             (identical(other.idDocumennt, idDocumennt) ||
                 other.idDocumennt == idDocumennt) &&
-            (identical(other.idGroupFarmer, idGroupFarmer) ||
-                other.idGroupFarmer == idGroupFarmer) &&
+            (identical(other.idPPL, idPPL) || other.idPPL == idPPL) &&
+            (identical(other.idFarmerGroup, idFarmerGroup) ||
+                other.idFarmerGroup == idFarmerGroup) &&
             (identical(other.idUserFarmer, idUserFarmer) ||
                 other.idUserFarmer == idUserFarmer) &&
-            (identical(other.idPPL, idPPL) || other.idPPL == idPPL) &&
             (identical(other.farmerName, farmerName) ||
                 other.farmerName == farmerName) &&
             (identical(other.year, year) || other.year == year) &&
@@ -385,9 +385,9 @@ class _$DistributionFertilizerFarmerImpl
   int get hashCode => Object.hash(
       runtimeType,
       idDocumennt,
-      idGroupFarmer,
-      idUserFarmer,
       idPPL,
+      idFarmerGroup,
+      idUserFarmer,
       farmerName,
       year,
       distribution,
@@ -420,9 +420,9 @@ abstract class _DistributionFertilizerFarmer
     implements DistributionFertilizerFarmer {
   factory _DistributionFertilizerFarmer(
       {final String? idDocumennt,
-      required final String idGroupFarmer,
-      required final String idUserFarmer,
       required final String idPPL,
+      required final String idFarmerGroup,
+      required final String idUserFarmer,
       required final String farmerName,
       required final String year,
       required final String distribution,
@@ -441,11 +441,11 @@ abstract class _DistributionFertilizerFarmer
   @override
   String? get idDocumennt;
   @override
-  String get idGroupFarmer;
+  String get idPPL;
+  @override
+  String get idFarmerGroup;
   @override
   String get idUserFarmer;
-  @override
-  String get idPPL;
   @override
   String get farmerName;
   @override

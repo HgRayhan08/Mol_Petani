@@ -117,7 +117,7 @@ class _TableComplaintReportState extends ConsumerState<TableComplaintReport> {
                         e.key + 1), // Assuming 'no' is a property in your data
                 // Assuming 'name' is a property in your data
                 'nama': PlutoCell(value: e.value.nameFarmer),
-                'kelompok': PlutoCell(value: e.value.groupFarmer),
+                'kelompok': PlutoCell(value: e.value.farmerGroup),
                 'status': PlutoCell(value: e.value.information),
                 'action': PlutoCell(value: e.value),
               },

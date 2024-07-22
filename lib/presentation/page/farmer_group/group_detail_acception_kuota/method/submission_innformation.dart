@@ -33,7 +33,7 @@ Widget submissionInformation(width, height,
             style: regulerReguler,
           ),
           Text(
-            "Kelompok ${data.nameGroupFarmer}",
+            "Kelompok ${data.nameFarmerGroup}",
             style: regulerReguler.copyWith(
               fontWeight: FontWeight.bold,
             ),

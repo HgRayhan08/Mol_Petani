@@ -77,11 +77,11 @@ class _DropdownHistoryComplaintState extends State<DropdownHistoryComplaint> {
                                   Text(widget.data.information)
                                 ],
                               ),
-                              Text(widget.data.groupFarmer)
+                              Text(widget.data.farmerGroup)
                             ],
                           ),
                           SizedBox(height: height * 0.01),
-                          Text(widget.data.reportingDetail),
+                          Text(widget.data.detailReporting),
                           SizedBox(height: height * 0.03),
                         ],
                       ),

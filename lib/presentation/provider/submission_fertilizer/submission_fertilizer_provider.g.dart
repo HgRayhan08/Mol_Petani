@@ -7,7 +7,7 @@ part of 'submission_fertilizer_provider.dart';
 // **************************************************************************
 
 String _$fertilizerSubmissionHash() =>
-    r'a6ca30708ba8a2209c5520be7cef14f5113819a2';
+    r'5ff21a5ab98fe0f03aeae6ff263263704e7b5042';
 
 /// See also [FertilizerSubmission].
 @ProviderFor(FertilizerSubmission)

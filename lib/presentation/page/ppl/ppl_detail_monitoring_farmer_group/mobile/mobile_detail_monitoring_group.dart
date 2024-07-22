@@ -40,7 +40,7 @@ class MobileDetailMonitoringGroup extends StatelessWidget {
                     color: Colors.white, fontWeight: FontWeight.bold),
               ),
               Text(
-                "Kelompok tani ${data.nameGroupFarmer}",
+                "Kelompok tani ${data.nameFarmerGroup}",
                 style: largeReguler.copyWith(color: Colors.white),
               ),
               SizedBox(

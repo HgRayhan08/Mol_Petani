@@ -9,8 +9,10 @@ part of 'supporting_data_fertilizer.dart';
 _$SupportingDataFertilizerImpl _$$SupportingDataFertilizerImplFromJson(
         Map<String, dynamic> json) =>
     _$SupportingDataFertilizerImpl(
-      idKelompokTani: json['idKelompokTani'] as String,
-      namaPetani: json['namaPetani'] as String,
+      idDocument: json['idDocument'] as String?,
+      idPpl: json['idPpl'] as String,
+      idFarmerGroup: json['idFarmerGroup'] as String,
+      farmername: json['farmername'] as String,
       nik: json['nik'] as String,
       luasLahan: (json['luasLahan'] as num).toDouble(),
       fotoKtp: json['fotoKtp'] as String,
@@ -21,8 +23,10 @@ _$SupportingDataFertilizerImpl _$$SupportingDataFertilizerImplFromJson(
 Map<String, dynamic> _$$SupportingDataFertilizerImplToJson(
         _$SupportingDataFertilizerImpl instance) =>
     <String, dynamic>{
-      'idKelompokTani': instance.idKelompokTani,
-      'namaPetani': instance.namaPetani,
+      'idDocument': instance.idDocument,
+      'idPpl': instance.idPpl,
+      'idFarmerGroup': instance.idFarmerGroup,
+      'farmername': instance.farmername,
       'nik': instance.nik,
       'luasLahan': instance.luasLahan,
       'fotoKtp': instance.fotoKtp,

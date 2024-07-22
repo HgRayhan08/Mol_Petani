@@ -11,7 +11,7 @@ class AreaLocation with _$AreaLocation {
     required String idUserFarmer,
     required String idPPL,
     String? idDocument,
-    @LatLngConverter() required List<LatLng> point,
+    @LatLngConverter() required List<LatLng> cordinatPoint,
   }) = _AreaLocation;
 
   factory AreaLocation.fromJson(Map<String, dynamic> json) =>

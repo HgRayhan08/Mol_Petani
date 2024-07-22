@@ -30,7 +30,7 @@ class PplDetailComplaintReportPage extends ConsumerWidget {
             height: height,
             width: width,
             title: "detail Pelaporan",
-            content: data.groupFarmer,
+            content: data.farmerGroup,
             subContext: Text(
               " Keterangan : ${data.information}",
               style: regulerReguler.copyWith(color: Colors.white),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mol_petani/domain/entities/submission_kuota_fertilizer.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
-import 'package:mol_petani/presentation/widgets/data_information_widget.dart';
 
 Widget webAccepted(
   width,
@@ -25,7 +24,7 @@ Widget webAccepted(
                   Radius.circular(5),
                 ),
               ),
-              child: Text(data.nameAcceptGroupFarmer),
+              child: Text(data.nameAcceptFarmerGroup),
             )
           ],
         ),

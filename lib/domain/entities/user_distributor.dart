@@ -7,16 +7,16 @@ part 'user_distributor.g.dart';
 class UserDistrubutor with _$UserDistrubutor {
   factory UserDistrubutor({
     required String uid,
-    required String name,
-    required String email,
-    required String information,
-    required String familyIdentificationNumber,
     required String idPPL,
-    String? fotoUrl,
-    required String address,
+    required String name,
     required String toko,
+    required String email,
+    String? fotoUrl,
     @Default([]) List? scope,
-    required int mobileNumber,
+    required String information,
+    required String nik,
+    required String alamat,
+    required int noHp,
   }) = _UserDistrubutor;
 
   factory UserDistrubutor.fromJson(Map<String, dynamic> json) =>

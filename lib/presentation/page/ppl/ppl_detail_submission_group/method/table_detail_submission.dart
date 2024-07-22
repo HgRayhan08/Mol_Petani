@@ -120,13 +120,8 @@ class _TableDetailSubmissionState extends ConsumerState<TableDetailSubmission> {
           rows = data.asMap().entries.map<PlutoRow>((e) {
             return PlutoRow(
               cells: {
-                'no': PlutoCell(
-                    value:
-                        e.key + 1), // Assuming 'no' is a property in your data
-                'nik': PlutoCell(
-                    value: e.value
-                        .nik), // Assuming 'name' is a property in your data
-                'nama': PlutoCell(value: e.value.namaPetani),
+                'no': PlutoCell(value: e.key + 1),
+                'nik': PlutoCell(value: e.value.nik),
                 'nomor': PlutoCell(value: e.value.luasLahan),
                 'action': PlutoCell(value: e.value),
               },

@@ -42,7 +42,7 @@ class MobileDetailSupporting extends StatelessWidget {
               ),
               TitleWidget(
                 title: "Nama",
-                subTitle: data.namaPetani,
+                subTitle: data.farmername,
                 boolSub: true,
                 colorTitle: Colors.white,
               ),

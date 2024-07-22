@@ -81,7 +81,7 @@ class WebDetailDistributor extends StatelessWidget {
                         child: Padding(
                           padding: EdgeInsets.only(bottom: height * 0.01),
                           child: Text(
-                            ": ${user.mobileNumber}",
+                            ": ${user.noHp}",
                             style: regulerReguler,
                           ),
                         ),
@@ -100,7 +100,7 @@ class WebDetailDistributor extends StatelessWidget {
                         child: Padding(
                           padding: EdgeInsets.only(bottom: height * 0.01),
                           child: Text(
-                            ": ${user.address}",
+                            ": ${user.alamat}",
                             style: regulerReguler,
                           ),
                         ),

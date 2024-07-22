@@ -7,9 +7,9 @@ part 'distribution_fertilizer_farmer.g.dart';
 class DistributionFertilizerFarmer with _$DistributionFertilizerFarmer {
   factory DistributionFertilizerFarmer({
     String? idDocumennt,
-    required String idGroupFarmer,
-    required String idUserFarmer,
     required String idPPL,
+    required String idFarmerGroup,
+    required String idUserFarmer,
     required String farmerName,
     required String year,
     required String distribution,

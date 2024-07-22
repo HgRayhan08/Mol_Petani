@@ -16,16 +16,18 @@ Widget informationPurposeGroup(SubmissionKuotaFertilizer data, width, height) =>
       ),
       decoration: BoxDecoration(
         color: blueLight,
-        borderRadius:defaultTargetPlatform == TargetPlatform.iOS ?BorderRadius.all(Radius.circular(20)) :BorderRadius.only(
-          bottomLeft: Radius.circular(width * 0.05),
-          bottomRight: Radius.circular(width * 0.05),
-        ),
+        borderRadius: defaultTargetPlatform == TargetPlatform.iOS
+            ? BorderRadius.all(Radius.circular(20))
+            : BorderRadius.only(
+                bottomLeft: Radius.circular(width * 0.05),
+                bottomRight: Radius.circular(width * 0.05),
+              ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            data.nameGroupFarmer,
+            data.nameFarmerGroup,
             style: extraLarge.copyWith(
                 fontWeight: FontWeight.bold, color: Colors.white),
           ),

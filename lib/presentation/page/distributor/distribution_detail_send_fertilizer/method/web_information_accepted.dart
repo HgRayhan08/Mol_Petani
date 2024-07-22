@@ -64,7 +64,7 @@ Widget webInformationAccepted(
                 child: Padding(
                   padding: EdgeInsets.only(bottom: height * 0.01),
                   child: Text(
-                    ": ${user.nameAcceptGroupFarmer}",
+                    ": ${user.nameAcceptFarmerGroup}",
                     style: regulerReguler,
                   ),
                 ),

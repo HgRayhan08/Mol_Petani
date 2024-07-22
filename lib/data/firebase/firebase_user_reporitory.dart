@@ -102,16 +102,16 @@ class FirebaseUserRepository implements UserRepository {
         _firebaseFirestore.collection("User_Distributor");
     await users.doc(uid).set({
       "uid": uid,
+      "idPPL": idPPL,
       "name": name,
       "email": email,
       "information": information,
       "fotoUrl": fotoUrl,
       "scope": scope,
       "toko": toko,
-      "idPPL": idPPL,
-      "familyIdentificationNumber": familyIdentificationNumber,
-      "address": address,
-      "mobileNumber": mobileNumber,
+      "nik": familyIdentificationNumber,
+      "alamat": address,
+      "noHp": mobileNumber,
     });
     print("berhasil create");
     DocumentSnapshot<Map<String, dynamic>> result = await users.doc(uid).get();
@@ -268,12 +268,12 @@ class FirebaseUserRepository implements UserRepository {
                 email: e["email"],
                 toko: e["toko"],
                 information: e["information"],
-                familyIdentificationNumber: e["familyIdentificationNumber"],
+                nik: e["nik"],
                 idPPL: e["idPPL"],
                 fotoUrl: e["fotoUrl"],
-                address: e["address"],
+                alamat: e["alamat"],
                 scope: e["scope"],
-                mobileNumber: e["mobileNumber"],
+                noHp: e["noHp"],
               ),
             )
             .toList());

@@ -10,9 +10,9 @@ _$DistributionFertilizerFarmerImpl _$$DistributionFertilizerFarmerImplFromJson(
         Map<String, dynamic> json) =>
     _$DistributionFertilizerFarmerImpl(
       idDocumennt: json['idDocumennt'] as String?,
-      idGroupFarmer: json['idGroupFarmer'] as String,
-      idUserFarmer: json['idUserFarmer'] as String,
       idPPL: json['idPPL'] as String,
+      idFarmerGroup: json['idFarmerGroup'] as String,
+      idUserFarmer: json['idUserFarmer'] as String,
       farmerName: json['farmerName'] as String,
       year: json['year'] as String,
       distribution: json['distribution'] as String,
@@ -30,9 +30,9 @@ Map<String, dynamic> _$$DistributionFertilizerFarmerImplToJson(
         _$DistributionFertilizerFarmerImpl instance) =>
     <String, dynamic>{
       'idDocumennt': instance.idDocumennt,
-      'idGroupFarmer': instance.idGroupFarmer,
-      'idUserFarmer': instance.idUserFarmer,
       'idPPL': instance.idPPL,
+      'idFarmerGroup': instance.idFarmerGroup,
+      'idUserFarmer': instance.idUserFarmer,
       'farmerName': instance.farmerName,
       'year': instance.year,
       'distribution': instance.distribution,

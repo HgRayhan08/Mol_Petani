@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mol_petani/domain/entities/submission_kuota_fertilizer.dart';
-import 'package:mol_petani/presentation/misc/build_context_alert_dialog.dart';
 import 'package:mol_petani/presentation/page/distributor/distribution_detail_send_fertilizer/distribution_detail_send_fertilizer_page.dart';
-import 'package:mol_petani/presentation/page/distributor/distributor_update_sends/ditributor_update_sends.dart';
-import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/provider/submission_fertilizer/submission_fertilizer_provider.dart';
 import 'package:pluto_grid/pluto_grid.dart';
 
@@ -114,7 +111,7 @@ class _TableHistorySendFertilizerState
                 'name': PlutoCell(
                     value: e.value
                         .leaderName), // Assuming 'name' is a property in your data
-                'address': PlutoCell(value: e.value.nameGroupFarmer),
+                'address': PlutoCell(value: e.value.nameFarmerGroup),
                 'year': PlutoCell(value: e.value.year),
                 'action': PlutoCell(value: e.value),
               },

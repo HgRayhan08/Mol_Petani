@@ -45,7 +45,7 @@ Widget tableDetailAcception(
                 child: Padding(
                   padding: EdgeInsets.only(bottom: height * 0.01),
                   child: Text(
-                    ": ${user.nameGroupFarmer}",
+                    ": ${user.nameFarmerGroup}",
                     style: regulerReguler,
                   ),
                 ),

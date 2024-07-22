@@ -26,7 +26,7 @@ mixin _$DataSubmissionGroup {
   String get village => throw _privateConstructorUsedError;
   String get forYear => throw _privateConstructorUsedError;
   String get date => throw _privateConstructorUsedError;
-  String get grupFarmer => throw _privateConstructorUsedError;
+  String get farmerFroup => throw _privateConstructorUsedError;
   String get information => throw _privateConstructorUsedError;
   String? get idDocument => throw _privateConstructorUsedError;
 
@@ -49,7 +49,7 @@ abstract class $DataSubmissionGroupCopyWith<$Res> {
       String village,
       String forYear,
       String date,
-      String grupFarmer,
+      String farmerFroup,
       String information,
       String? idDocument});
 }
@@ -73,7 +73,7 @@ class _$DataSubmissionGroupCopyWithImpl<$Res, $Val extends DataSubmissionGroup>
     Object? village = null,
     Object? forYear = null,
     Object? date = null,
-    Object? grupFarmer = null,
+    Object? farmerFroup = null,
     Object? information = null,
     Object? idDocument = freezed,
   }) {
@@ -102,9 +102,9 @@ class _$DataSubmissionGroupCopyWithImpl<$Res, $Val extends DataSubmissionGroup>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String,
-      grupFarmer: null == grupFarmer
-          ? _value.grupFarmer
-          : grupFarmer // ignore: cast_nullable_to_non_nullable
+      farmerFroup: null == farmerFroup
+          ? _value.farmerFroup
+          : farmerFroup // ignore: cast_nullable_to_non_nullable
               as String,
       information: null == information
           ? _value.information
@@ -133,7 +133,7 @@ abstract class _$$DataSubmissionGroupImplCopyWith<$Res>
       String village,
       String forYear,
       String date,
-      String grupFarmer,
+      String farmerFroup,
       String information,
       String? idDocument});
 }
@@ -155,7 +155,7 @@ class __$$DataSubmissionGroupImplCopyWithImpl<$Res>
     Object? village = null,
     Object? forYear = null,
     Object? date = null,
-    Object? grupFarmer = null,
+    Object? farmerFroup = null,
     Object? information = null,
     Object? idDocument = freezed,
   }) {
@@ -184,9 +184,9 @@ class __$$DataSubmissionGroupImplCopyWithImpl<$Res>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String,
-      grupFarmer: null == grupFarmer
-          ? _value.grupFarmer
-          : grupFarmer // ignore: cast_nullable_to_non_nullable
+      farmerFroup: null == farmerFroup
+          ? _value.farmerFroup
+          : farmerFroup // ignore: cast_nullable_to_non_nullable
               as String,
       information: null == information
           ? _value.information
@@ -210,7 +210,7 @@ class _$DataSubmissionGroupImpl implements _DataSubmissionGroup {
       required this.village,
       required this.forYear,
       required this.date,
-      required this.grupFarmer,
+      required this.farmerFroup,
       required this.information,
       this.idDocument});
 
@@ -230,7 +230,7 @@ class _$DataSubmissionGroupImpl implements _DataSubmissionGroup {
   @override
   final String date;
   @override
-  final String grupFarmer;
+  final String farmerFroup;
   @override
   final String information;
   @override
@@ -238,7 +238,7 @@ class _$DataSubmissionGroupImpl implements _DataSubmissionGroup {
 
   @override
   String toString() {
-    return 'DataSubmissionGroup(idGrupFarmers: $idGrupFarmers, idPPL: $idPPL, leaderName: $leaderName, village: $village, forYear: $forYear, date: $date, grupFarmer: $grupFarmer, information: $information, idDocument: $idDocument)';
+    return 'DataSubmissionGroup(idGrupFarmers: $idGrupFarmers, idPPL: $idPPL, leaderName: $leaderName, village: $village, forYear: $forYear, date: $date, farmerFroup: $farmerFroup, information: $information, idDocument: $idDocument)';
   }
 
   @override
@@ -254,8 +254,8 @@ class _$DataSubmissionGroupImpl implements _DataSubmissionGroup {
             (identical(other.village, village) || other.village == village) &&
             (identical(other.forYear, forYear) || other.forYear == forYear) &&
             (identical(other.date, date) || other.date == date) &&
-            (identical(other.grupFarmer, grupFarmer) ||
-                other.grupFarmer == grupFarmer) &&
+            (identical(other.farmerFroup, farmerFroup) ||
+                other.farmerFroup == farmerFroup) &&
             (identical(other.information, information) ||
                 other.information == information) &&
             (identical(other.idDocument, idDocument) ||
@@ -265,7 +265,7 @@ class _$DataSubmissionGroupImpl implements _DataSubmissionGroup {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, idGrupFarmers, idPPL, leaderName,
-      village, forYear, date, grupFarmer, information, idDocument);
+      village, forYear, date, farmerFroup, information, idDocument);
 
   @JsonKey(ignore: true)
   @override
@@ -290,7 +290,7 @@ abstract class _DataSubmissionGroup implements DataSubmissionGroup {
       required final String village,
       required final String forYear,
       required final String date,
-      required final String grupFarmer,
+      required final String farmerFroup,
       required final String information,
       final String? idDocument}) = _$DataSubmissionGroupImpl;
 
@@ -310,7 +310,7 @@ abstract class _DataSubmissionGroup implements DataSubmissionGroup {
   @override
   String get date;
   @override
-  String get grupFarmer;
+  String get farmerFroup;
   @override
   String get information;
   @override

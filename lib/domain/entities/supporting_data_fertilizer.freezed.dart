@@ -21,8 +21,10 @@ SupportingDataFertilizer _$SupportingDataFertilizerFromJson(
 
 /// @nodoc
 mixin _$SupportingDataFertilizer {
-  String get idKelompokTani => throw _privateConstructorUsedError;
-  String get namaPetani => throw _privateConstructorUsedError;
+  String? get idDocument => throw _privateConstructorUsedError;
+  String get idPpl => throw _privateConstructorUsedError;
+  String get idFarmerGroup => throw _privateConstructorUsedError;
+  String get farmername => throw _privateConstructorUsedError;
   String get nik => throw _privateConstructorUsedError;
   double get luasLahan => throw _privateConstructorUsedError;
   String get fotoKtp => throw _privateConstructorUsedError;
@@ -42,8 +44,10 @@ abstract class $SupportingDataFertilizerCopyWith<$Res> {
       _$SupportingDataFertilizerCopyWithImpl<$Res, SupportingDataFertilizer>;
   @useResult
   $Res call(
-      {String idKelompokTani,
-      String namaPetani,
+      {String? idDocument,
+      String idPpl,
+      String idFarmerGroup,
+      String farmername,
       String nik,
       double luasLahan,
       String fotoKtp,
@@ -65,8 +69,10 @@ class _$SupportingDataFertilizerCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? idKelompokTani = null,
-    Object? namaPetani = null,
+    Object? idDocument = freezed,
+    Object? idPpl = null,
+    Object? idFarmerGroup = null,
+    Object? farmername = null,
     Object? nik = null,
     Object? luasLahan = null,
     Object? fotoKtp = null,
@@ -74,13 +80,21 @@ class _$SupportingDataFertilizerCopyWithImpl<$Res,
     Object? fotoPajak = null,
   }) {
     return _then(_value.copyWith(
-      idKelompokTani: null == idKelompokTani
-          ? _value.idKelompokTani
-          : idKelompokTani // ignore: cast_nullable_to_non_nullable
+      idDocument: freezed == idDocument
+          ? _value.idDocument
+          : idDocument // ignore: cast_nullable_to_non_nullable
+              as String?,
+      idPpl: null == idPpl
+          ? _value.idPpl
+          : idPpl // ignore: cast_nullable_to_non_nullable
               as String,
-      namaPetani: null == namaPetani
-          ? _value.namaPetani
-          : namaPetani // ignore: cast_nullable_to_non_nullable
+      idFarmerGroup: null == idFarmerGroup
+          ? _value.idFarmerGroup
+          : idFarmerGroup // ignore: cast_nullable_to_non_nullable
+              as String,
+      farmername: null == farmername
+          ? _value.farmername
+          : farmername // ignore: cast_nullable_to_non_nullable
               as String,
       nik: null == nik
           ? _value.nik
@@ -116,8 +130,10 @@ abstract class _$$SupportingDataFertilizerImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String idKelompokTani,
-      String namaPetani,
+      {String? idDocument,
+      String idPpl,
+      String idFarmerGroup,
+      String farmername,
       String nik,
       double luasLahan,
       String fotoKtp,
@@ -138,8 +154,10 @@ class __$$SupportingDataFertilizerImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? idKelompokTani = null,
-    Object? namaPetani = null,
+    Object? idDocument = freezed,
+    Object? idPpl = null,
+    Object? idFarmerGroup = null,
+    Object? farmername = null,
     Object? nik = null,
     Object? luasLahan = null,
     Object? fotoKtp = null,
@@ -147,13 +165,21 @@ class __$$SupportingDataFertilizerImplCopyWithImpl<$Res>
     Object? fotoPajak = null,
   }) {
     return _then(_$SupportingDataFertilizerImpl(
-      idKelompokTani: null == idKelompokTani
-          ? _value.idKelompokTani
-          : idKelompokTani // ignore: cast_nullable_to_non_nullable
+      idDocument: freezed == idDocument
+          ? _value.idDocument
+          : idDocument // ignore: cast_nullable_to_non_nullable
+              as String?,
+      idPpl: null == idPpl
+          ? _value.idPpl
+          : idPpl // ignore: cast_nullable_to_non_nullable
               as String,
-      namaPetani: null == namaPetani
-          ? _value.namaPetani
-          : namaPetani // ignore: cast_nullable_to_non_nullable
+      idFarmerGroup: null == idFarmerGroup
+          ? _value.idFarmerGroup
+          : idFarmerGroup // ignore: cast_nullable_to_non_nullable
+              as String,
+      farmername: null == farmername
+          ? _value.farmername
+          : farmername // ignore: cast_nullable_to_non_nullable
               as String,
       nik: null == nik
           ? _value.nik
@@ -183,8 +209,10 @@ class __$$SupportingDataFertilizerImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$SupportingDataFertilizerImpl implements _SupportingDataFertilizer {
   _$SupportingDataFertilizerImpl(
-      {required this.idKelompokTani,
-      required this.namaPetani,
+      {this.idDocument,
+      required this.idPpl,
+      required this.idFarmerGroup,
+      required this.farmername,
       required this.nik,
       required this.luasLahan,
       required this.fotoKtp,
@@ -195,9 +223,13 @@ class _$SupportingDataFertilizerImpl implements _SupportingDataFertilizer {
       _$$SupportingDataFertilizerImplFromJson(json);
 
   @override
-  final String idKelompokTani;
+  final String? idDocument;
   @override
-  final String namaPetani;
+  final String idPpl;
+  @override
+  final String idFarmerGroup;
+  @override
+  final String farmername;
   @override
   final String nik;
   @override
@@ -211,7 +243,7 @@ class _$SupportingDataFertilizerImpl implements _SupportingDataFertilizer {
 
   @override
   String toString() {
-    return 'SupportingDataFertilizer(idKelompokTani: $idKelompokTani, namaPetani: $namaPetani, nik: $nik, luasLahan: $luasLahan, fotoKtp: $fotoKtp, fotoKK: $fotoKK, fotoPajak: $fotoPajak)';
+    return 'SupportingDataFertilizer(idDocument: $idDocument, idPpl: $idPpl, idFarmerGroup: $idFarmerGroup, farmername: $farmername, nik: $nik, luasLahan: $luasLahan, fotoKtp: $fotoKtp, fotoKK: $fotoKK, fotoPajak: $fotoPajak)';
   }
 
   @override
@@ -219,10 +251,13 @@ class _$SupportingDataFertilizerImpl implements _SupportingDataFertilizer {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SupportingDataFertilizerImpl &&
-            (identical(other.idKelompokTani, idKelompokTani) ||
-                other.idKelompokTani == idKelompokTani) &&
-            (identical(other.namaPetani, namaPetani) ||
-                other.namaPetani == namaPetani) &&
+            (identical(other.idDocument, idDocument) ||
+                other.idDocument == idDocument) &&
+            (identical(other.idPpl, idPpl) || other.idPpl == idPpl) &&
+            (identical(other.idFarmerGroup, idFarmerGroup) ||
+                other.idFarmerGroup == idFarmerGroup) &&
+            (identical(other.farmername, farmername) ||
+                other.farmername == farmername) &&
             (identical(other.nik, nik) || other.nik == nik) &&
             (identical(other.luasLahan, luasLahan) ||
                 other.luasLahan == luasLahan) &&
@@ -234,8 +269,8 @@ class _$SupportingDataFertilizerImpl implements _SupportingDataFertilizer {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, idKelompokTani, namaPetani, nik,
-      luasLahan, fotoKtp, fotoKK, fotoPajak);
+  int get hashCode => Object.hash(runtimeType, idDocument, idPpl, idFarmerGroup,
+      farmername, nik, luasLahan, fotoKtp, fotoKK, fotoPajak);
 
   @JsonKey(ignore: true)
   @override
@@ -254,8 +289,10 @@ class _$SupportingDataFertilizerImpl implements _SupportingDataFertilizer {
 
 abstract class _SupportingDataFertilizer implements SupportingDataFertilizer {
   factory _SupportingDataFertilizer(
-      {required final String idKelompokTani,
-      required final String namaPetani,
+      {final String? idDocument,
+      required final String idPpl,
+      required final String idFarmerGroup,
+      required final String farmername,
       required final String nik,
       required final double luasLahan,
       required final String fotoKtp,
@@ -266,9 +303,13 @@ abstract class _SupportingDataFertilizer implements SupportingDataFertilizer {
       _$SupportingDataFertilizerImpl.fromJson;
 
   @override
-  String get idKelompokTani;
+  String? get idDocument;
   @override
-  String get namaPetani;
+  String get idPpl;
+  @override
+  String get idFarmerGroup;
+  @override
+  String get farmername;
   @override
   String get nik;
   @override

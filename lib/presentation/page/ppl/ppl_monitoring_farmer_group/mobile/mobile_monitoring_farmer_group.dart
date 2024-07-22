@@ -31,7 +31,7 @@ class MobileMonitoringFarmerGroup extends StatelessWidget {
                 child: ListTileKuotaWidget(
                   width: width,
                   height: height,
-                  title: data[index].nameGroupFarmer,
+                  title: data[index].nameFarmerGroup,
                   subTitle: data[index].information,
                   year: data[index].year,
                   submission: data[index].send.toString(),

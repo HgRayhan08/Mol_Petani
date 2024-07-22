@@ -119,7 +119,7 @@ class _TableSubmissionGroupState extends ConsumerState<TableSubmissionGroup> {
                         e.key + 1), // Assuming 'no' is a property in your data
                 'nik': PlutoCell(
                     value: e.value
-                        .grupFarmer), // Assuming 'name' is a property in your data
+                        .farmerFroup), // Assuming 'name' is a property in your data
                 'nama': PlutoCell(value: e.value.leaderName),
                 'nomor': PlutoCell(value: e.value.date),
                 'tahun': PlutoCell(value: e.value.forYear),

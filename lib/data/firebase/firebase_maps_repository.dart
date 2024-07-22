@@ -60,7 +60,7 @@ class FirebaseMapsRepository implements MapsRepository {
                 farmerName: e["farmerName"],
                 idUserFarmer: e["idUserFarmer"],
                 idPPL: e["idPPL"],
-                point: points,
+                cordinatPoint: points,
               );
             },
           ).toList(),
@@ -97,7 +97,7 @@ class FirebaseMapsRepository implements MapsRepository {
                 farmerName: e["farmerName"],
                 idUserFarmer: e["idUserFarmer"],
                 idPPL: e["idPPL"],
-                point: points,
+                cordinatPoint: points,
               );
             },
           ).toList(),

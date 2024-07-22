@@ -42,11 +42,11 @@ Widget informationAddintion(SubmissionKuotaFertilizer data, width) => Container(
           ),
           CardInformationWidget(
             title: "Nama Pengirim",
-            information: data.nameAcceptGroupFarmer,
+            information: data.nameSendDistributor,
           ),
           CardInformationWidget(
             title: "Nama Penerima",
-            information: data.nameAcceptGroupFarmer,
+            information: data.nameAcceptFarmerGroup,
           ),
         ],
       ),

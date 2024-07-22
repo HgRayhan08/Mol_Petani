@@ -59,7 +59,7 @@ class MapsWidget extends ConsumerWidget {
                           (location) {
                             idDocument = location.idDocument;
                             return Polygon(
-                              points: location.point,
+                              points: location.cordinatPoint,
                               color: Colors.redAccent.withOpacity(0.5),
                               borderColor: Colors.redAccent,
                               borderStrokeWidth: 3.0,

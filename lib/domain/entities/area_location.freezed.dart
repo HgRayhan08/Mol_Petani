@@ -25,7 +25,7 @@ mixin _$AreaLocation {
   String get idPPL => throw _privateConstructorUsedError;
   String? get idDocument => throw _privateConstructorUsedError;
   @LatLngConverter()
-  List<LatLng> get point => throw _privateConstructorUsedError;
+  List<LatLng> get cordinatPoint => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,7 +44,7 @@ abstract class $AreaLocationCopyWith<$Res> {
       String idUserFarmer,
       String idPPL,
       String? idDocument,
-      @LatLngConverter() List<LatLng> point});
+      @LatLngConverter() List<LatLng> cordinatPoint});
 }
 
 /// @nodoc
@@ -64,7 +64,7 @@ class _$AreaLocationCopyWithImpl<$Res, $Val extends AreaLocation>
     Object? idUserFarmer = null,
     Object? idPPL = null,
     Object? idDocument = freezed,
-    Object? point = null,
+    Object? cordinatPoint = null,
   }) {
     return _then(_value.copyWith(
       farmerName: null == farmerName
@@ -83,9 +83,9 @@ class _$AreaLocationCopyWithImpl<$Res, $Val extends AreaLocation>
           ? _value.idDocument
           : idDocument // ignore: cast_nullable_to_non_nullable
               as String?,
-      point: null == point
-          ? _value.point
-          : point // ignore: cast_nullable_to_non_nullable
+      cordinatPoint: null == cordinatPoint
+          ? _value.cordinatPoint
+          : cordinatPoint // ignore: cast_nullable_to_non_nullable
               as List<LatLng>,
     ) as $Val);
   }
@@ -104,7 +104,7 @@ abstract class _$$AreaLocationImplCopyWith<$Res>
       String idUserFarmer,
       String idPPL,
       String? idDocument,
-      @LatLngConverter() List<LatLng> point});
+      @LatLngConverter() List<LatLng> cordinatPoint});
 }
 
 /// @nodoc
@@ -122,7 +122,7 @@ class __$$AreaLocationImplCopyWithImpl<$Res>
     Object? idUserFarmer = null,
     Object? idPPL = null,
     Object? idDocument = freezed,
-    Object? point = null,
+    Object? cordinatPoint = null,
   }) {
     return _then(_$AreaLocationImpl(
       farmerName: null == farmerName
@@ -141,9 +141,9 @@ class __$$AreaLocationImplCopyWithImpl<$Res>
           ? _value.idDocument
           : idDocument // ignore: cast_nullable_to_non_nullable
               as String?,
-      point: null == point
-          ? _value._point
-          : point // ignore: cast_nullable_to_non_nullable
+      cordinatPoint: null == cordinatPoint
+          ? _value._cordinatPoint
+          : cordinatPoint // ignore: cast_nullable_to_non_nullable
               as List<LatLng>,
     ));
   }
@@ -157,8 +157,8 @@ class _$AreaLocationImpl implements _AreaLocation {
       required this.idUserFarmer,
       required this.idPPL,
       this.idDocument,
-      @LatLngConverter() required final List<LatLng> point})
-      : _point = point;
+      @LatLngConverter() required final List<LatLng> cordinatPoint})
+      : _cordinatPoint = cordinatPoint;
 
   factory _$AreaLocationImpl.fromJson(Map<String, dynamic> json) =>
       _$$AreaLocationImplFromJson(json);
@@ -171,18 +171,18 @@ class _$AreaLocationImpl implements _AreaLocation {
   final String idPPL;
   @override
   final String? idDocument;
-  final List<LatLng> _point;
+  final List<LatLng> _cordinatPoint;
   @override
   @LatLngConverter()
-  List<LatLng> get point {
-    if (_point is EqualUnmodifiableListView) return _point;
+  List<LatLng> get cordinatPoint {
+    if (_cordinatPoint is EqualUnmodifiableListView) return _cordinatPoint;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_point);
+    return EqualUnmodifiableListView(_cordinatPoint);
   }
 
   @override
   String toString() {
-    return 'AreaLocation(farmerName: $farmerName, idUserFarmer: $idUserFarmer, idPPL: $idPPL, idDocument: $idDocument, point: $point)';
+    return 'AreaLocation(farmerName: $farmerName, idUserFarmer: $idUserFarmer, idPPL: $idPPL, idDocument: $idDocument, cordinatPoint: $cordinatPoint)';
   }
 
   @override
@@ -197,13 +197,14 @@ class _$AreaLocationImpl implements _AreaLocation {
             (identical(other.idPPL, idPPL) || other.idPPL == idPPL) &&
             (identical(other.idDocument, idDocument) ||
                 other.idDocument == idDocument) &&
-            const DeepCollectionEquality().equals(other._point, _point));
+            const DeepCollectionEquality()
+                .equals(other._cordinatPoint, _cordinatPoint));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, farmerName, idUserFarmer, idPPL,
-      idDocument, const DeepCollectionEquality().hash(_point));
+      idDocument, const DeepCollectionEquality().hash(_cordinatPoint));
 
   @JsonKey(ignore: true)
   @override
@@ -225,7 +226,7 @@ abstract class _AreaLocation implements AreaLocation {
           required final String idUserFarmer,
           required final String idPPL,
           final String? idDocument,
-          @LatLngConverter() required final List<LatLng> point}) =
+          @LatLngConverter() required final List<LatLng> cordinatPoint}) =
       _$AreaLocationImpl;
 
   factory _AreaLocation.fromJson(Map<String, dynamic> json) =
@@ -241,7 +242,7 @@ abstract class _AreaLocation implements AreaLocation {
   String? get idDocument;
   @override
   @LatLngConverter()
-  List<LatLng> get point;
+  List<LatLng> get cordinatPoint;
   @override
   @JsonKey(ignore: true)
   _$$AreaLocationImplCopyWith<_$AreaLocationImpl> get copyWith =>

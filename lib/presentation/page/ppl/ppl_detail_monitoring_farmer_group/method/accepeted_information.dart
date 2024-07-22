@@ -19,7 +19,7 @@ Widget accepetedInformation(
         children: [
           DataInformation(
             title: "Nama Penerima",
-            information: data.nameAcceptGroupFarmer,
+            information: data.nameAcceptFarmerGroup,
           ),
           DataInformation(
             title: "Tanggal Penerimaan",

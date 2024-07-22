@@ -64,7 +64,7 @@ class WebDetailMonitoringGroup extends StatelessWidget {
                         Radius.circular(5),
                       ),
                     ),
-                    child: Text(data.nameGroupFarmer),
+                    child: Text(data.nameFarmerGroup),
                   )
                 ],
               ),

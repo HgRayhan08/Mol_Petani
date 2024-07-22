@@ -29,7 +29,7 @@ class MobileHistorySend extends StatelessWidget {
                 child: ListTileKuotaWidget(
                   height: height,
                   width: width,
-                  title: data[index].nameGroupFarmer,
+                  title: data[index].nameFarmerGroup,
                   subTitle: data[index].information,
                   year: data[index].year,
                   submission: data[index].send.toString(),

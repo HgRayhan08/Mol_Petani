@@ -11,7 +11,6 @@ class MobileHistoryComplaint extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
     return FutureBuilder(
       future: ref.watch(reportProviderProvider.notifier).getHistoryComplaint(),
       builder: (context, snapshot) {
@@ -22,7 +21,7 @@ class MobileHistoryComplaint extends StatelessWidget {
             itemCount: data.length,
             itemBuilder: (context, index) {
               return ListTileReportingWidget(
-                title: data[index].groupFarmer,
+                title: data[index].farmerGroup,
                 subtitle: data[index].nameFarmer,
                 trailing: data[index].submissionDate,
                 onTap: () {

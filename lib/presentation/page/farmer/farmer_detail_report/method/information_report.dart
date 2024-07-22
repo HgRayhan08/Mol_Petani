@@ -30,7 +30,7 @@ Widget informationReport(Report data, width) => Container(
                   "Detil Pelaporan : ",
                   style: regulerReguler,
                 ),
-                Text(data.reportingDetail),
+                Text(data.detailReporting),
                 const Divider(),
               ],
             ),

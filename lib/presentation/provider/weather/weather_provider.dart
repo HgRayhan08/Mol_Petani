@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:mol_petani/domain/entities/result.dart';
 import 'package:mol_petani/domain/entities/weather_model.dart';
-import 'package:mol_petani/domain/entities/weather_model_gagal.dart';
 import 'package:mol_petani/domain/usecase/get_weather_data/get_weather_data.dart';
 import 'package:mol_petani/domain/usecase/get_weather_data/weather_data_params.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_weather_data_provider.dart';

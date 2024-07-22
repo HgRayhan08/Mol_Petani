@@ -6,8 +6,10 @@ part 'supporting_data_fertilizer.g.dart';
 @freezed
 class SupportingDataFertilizer with _$SupportingDataFertilizer {
   factory SupportingDataFertilizer({
-    required String idKelompokTani,
-    required String namaPetani,
+    String? idDocument,
+    required String idPpl,
+    required String idFarmerGroup,
+    required String farmername,
     required String nik,
     required double luasLahan,
     required String fotoKtp,

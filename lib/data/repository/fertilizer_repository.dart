@@ -24,6 +24,7 @@ abstract interface class FertilizerRepository {
   Future<Result<SupportingDataFertilizer>> additionalDataSubmission({
     required String idSubmission,
     required String idKelompokTani,
+        required String idPpl,
     required String namaPetani,
     required String nik,
     required double luasLahan,

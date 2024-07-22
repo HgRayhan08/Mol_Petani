@@ -23,14 +23,13 @@ mixin _$Report {
   String? get idDocument => throw _privateConstructorUsedError;
   String get idGrupFarmer => throw _privateConstructorUsedError;
   String get idPPL => throw _privateConstructorUsedError;
-  String get idFarmer => throw _privateConstructorUsedError;
-  String get groupFarmer => throw _privateConstructorUsedError;
+  String get idUserFarmer => throw _privateConstructorUsedError;
+  String get farmerGroup => throw _privateConstructorUsedError;
   String get nameFarmer => throw _privateConstructorUsedError;
   String get information => throw _privateConstructorUsedError;
   String get reporting => throw _privateConstructorUsedError;
-  String get reportingDetail => throw _privateConstructorUsedError;
+  String get detailReporting => throw _privateConstructorUsedError;
   String get submissionDate => throw _privateConstructorUsedError;
-  String get acceptedDate => throw _privateConstructorUsedError;
   String get completionDate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -47,14 +46,13 @@ abstract class $ReportCopyWith<$Res> {
       {String? idDocument,
       String idGrupFarmer,
       String idPPL,
-      String idFarmer,
-      String groupFarmer,
+      String idUserFarmer,
+      String farmerGroup,
       String nameFarmer,
       String information,
       String reporting,
-      String reportingDetail,
+      String detailReporting,
       String submissionDate,
-      String acceptedDate,
       String completionDate});
 }
 
@@ -74,14 +72,13 @@ class _$ReportCopyWithImpl<$Res, $Val extends Report>
     Object? idDocument = freezed,
     Object? idGrupFarmer = null,
     Object? idPPL = null,
-    Object? idFarmer = null,
-    Object? groupFarmer = null,
+    Object? idUserFarmer = null,
+    Object? farmerGroup = null,
     Object? nameFarmer = null,
     Object? information = null,
     Object? reporting = null,
-    Object? reportingDetail = null,
+    Object? detailReporting = null,
     Object? submissionDate = null,
-    Object? acceptedDate = null,
     Object? completionDate = null,
   }) {
     return _then(_value.copyWith(
@@ -97,13 +94,13 @@ class _$ReportCopyWithImpl<$Res, $Val extends Report>
           ? _value.idPPL
           : idPPL // ignore: cast_nullable_to_non_nullable
               as String,
-      idFarmer: null == idFarmer
-          ? _value.idFarmer
-          : idFarmer // ignore: cast_nullable_to_non_nullable
+      idUserFarmer: null == idUserFarmer
+          ? _value.idUserFarmer
+          : idUserFarmer // ignore: cast_nullable_to_non_nullable
               as String,
-      groupFarmer: null == groupFarmer
-          ? _value.groupFarmer
-          : groupFarmer // ignore: cast_nullable_to_non_nullable
+      farmerGroup: null == farmerGroup
+          ? _value.farmerGroup
+          : farmerGroup // ignore: cast_nullable_to_non_nullable
               as String,
       nameFarmer: null == nameFarmer
           ? _value.nameFarmer
@@ -117,17 +114,13 @@ class _$ReportCopyWithImpl<$Res, $Val extends Report>
           ? _value.reporting
           : reporting // ignore: cast_nullable_to_non_nullable
               as String,
-      reportingDetail: null == reportingDetail
-          ? _value.reportingDetail
-          : reportingDetail // ignore: cast_nullable_to_non_nullable
+      detailReporting: null == detailReporting
+          ? _value.detailReporting
+          : detailReporting // ignore: cast_nullable_to_non_nullable
               as String,
       submissionDate: null == submissionDate
           ? _value.submissionDate
           : submissionDate // ignore: cast_nullable_to_non_nullable
-              as String,
-      acceptedDate: null == acceptedDate
-          ? _value.acceptedDate
-          : acceptedDate // ignore: cast_nullable_to_non_nullable
               as String,
       completionDate: null == completionDate
           ? _value.completionDate
@@ -148,14 +141,13 @@ abstract class _$$ReportImplCopyWith<$Res> implements $ReportCopyWith<$Res> {
       {String? idDocument,
       String idGrupFarmer,
       String idPPL,
-      String idFarmer,
-      String groupFarmer,
+      String idUserFarmer,
+      String farmerGroup,
       String nameFarmer,
       String information,
       String reporting,
-      String reportingDetail,
+      String detailReporting,
       String submissionDate,
-      String acceptedDate,
       String completionDate});
 }
 
@@ -173,14 +165,13 @@ class __$$ReportImplCopyWithImpl<$Res>
     Object? idDocument = freezed,
     Object? idGrupFarmer = null,
     Object? idPPL = null,
-    Object? idFarmer = null,
-    Object? groupFarmer = null,
+    Object? idUserFarmer = null,
+    Object? farmerGroup = null,
     Object? nameFarmer = null,
     Object? information = null,
     Object? reporting = null,
-    Object? reportingDetail = null,
+    Object? detailReporting = null,
     Object? submissionDate = null,
-    Object? acceptedDate = null,
     Object? completionDate = null,
   }) {
     return _then(_$ReportImpl(
@@ -196,13 +187,13 @@ class __$$ReportImplCopyWithImpl<$Res>
           ? _value.idPPL
           : idPPL // ignore: cast_nullable_to_non_nullable
               as String,
-      idFarmer: null == idFarmer
-          ? _value.idFarmer
-          : idFarmer // ignore: cast_nullable_to_non_nullable
+      idUserFarmer: null == idUserFarmer
+          ? _value.idUserFarmer
+          : idUserFarmer // ignore: cast_nullable_to_non_nullable
               as String,
-      groupFarmer: null == groupFarmer
-          ? _value.groupFarmer
-          : groupFarmer // ignore: cast_nullable_to_non_nullable
+      farmerGroup: null == farmerGroup
+          ? _value.farmerGroup
+          : farmerGroup // ignore: cast_nullable_to_non_nullable
               as String,
       nameFarmer: null == nameFarmer
           ? _value.nameFarmer
@@ -216,17 +207,13 @@ class __$$ReportImplCopyWithImpl<$Res>
           ? _value.reporting
           : reporting // ignore: cast_nullable_to_non_nullable
               as String,
-      reportingDetail: null == reportingDetail
-          ? _value.reportingDetail
-          : reportingDetail // ignore: cast_nullable_to_non_nullable
+      detailReporting: null == detailReporting
+          ? _value.detailReporting
+          : detailReporting // ignore: cast_nullable_to_non_nullable
               as String,
       submissionDate: null == submissionDate
           ? _value.submissionDate
           : submissionDate // ignore: cast_nullable_to_non_nullable
-              as String,
-      acceptedDate: null == acceptedDate
-          ? _value.acceptedDate
-          : acceptedDate // ignore: cast_nullable_to_non_nullable
               as String,
       completionDate: null == completionDate
           ? _value.completionDate
@@ -243,14 +230,13 @@ class _$ReportImpl implements _Report {
       {this.idDocument,
       required this.idGrupFarmer,
       required this.idPPL,
-      required this.idFarmer,
-      required this.groupFarmer,
+      required this.idUserFarmer,
+      required this.farmerGroup,
       required this.nameFarmer,
       required this.information,
       required this.reporting,
-      required this.reportingDetail,
+      required this.detailReporting,
       required this.submissionDate,
-      required this.acceptedDate,
       required this.completionDate});
 
   factory _$ReportImpl.fromJson(Map<String, dynamic> json) =>
@@ -263,9 +249,9 @@ class _$ReportImpl implements _Report {
   @override
   final String idPPL;
   @override
-  final String idFarmer;
+  final String idUserFarmer;
   @override
-  final String groupFarmer;
+  final String farmerGroup;
   @override
   final String nameFarmer;
   @override
@@ -273,17 +259,15 @@ class _$ReportImpl implements _Report {
   @override
   final String reporting;
   @override
-  final String reportingDetail;
+  final String detailReporting;
   @override
   final String submissionDate;
-  @override
-  final String acceptedDate;
   @override
   final String completionDate;
 
   @override
   String toString() {
-    return 'Report(idDocument: $idDocument, idGrupFarmer: $idGrupFarmer, idPPL: $idPPL, idFarmer: $idFarmer, groupFarmer: $groupFarmer, nameFarmer: $nameFarmer, information: $information, reporting: $reporting, reportingDetail: $reportingDetail, submissionDate: $submissionDate, acceptedDate: $acceptedDate, completionDate: $completionDate)';
+    return 'Report(idDocument: $idDocument, idGrupFarmer: $idGrupFarmer, idPPL: $idPPL, idUserFarmer: $idUserFarmer, farmerGroup: $farmerGroup, nameFarmer: $nameFarmer, information: $information, reporting: $reporting, detailReporting: $detailReporting, submissionDate: $submissionDate, completionDate: $completionDate)';
   }
 
   @override
@@ -296,22 +280,20 @@ class _$ReportImpl implements _Report {
             (identical(other.idGrupFarmer, idGrupFarmer) ||
                 other.idGrupFarmer == idGrupFarmer) &&
             (identical(other.idPPL, idPPL) || other.idPPL == idPPL) &&
-            (identical(other.idFarmer, idFarmer) ||
-                other.idFarmer == idFarmer) &&
-            (identical(other.groupFarmer, groupFarmer) ||
-                other.groupFarmer == groupFarmer) &&
+            (identical(other.idUserFarmer, idUserFarmer) ||
+                other.idUserFarmer == idUserFarmer) &&
+            (identical(other.farmerGroup, farmerGroup) ||
+                other.farmerGroup == farmerGroup) &&
             (identical(other.nameFarmer, nameFarmer) ||
                 other.nameFarmer == nameFarmer) &&
             (identical(other.information, information) ||
                 other.information == information) &&
             (identical(other.reporting, reporting) ||
                 other.reporting == reporting) &&
-            (identical(other.reportingDetail, reportingDetail) ||
-                other.reportingDetail == reportingDetail) &&
+            (identical(other.detailReporting, detailReporting) ||
+                other.detailReporting == detailReporting) &&
             (identical(other.submissionDate, submissionDate) ||
                 other.submissionDate == submissionDate) &&
-            (identical(other.acceptedDate, acceptedDate) ||
-                other.acceptedDate == acceptedDate) &&
             (identical(other.completionDate, completionDate) ||
                 other.completionDate == completionDate));
   }
@@ -323,14 +305,13 @@ class _$ReportImpl implements _Report {
       idDocument,
       idGrupFarmer,
       idPPL,
-      idFarmer,
-      groupFarmer,
+      idUserFarmer,
+      farmerGroup,
       nameFarmer,
       information,
       reporting,
-      reportingDetail,
+      detailReporting,
       submissionDate,
-      acceptedDate,
       completionDate);
 
   @JsonKey(ignore: true)
@@ -352,14 +333,13 @@ abstract class _Report implements Report {
       {final String? idDocument,
       required final String idGrupFarmer,
       required final String idPPL,
-      required final String idFarmer,
-      required final String groupFarmer,
+      required final String idUserFarmer,
+      required final String farmerGroup,
       required final String nameFarmer,
       required final String information,
       required final String reporting,
-      required final String reportingDetail,
+      required final String detailReporting,
       required final String submissionDate,
-      required final String acceptedDate,
       required final String completionDate}) = _$ReportImpl;
 
   factory _Report.fromJson(Map<String, dynamic> json) = _$ReportImpl.fromJson;
@@ -371,9 +351,9 @@ abstract class _Report implements Report {
   @override
   String get idPPL;
   @override
-  String get idFarmer;
+  String get idUserFarmer;
   @override
-  String get groupFarmer;
+  String get farmerGroup;
   @override
   String get nameFarmer;
   @override
@@ -381,11 +361,9 @@ abstract class _Report implements Report {
   @override
   String get reporting;
   @override
-  String get reportingDetail;
+  String get detailReporting;
   @override
   String get submissionDate;
-  @override
-  String get acceptedDate;
   @override
   String get completionDate;
   @override

@@ -10,30 +10,30 @@ _$UserDistrubutorImpl _$$UserDistrubutorImplFromJson(
         Map<String, dynamic> json) =>
     _$UserDistrubutorImpl(
       uid: json['uid'] as String,
-      name: json['name'] as String,
-      email: json['email'] as String,
-      information: json['information'] as String,
-      familyIdentificationNumber: json['familyIdentificationNumber'] as String,
       idPPL: json['idPPL'] as String,
-      fotoUrl: json['fotoUrl'] as String?,
-      address: json['address'] as String,
+      name: json['name'] as String,
       toko: json['toko'] as String,
+      email: json['email'] as String,
+      fotoUrl: json['fotoUrl'] as String?,
       scope: json['scope'] as List<dynamic>? ?? const [],
-      mobileNumber: (json['mobileNumber'] as num).toInt(),
+      information: json['information'] as String,
+      nik: json['nik'] as String,
+      alamat: json['alamat'] as String,
+      noHp: (json['noHp'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$UserDistrubutorImplToJson(
         _$UserDistrubutorImpl instance) =>
     <String, dynamic>{
       'uid': instance.uid,
-      'name': instance.name,
-      'email': instance.email,
-      'information': instance.information,
-      'familyIdentificationNumber': instance.familyIdentificationNumber,
       'idPPL': instance.idPPL,
-      'fotoUrl': instance.fotoUrl,
-      'address': instance.address,
+      'name': instance.name,
       'toko': instance.toko,
+      'email': instance.email,
+      'fotoUrl': instance.fotoUrl,
       'scope': instance.scope,
-      'mobileNumber': instance.mobileNumber,
+      'information': instance.information,
+      'nik': instance.nik,
+      'alamat': instance.alamat,
+      'noHp': instance.noHp,
     };

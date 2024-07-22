@@ -12,7 +12,7 @@ class DataSubmissionGroup with _$DataSubmissionGroup {
     required String village,
     required String forYear,
     required String date,
-    required String grupFarmer,
+    required String farmerFroup,
     required String information,
     String? idDocument,
   }) = _DataSubmissionGroup;

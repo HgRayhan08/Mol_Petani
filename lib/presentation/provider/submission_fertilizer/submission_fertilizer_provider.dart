@@ -146,7 +146,7 @@ class FertilizerSubmission extends _$FertilizerSubmission {
         village: "",
         forYear: "",
         date: "",
-        grupFarmer: '',
+        farmerFroup: '',
         information: "",
       );
     }

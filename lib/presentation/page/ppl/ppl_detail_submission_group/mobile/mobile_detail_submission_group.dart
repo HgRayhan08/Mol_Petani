@@ -54,7 +54,7 @@ class MobileDetailSubmissionGroup extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Text(data.grupFarmer,
+                      Text(data.farmerFroup,
                           style: largeReguler.copyWith(
                               color: Colors.white, fontSize: 18)),
                       SizedBox(
@@ -123,7 +123,7 @@ class MobileDetailSubmissionGroup extends StatelessWidget {
                   itemBuilder: (context, index) {
                     var pengajuan = snapshot.data!;
                     return ListTileSubmissionWidget(
-                      title: pengajuan[index].namaPetani,
+                      title: pengajuan[index].farmername,
                       subTitle: pengajuan[index].nik,
                       trailing: const Icon(Icons.arrow_forward_ios),
                       onTap: () {

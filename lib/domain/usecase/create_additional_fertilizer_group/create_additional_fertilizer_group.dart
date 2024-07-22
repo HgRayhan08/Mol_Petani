@@ -33,7 +33,8 @@ class CreateAdditionalFertilizerGroup
       var result =
           await submissionFretilizerRepository.additionalDataSubmission(
         idSubmission: params.idSubmission,
-        idKelompokTani: idUser![1],
+        idPpl: idUser![2],
+        idKelompokTani: idUser[1],
         namaPetani: params.namaPetani,
         nik: params.nik,
         luasLahan: params.luasLahan,

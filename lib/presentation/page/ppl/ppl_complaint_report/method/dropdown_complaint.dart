@@ -74,11 +74,11 @@ class _DropdowsReportState extends State<DropdowsReport> {
                                   Text(widget.data.information)
                                 ],
                               ),
-                              Text(widget.data.groupFarmer)
+                              Text(widget.data.farmerGroup)
                             ],
                           ),
                           SizedBox(height: height * 0.01),
-                          Text(widget.data.reportingDetail),
+                          Text(widget.data.detailReporting),
                           SizedBox(height: height * 0.03),
                           ElevatedButton(
                             onPressed: () {

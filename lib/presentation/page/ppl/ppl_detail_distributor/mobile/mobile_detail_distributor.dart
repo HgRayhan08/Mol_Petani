@@ -60,17 +60,17 @@ class MobileDetailDistributor extends StatelessWidget {
         ListTileDetailWidget(
           width: width,
           title: "No. Handphonne",
-          fill: user.mobileNumber.toString(),
+          fill: user.noHp.toString(),
         ),
         ListTileDetailWidget(
           width: width,
           title: "Desa",
-          fill: user.address,
+          fill: user.alamat,
         ),
         ListTileDetailWidget(
           width: width,
           title: "Nomor Induk Keluarga",
-          fill: user.familyIdentificationNumber,
+          fill: user.nik,
         ),
         ListTileDetailWidget(
           width: width,

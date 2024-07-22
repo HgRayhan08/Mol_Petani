@@ -15,7 +15,7 @@ _$DataSubmissionGroupImpl _$$DataSubmissionGroupImplFromJson(
       village: json['village'] as String,
       forYear: json['forYear'] as String,
       date: json['date'] as String,
-      grupFarmer: json['grupFarmer'] as String,
+      farmerFroup: json['farmerFroup'] as String,
       information: json['information'] as String,
       idDocument: json['idDocument'] as String?,
     );
@@ -29,7 +29,7 @@ Map<String, dynamic> _$$DataSubmissionGroupImplToJson(
       'village': instance.village,
       'forYear': instance.forYear,
       'date': instance.date,
-      'grupFarmer': instance.grupFarmer,
+      'farmerFroup': instance.farmerFroup,
       'information': instance.information,
       'idDocument': instance.idDocument,
     };

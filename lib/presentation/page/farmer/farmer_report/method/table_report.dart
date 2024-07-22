@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mol_petani/domain/entities/distribution_fertilizer_farmer.dart';
 import 'package:mol_petani/domain/entities/report.dart';
 import 'package:mol_petani/presentation/misc/build_context_alert_dialog.dart';
-import 'package:mol_petani/presentation/page/farmer/farmer_detail_accepted_fertilizer/farmer_detail_accepted_fertilizer_page.dart';
 import 'package:mol_petani/presentation/page/farmer/farmer_detail_report/farmer_detail_report_page.dart';
 import 'package:mol_petani/presentation/provider/report/report_provider.dart';
-import 'package:mol_petani/presentation/provider/submission_fertilizer/submission_fertilizer_provider.dart';
 import 'package:pluto_grid/pluto_grid.dart';
 
 class TableReport extends ConsumerStatefulWidget {
@@ -129,7 +126,7 @@ class _TableReportState extends ConsumerState<TableReport> {
                 'nik': PlutoCell(
                     value: e.value
                         .nameFarmer), // Assuming 'name' is a property in your data
-                'kelompokTani': PlutoCell(value: e.value.groupFarmer),
+                'kelompokTani': PlutoCell(value: e.value.farmerGroup),
                 'name': PlutoCell(value: e.value.information),
                 'action': PlutoCell(value: e.value),
               },

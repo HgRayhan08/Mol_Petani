@@ -45,7 +45,7 @@ Widget webInformationReport({
               TableCell(
                 child: Padding(
                   padding: EdgeInsets.only(bottom: height * 0.01),
-                  child: Text(": ${data.groupFarmer}"),
+                  child: Text(": ${data.farmerGroup}"),
                 ),
               ),
             ],
@@ -96,7 +96,7 @@ Widget webInformationReport({
               TableCell(
                 child: Padding(
                   padding: EdgeInsets.only(bottom: height * 0.01),
-                  child: Text(": ${data.reportingDetail}"),
+                  child: Text(": ${data.detailReporting}"),
                 ),
               ),
             ],

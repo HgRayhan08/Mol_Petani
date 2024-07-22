@@ -26,7 +26,7 @@ class MobileAccptedKuota extends StatelessWidget {
               return ListTileKuotaWidget(
                 width: width,
                 height: height,
-                title: data[index].nameGroupFarmer,
+                title: data[index].nameFarmerGroup,
                 subTitle: data[index].leaderName,
                 year: data[index].year,
                 submission: data[index].send.toString(),

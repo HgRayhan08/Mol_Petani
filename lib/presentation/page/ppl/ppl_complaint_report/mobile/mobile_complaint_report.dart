@@ -23,7 +23,7 @@ class MobileComplaintReport extends StatelessWidget {
             itemCount: data.length,
             itemBuilder: (context, index) {
               return ListTileReportingWidget(
-                title: data[index].groupFarmer,
+                title: data[index].farmerGroup,
                 subtitle: data[index].nameFarmer,
                 trailing: data[index].submissionDate,
                 onTap: () {

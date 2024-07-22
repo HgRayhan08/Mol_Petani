@@ -23,17 +23,17 @@ SubmissionKuotaFertilizer _$SubmissionKuotaFertilizerFromJson(
 mixin _$SubmissionKuotaFertilizer {
   String? get idDocument => throw _privateConstructorUsedError;
   String get idPPL => throw _privateConstructorUsedError;
-  String get idGroupFarmer => throw _privateConstructorUsedError;
+  String get idFarmerGroup => throw _privateConstructorUsedError;
   String get idDistributor => throw _privateConstructorUsedError;
-  String get information => throw _privateConstructorUsedError;
   String get year => throw _privateConstructorUsedError;
   int get send => throw _privateConstructorUsedError;
+  String get information => throw _privateConstructorUsedError;
   String get sendDate => throw _privateConstructorUsedError;
   String get acceptDate => throw _privateConstructorUsedError;
   String get leaderName => throw _privateConstructorUsedError;
   String get nameDistributor => throw _privateConstructorUsedError;
-  String get nameGroupFarmer => throw _privateConstructorUsedError;
-  String get nameAcceptGroupFarmer => throw _privateConstructorUsedError;
+  String get nameFarmerGroup => throw _privateConstructorUsedError;
+  String get nameAcceptFarmerGroup => throw _privateConstructorUsedError;
   String get nameSendDistributor => throw _privateConstructorUsedError;
   int get sendUrea => throw _privateConstructorUsedError;
   int get sendPoska => throw _privateConstructorUsedError;
@@ -55,17 +55,17 @@ abstract class $SubmissionKuotaFertilizerCopyWith<$Res> {
   $Res call(
       {String? idDocument,
       String idPPL,
-      String idGroupFarmer,
+      String idFarmerGroup,
       String idDistributor,
-      String information,
       String year,
       int send,
+      String information,
       String sendDate,
       String acceptDate,
       String leaderName,
       String nameDistributor,
-      String nameGroupFarmer,
-      String nameAcceptGroupFarmer,
+      String nameFarmerGroup,
+      String nameAcceptFarmerGroup,
       String nameSendDistributor,
       int sendUrea,
       int sendPoska,
@@ -89,17 +89,17 @@ class _$SubmissionKuotaFertilizerCopyWithImpl<$Res,
   $Res call({
     Object? idDocument = freezed,
     Object? idPPL = null,
-    Object? idGroupFarmer = null,
+    Object? idFarmerGroup = null,
     Object? idDistributor = null,
-    Object? information = null,
     Object? year = null,
     Object? send = null,
+    Object? information = null,
     Object? sendDate = null,
     Object? acceptDate = null,
     Object? leaderName = null,
     Object? nameDistributor = null,
-    Object? nameGroupFarmer = null,
-    Object? nameAcceptGroupFarmer = null,
+    Object? nameFarmerGroup = null,
+    Object? nameAcceptFarmerGroup = null,
     Object? nameSendDistributor = null,
     Object? sendUrea = null,
     Object? sendPoska = null,
@@ -115,17 +115,13 @@ class _$SubmissionKuotaFertilizerCopyWithImpl<$Res,
           ? _value.idPPL
           : idPPL // ignore: cast_nullable_to_non_nullable
               as String,
-      idGroupFarmer: null == idGroupFarmer
-          ? _value.idGroupFarmer
-          : idGroupFarmer // ignore: cast_nullable_to_non_nullable
+      idFarmerGroup: null == idFarmerGroup
+          ? _value.idFarmerGroup
+          : idFarmerGroup // ignore: cast_nullable_to_non_nullable
               as String,
       idDistributor: null == idDistributor
           ? _value.idDistributor
           : idDistributor // ignore: cast_nullable_to_non_nullable
-              as String,
-      information: null == information
-          ? _value.information
-          : information // ignore: cast_nullable_to_non_nullable
               as String,
       year: null == year
           ? _value.year
@@ -135,6 +131,10 @@ class _$SubmissionKuotaFertilizerCopyWithImpl<$Res,
           ? _value.send
           : send // ignore: cast_nullable_to_non_nullable
               as int,
+      information: null == information
+          ? _value.information
+          : information // ignore: cast_nullable_to_non_nullable
+              as String,
       sendDate: null == sendDate
           ? _value.sendDate
           : sendDate // ignore: cast_nullable_to_non_nullable
@@ -151,13 +151,13 @@ class _$SubmissionKuotaFertilizerCopyWithImpl<$Res,
           ? _value.nameDistributor
           : nameDistributor // ignore: cast_nullable_to_non_nullable
               as String,
-      nameGroupFarmer: null == nameGroupFarmer
-          ? _value.nameGroupFarmer
-          : nameGroupFarmer // ignore: cast_nullable_to_non_nullable
+      nameFarmerGroup: null == nameFarmerGroup
+          ? _value.nameFarmerGroup
+          : nameFarmerGroup // ignore: cast_nullable_to_non_nullable
               as String,
-      nameAcceptGroupFarmer: null == nameAcceptGroupFarmer
-          ? _value.nameAcceptGroupFarmer
-          : nameAcceptGroupFarmer // ignore: cast_nullable_to_non_nullable
+      nameAcceptFarmerGroup: null == nameAcceptFarmerGroup
+          ? _value.nameAcceptFarmerGroup
+          : nameAcceptFarmerGroup // ignore: cast_nullable_to_non_nullable
               as String,
       nameSendDistributor: null == nameSendDistributor
           ? _value.nameSendDistributor
@@ -195,17 +195,17 @@ abstract class _$$SubmissionKuotaFertilizerImplCopyWith<$Res>
   $Res call(
       {String? idDocument,
       String idPPL,
-      String idGroupFarmer,
+      String idFarmerGroup,
       String idDistributor,
-      String information,
       String year,
       int send,
+      String information,
       String sendDate,
       String acceptDate,
       String leaderName,
       String nameDistributor,
-      String nameGroupFarmer,
-      String nameAcceptGroupFarmer,
+      String nameFarmerGroup,
+      String nameAcceptFarmerGroup,
       String nameSendDistributor,
       int sendUrea,
       int sendPoska,
@@ -228,17 +228,17 @@ class __$$SubmissionKuotaFertilizerImplCopyWithImpl<$Res>
   $Res call({
     Object? idDocument = freezed,
     Object? idPPL = null,
-    Object? idGroupFarmer = null,
+    Object? idFarmerGroup = null,
     Object? idDistributor = null,
-    Object? information = null,
     Object? year = null,
     Object? send = null,
+    Object? information = null,
     Object? sendDate = null,
     Object? acceptDate = null,
     Object? leaderName = null,
     Object? nameDistributor = null,
-    Object? nameGroupFarmer = null,
-    Object? nameAcceptGroupFarmer = null,
+    Object? nameFarmerGroup = null,
+    Object? nameAcceptFarmerGroup = null,
     Object? nameSendDistributor = null,
     Object? sendUrea = null,
     Object? sendPoska = null,
@@ -254,17 +254,13 @@ class __$$SubmissionKuotaFertilizerImplCopyWithImpl<$Res>
           ? _value.idPPL
           : idPPL // ignore: cast_nullable_to_non_nullable
               as String,
-      idGroupFarmer: null == idGroupFarmer
-          ? _value.idGroupFarmer
-          : idGroupFarmer // ignore: cast_nullable_to_non_nullable
+      idFarmerGroup: null == idFarmerGroup
+          ? _value.idFarmerGroup
+          : idFarmerGroup // ignore: cast_nullable_to_non_nullable
               as String,
       idDistributor: null == idDistributor
           ? _value.idDistributor
           : idDistributor // ignore: cast_nullable_to_non_nullable
-              as String,
-      information: null == information
-          ? _value.information
-          : information // ignore: cast_nullable_to_non_nullable
               as String,
       year: null == year
           ? _value.year
@@ -274,6 +270,10 @@ class __$$SubmissionKuotaFertilizerImplCopyWithImpl<$Res>
           ? _value.send
           : send // ignore: cast_nullable_to_non_nullable
               as int,
+      information: null == information
+          ? _value.information
+          : information // ignore: cast_nullable_to_non_nullable
+              as String,
       sendDate: null == sendDate
           ? _value.sendDate
           : sendDate // ignore: cast_nullable_to_non_nullable
@@ -290,13 +290,13 @@ class __$$SubmissionKuotaFertilizerImplCopyWithImpl<$Res>
           ? _value.nameDistributor
           : nameDistributor // ignore: cast_nullable_to_non_nullable
               as String,
-      nameGroupFarmer: null == nameGroupFarmer
-          ? _value.nameGroupFarmer
-          : nameGroupFarmer // ignore: cast_nullable_to_non_nullable
+      nameFarmerGroup: null == nameFarmerGroup
+          ? _value.nameFarmerGroup
+          : nameFarmerGroup // ignore: cast_nullable_to_non_nullable
               as String,
-      nameAcceptGroupFarmer: null == nameAcceptGroupFarmer
-          ? _value.nameAcceptGroupFarmer
-          : nameAcceptGroupFarmer // ignore: cast_nullable_to_non_nullable
+      nameAcceptFarmerGroup: null == nameAcceptFarmerGroup
+          ? _value.nameAcceptFarmerGroup
+          : nameAcceptFarmerGroup // ignore: cast_nullable_to_non_nullable
               as String,
       nameSendDistributor: null == nameSendDistributor
           ? _value.nameSendDistributor
@@ -328,17 +328,17 @@ class _$SubmissionKuotaFertilizerImpl implements _SubmissionKuotaFertilizer {
   _$SubmissionKuotaFertilizerImpl(
       {this.idDocument,
       required this.idPPL,
-      required this.idGroupFarmer,
+      required this.idFarmerGroup,
       required this.idDistributor,
-      required this.information,
       required this.year,
       required this.send,
+      required this.information,
       required this.sendDate,
       required this.acceptDate,
       required this.leaderName,
       required this.nameDistributor,
-      required this.nameGroupFarmer,
-      required this.nameAcceptGroupFarmer,
+      required this.nameFarmerGroup,
+      required this.nameAcceptFarmerGroup,
       required this.nameSendDistributor,
       required this.sendUrea,
       required this.sendPoska,
@@ -353,15 +353,15 @@ class _$SubmissionKuotaFertilizerImpl implements _SubmissionKuotaFertilizer {
   @override
   final String idPPL;
   @override
-  final String idGroupFarmer;
+  final String idFarmerGroup;
   @override
   final String idDistributor;
-  @override
-  final String information;
   @override
   final String year;
   @override
   final int send;
+  @override
+  final String information;
   @override
   final String sendDate;
   @override
@@ -371,9 +371,9 @@ class _$SubmissionKuotaFertilizerImpl implements _SubmissionKuotaFertilizer {
   @override
   final String nameDistributor;
   @override
-  final String nameGroupFarmer;
+  final String nameFarmerGroup;
   @override
-  final String nameAcceptGroupFarmer;
+  final String nameAcceptFarmerGroup;
   @override
   final String nameSendDistributor;
   @override
@@ -387,7 +387,7 @@ class _$SubmissionKuotaFertilizerImpl implements _SubmissionKuotaFertilizer {
 
   @override
   String toString() {
-    return 'SubmissionKuotaFertilizer(idDocument: $idDocument, idPPL: $idPPL, idGroupFarmer: $idGroupFarmer, idDistributor: $idDistributor, information: $information, year: $year, send: $send, sendDate: $sendDate, acceptDate: $acceptDate, leaderName: $leaderName, nameDistributor: $nameDistributor, nameGroupFarmer: $nameGroupFarmer, nameAcceptGroupFarmer: $nameAcceptGroupFarmer, nameSendDistributor: $nameSendDistributor, sendUrea: $sendUrea, sendPoska: $sendPoska, acceptUrea: $acceptUrea, acceptPoska: $acceptPoska)';
+    return 'SubmissionKuotaFertilizer(idDocument: $idDocument, idPPL: $idPPL, idFarmerGroup: $idFarmerGroup, idDistributor: $idDistributor, year: $year, send: $send, information: $information, sendDate: $sendDate, acceptDate: $acceptDate, leaderName: $leaderName, nameDistributor: $nameDistributor, nameFarmerGroup: $nameFarmerGroup, nameAcceptFarmerGroup: $nameAcceptFarmerGroup, nameSendDistributor: $nameSendDistributor, sendUrea: $sendUrea, sendPoska: $sendPoska, acceptUrea: $acceptUrea, acceptPoska: $acceptPoska)';
   }
 
   @override
@@ -398,14 +398,14 @@ class _$SubmissionKuotaFertilizerImpl implements _SubmissionKuotaFertilizer {
             (identical(other.idDocument, idDocument) ||
                 other.idDocument == idDocument) &&
             (identical(other.idPPL, idPPL) || other.idPPL == idPPL) &&
-            (identical(other.idGroupFarmer, idGroupFarmer) ||
-                other.idGroupFarmer == idGroupFarmer) &&
+            (identical(other.idFarmerGroup, idFarmerGroup) ||
+                other.idFarmerGroup == idFarmerGroup) &&
             (identical(other.idDistributor, idDistributor) ||
                 other.idDistributor == idDistributor) &&
-            (identical(other.information, information) ||
-                other.information == information) &&
             (identical(other.year, year) || other.year == year) &&
             (identical(other.send, send) || other.send == send) &&
+            (identical(other.information, information) ||
+                other.information == information) &&
             (identical(other.sendDate, sendDate) ||
                 other.sendDate == sendDate) &&
             (identical(other.acceptDate, acceptDate) ||
@@ -414,10 +414,10 @@ class _$SubmissionKuotaFertilizerImpl implements _SubmissionKuotaFertilizer {
                 other.leaderName == leaderName) &&
             (identical(other.nameDistributor, nameDistributor) ||
                 other.nameDistributor == nameDistributor) &&
-            (identical(other.nameGroupFarmer, nameGroupFarmer) ||
-                other.nameGroupFarmer == nameGroupFarmer) &&
-            (identical(other.nameAcceptGroupFarmer, nameAcceptGroupFarmer) ||
-                other.nameAcceptGroupFarmer == nameAcceptGroupFarmer) &&
+            (identical(other.nameFarmerGroup, nameFarmerGroup) ||
+                other.nameFarmerGroup == nameFarmerGroup) &&
+            (identical(other.nameAcceptFarmerGroup, nameAcceptFarmerGroup) ||
+                other.nameAcceptFarmerGroup == nameAcceptFarmerGroup) &&
             (identical(other.nameSendDistributor, nameSendDistributor) ||
                 other.nameSendDistributor == nameSendDistributor) &&
             (identical(other.sendUrea, sendUrea) ||
@@ -436,17 +436,17 @@ class _$SubmissionKuotaFertilizerImpl implements _SubmissionKuotaFertilizer {
       runtimeType,
       idDocument,
       idPPL,
-      idGroupFarmer,
+      idFarmerGroup,
       idDistributor,
-      information,
       year,
       send,
+      information,
       sendDate,
       acceptDate,
       leaderName,
       nameDistributor,
-      nameGroupFarmer,
-      nameAcceptGroupFarmer,
+      nameFarmerGroup,
+      nameAcceptFarmerGroup,
       nameSendDistributor,
       sendUrea,
       sendPoska,
@@ -472,17 +472,17 @@ abstract class _SubmissionKuotaFertilizer implements SubmissionKuotaFertilizer {
   factory _SubmissionKuotaFertilizer(
       {final String? idDocument,
       required final String idPPL,
-      required final String idGroupFarmer,
+      required final String idFarmerGroup,
       required final String idDistributor,
-      required final String information,
       required final String year,
       required final int send,
+      required final String information,
       required final String sendDate,
       required final String acceptDate,
       required final String leaderName,
       required final String nameDistributor,
-      required final String nameGroupFarmer,
-      required final String nameAcceptGroupFarmer,
+      required final String nameFarmerGroup,
+      required final String nameAcceptFarmerGroup,
       required final String nameSendDistributor,
       required final int sendUrea,
       required final int sendPoska,
@@ -497,15 +497,15 @@ abstract class _SubmissionKuotaFertilizer implements SubmissionKuotaFertilizer {
   @override
   String get idPPL;
   @override
-  String get idGroupFarmer;
+  String get idFarmerGroup;
   @override
   String get idDistributor;
-  @override
-  String get information;
   @override
   String get year;
   @override
   int get send;
+  @override
+  String get information;
   @override
   String get sendDate;
   @override
@@ -515,9 +515,9 @@ abstract class _SubmissionKuotaFertilizer implements SubmissionKuotaFertilizer {
   @override
   String get nameDistributor;
   @override
-  String get nameGroupFarmer;
+  String get nameFarmerGroup;
   @override
-  String get nameAcceptGroupFarmer;
+  String get nameAcceptFarmerGroup;
   @override
   String get nameSendDistributor;
   @override

@@ -47,7 +47,7 @@ Widget informationSuppoting({
                 child: Padding(
                   padding: EdgeInsets.only(bottom: height * 0.01),
                   child: Text(
-                    ": ${data.namaPetani}",
+                    ": ${data.farmername}",
                     style: regulerReguler,
                   ),
                 ),
