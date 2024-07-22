@@ -72,7 +72,7 @@ class MobileDetailDataFarmer extends StatelessWidget {
           width: width * 0.75,
         ),
         SizedBox(height: height * 0.02),
-        user.idGrupFarmer == ""
+        user.idFarmerGroup == ""
             ? ButtonSubmissionWidget(
                 title: "Tambahkan",
                 onTap: () {

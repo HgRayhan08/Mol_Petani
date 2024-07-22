@@ -85,7 +85,7 @@ class _TableDataFarmerState extends ConsumerState<TableDataFarmer> {
                 setState(() {});
               },
             ),
-            data.idGrupFarmer == ""
+            data.idFarmerGroup == ""
                 ? IconButton(
                     icon: const Icon(Icons.add),
                     onPressed: () {
@@ -137,7 +137,7 @@ class _TableDataFarmerState extends ConsumerState<TableDataFarmer> {
                 'nik': PlutoCell(
                     value: e.value
                         .nik), // Assuming 'name' is a property in your data
-                'kelompokTani': PlutoCell(value: e.value.grupFarmer),
+                'kelompokTani': PlutoCell(value: e.value.farmerGroup),
                 'name': PlutoCell(value: e.value.name),
                 'action': PlutoCell(value: e.value),
               },

@@ -75,7 +75,7 @@ class _WebFormDistributionState extends State<WebFormDistribution> {
             widget.ref
                 .read(fertilizerSubmissionProvider.notifier)
                 .createSendFertilizerFarmer(
-                  idGroupFarmer: widget.user.idGrupFarmer,
+                  idGroupFarmer: widget.user.idFarmerGroup,
                   idUserFarmer: widget.user.idUserFarmer,
                   idPPL: widget.user.idPPL,
                   farmerName: widget.user.name,

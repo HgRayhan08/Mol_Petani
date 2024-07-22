@@ -6,7 +6,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:mol_petani/domain/entities/user_farmer.dart';
 import 'package:mol_petani/presentation/misc/build_context_alert_information.dart';
-import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/provider/submission_fertilizer/submission_fertilizer_provider.dart';
 import 'package:mol_petani/presentation/widgets/button_submission_widget.dart';
@@ -83,7 +82,7 @@ class _MobileFormDistributionState extends State<MobileFormDistribution> {
                       widget.ref
                           .read(fertilizerSubmissionProvider.notifier)
                           .createSendFertilizerFarmer(
-                            idGroupFarmer: widget.user.idGrupFarmer,
+                            idGroupFarmer: widget.user.idFarmerGroup,
                             idUserFarmer: widget.user.idUserFarmer,
                             idPPL: widget.user.idPPL,
                             farmerName: widget.user.name,

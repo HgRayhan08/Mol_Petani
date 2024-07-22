@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mol_petani/domain/entities/submission_fertilizer_group.dart';
-import 'package:mol_petani/domain/entities/submission_kuota_fertilizer.dart';
 import 'package:mol_petani/domain/entities/user_farmer.dart';
 import 'package:mol_petani/presentation/misc/build_context_alert_dialog.dart';
-import 'package:mol_petani/presentation/page/distributor/distribution_detail_send_fertilizer/distribution_detail_send_fertilizer_page.dart';
-import 'package:mol_petani/presentation/page/distributor/distributor_update_sends/ditributor_update_sends.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/provider/submission_fertilizer/submission_fertilizer_provider.dart';
 import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
@@ -86,19 +82,19 @@ class _TableDistributionFertilizerFarmerState
                     );
               },
             ),
-            IconButton(
-              icon: const Icon(Icons.edit),
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return Dialog(
-                      child: DistributorUpdateSendsPage(data.idDocument!),
-                    );
-                  },
-                );
-              },
-            ),
+            // IconButton(
+            //   icon: const Icon(Icons.edit),
+            //   onPressed: () {
+            //     showDialog(
+            //       context: context,
+            //       builder: (BuildContext context) {
+            //         return Dialog(
+            //           child: DistributorUpdateSendsPage(data),
+            //         );
+            //       },
+            //     );
+            //   },
+            // ),
             IconButton(
               icon: const Icon(Icons.delete),
               onPressed: () {

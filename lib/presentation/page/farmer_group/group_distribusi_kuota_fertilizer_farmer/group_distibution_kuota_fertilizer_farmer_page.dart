@@ -17,7 +17,7 @@ class GroupDistributionKuotaFertilizerFarmerpage extends ConsumerWidget {
       appBar: AppBar(
         title: Text("Distribusi Pupuk", style: largeReguler),
       ),
-      // body: MobileDistributionFerilizerFarmer(ref: ref, user: user)
+      body: MobileDistributionKuotaFerilizerFarmer(ref: ref, user: user),
       floatingActionButton: IconButton(
         onPressed: () {
           ref

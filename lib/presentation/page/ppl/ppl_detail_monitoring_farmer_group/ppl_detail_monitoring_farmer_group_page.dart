@@ -18,6 +18,11 @@ class PplDetailMonitoringFarmerGroupPage extends ConsumerWidget {
   Widget buildAndroid(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              ref.read(routerProvider).goNamed("monitoring-group", extra: user);
+            },
+            icon: const Icon(Icons.arrow_back)),
         title: Text("Detail Distribusi Pupuk", style: largeReguler),
       ),
       body: MobileDetailMonitoringGroup(

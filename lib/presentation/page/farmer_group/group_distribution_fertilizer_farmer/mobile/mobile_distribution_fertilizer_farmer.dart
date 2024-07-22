@@ -26,7 +26,7 @@ class MobileDistributionFertilizerFarmer extends StatelessWidget {
                 height: height,
                 data: data[index],
                 onTap: () {
-                  ref.read(routerProvider).pushNamed(
+                  ref.read(routerProvider).goNamed(
                         "accepted-farmer",
                         extra: data[index],
                       );

@@ -33,7 +33,7 @@ class MobileDataFarmer extends StatelessWidget {
                       data: data[index],
                       onTap: () {
                         ref.read(routerProvider).pushNamed(
-                              "detail-data-farmer",
+                              "ppl-detail-farmer",
                               extra: data[index],
                             );
                       },

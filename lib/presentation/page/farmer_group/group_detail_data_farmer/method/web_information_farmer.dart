@@ -40,7 +40,7 @@ Widget webDetailFarmer(UserFarmer user, width, height) => SizedBox(
               TableCell(
                 child: Padding(
                   padding: EdgeInsets.only(bottom: height * 0.01),
-                  child: Text(": ${user.kartuKeluarga}"),
+                  child: Text(": ${user.nik}"),
                 ),
               ),
             ],
@@ -107,7 +107,7 @@ Widget webDetailFarmer(UserFarmer user, width, height) => SizedBox(
               TableCell(
                 child: Padding(
                   padding: EdgeInsets.only(bottom: height * 0.01),
-                  child: Text(": ${user.grupFarmer}"),
+                  child: Text(": ${user.farmerGroup}"),
                 ),
               ),
             ],

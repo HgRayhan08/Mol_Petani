@@ -5,14 +5,16 @@ import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/farmer_group/group_data_farmer/mobile/mobile_data_farmer.dart';
 import 'package:mol_petani/presentation/page/ppl/ppl_data_farmer/website/web_data_farmer.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
-import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
-import 'package:mol_petani/presentation/widgets/listTile_farmer_widget.dart';
 import 'package:mol_petani/presentation/widgets/platform_widget.dart';
-import 'package:mol_petani/presentation/widgets/search_widget.dart';
 
-class PplDataFarmer extends ConsumerWidget {
+class PplDataFarmer extends ConsumerStatefulWidget {
   const PplDataFarmer({super.key});
 
+  @override
+  ConsumerState<PplDataFarmer> createState() => _PplDataFarmerState();
+}
+
+class _PplDataFarmerState extends ConsumerState<PplDataFarmer> {
   Widget buildAndroid(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
@@ -50,8 +52,9 @@ class PplDataFarmer extends ConsumerWidget {
           trailing: IconButton(
             onPressed: () {
               ref.read(routerProvider).pushNamed("regis-farmer");
+              setState(() {});
             },
-            icon: Icon(Icons.add),
+            icon: const Icon(Icons.add),
           ),
         ),
         child: SafeArea(
@@ -62,15 +65,13 @@ class PplDataFarmer extends ConsumerWidget {
   }
 
   Widget buildWeb(BuildContext context, WidgetRef ref) {
-    var width = MediaQuery.of(context).size.width;
-    var height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: WebDataFarmer(ref: ref),
     );
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return PlatformWidget(
         androidBuilder: buildAndroid,
         iosBuilder: buildIos,

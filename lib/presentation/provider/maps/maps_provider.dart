@@ -27,7 +27,6 @@ class MapsProvider extends _$MapsProvider {
     required String idUserFarmer,
   }) async {
     CreatePointLocation point = ref.read(createPointLocationProvider);
-    // print(cordinat);
     var result = await point(PointLocationParams(
         cordinatPoint: cordinat,
         farmerName: farmerName,

@@ -25,20 +25,6 @@ class _GroupSubmissionFertilizerGroupState
           "Pengajuan Pupuk",
           style: largeReguler.copyWith(),
         ),
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(right: width * 0.03),
-            child: IconButton(
-              onPressed: () {
-                ref.read(routerProvider).goNamed("history-submission-grup");
-              },
-              icon: const Icon(
-                Icons.history,
-                size: 30,
-              ),
-            ),
-          ),
-        ],
       ),
       body: MobileSubmissionFertilizer(ref: ref),
       floatingActionButton: Container(
@@ -53,6 +39,7 @@ class _GroupSubmissionFertilizerGroupState
         child: IconButton(
           onPressed: () {
             ref.read(routerProvider).goNamed("create-submission-grup");
+            setState(() {});
           },
           icon: const Icon(Icons.add),
         ),

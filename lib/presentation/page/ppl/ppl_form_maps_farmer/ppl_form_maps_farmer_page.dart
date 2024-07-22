@@ -6,6 +6,7 @@ import 'package:mol_petani/domain/entities/user_farmer.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/ppl/ppl_form_maps_farmer/mobile/mobile_create_maps.dart';
 import 'package:mol_petani/presentation/page/ppl/ppl_form_maps_farmer/website/web_create_maps.dart';
+import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/widgets/platform_widget.dart';
 
 class PplFormMapsFarmerPage extends ConsumerStatefulWidget {
@@ -57,7 +58,12 @@ class _PplFormMapsFarmerPageState extends ConsumerState<PplFormMapsFarmerPage> {
 
   Widget buildAndroid(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(
+          "Tambah Lokasi lahan",
+          style: largeReguler,
+        ),
+      ),
       body: MobileCreateMaps(
           user: widget.user,
           ref: ref,
@@ -70,11 +76,21 @@ class _PplFormMapsFarmerPageState extends ConsumerState<PplFormMapsFarmerPage> {
 
   Widget buildIos(BuildContext context, WidgetRef ref) {
     return CupertinoApp(
+      localizationsDelegates: const [
+        DefaultMaterialLocalizations.delegate,
+        DefaultCupertinoLocalizations.delegate,
+        DefaultWidgetsLocalizations.delegate,
+      ],
       title: "Tambah Lokasi lahan",
       home: CupertinoPageScaffold(
           navigationBar: CupertinoNavigationBar(
+            leading: IconButton(
+                onPressed: () {
+                  ref.read(routerProvider).pop();
+                },
+                icon: const Icon(Icons.arrow_back_ios)),
             middle: Text(
-              "Pengajuan Pupuk",
+              "Tambah Lokasi lahan",
               style: largeReguler,
             ),
           ),

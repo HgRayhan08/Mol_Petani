@@ -30,6 +30,7 @@ class _PplDistributorDataPageState
       floatingActionButton: IconButton(
         onPressed: () {
           ref.watch(routerProvider).goNamed("regis-distributor");
+          setState(() {});
         },
         icon: const Icon(Icons.add),
       ),

@@ -7,7 +7,8 @@ import 'package:mol_petani/presentation/widgets/card_article_widget.dart';
 
 class NewsWidget extends ConsumerWidget {
   final int amounnt;
-  const NewsWidget({super.key, required this.amounnt});
+  final String routes;
+  const NewsWidget({super.key, required this.amounnt, required this.routes});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -22,7 +23,7 @@ class NewsWidget extends ConsumerWidget {
             ),
             TextButton(
               onPressed: () {
-                ref.read(routerProvider).goNamed("news");
+                ref.read(routerProvider).goNamed("news", extra: routes);
               },
               child: Text(
                 "View All",

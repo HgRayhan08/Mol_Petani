@@ -2,11 +2,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:mol_petani/presentation/misc/build_context_alert_information.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/ppl/ppl_register_distributor/method/form_register_distributor.dart';
-import 'package:mol_petani/presentation/provider/router/router_provider.dart';
-import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
+import 'package:mol_petani/presentation/page/ppl/ppl_register_distributor/method/logic_distributor.dart';
 import 'package:mol_petani/presentation/widgets_tidak/card_coverage_widget.dart';
 
 class MobileCreateDistributor extends StatefulWidget {
@@ -29,6 +27,7 @@ class _MobileCreateDistributorState extends State<MobileCreateDistributor> {
   final TextEditingController tokoController = TextEditingController();
   List<String> coverage = [];
   XFile? xfile;
+  bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -88,7 +87,18 @@ class _MobileCreateDistributorState extends State<MobileCreateDistributor> {
                       ),
                     ),
                     child: xfile != null
-                        ? Image.file(File(xfile!.path))
+                        ? Container(
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            height: MediaQuery.of(context).size.width * 0.3,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: FileImage(File(xfile!.path)),
+                                  fit: BoxFit.cover),
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(100),
+                              ),
+                            ),
+                          )
                         : const Center(
                             child: Icon(Icons.add),
                           ),
@@ -136,7 +146,7 @@ class _MobileCreateDistributorState extends State<MobileCreateDistributor> {
               ),
             ),
             ElevatedButton(
-              onPressed: _create,
+              onPressed: _isLoading ? null : _create,
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 backgroundColor: const Color(0xff7BD3EA),
@@ -155,34 +165,68 @@ class _MobileCreateDistributorState extends State<MobileCreateDistributor> {
     );
   }
 
-  void _create() {
-    if (emailControler.text == "" ||
-        passwordControler.text == "" ||
-        nameControler.text == "" ||
-        subdistrikControler.text == "" ||
-        coverage == []) {
-      context.buildAlertInformation(
-          title: "Pesan", subTitle: "Please enter the data completely");
-    } else {
-      context.buildAlertInformation(
-          title: "Pesan", subTitle: "Berhasil Menambahkan Data");
-      widget.ref.read(dataUserProvider.notifier).registerDistributor(
-            nama: nameControler.text,
-            email: emailControler.text,
-            password: passwordControler.text,
-            scope: coverage,
-            address: subdistrikControler.text,
-            familyIdentificationNumber: nikControler.text,
-            image: File(xfile!.path),
-            toko: tokoController.text,
-            mobileNumber: int.parse(handphoneConntroler.text),
-          );
-      Future.delayed(
-        const Duration(seconds: 3),
-        () {
-          widget.ref.read(routerProvider).goNamed("data-distributor");
-        },
-      );
-    }
+  void _create() async {
+    final register = LogicDistributor(
+        ref: widget.ref,
+        context: context,
+        emailControler: emailControler,
+        passwordControler: passwordControler,
+        nameControler: nameControler,
+        subdistrikControler: subdistrikControler,
+        nikControler: nikControler,
+        handphoneConntroler: handphoneConntroler,
+        tokoController: tokoController,
+        xfile: xfile!,
+        coverage: coverage);
+    register.logicCreate(
+      (isLoading) {
+        setState(() {
+          _isLoading = isLoading;
+        });
+      },
+    );
+    //   if (emailControler.text == "" ||
+    //       passwordControler.text == "" ||
+    //       nameControler.text == "" ||
+    //       subdistrikControler.text == "" ||
+    //       coverage == []) {
+    //     context.buildAlertInformation(
+    //         title: "Pesan", subTitle: "Please enter the data completely");
+    //   } else {
+    //     bool result =
+    //         await widget.ref.read(dataUserProvider.notifier).registerDistributor(
+    //               nama: nameControler.text,
+    //               email: emailControler.text,
+    //               password: passwordControler.text,
+    //               scope: coverage,
+    //               address: subdistrikControler.text,
+    //               familyIdentificationNumber: nikControler.text,
+    //               image: File(xfile!.path),
+    //               toko: tokoController.text,
+    //               mobileNumber: int.parse(handphoneConntroler.text),
+    //             );
+    //     setState(() {
+    //       _isLoading = true;
+    //     });
+    //     if (result = true) {
+    //       context.buildAlertInformation(
+    //           title: "Pesan", subTitle: "Berhasil Menambahkan Data");
+    //       Future.delayed(
+    //         const Duration(seconds: 3),
+    //         () {
+    //           widget.ref.read(routerProvider).goNamed("data-distributor");
+    //         },
+    //       );
+    //       setState(() {
+    //         _isLoading = false;
+    //       });
+    //     } else {
+    //       context.buildAlertInformation(
+    //           title: "Pesan", subTitle: "Gagal Menambahkan Data");
+    //       setState(() {
+    //         _isLoading = false;
+    //       });
+    //     }
+    //   }
   }
 }

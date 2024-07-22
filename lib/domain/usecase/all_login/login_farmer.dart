@@ -25,13 +25,12 @@ class LoginFarmer implements UseCase<Result<UserFarmer>, LoginParams> {
       var userResult =
           await userRepository.getUserFarmer(idUser: loginResult.resultValue!);
       if (userResult.isSuccess) {
-        print(userResult.resultValue!.idUserFarmer);
         await sharedPrefRepository.saveDataLogin({
           userResult.resultValue!.information,
           userResult.resultValue!.idUserFarmer,
           userResult.resultValue!.idPPL,
-          userResult.resultValue!.grupFarmer,
-          userResult.resultValue!.idGrupFarmer,
+          userResult.resultValue!.farmerGroup,
+          userResult.resultValue!.idFarmerGroup,
           userResult.resultValue!.name,
         }.toList());
         return switch (userResult) {

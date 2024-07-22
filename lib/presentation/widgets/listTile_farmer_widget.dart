@@ -54,7 +54,7 @@ class ListTileFarmerWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Desa ${data.village}",
+                  "Desa ${data.alamat}",
                   style: regulerReguler,
                 ),
                 Text(

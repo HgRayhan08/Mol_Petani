@@ -15,6 +15,11 @@ class PplMonitoringFarmerGroupPage extends ConsumerWidget {
   Widget buildAndroid(BuildContext context, WidgetRef ref) {
     return Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+              onPressed: () {
+                ref.read(routerProvider).goNamed("monitoring-page");
+              },
+              icon: const Icon(Icons.arrow_back)),
           title: Text(user.farmerGrup),
         ),
         body: MobileMonitoringFarmerGroup(ref: ref, user: user));

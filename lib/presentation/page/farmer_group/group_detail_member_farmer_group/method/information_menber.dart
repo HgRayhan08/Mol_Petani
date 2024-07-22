@@ -17,11 +17,7 @@ Widget informationMember(ref, UserFarmer user, width, height) => Container(
         children: [
           CardInformationWidget(
             title: "Alamat",
-            information: user.village,
-          ),
-          CardInformationWidget(
-            title: "Tanggal Lahir",
-            information: user.dateOfBirth,
+            information: user.alamat,
           ),
           Column(
             children: [
@@ -58,10 +54,6 @@ Widget informationMember(ref, UserFarmer user, width, height) => Container(
               ),
               const Divider(),
             ],
-          ),
-          CardInformationWidget(
-            title: "Nomor KK",
-            information: user.kartuKeluarga,
           ),
           CardInformationWidget(
             title: "Nomor Induk Keluarga",

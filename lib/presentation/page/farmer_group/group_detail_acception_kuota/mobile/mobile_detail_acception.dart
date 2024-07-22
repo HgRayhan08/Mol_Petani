@@ -31,7 +31,7 @@ class MobileDetailAcception extends StatelessWidget {
         ),
         submissionInformation(width, height, data: data),
         SizedBox(
-          height: height * 0.37,
+          height: height * 0.3,
         ),
         defaultTargetPlatform == TargetPlatform.iOS
             ? Container()

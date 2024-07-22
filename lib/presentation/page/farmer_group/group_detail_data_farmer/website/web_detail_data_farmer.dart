@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mol_petani/domain/entities/user_farmer.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/farmer_group/group_detail_data_farmer/method/web_information_farmer.dart';
-import 'package:mol_petani/presentation/page/farmer_group/group_home_page/method/information_farmer.dart';
 import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
 import 'package:mol_petani/presentation/widgets/button_submission_widget.dart';
 import 'package:mol_petani/presentation/widgets/maps_widget.dart';
@@ -43,7 +42,7 @@ class WebDetailDataFarmer extends StatelessWidget {
         ),
         SizedBox(height: height * 0.02),
         SizedBox(height: height * 0.03),
-        user.idGrupFarmer == ""
+        user.idFarmerGroup == ""
             ? ButtonSubmissionWidget(
                 title: "Tambahkan",
                 onTap: () {

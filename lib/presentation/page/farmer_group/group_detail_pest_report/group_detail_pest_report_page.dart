@@ -4,11 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:mol_petani/domain/entities/pest_report.dart';
 import 'package:mol_petani/presentation/misc/build_context_alert_dialog.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
-import 'package:mol_petani/presentation/page/farmer_group/group_detail_pest_report/method/information_pest_report.dart';
 import 'package:mol_petani/presentation/page/farmer_group/group_detail_pest_report/mobile/mobile_detail_pest.dart';
 import 'package:mol_petani/presentation/provider/report/report_provider.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
-import 'package:mol_petani/presentation/widgets/appbar_custom_widget.dart';
 import 'package:mol_petani/presentation/widgets/platform_widget.dart';
 
 class GroupDetailPestReportPage extends ConsumerWidget {
@@ -19,25 +17,58 @@ class GroupDetailPestReportPage extends ConsumerWidget {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size(
-            width,
-            height * 0.3 -
-                AppBar().preferredSize.height -
-                MediaQuery.of(context).padding.top,
-          ),
-          child: AppbarCustomWidget(
-            height: height,
-            width: width,
-            title: "detail Pelaporan",
-            content: data.nameFarmerGroup,
-            subContext: Text(
-              " Keterangan : ${data.information}",
-              style: regulerReguler.copyWith(color: Colors.white),
+      appBar: AppBar(
+        backgroundColor: blueLight,
+        title: Text(
+          "detail Pelaporan",
+          // "detail Pelaporan",
+          style: largeReguler,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        bottom: PreferredSize(
+          preferredSize: Size(width, height * 0.1),
+          child: Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: width * 0.05,
+              vertical: height * 0.03,
+            ),
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
+              ),
+            ),
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  data.nameFarmerGroup,
+                  style: largeReguler.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                Text(
+                  " Keterangan : ${data.information}",
+                  style: regulerReguler.copyWith(color: Colors.white),
+                ),
+              ],
             ),
           ),
         ),
-        body: MobileDetailPest(ref: ref, data: data));
+        leading: IconButton(
+          onPressed: () {
+            ref.read(routerProvider).goNamed("report-hama");
+          },
+          icon: const Icon(Icons.arrow_back),
+        ),
+      ),
+      body: MobileDetailPest(ref: ref, data: data),
+    );
   }
 
   Widget buildIos(BuildContext context, WidgetRef ref) {

@@ -1,6 +1,7 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mol_petani/presentation/misc/build_context_alert_information.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
@@ -164,10 +165,14 @@ class _WebCreateFarmerState extends State<WebCreateFarmer> {
     if (nameController.text == "" ||
         villageController.text == "" ||
         nikController.text == "" ||
-        grupController.text == "" ||
+        noHpController.text == "" ||
         kartuController.text == "" ||
         luasController.text == "") {
+      context.buildAlertInformation(
+          title: "Pesan", subTitle: "Please enter the data completely");
     } else {
+      context.buildAlertInformation(
+          title: "Pesan", subTitle: "Berhasil Menambahkan Data");
       widget.ref.read(dataUserProvider.notifier).createFarmer(
             name: nameController.text,
             village: villageController.text,
@@ -179,12 +184,7 @@ class _WebCreateFarmerState extends State<WebCreateFarmer> {
             dateOfBirth: tanggalLahirController.text,
           );
       // context.buildAlertInformation();
-      Future.delayed(
-        const Duration(seconds: 4),
-        () {
-          widget.ref.read(routerProvider).pop();
-        },
-      );
+      widget.ref.read(routerProvider).pop();
     }
   }
 }

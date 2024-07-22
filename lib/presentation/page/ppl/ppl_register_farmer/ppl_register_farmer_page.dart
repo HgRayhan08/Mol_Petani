@@ -42,7 +42,7 @@ class PplRegisterFarmer extends StatelessWidget {
             style: largeReguler,
           ),
         ),
-        child: MobileCreateFarmer(ref: ref),
+        child: SafeArea(child: MobileCreateFarmer(ref: ref)),
       ),
     );
   }

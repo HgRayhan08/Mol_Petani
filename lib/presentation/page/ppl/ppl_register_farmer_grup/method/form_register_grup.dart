@@ -17,7 +17,7 @@ Widget formRegisterFarmerGrup(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TextFieldCustom(
-          title: "Farmer Grup",
+          title: "Nama Kelompok Tani",
           hinttext: ' Enter Your Farmer Grup',
           controller: grupcontroler!,
         ),
@@ -25,7 +25,7 @@ Widget formRegisterFarmerGrup(
           height: mediaQueryHeight * 0.01,
         ),
         TextFieldCustom(
-          title: "Ketua Kelompok Tani",
+          title: "Nama Ketua Kelompok Tani",
           hinttext: 'Enter Your Username',
           controller: leadernameController!,
         ),
@@ -66,7 +66,7 @@ Widget formRegisterFarmerGrup(
           height: mediaQueryHeight * 0.01,
         ),
         TextFieldCustom(
-          title: "Village",
+          title: "Desa",
           hinttext: 'Enter Your Village',
           controller: vilagecontroler!,
         ),

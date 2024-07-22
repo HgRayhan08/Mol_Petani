@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mol_petani/domain/entities/distribution_fertilizer_farmer.dart';
-import 'package:mol_petani/domain/entities/submission_fertilizer_group.dart';
 import 'package:mol_petani/domain/entities/user_farmer.dart';
-import 'package:mol_petani/domain/entities/user_farmer_grup.dart';
 import 'package:mol_petani/presentation/misc/build_context_alert_dialog.dart';
 import 'package:mol_petani/presentation/page/farmer_group/group_detail_distribution_fertilizer_farmer/group_detail_distribution_fertilizer_farmer_page.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
@@ -91,7 +89,8 @@ class _TableDistributionKuotaFertilizerFarmerState
                   context: context,
                   builder: (BuildContext context) {
                     return Dialog(
-                      child: GroupDetailDistributionFertilizerFarmerPage(data),
+                      child: GroupDetailDistributionFertilizerFarmerPage(
+                          data, widget.user),
                     );
                   },
                 );

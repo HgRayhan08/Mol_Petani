@@ -15,20 +15,16 @@ class GroupReportHamaPage extends ConsumerWidget {
   Widget buildAndroid(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            ref.read(routerProvider).pop();
+          },
+          icon: const Icon(Icons.arrow_back),
+        ),
         title: Text(
           "Laporan Hama",
           style: largeReguler,
         ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              ref
-                  .read(routerProvider)
-                  .goNamed("group-history-submission-reporting");
-            },
-            icon: const Icon(Icons.history),
-          )
-        ],
       ),
       body: MobileReportingHama(ref: ref),
       floatingActionButton: ElevatedButton(

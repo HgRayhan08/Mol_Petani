@@ -12,7 +12,17 @@ class PplComplaintReportPage extends ConsumerWidget {
 
   Widget buildAndroid(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text("Laporan Petani", style: largeReguler),
+        actions: [
+          IconButton(
+            onPressed: () {
+              ref.read(routerProvider).goNamed("ppl-history-report-complaint");
+            },
+            icon: const Icon(Icons.history),
+          ),
+        ],
+      ),
       body: MobileComplaintReport(ref: ref),
     );
   }
@@ -32,7 +42,7 @@ class PplComplaintReportPage extends ConsumerWidget {
             onPressed: () {
               ref.read(routerProvider).goNamed("ppl-history-report-complaint");
             },
-            icon: Icon(Icons.history),
+            icon: const Icon(Icons.history),
           ),
         ),
         child: Padding(

@@ -4,7 +4,9 @@ import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/user_login/method/dropdown_login.dart';
 import 'package:mol_petani/presentation/page/user_login/method/form_login_farmer.dart';
 import 'package:mol_petani/presentation/page/user_login/method/opener_petani.dart';
+import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
+import 'package:mol_petani/presentation/widgets/button_submission_widget.dart';
 
 class MobileLoginFarmer extends ConsumerStatefulWidget {
   final TextEditingController emailControler;
@@ -54,6 +56,7 @@ class _MobileLoginFarmerState extends ConsumerState<MobileLoginFarmer> {
             email: widget.emailControler,
             password: widget.passwordControler,
           ),
+          SizedBox(height: mediaHeight * 0.02),
           switch (ref.watch(dataUserProvider)) {
             AsyncData(:final value) => value == null
                 ? ElevatedButton(
@@ -89,15 +92,13 @@ class _MobileLoginFarmerState extends ConsumerState<MobileLoginFarmer> {
           SizedBox(
             height: mediaHeight * 0.02,
           ),
-          Align(
-            alignment: Alignment.center,
-            child: Text(
-              "atau login sebagai",
-              style: regulerReguler,
-            ),
-          ),
+          ButtonSubmissionWidget(
+              title: "Registrasi",
+              onTap: () {
+                ref.read(routerProvider).goNamed("register-ppl");
+              }),
           SizedBox(
-            height: mediaHeight * 0.02,
+            height: mediaHeight * 0.05,
           ),
           Padding(
             padding: EdgeInsets.only(top: mediaHeight * 0.08),

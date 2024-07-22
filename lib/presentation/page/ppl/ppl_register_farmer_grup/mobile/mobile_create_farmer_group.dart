@@ -1,13 +1,10 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:mol_petani/presentation/misc/build_context_alert_information.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/ppl/ppl_register_farmer_grup/method/form_register_grup.dart';
-import 'package:mol_petani/presentation/provider/router/router_provider.dart';
-import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
+import 'package:mol_petani/presentation/page/ppl/ppl_register_farmer_grup/method/logic_farmer_group.dart';
 
 class MobileCreateFarmerGroup extends StatefulWidget {
   final WidgetRef ref;
@@ -27,6 +24,8 @@ class _MobileCreateFarmerGroupState extends State<MobileCreateFarmerGroup> {
   final TextEditingController nikControler = TextEditingController();
   final TextEditingController handphoneConntroler = TextEditingController();
   XFile? xFile;
+  bool _isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -120,7 +119,7 @@ class _MobileCreateFarmerGroupState extends State<MobileCreateFarmerGroup> {
           height: height * 0.03,
         ),
         ElevatedButton(
-          onPressed: _logicCreate,
+          onPressed: _isLoading ? null : _loginCreate,
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(vertical: 10),
             backgroundColor: const Color(0xff7BD3EA),
@@ -137,33 +136,67 @@ class _MobileCreateFarmerGroupState extends State<MobileCreateFarmerGroup> {
     );
   }
 
-  void _logicCreate() {
-    if (emailControler.text == "" ||
-        passwordControler.text == "" ||
-        grupFarmerKontroler.text == "" ||
-        vilageControler.text == "") {
-      context.buildAlertInformation(
-          title: "Pesan", subTitle: "Please enter the data completely");
-    } else {
-      context.buildAlertInformation(
-          title: "Pesan", subTitle: "Berhasil Menambahkan Data");
-      widget.ref.read(dataUserProvider.notifier).registerGrupFarmer(
-            leaderName: leaderNameController.text,
-            email: emailControler.text,
-            password: passwordControler.text,
-            kelompok: grupFarmerKontroler.text,
-            fotoUrl: File(xFile!.path),
-            village: vilageControler.text,
-            familyIdentificationNumber: nikControler.text,
-            mobileNumber: int.parse(handphoneConntroler.text),
-          );
-
-      Future.delayed(
-        const Duration(seconds: 5),
-        () {
-          widget.ref.read(routerProvider).goNamed("data-grup-farmer");
-        },
-      );
-    }
+  void _loginCreate() async {
+    final registerLogic = RegisterLogic(
+      ref: widget.ref,
+      context: context,
+      emailController: emailControler,
+      passwordController: passwordControler,
+      grupFarmerController: grupFarmerKontroler,
+      villageController: vilageControler,
+      leaderNameController: leaderNameController,
+      nikController: nikControler,
+      handphoneController: handphoneConntroler,
+      xFile: xFile!,
+    );
+    registerLogic.logicCreate((isLoading) {
+      setState(() {
+        _isLoading = isLoading;
+      });
+    });
   }
+
+  // void _logicCreate() async {
+  //   if (emailControler.text == "" ||
+  //       passwordControler.text == "" ||
+  //       grupFarmerKontroler.text == "" ||
+  //       vilageControler.text == "") {
+  //     context.buildAlertInformation(
+  //         title: "Pesan", subTitle: "Please enter the data completely");
+  //   } else {
+  //     bool result =
+  //         await widget.ref.read(dataUserProvider.notifier).registerGrupFarmer(
+  //               leaderName: leaderNameController.text,
+  //               email: emailControler.text,
+  //               password: passwordControler.text,
+  //               kelompok: grupFarmerKontroler.text,
+  //               fotoUrl: File(xFile!.path),
+  //               village: vilageControler.text,
+  //               familyIdentificationNumber: nikControler.text,
+  //               mobileNumber: int.parse(handphoneConntroler.text),
+  //             );
+  //     setState(() {
+  //       _isLoading = true;
+  //     });
+  //     if (result == true) {
+  //       context.buildAlertInformation(
+  //           title: "Pesan", subTitle: "Berhasil Menambahkan Data");
+  //       Future.delayed(
+  //         const Duration(seconds: 5),
+  //         () {
+  //           widget.ref.read(routerProvider).goNamed("data-grup-farmer");
+  //         },
+  //       );
+  //       setState(() {
+  //         _isLoading = false;
+  //       });
+  //     } else {
+  //       context.buildAlertInformation(
+  //           title: "Pesan", subTitle: "Gagal Menambahkan Data");
+  //       setState(() {
+  //         _isLoading = false;
+  //       });
+  //     }
+  //   }
+  // }
 }

@@ -28,6 +28,25 @@ class PplDetailFarmerGroupPage extends ConsumerWidget {
           },
           icon: const Icon(Icons.arrow_back_ios),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.delete),
+            onPressed: () {
+              context.buildShowDialog(
+                berhasil: "Hapus",
+                onTapCancel: () {},
+                onTapSucces: () async {
+                  ref
+                      .read(dataUserProvider.notifier)
+                      .deleteFarmerGroup(idDocument: user.uid);
+                  ref.read(routerProvider).goNamed("data-grup-farmer");
+                },
+                judul: "Konfirmasi Tambae Member",
+                keterangan: "Apakah Anda yakin ingin Menambah Memmber?",
+              );
+            },
+          ),
+        ],
       ),
       body: MobileDetailFarmerGroup(user: user),
     );

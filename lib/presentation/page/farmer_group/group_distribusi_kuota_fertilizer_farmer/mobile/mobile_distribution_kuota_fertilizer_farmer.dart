@@ -42,7 +42,10 @@ class MobileDistributionKuotaFerilizerFarmer extends StatelessWidget {
                     onTap: () {
                       ref.read(routerProvider).pushNamed(
                           "detail-distribution-fertilizer-farmer",
-                          extra: data[index]);
+                          extra: {
+                            "data": data[index],
+                            "user": user,
+                          });
                     },
                     leading: Text(
                       data[index].year,

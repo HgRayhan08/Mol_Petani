@@ -34,6 +34,7 @@ class MobileHomePpl extends ConsumerWidget {
           height: height * 0.7,
           child: const NewsWidget(
             amounnt: 3,
+            routes: "main-ppl",
           ),
         ),
       ],

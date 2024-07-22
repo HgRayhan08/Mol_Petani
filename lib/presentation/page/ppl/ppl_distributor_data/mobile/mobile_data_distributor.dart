@@ -35,23 +35,11 @@ class MobileDataDistributor extends StatelessWidget {
                       );
                 },
               );
-              // return ListTileCustom(
-              //   scope: true,
-              //   title: data![index].name,
-              //   subscope: data[index].scope,
-              //   image: data[index].fotoUrl.toString(),
-              //   onTap: () {
-              //     ref.read(routerProvider).goNamed(
-              //           "detail-distributor",
-              //           extra: data[index],
-              //         );
-              //   },
-              // );
             },
           );
         }
         return const Center(
-          child: Text("data Grup Farmer is null"),
+          child: Text("Distributor Tidak Tersedia"),
         );
       },
     );

@@ -16,6 +16,7 @@ import 'package:mol_petani/domain/usecase/create_send_fertilizer_group/create_se
 import 'package:mol_petani/domain/usecase/create_fertilizer_farmer_grup/create_fertilizer_farmer_grup.dart';
 import 'package:mol_petani/domain/usecase/create_fertilizer_farmer_grup/create_fertilizer_grup_params.dart';
 import 'package:mol_petani/domain/usecase/create_send_fertilizer_group/send_group_params.dart';
+import 'package:mol_petani/domain/usecase/delete_distribution_farmer/delete_distribution_farmer.dart';
 import 'package:mol_petani/domain/usecase/delete_send_fertilizer/delete_send_fertilizer.dart';
 import 'package:mol_petani/domain/usecase/get_accept_fertilizer_farmer/get_acceptd_fertilizer_farmer.dart';
 import 'package:mol_petani/domain/usecase/get_data_monitoring/get_data_monitoring.dart';
@@ -41,6 +42,7 @@ import 'package:mol_petani/presentation/provider/usecases/create_send_fertilizer
 import 'package:mol_petani/presentation/provider/usecases/create_send_fertilizer_group_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/create_fertilizer_farmer_grup_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/create_additional_fertilizer_farmer_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/delete_distribution_fertilizer_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/delete_send_fertilizer_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_accept_fertilizer_farmer_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/get_all_grup_farmer_provider.dart';
@@ -234,6 +236,19 @@ class FertilizerSubmission extends _$FertilizerSubmission {
     }
   }
 
+  Future<String> deleteDistribusiFertilizer(
+      {required String idDocument}) async {
+    DeleteDistributionFarmer delete =
+        ref.read(deleteDistributionFarmerProvider);
+    var result = await delete(idDocument);
+    switch (result) {
+      case Success():
+        return "success Delete";
+      case Failed():
+        return "failed Delete";
+    }
+  }
+
   // end group farmer
 
   // ppl
@@ -322,7 +337,7 @@ class FertilizerSubmission extends _$FertilizerSubmission {
     return [];
   }
 
-  Future<String> updateSendFertilizer({
+  Future<bool> updateSendFertilizer({
     required int send,
     required int sendUrea,
     required int sendPoska,
@@ -335,9 +350,9 @@ class FertilizerSubmission extends _$FertilizerSubmission {
         sendPoska: sendPoska,
         idDocument: idDocument));
     if (result.isSuccess) {
-      return "Sucsses Update data send fertilizer";
+      return true;
     } else {
-      return "Failed update data";
+      return false;
     }
   }
 

@@ -9,9 +9,9 @@ class UserPpl with _$UserPpl {
     required String uid,
     required String name,
     required String email,
-    required String information,
-    String? familyIdentificationNumber,
     String? fotoUrl,
+    required String information,
+    String? nik,
     String? subdistrict,
     @Default([]) List<String>? scope,
   }) = _UserPpl;

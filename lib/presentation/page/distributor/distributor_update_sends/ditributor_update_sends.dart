@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mol_petani/domain/entities/submission_kuota_fertilizer.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/distributor/distributor_update_sends/mobile/mobile_update_sends.dart';
 import 'package:mol_petani/presentation/page/distributor/distributor_update_sends/website/web_update_sends.dart';
@@ -8,12 +9,19 @@ import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/widgets/platform_widget.dart';
 
 class DistributorUpdateSendsPage extends ConsumerWidget {
-  final String idDocument;
-  const DistributorUpdateSendsPage(this.idDocument, {super.key});
+  final SubmissionKuotaFertilizer data;
+  const DistributorUpdateSendsPage(this.data, {super.key});
 
   Widget builAndroidd(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              ref
+                  .read(routerProvider)
+                  .goNamed("detail-send-fertilizer", extra: data);
+            },
+            icon: const Icon(Icons.arrow_back)),
         title: Text(
           "Update Pengiriman",
           style: largeReguler.copyWith(fontWeight: FontWeight.bold),
@@ -21,7 +29,7 @@ class DistributorUpdateSendsPage extends ConsumerWidget {
       ),
       body: MobileUpdateSends(
         ref: ref,
-        idDocument: idDocument,
+        data: data,
       ),
     );
   }
@@ -49,7 +57,7 @@ class DistributorUpdateSendsPage extends ConsumerWidget {
         child: SafeArea(
           child: MobileUpdateSends(
             ref: ref,
-            idDocument: idDocument,
+            data: data,
           ),
         ),
       ),
@@ -82,7 +90,7 @@ class DistributorUpdateSendsPage extends ConsumerWidget {
         ),
         body: WebUpdateSends(
           ref: ref,
-          idDocument: idDocument,
+          idDocument: data.idDocument.toString(),
         ),
       ),
     );

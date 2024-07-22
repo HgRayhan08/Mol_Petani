@@ -18,6 +18,12 @@ class PplDetailSubmissionGroup extends ConsumerWidget {
   Widget buildAndroid(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            ref.read(routerProvider).goNamed("submission-group", extra: user);
+          },
+          icon: Icon(Icons.arrow_back),
+        ),
         title: const Text("Data Pengajuan"),
       ),
       body: MobileDetailSubmissionGroup(ref: ref, data: data),

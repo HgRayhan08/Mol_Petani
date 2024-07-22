@@ -14,19 +14,15 @@ Widget informationDetailFarmer(UserFarmer user, width, height) => Container(
         children: [
           CardInformationWidget(
             title: "Alamat",
-            information: user.village,
-          ),
-          CardInformationWidget(
-            title: "Tanggal Lahir",
-            information: user.dateOfBirth,
+            information: user.alamat,
           ),
           CardInformationWidget(
             title: "Email",
             information: user.email,
           ),
           CardInformationWidget(
-            title: "Nomor KK",
-            information: user.kartuKeluarga,
+            title: "Nomor Nik",
+            information: user.nik,
           ),
           CardInformationWidget(
             title: "Nomor Induk Keluarga",

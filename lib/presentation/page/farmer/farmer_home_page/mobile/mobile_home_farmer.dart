@@ -66,6 +66,7 @@ class MobileHomeFarmer extends StatelessWidget {
           height: height * 0.7,
           child: const NewsWidget(
             amounnt: 4,
+            routes: "main-farmer",
           ),
         ),
       ],

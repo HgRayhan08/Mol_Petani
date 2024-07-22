@@ -23,15 +23,17 @@ class DistributionDetailSendFertilizerPage extends ConsumerWidget {
           style: largeReguler,
         ),
         actions: [
-          IconButton(
-            onPressed: () {
-              ref.read(routerProvider).goNamed(
-                    "update-send-fertilizer",
-                    extra: data.idDocument,
-                  );
-            },
-            icon: const Icon(Icons.edit),
-          ),
+          data.information == "Selesai"
+              ? Container()
+              : IconButton(
+                  onPressed: () {
+                    ref.read(routerProvider).goNamed(
+                          "update-send-fertilizer",
+                          extra: data,
+                        );
+                  },
+                  icon: const Icon(Icons.edit),
+                ),
         ],
       ),
       body: MobileDetailSendFertilizer(
@@ -55,15 +57,17 @@ class DistributionDetailSendFertilizerPage extends ConsumerWidget {
             "Detail Pengiriman",
             style: largeReguler,
           ),
-          trailing: IconButton(
-            onPressed: () {
-              ref.read(routerProvider).goNamed(
-                    "update-send-fertilizer",
-                    extra: data.idDocument,
-                  );
-            },
-            icon: const Icon(Icons.edit),
-          ),
+          trailing: data.information == "Selesai"
+              ? Container()
+              : IconButton(
+                  onPressed: () {
+                    ref.read(routerProvider).goNamed(
+                          "update-send-fertilizer",
+                          extra: data,
+                        );
+                  },
+                  icon: const Icon(Icons.edit),
+                ),
         ),
         child: SafeArea(
           child: MobileDetailSendFertilizer(

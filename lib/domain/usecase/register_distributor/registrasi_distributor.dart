@@ -7,8 +7,6 @@ import 'package:mol_petani/domain/entities/user_ppl.dart';
 import 'package:mol_petani/domain/usecase/register_distributor/register_distributor_parms.dart';
 import 'package:mol_petani/domain/usecase/usecase.dart';
 
-import 'dart:typed_data';
-
 class RegisterDistributor
     implements UseCase<Result<UserPpl>, RegisterDistributorParams> {
   final Authentication _authentication;
@@ -28,13 +26,10 @@ class RegisterDistributor
     var createAkun = await _authentication.register(
         email: params.email, password: params.password);
     if (createAkun.isSuccess) {
-      print("berhasil regis akun");
       if (kIsWeb) {
-        print("berhasil web");
         String image = await _userRepository.uploadImageWeb(
             imageFile: params.fotoUrl.path, webFile: params.webfotourl!);
         if (image.isNotEmpty) {
-          print("upload image is sucsess");
           List<String>? loginId = await _sharedPrefRepository.getDataLogin();
           var createData = await _userRepository.createUserDistributor(
             uid: createAkun.resultValue!,

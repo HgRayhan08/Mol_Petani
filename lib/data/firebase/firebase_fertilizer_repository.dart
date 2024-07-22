@@ -53,7 +53,6 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
     try {
       var result = await pengajuan
           .where("idGrupFarmers", isEqualTo: idKelompoktani)
-          .where("information", isEqualTo: information)
           .get();
       if (result.docs.isNotEmpty) {
         return Result.success(result.docs

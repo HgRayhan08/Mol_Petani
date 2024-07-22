@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mol_petani/domain/entities/user_farmer.dart';
 import 'package:mol_petani/presentation/misc/build_context_alert_dialog.dart';
 import 'package:mol_petani/presentation/page/farmer_group/group_detail_data_farmer/group_detail_data_farmer_page.dart';
-import 'package:mol_petani/presentation/page/farmer_group/group_register_account_farmer/group_register_account_farmer_page.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
 import 'package:pluto_grid/pluto_grid.dart';
@@ -134,7 +133,7 @@ class _TableMemberState extends ConsumerState<TableMember> {
                 'nik': PlutoCell(
                     value: e.value
                         .nik), // Assuming 'name' is a property in your data
-                'kelompokTani': PlutoCell(value: e.value.grupFarmer),
+                'kelompokTani': PlutoCell(value: e.value.farmerGroup),
                 'name': PlutoCell(value: e.value.name),
                 'action': PlutoCell(value: e.value),
               },

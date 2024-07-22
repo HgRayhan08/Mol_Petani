@@ -8,15 +8,16 @@ import 'package:mol_petani/domain/entities/user_farmer_grup.dart';
 import 'package:mol_petani/domain/entities/user_ppl.dart';
 
 abstract interface class UserRepository {
-  // Future<Result<User>> createUserPpl({
-  //   required String uid,
-  //   required String nama,
-  //   required String email,
-  //   String? fotoUrl,
-  //   required String keterangan,
-  //   List<String>? cangkupan,
-  //   String? kecamatan,
-  // });
+  Future<Result<UserPpl>> createUserPpl({
+    required String uid,
+    required String nama,
+    required String email,
+    String? fotoUrl,
+    required String keterangan,
+    List<String>? cangkupan,
+    String? kecamatan,
+    required String nik,
+  });
 
   Future<Result<UserFarmerGroup>> createUserFarmerGrup(
       {required String uid,
@@ -45,13 +46,12 @@ abstract interface class UserRepository {
 
   Future<Result<UserFarmer>> createFarmer({
     required String name,
-    required String village,
+    required String alamat,
     required String nik,
     required String kartuKeluarga,
     required String luasLahan,
     required String jenisKelamin,
     required String noHp,
-    required String dateOfBirth,
   });
 
   Future<Result<UserPpl>> getUserPpl({required String uid});

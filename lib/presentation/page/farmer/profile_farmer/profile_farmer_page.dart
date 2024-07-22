@@ -30,7 +30,7 @@ class _ProfileFarmerPageState extends State<ProfileFarmerPage> {
           ),
         ),
       ),
-      body: MobileProfile(ref: ref),
+      body: MobileFarmerProfile(ref: ref),
     );
   }
 

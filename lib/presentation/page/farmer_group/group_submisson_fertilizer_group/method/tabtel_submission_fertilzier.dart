@@ -82,19 +82,19 @@ class _TableSubmissionFertilizerState
                     );
               },
             ),
-            IconButton(
-              icon: const Icon(Icons.edit),
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return Dialog(
-                      child: DistributorUpdateSendsPage(data.idDocument!),
-                    );
-                  },
-                );
-              },
-            ),
+            // IconButton(
+            //   icon: const Icon(Icons.edit),
+            //   onPressed: () {
+            //     showDialog(
+            //       context: context,
+            //       builder: (BuildContext context) {
+            //         return Dialog(
+            //           child: DistributorUpdateSendsPage(data.idDocument!),
+            //         );
+            //       },
+            //     );
+            //   },
+            // ),
             IconButton(
               icon: const Icon(Icons.delete),
               onPressed: () {

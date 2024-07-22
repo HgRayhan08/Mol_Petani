@@ -88,8 +88,8 @@ class HomePplPage extends ConsumerWidget {
   }
 
   Widget _buildWeb(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      body: const WebHomePpl(),
+    return const Scaffold(
+      body: WebHomePpl(),
     );
   }
 

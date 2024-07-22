@@ -28,6 +28,7 @@ class _DistributorSendsFertilizerPageState
           IconButton(
             onPressed: () {
               ref.read(routerProvider).goNamed("distributor-history-sends");
+              setState(() {});
             },
             icon: const Icon(Icons.history),
           )
@@ -44,6 +45,7 @@ class _DistributorSendsFertilizerPageState
       floatingActionButton: ElevatedButton(
         onPressed: () {
           ref.read(routerProvider).goNamed("forms-sends-fertilizer");
+          setState(() {});
         },
         child: const Icon(Icons.add),
       ),

@@ -72,6 +72,7 @@ class MobileHomeDistributor extends StatelessWidget {
           height: height * 0.7,
           child: const NewsWidget(
             amounnt: 3,
+            routes: "main-dist",
           ),
         ),
       ],

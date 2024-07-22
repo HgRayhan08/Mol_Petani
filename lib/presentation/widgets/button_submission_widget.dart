@@ -4,7 +4,7 @@ import 'package:mol_petani/presentation/misc/constant.dart';
 
 class ButtonSubmissionWidget extends ConsumerWidget {
   final String title;
-  final Function() onTap;
+  final Function()? onTap;
   const ButtonSubmissionWidget(
       {required this.title, required this.onTap, super.key});
 

@@ -7,7 +7,6 @@ import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/farmer_group/group_detail_data_farmer/method/information_farmer.dart';
 import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
 import 'package:mol_petani/presentation/widgets/button_submission_widget.dart';
-import 'package:mol_petani/presentation/widgets/maps_widget.dart';
 
 class MobileDetailMember extends StatelessWidget {
   final UserFarmer user;
@@ -68,7 +67,7 @@ class MobileDetailMember extends StatelessWidget {
         SizedBox(height: height * 0.02),
         defaultTargetPlatform == TargetPlatform.iOS
             ? Container()
-            : user.idGrupFarmer != ""
+            : user.idFarmerGroup != ""
                 ? ButtonSubmissionWidget(
                     title: "Hapus Member",
                     onTap: () {

@@ -3,8 +3,10 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:mol_petani/domain/entities/user_farmer.dart';
-import 'package:mol_petani/presentation/misc/constant.dart';
+import 'package:mol_petani/presentation/page/ppl/ppl_form_maps_farmer/method/logic_create.dart';
 import 'package:mol_petani/presentation/provider/maps/maps_provider.dart';
+import 'package:mol_petani/presentation/widgets/button_submission_widget.dart';
+import 'package:mol_petani/presentation/widgets/text_field_custom.dart';
 
 class MobileCreateMaps extends StatefulWidget {
   final UserFarmer user;
@@ -28,73 +30,42 @@ class MobileCreateMaps extends StatefulWidget {
 }
 
 class _MobileCreateMapsState extends State<MobileCreateMaps> {
-  // List<LatLng> pointMaps = [
-  //   // LatLng(-7.636249, 112.215799),
-  //   // LatLng(-7.636280, 112.215870),
-  //   // LatLng(-7.637097, 112.215655),
-  //   // LatLng(-7.637065, 112.215575),
-  // ];
-  // TextEditingController latController = TextEditingController();
-  // TextEditingController longController = TextEditingController();
-
-  // @override
-  // void dispose() {
-  //   latController.dispose();
-  //   longController.dispose();
-  //   // TODO: implement dispose
-  //   super.dispose();
-  // }
-
-  // void _addListpoint() {
-  //   final lat = double.parse(latController.text);
-  //   final long = double.parse(longController.text);
-
-  //   if (lat != 0 && long != 0) {
-  //     setState(() {
-  //       // dataLokasi.add(GeoPoint(lat, long));
-  //       pointMaps.add(LatLng(lat, long));
-  //     });
-  //     latController.clear();
-  //     longController.clear();
-  //   }
-  // }
-
+  bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return ListView(
+      padding: EdgeInsets.symmetric(
+        horizontal: width * 0.05,
+        vertical: height * 0.03,
+      ),
       children: [
-        TextFormField(
+        TextFieldCustom(
+          hinttext: "Latitude",
+          title: "Latitude",
           controller: widget.latController,
-          decoration: const InputDecoration(
-            labelText: 'Latitude',
-          ),
         ),
-        TextFormField(
+        SizedBox(height: height * 0.02),
+        TextFieldCustom(
           controller: widget.longController,
-          decoration: const InputDecoration(
-            labelText: 'Latitude',
-          ),
+          title: "Latitude",
+          hinttext: 'Latitude',
         ),
-        ElevatedButton(
-          onPressed: widget.addListpoint,
-          child: Text(
-            "Add",
-            style: buttonReguler,
-          ),
+        SizedBox(height: height * 0.02),
+        ButtonSubmissionWidget(
+          onTap: widget.addListpoint,
+          title: "Add",
         ),
+        SizedBox(height: height * 0.02),
         SizedBox(
           height: height * 0.4,
           width: MediaQuery.of(context).size.width,
           child: FlutterMap(
-            options: MapOptions(
+            options: const MapOptions(
               initialCenter: LatLng(-7.636249, 112.215799),
               initialZoom: 14,
             ),
-            // nonRotatedChildren: [
-            //   AttributionWidget.defaultWidget(
-            //       source: 'OpenStreetMap contributers', onSourceTapped: null),
-            // ],
             children: [
               TileLayer(
                 urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -110,24 +81,25 @@ class _MobileCreateMapsState extends State<MobileCreateMaps> {
             ],
           ),
         ),
-        ElevatedButton(
-          onPressed: () async {
-            // List<GeoPoint> geoPoints = dataLokasi
-            //     .map((e) => GeoPoint(e.latitude, e.longitude))
-            //     .toList();
-            // print(dataLokasi);
-            // print(pointMaps);
-            widget.ref.read(mapsProviderProvider.notifier).createLocationFarmer(
-                cordinat: widget.pointMaps,
-                farmerName: widget.user.name,
-                idUserFarmer: widget.user.idUserFarmer);
-          },
-          child: Text(
-            "Simpan",
-            style: buttonReguler,
-          ),
+        SizedBox(height: height * 0.03),
+        ButtonSubmissionWidget(
+          onTap: _isLoading ? null : _create,
+          title: "Simpan",
         ),
       ],
     );
+  }
+
+  void _create() async {
+    final registerLocation = CreateCordinat(
+        ref: widget.ref,
+        context: context,
+        cordinat: widget.pointMaps,
+        user: widget.user);
+    registerLocation.create((isLoading) {
+      setState(() {
+        _isLoading = isLoading;
+      });
+    });
   }
 }

@@ -35,6 +35,7 @@ class MobileHomeGroup extends ConsumerWidget {
           height: height * 0.7,
           child: const NewsWidget(
             amounnt: 3,
+            routes: "main-kelompok",
           ),
         ),
       ],

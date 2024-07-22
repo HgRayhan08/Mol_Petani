@@ -15,7 +15,7 @@ Widget formRegisterDistributor(context,
     Column(
       children: [
         TextFieldCustom(
-          title: "Username",
+          title: "Name",
           hinttext: 'Enter Your Username',
           controller: namecontroler!,
         ),
@@ -39,7 +39,7 @@ Widget formRegisterDistributor(context,
           height: MediaQuery.of(context).size.height * 0.008,
         ),
         TextFieldCustom(
-          title: "Tokko",
+          title: "Toko",
           hinttext: 'Enter Your Toko Name',
           controller: tokoController!,
         ),
@@ -73,9 +73,9 @@ Widget formRegisterDistributor(context,
           children: [
             TextFieldCustom(
               width: MediaQuery.of(context).size.width * 0.5,
-              hinttext: "Cangkupan",
+              hinttext: "Daerah Pengawasan",
               controller: cangkupanControler!,
-              title: "Cangkupan",
+              title: "Pengawasan",
             ),
             ElevatedButton(
               onPressed: addList,

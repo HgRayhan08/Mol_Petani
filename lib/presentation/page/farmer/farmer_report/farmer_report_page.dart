@@ -14,7 +14,12 @@ class FarmerReportPage extends ConsumerWidget {
 
   Widget buildAndroid(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(
+          "Laporan Petani",
+          style: largeReguler,
+        ),
+      ),
       body: MobileReport(ref: ref),
       floatingActionButton: ElevatedButton(
         onPressed: () {
@@ -41,7 +46,7 @@ class FarmerReportPage extends ConsumerWidget {
           ),
           trailing: IconButton(
             onPressed: () {
-               ref.read(routerProvider).goNamed("farmer-create-report");
+              ref.read(routerProvider).goNamed("farmer-create-report");
             },
             icon: const Icon(Icons.add),
           ),

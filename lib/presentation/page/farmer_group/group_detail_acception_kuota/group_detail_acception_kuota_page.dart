@@ -16,6 +16,12 @@ class GroupDetailAcceptedKuotaPage extends ConsumerWidget {
   Widget buildAndroid(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            ref.read(routerProvider).goNamed("accepted-fertilizer-grup");
+          },
+          icon: const Icon(Icons.arrow_back),
+        ),
         title: Text(
           "Detail Pengiriman Pupuk",
           style: regulerReguler,

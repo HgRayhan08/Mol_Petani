@@ -31,6 +31,8 @@ import 'package:mol_petani/domain/usecase/register_distributor/register_distribu
 import 'package:mol_petani/domain/usecase/register_distributor/registrasi_distributor.dart';
 import 'package:mol_petani/domain/usecase/register_farmer_grup/register_farmer_grup_params.dart';
 import 'package:mol_petani/domain/usecase/register_farmer_grup/registrasi_farmer_grup.dart';
+import 'package:mol_petani/domain/usecase/register_ppl/ppl_params.dart';
+import 'package:mol_petani/domain/usecase/register_ppl/registrasi_ppl.dart';
 import 'package:mol_petani/domain/usecase/update_account_farmer/update_accoun_farmer_params.dart';
 import 'package:mol_petani/domain/usecase/update_account_farmer/update_account_farmer.dart';
 import 'package:mol_petani/presentation/provider/usecases/create_farmer_provider.dart';
@@ -54,6 +56,7 @@ import 'package:mol_petani/presentation/provider/usecases/login_ppl_provider.dar
 import 'package:mol_petani/presentation/provider/usecases/logout_petugas_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/register_distributor_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/register_grup_farmer_provider.dart';
+import 'package:mol_petani/presentation/provider/usecases/register_ppl_provider.dart';
 import 'package:mol_petani/presentation/provider/usecases/update_account_farmer_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -182,7 +185,7 @@ class DataUser extends _$DataUser {
             "name": user.name,
             "email": user.email,
             "information": user.information,
-            "grupFarmer": user.grupFarmer,
+            "farmerGroup": user.farmerGroup,
           });
         // return;
         case Failed(message: final message):
@@ -198,7 +201,38 @@ class DataUser extends _$DataUser {
     state = const AsyncData(null);
   }
 
-  Future<void> registerGrupFarmer({
+  Future<bool> registerPpl({
+    required String nama,
+    required String email,
+    required String password,
+    required String subdistrict,
+    List<String>? scope,
+    required File image,
+    required String nik,
+    Uint8List? webfotourl,
+  }) async {
+    state = const AsyncLoading();
+
+    RegisterPpl registerPpl = ref.read(registerPplProvider);
+    var result = await registerPpl(PplParams(
+      nama: nama,
+      email: email,
+      password: password,
+      kecamatan: subdistrict,
+      cangkupan: scope,
+      nik: nik,
+      fotoUrl: image,
+      webfotourl: webfotourl,
+    ));
+    switch (result) {
+      case Success():
+        return true;
+      case Failed():
+        return false;
+    }
+  }
+
+  Future<bool> registerGrupFarmer({
     required String leaderName,
     required String email,
     required String password,
@@ -237,13 +271,15 @@ class DataUser extends _$DataUser {
           "scope": user.scope,
           "subdistrict": user.subdistrict,
         });
+        return true;
       case Failed(message: final message):
         state = AsyncError(FlutterError(message), StackTrace.current);
         state = const AsyncData(null);
+        return false;
     }
   }
 
-  Future<String> registerDistributor({
+  Future<bool> registerDistributor({
     required String nama,
     required String email,
     required String password,
@@ -274,12 +310,11 @@ class DataUser extends _$DataUser {
         webfotourl: webfotourl,
       ),
     );
-    print(result.resultValue);
     switch (result) {
       case Success():
-        return "succses create account distributor";
+        return true;
       case Failed():
-        return "faled create account ";
+        return false;
     }
   }
 
@@ -301,7 +336,7 @@ class DataUser extends _$DataUser {
     return [];
   }
 
-  Future<String> createFarmer({
+  Future<bool> createFarmer({
     required String name,
     required String village,
     required String nik,
@@ -315,19 +350,18 @@ class DataUser extends _$DataUser {
 
     var result = await create(CreateFarmerparams(
       name: name,
-      village: village,
+      alamat: village,
       nik: nik,
       kartuKeluarga: kartuKeluarga,
       luasLahan: luasLahan,
       jenisKelamin: jenisKelamin,
       noHp: noHp,
-      dateOfBirth: dateOfBirth,
     ));
     switch (result) {
       case Success():
-        return "succses create account distributor";
+        return true;
       case Failed():
-        return "faled create account ";
+        return false;
     }
   }
 

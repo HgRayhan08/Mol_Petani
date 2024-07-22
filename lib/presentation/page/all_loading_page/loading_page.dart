@@ -20,13 +20,15 @@ class LoadingPage extends ConsumerWidget {
               if (next.value != null) {
                 if (next.value!["information"] ==
                     "Penyuluh Pertanian Lapangan") {
-                  ref.read(routerProvider).goNamed("main-ppl");
+                  ref.read(routerProvider).pushReplacementNamed("main-ppl");
                 } else if (next.value!["information"] == "Distributor") {
-                  ref.read(routerProvider).goNamed("main-dist");
+                  ref.read(routerProvider).pushReplacementNamed("main-dist");
                 } else if (next.value!["information"] == "Kelompok Tani") {
-                  ref.read(routerProvider).goNamed("main-kelompok");
+                  ref
+                      .read(routerProvider)
+                      .pushReplacementNamed("main-kelompok");
                 } else if (next.value!["information"] == "Petani") {
-                  ref.read(routerProvider).goNamed("main-farmer");
+                  ref.read(routerProvider).pushReplacementNamed("main-farmer");
                 }
               } else {
                 ref.read(routerProvider).goNamed("user-login");

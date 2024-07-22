@@ -17,34 +17,36 @@ class FirebaseUserRepository implements UserRepository {
   FirebaseUserRepository({FirebaseFirestore? firebaseFirestore})
       : _firebaseFirestore = firebaseFirestore ?? FirebaseFirestore.instance;
 
-  // @override
-  // Future<Result<User>> createUserPpl(
-  //     {required String uid,
-  //     required String nama,
-  //     required String email,
-  //     String? fotoUrl,
-  //     required String keterangan,
-  //     List<String>? cangkupan,
-  //     String? kecamatan}) async {
-  //   CollectionReference<Map<String, dynamic>> users =
-  //       _firebaseFirestore.collection("User_Penyuluh_Pertanian_Lapangan");
-  //   await users.doc(uid).set({
-  //     "uid": uid,
-  //     "nama": nama,
-  //     "email": email,
-  //     "keterangan": keterangan,
-  //     "fotoUrl": fotoUrl,
-  //     "cangkupan": cangkupan,
-  //     "kecamatan": kecamatan,
-  //   });
+  @override
+  Future<Result<UserPpl>> createUserPpl(
+      {required String uid,
+      required String nama,
+      required String email,
+      String? fotoUrl,
+      required String keterangan,
+      required String nik,
+      List<String>? cangkupan,
+      String? kecamatan}) async {
+    CollectionReference<Map<String, dynamic>> users =
+        _firebaseFirestore.collection("User_Penyuluh_Pertanian_Lapangan");
+    await users.doc(uid).set({
+      "uid": uid,
+      "name": nama,
+      "email": email,
+      "information": keterangan,
+      "fotoUrl": fotoUrl,
+      "scope": cangkupan,
+      "subdistrict": kecamatan,
+      "nik": nik,
+    });
 
-  //   DocumentSnapshot<Map<String, dynamic>> result = await users.doc(uid).get();
-  //   if (result.exists) {
-  //     return Result.success(User.fromJson(result.data()!));
-  //   } else {
-  //     return const Result.failed("Gagal untuk Membuat create account ppl");
-  //   }
-  // }
+    DocumentSnapshot<Map<String, dynamic>> result = await users.doc(uid).get();
+    if (result.exists) {
+      return Result.success(UserPpl.fromJson(result.data()!));
+    } else {
+      return const Result.failed("Gagal untuk Membuat create account ppl");
+    }
+  }
 
   @override
   Future<Result<UserFarmerGroup>> createUserFarmerGrup(
@@ -124,13 +126,12 @@ class FirebaseUserRepository implements UserRepository {
   @override
   Future<Result<UserFarmer>> createFarmer({
     required String name,
-    required String village,
+    required String alamat,
     required String nik,
     required String kartuKeluarga,
     required String luasLahan,
     required String jenisKelamin,
     required String noHp,
-    required String dateOfBirth,
   }) async {
     CollectionReference<Map<String, dynamic>> users =
         _firebaseFirestore.collection("User_Farmer");
@@ -140,16 +141,14 @@ class FirebaseUserRepository implements UserRepository {
       "idUserFarmer": "",
       "idPPL": "",
       "name": name,
+      "alamat": alamat,
       "information": "Petani",
-      "grupFarmer": "",
-      "village": village,
+      "FarmerGroup": "",
       "email": "",
       "nik": nik,
-      "kartuKeluarga": kartuKeluarga,
+      "noHp": noHp,
       "luasLahan": luasLahan,
       "jenisKelamin": jenisKelamin,
-      "noHp": noHp,
-      "dateOfBirth": dateOfBirth,
     });
     DocumentSnapshot<Map<String, dynamic>> result = await users.doc().get();
     if (result.exists) {
@@ -301,19 +300,17 @@ class FirebaseUserRepository implements UserRepository {
               .map(
                 (e) => UserFarmer(
                   idDocument: e.id,
-                  idGrupFarmer: e["idGrupFarmer"],
+                  idFarmerGroup: e["idFarmerGroup"],
                   idUserFarmer: e["idUserFarmer"],
                   idPPL: e["idPPL"],
                   name: e["name"],
                   information: e["information"],
-                  grupFarmer: e["grupFarmer"],
-                  village: e["village"],
+                  farmerGroup: e["farmerGroup"],
+                  alamat: e["alamat"],
                   email: e["email"],
                   nik: e["nik"],
-                  kartuKeluarga: e["kartuKeluarga"],
                   luasLahan: e["luasLahan"],
                   jenisKelamin: e["jenisKelamin"],
-                  dateOfBirth: e["dateOfBirth"],
                   noHp: e["noHp"],
                 ),
               )
@@ -398,19 +395,17 @@ class FirebaseUserRepository implements UserRepository {
             .map(
               (e) => UserFarmer(
                 idDocument: e.id,
-                idGrupFarmer: e["idGrupFarmer"],
+                idFarmerGroup: e["idFarmerGroup"],
                 idUserFarmer: e["idUserFarmer"],
                 idPPL: e["idPPL"],
                 name: e["name"],
                 information: e["information"],
-                grupFarmer: e["grupFarmer"],
-                village: e["village"],
+                farmerGroup: e["farmerGroup"],
+                alamat: e["alamat"],
                 email: e["email"],
                 nik: e["nik"],
-                kartuKeluarga: e["kartuKeluarga"],
                 luasLahan: e["luasLahan"],
                 jenisKelamin: e["jenisKelamin"],
-                dateOfBirth: e["dateOfBirth"],
                 noHp: e["noHp"],
               ),
             )

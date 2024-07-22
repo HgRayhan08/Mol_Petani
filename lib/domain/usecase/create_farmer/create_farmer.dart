@@ -19,13 +19,12 @@ class CreateFarmer implements UseCase<Result<UserFarmer>, CreateFarmerparams> {
     List<String>? user = await sharedPrefRepository.getDataLogin();
     var result = await userRepository.createFarmer(
       name: params.name,
-      village: params.village,
+      alamat: params.alamat,
       nik: params.nik,
       kartuKeluarga: params.kartuKeluarga,
       luasLahan: params.luasLahan,
       jenisKelamin: params.jenisKelamin,
-      noHp: '',
-      dateOfBirth: '',
+      noHp: params.noHp,
     );
     if (result.isSuccess) {
       return Result.success(result.resultValue!);

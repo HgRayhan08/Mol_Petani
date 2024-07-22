@@ -3,20 +3,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/all_news.dart/mobile/mobile_news.dart';
-import 'package:mol_petani/presentation/provider/news/news_api_provider.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
-import 'package:mol_petani/presentation/widgets/card_article_widget.dart';
 import 'package:mol_petani/presentation/widgets/platform_widget.dart';
 
 class Newspage extends ConsumerWidget {
-  const Newspage({super.key});
+  final String? router;
+  const Newspage({super.key, this.router});
 
   Widget builAndroid(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            ref.read(routerProvider).goNamed("main-dist");
+            ref.read(routerProvider).goNamed(router!);
           },
           icon: const Icon(Icons.arrow_back_ios),
         ),

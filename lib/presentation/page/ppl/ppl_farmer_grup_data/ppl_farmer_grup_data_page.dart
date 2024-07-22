@@ -20,7 +20,7 @@ class _PplFarmerGrupDataPageState extends ConsumerState<PplFarmerGrupDataPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Farmer Grup Data",
+          "Kelompok Tani",
           style: regulerReguler.copyWith(
               fontSize: 20, fontWeight: FontWeight.w500),
         ),
@@ -29,6 +29,7 @@ class _PplFarmerGrupDataPageState extends ConsumerState<PplFarmerGrupDataPage> {
       floatingActionButton: IconButton(
         onPressed: () {
           ref.read(routerProvider).pushNamed("regis-kelompok");
+          setState(() {});
         },
         icon: const Icon(Icons.add),
       ),
@@ -37,7 +38,7 @@ class _PplFarmerGrupDataPageState extends ConsumerState<PplFarmerGrupDataPage> {
 
   Widget buildIos(BuildContext context, WidgetRef ref) {
     return CupertinoApp(
-      title: "Farmern Gropu",
+      title: "Kelompok Tani",
       home: CupertinoPageScaffold(
         backgroundColor: background,
         navigationBar: CupertinoNavigationBar(

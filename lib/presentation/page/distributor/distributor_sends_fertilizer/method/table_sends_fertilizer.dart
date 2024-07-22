@@ -279,7 +279,7 @@ class _TableSendsFertilizerState extends ConsumerState<TableSendsFertilizer> {
                   context: context,
                   builder: (BuildContext context) {
                     return Dialog(
-                      child: DistributorUpdateSendsPage(data.idDocument!),
+                      child: DistributorUpdateSendsPage(data),
                     );
                   },
                 );

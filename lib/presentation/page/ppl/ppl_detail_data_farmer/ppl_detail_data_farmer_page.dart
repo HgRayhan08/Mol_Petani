@@ -11,44 +11,97 @@ import 'package:mol_petani/presentation/provider/user_data/data_user_provider.da
 import 'package:mol_petani/presentation/widgets/appbar_custom_widget.dart';
 import 'package:mol_petani/presentation/widgets/platform_widget.dart';
 
-class PplDetailDataFarmerPage extends ConsumerWidget {
+class PplDetailDataFarmerPage extends ConsumerStatefulWidget {
   final UserFarmer user;
   const PplDetailDataFarmerPage(this.user, {super.key});
 
+  @override
+  ConsumerState<PplDetailDataFarmerPage> createState() =>
+      _PplDetailDataFarmerPageState();
+}
+
+class _PplDetailDataFarmerPageState
+    extends ConsumerState<PplDetailDataFarmerPage> {
   Widget buildAndroid(BuildContext context, WidgetRef ref) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size(
-          width,
-          height * 0.3 -
-              AppBar().preferredSize.height -
-              MediaQuery.of(context).padding.top,
+      appBar: AppBar(
+        backgroundColor: blueLight,
+        title: Text(
+          "detail Petani",
+          // "detail Pelaporan",
+          style: largeReguler,
         ),
-        child: AppbarCustomWidget(
-          height: height,
-          width: width,
-          title: "detail Petani",
-          content: user.name,
-          subContext: Row(
-            children: [
-              const Icon(
-                Icons.phone,
-                color: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        bottom: PreferredSize(
+          preferredSize: Size(width, height * 0.1),
+          child: Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: width * 0.05,
+              vertical: height * 0.03,
+            ),
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
               ),
-              SizedBox(
-                width: width * 0.02,
-              ),
-              Text(
-                user.noHp,
-                style: regulerReguler.copyWith(color: Colors.white),
-              ),
-            ],
+            ),
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  widget.user.name,
+                  style: largeReguler.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.phone,
+                      color: Colors.white,
+                    ),
+                    SizedBox(
+                      width: width * 0.02,
+                    ),
+                    Text(
+                      widget.user.noHp,
+                      style: regulerReguler.copyWith(color: Colors.white),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.delete),
+            onPressed: () {
+              context.buildShowDialog(
+                berhasil: "Hapus",
+                onTapCancel: () {},
+                onTapSucces: () async {
+                  ref
+                      .read(dataUserProvider.notifier)
+                      .deleteFarmer(idDocument: widget.user.idDocument!);
+                  ref.read(routerProvider).goNamed("data-farmer-ppl");
+                  setState(() {});
+                },
+                judul: "Konfirmasi Tambae Member",
+                keterangan: "Apakah Anda yakin ingin Menambah Memmber?",
+              );
+            },
+          ),
+        ],
       ),
-      body: MobileDetailDataFarmer(ref: ref, user: user),
+      body: MobileDetailDataFarmer(ref: ref, user: widget.user),
     );
   }
 
@@ -77,8 +130,9 @@ class PplDetailDataFarmerPage extends ConsumerWidget {
                 onTapSucces: () async {
                   ref
                       .read(dataUserProvider.notifier)
-                      .deleteFarmer(idDocument: user.idDocument!);
-                  ref.read(routerProvider).pop();
+                      .deleteFarmer(idDocument: widget.user.idDocument!);
+                  ref.read(routerProvider).goNamed("data-farmer-ppl");
+                  setState(() {});
                 },
                 judul: "Konfirmasi Tambae Member",
                 keterangan: "Apakah Anda yakin ingin Menambah Memmber?",
@@ -107,7 +161,7 @@ class PplDetailDataFarmerPage extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    user.name,
+                    widget.user.name,
                     style: largeReguler.copyWith(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
@@ -123,7 +177,7 @@ class PplDetailDataFarmerPage extends ConsumerWidget {
                         width: width * 0.02,
                       ),
                       Text(
-                        user.noHp,
+                        widget.user.noHp,
                         style: regulerReguler.copyWith(color: Colors.white),
                       ),
                     ],
@@ -131,7 +185,7 @@ class PplDetailDataFarmerPage extends ConsumerWidget {
                 ],
               ),
             ),
-            MobileDetailDataFarmer(ref: ref, user: user)
+            MobileDetailDataFarmer(ref: ref, user: widget.user)
           ],
         ),
       ),
@@ -165,13 +219,13 @@ class PplDetailDataFarmerPage extends ConsumerWidget {
               },
               icon: const Icon(Icons.cancel)),
         ),
-        body: WebDetailDataFarmer(ref: ref, user: user),
+        body: WebDetailDataFarmer(ref: ref, user: widget.user),
       ),
     );
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return PlatformWidget(
         androidBuilder: buildAndroid,
         iosBuilder: buildIos,

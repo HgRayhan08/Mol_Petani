@@ -15,6 +15,12 @@ class PplSubmissionGroupPage extends ConsumerWidget {
   Widget buildAndroid(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            ref.read(routerProvider).goNamed("collection-submission-group");
+          },
+          icon: const Icon(Icons.arrow_back),
+        ),
         title: Text(userGroup.farmerGrup),
       ),
       body: MobileSubmissionGroup(ref: ref, userGroup: userGroup),

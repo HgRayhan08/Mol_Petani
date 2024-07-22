@@ -23,9 +23,9 @@ mixin _$UserPpl {
   String get uid => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  String get information => throw _privateConstructorUsedError;
-  String? get familyIdentificationNumber => throw _privateConstructorUsedError;
   String? get fotoUrl => throw _privateConstructorUsedError;
+  String get information => throw _privateConstructorUsedError;
+  String? get nik => throw _privateConstructorUsedError;
   String? get subdistrict => throw _privateConstructorUsedError;
   List<String>? get scope => throw _privateConstructorUsedError;
 
@@ -43,9 +43,9 @@ abstract class $UserPplCopyWith<$Res> {
       {String uid,
       String name,
       String email,
-      String information,
-      String? familyIdentificationNumber,
       String? fotoUrl,
+      String information,
+      String? nik,
       String? subdistrict,
       List<String>? scope});
 }
@@ -66,9 +66,9 @@ class _$UserPplCopyWithImpl<$Res, $Val extends UserPpl>
     Object? uid = null,
     Object? name = null,
     Object? email = null,
-    Object? information = null,
-    Object? familyIdentificationNumber = freezed,
     Object? fotoUrl = freezed,
+    Object? information = null,
+    Object? nik = freezed,
     Object? subdistrict = freezed,
     Object? scope = freezed,
   }) {
@@ -85,17 +85,17 @@ class _$UserPplCopyWithImpl<$Res, $Val extends UserPpl>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      fotoUrl: freezed == fotoUrl
+          ? _value.fotoUrl
+          : fotoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       information: null == information
           ? _value.information
           : information // ignore: cast_nullable_to_non_nullable
               as String,
-      familyIdentificationNumber: freezed == familyIdentificationNumber
-          ? _value.familyIdentificationNumber
-          : familyIdentificationNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fotoUrl: freezed == fotoUrl
-          ? _value.fotoUrl
-          : fotoUrl // ignore: cast_nullable_to_non_nullable
+      nik: freezed == nik
+          ? _value.nik
+          : nik // ignore: cast_nullable_to_non_nullable
               as String?,
       subdistrict: freezed == subdistrict
           ? _value.subdistrict
@@ -120,9 +120,9 @@ abstract class _$$UserPplImplCopyWith<$Res> implements $UserPplCopyWith<$Res> {
       {String uid,
       String name,
       String email,
-      String information,
-      String? familyIdentificationNumber,
       String? fotoUrl,
+      String information,
+      String? nik,
       String? subdistrict,
       List<String>? scope});
 }
@@ -141,9 +141,9 @@ class __$$UserPplImplCopyWithImpl<$Res>
     Object? uid = null,
     Object? name = null,
     Object? email = null,
-    Object? information = null,
-    Object? familyIdentificationNumber = freezed,
     Object? fotoUrl = freezed,
+    Object? information = null,
+    Object? nik = freezed,
     Object? subdistrict = freezed,
     Object? scope = freezed,
   }) {
@@ -160,17 +160,17 @@ class __$$UserPplImplCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      fotoUrl: freezed == fotoUrl
+          ? _value.fotoUrl
+          : fotoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       information: null == information
           ? _value.information
           : information // ignore: cast_nullable_to_non_nullable
               as String,
-      familyIdentificationNumber: freezed == familyIdentificationNumber
-          ? _value.familyIdentificationNumber
-          : familyIdentificationNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fotoUrl: freezed == fotoUrl
-          ? _value.fotoUrl
-          : fotoUrl // ignore: cast_nullable_to_non_nullable
+      nik: freezed == nik
+          ? _value.nik
+          : nik // ignore: cast_nullable_to_non_nullable
               as String?,
       subdistrict: freezed == subdistrict
           ? _value.subdistrict
@@ -191,9 +191,9 @@ class _$UserPplImpl implements _UserPpl {
       {required this.uid,
       required this.name,
       required this.email,
-      required this.information,
-      this.familyIdentificationNumber,
       this.fotoUrl,
+      required this.information,
+      this.nik,
       this.subdistrict,
       final List<String>? scope = const []})
       : _scope = scope;
@@ -208,11 +208,11 @@ class _$UserPplImpl implements _UserPpl {
   @override
   final String email;
   @override
+  final String? fotoUrl;
+  @override
   final String information;
   @override
-  final String? familyIdentificationNumber;
-  @override
-  final String? fotoUrl;
+  final String? nik;
   @override
   final String? subdistrict;
   final List<String>? _scope;
@@ -228,7 +228,7 @@ class _$UserPplImpl implements _UserPpl {
 
   @override
   String toString() {
-    return 'UserPpl(uid: $uid, name: $name, email: $email, information: $information, familyIdentificationNumber: $familyIdentificationNumber, fotoUrl: $fotoUrl, subdistrict: $subdistrict, scope: $scope)';
+    return 'UserPpl(uid: $uid, name: $name, email: $email, fotoUrl: $fotoUrl, information: $information, nik: $nik, subdistrict: $subdistrict, scope: $scope)';
   }
 
   @override
@@ -239,13 +239,10 @@ class _$UserPplImpl implements _UserPpl {
             (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.fotoUrl, fotoUrl) || other.fotoUrl == fotoUrl) &&
             (identical(other.information, information) ||
                 other.information == information) &&
-            (identical(other.familyIdentificationNumber,
-                    familyIdentificationNumber) ||
-                other.familyIdentificationNumber ==
-                    familyIdentificationNumber) &&
-            (identical(other.fotoUrl, fotoUrl) || other.fotoUrl == fotoUrl) &&
+            (identical(other.nik, nik) || other.nik == nik) &&
             (identical(other.subdistrict, subdistrict) ||
                 other.subdistrict == subdistrict) &&
             const DeepCollectionEquality().equals(other._scope, _scope));
@@ -258,9 +255,9 @@ class _$UserPplImpl implements _UserPpl {
       uid,
       name,
       email,
-      information,
-      familyIdentificationNumber,
       fotoUrl,
+      information,
+      nik,
       subdistrict,
       const DeepCollectionEquality().hash(_scope));
 
@@ -283,9 +280,9 @@ abstract class _UserPpl implements UserPpl {
       {required final String uid,
       required final String name,
       required final String email,
-      required final String information,
-      final String? familyIdentificationNumber,
       final String? fotoUrl,
+      required final String information,
+      final String? nik,
       final String? subdistrict,
       final List<String>? scope}) = _$UserPplImpl;
 
@@ -298,11 +295,11 @@ abstract class _UserPpl implements UserPpl {
   @override
   String get email;
   @override
+  String? get fotoUrl;
+  @override
   String get information;
   @override
-  String? get familyIdentificationNumber;
-  @override
-  String? get fotoUrl;
+  String? get nik;
   @override
   String? get subdistrict;
   @override
