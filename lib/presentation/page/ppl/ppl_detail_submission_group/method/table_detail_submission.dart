@@ -86,11 +86,6 @@ class _TableDetailSubmissionState extends ConsumerState<TableDetailSubmission> {
                     );
                   },
                 );
-                // context.getInheritedWidgetOfExactType("detail-submission-fertilizer", extra: data);
-                // ref.read(routerProvider).goNamed(
-                //       "detail-submission-fertilizer",
-                //       extra: data,
-                //     );
               },
             ),
           ],
@@ -121,6 +116,7 @@ class _TableDetailSubmissionState extends ConsumerState<TableDetailSubmission> {
             return PlutoRow(
               cells: {
                 'no': PlutoCell(value: e.key + 1),
+                'nama': PlutoCell(value: e.value.farmername),
                 'nik': PlutoCell(value: e.value.nik),
                 'nomor': PlutoCell(value: e.value.luasLahan),
                 'action': PlutoCell(value: e.value),

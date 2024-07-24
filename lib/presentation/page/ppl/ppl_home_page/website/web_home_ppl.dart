@@ -7,18 +7,20 @@ class WebHomePpl extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Image(
-          image: AssetImage("assets/logo.png"),
-        ),
-        Text(
-          "Monitoring Lahan Pertanin Petani",
-          style: extraLarge.copyWith(fontWeight: FontWeight.bold),
-        )
-      ],
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const Image(
+            image: AssetImage("assets/logo.png"),
+          ),
+          Text(
+            "Monitoring Lahan Pertanin Petani",
+            style: extraLarge.copyWith(fontWeight: FontWeight.bold),
+          )
+        ],
+      ),
     );
   }
 }

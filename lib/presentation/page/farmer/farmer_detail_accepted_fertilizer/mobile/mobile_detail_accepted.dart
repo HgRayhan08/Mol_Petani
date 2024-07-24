@@ -5,6 +5,7 @@ import 'package:mol_petani/domain/entities/distribution_fertilizer_farmer.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/farmer/farmer_detail_accepted_fertilizer/method/distribution_information.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
+import 'package:mol_petani/presentation/widgets/button_submission_widget.dart';
 
 class MobileDetailAccepted extends StatelessWidget {
   final DistributionFertilizerFarmer dataFertilizer;
@@ -31,20 +32,17 @@ class MobileDetailAccepted extends StatelessWidget {
         ),
         distributionInformation(width, height, dataFertilizer),
         SizedBox(
-          height: height * 0.4,
+          height: height * 0.45,
         ),
         dataFertilizer.information != "Selesai"
-            ? ElevatedButton(
-                onPressed: () {
+            ? ButtonSubmissionWidget(
+                onTap: () {
                   ref.read(routerProvider).goNamed(
                         "form-farmer-accepted",
                         extra: dataFertilizer,
                       );
                 },
-                child: Text(
-                  "Penrimaan",
-                  style: buttonReguler,
-                ),
+                title: "Penrimaan",
               )
             : Container(),
       ],

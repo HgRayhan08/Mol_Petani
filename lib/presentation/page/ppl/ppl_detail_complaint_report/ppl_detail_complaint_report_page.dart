@@ -71,6 +71,7 @@ class PplDetailComplaintReportPage extends ConsumerWidget {
                             .read(reportProviderProvider.notifier)
                             .updateStatusComplaint(
                                 idDocument: data.idDocument!);
+                        ref.read(routerProvider).pop();
                       },
                     );
                   },

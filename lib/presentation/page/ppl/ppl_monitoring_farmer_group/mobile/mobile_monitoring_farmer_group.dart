@@ -32,7 +32,9 @@ class MobileMonitoringFarmerGroup extends StatelessWidget {
                   width: width,
                   height: height,
                   title: data[index].nameFarmerGroup,
-                  subTitle: data[index].information,
+                  subTitle: data[index].information == "Send"
+                      ? "Pengiriman"
+                      : "Selesai",
                   year: data[index].year,
                   submission: data[index].send.toString(),
                   onTap: () {

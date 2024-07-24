@@ -6,7 +6,7 @@ Widget informationGroup(ref) => Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          ref.read(dataUserProvider.notifier).state.value!["leaderName"],
+          ref.read(dataUserProvider.notifier).state.value!["name"],
           style: largeReguler,
         ),
         Container(

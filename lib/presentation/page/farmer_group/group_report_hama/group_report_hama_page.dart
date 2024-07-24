@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/farmer_group/group_report_hama/mobile/mobile_reporting_hama.dart';
 import 'package:mol_petani/presentation/page/farmer_group/group_report_hama/website/web_reporting_hama.dart';
-import 'package:mol_petani/presentation/provider/report/report_provider.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
-import 'package:mol_petani/presentation/widgets/listile_reporting_widget.dart';
 import 'package:mol_petani/presentation/widgets/platform_widget.dart';
 
 class GroupReportHamaPage extends ConsumerWidget {
@@ -15,6 +13,7 @@ class GroupReportHamaPage extends ConsumerWidget {
   Widget buildAndroid(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: background,
         leading: IconButton(
           onPressed: () {
             ref.read(routerProvider).pop();
@@ -45,6 +44,7 @@ class GroupReportHamaPage extends ConsumerWidget {
       ],
       title: "Petani",
       home: CupertinoPageScaffold(
+        backgroundColor: background,
         navigationBar: CupertinoNavigationBar(
           leading: IconButton(
             onPressed: () {

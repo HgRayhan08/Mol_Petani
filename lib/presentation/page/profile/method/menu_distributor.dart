@@ -9,6 +9,7 @@ Widget menuDistributor(ref, width, height, {required Function() onTapLogout}) =>
         children: [
           Material(
             child: ListTile(
+              tileColor: background,
               onTap: () {},
               leading: const CircleAvatar(
                 backgroundColor: dark,
@@ -23,6 +24,7 @@ Widget menuDistributor(ref, width, height, {required Function() onTapLogout}) =>
           ),
           Material(
             child: ListTile(
+              tileColor: background,
               onTap: () {},
               leading: const CircleAvatar(
                 backgroundColor: dark,
@@ -37,6 +39,7 @@ Widget menuDistributor(ref, width, height, {required Function() onTapLogout}) =>
           ),
           Material(
             child: ListTile(
+              tileColor: background,
               onTap: () {},
               leading: const CircleAvatar(
                 backgroundColor: dark,
@@ -51,6 +54,7 @@ Widget menuDistributor(ref, width, height, {required Function() onTapLogout}) =>
           ),
           Material(
             child: ListTile(
+              tileColor: background,
               onTap: () {},
               leading: const CircleAvatar(
                 backgroundColor: dark,
@@ -70,6 +74,7 @@ Widget menuDistributor(ref, width, height, {required Function() onTapLogout}) =>
           ),
           Material(
             child: ListTile(
+              tileColor: background,
               onTap: onTapLogout,
               leading: const CircleAvatar(
                 backgroundColor: dark,

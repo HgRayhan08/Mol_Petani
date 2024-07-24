@@ -5,10 +5,10 @@ import 'package:mol_petani/presentation/provider/user_data/data_user_provider.da
 Widget informationDistributor(ref) => Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        // Text(
-        //   ref.read(dataUserProvider.notifier).state.value!["leadername"],
-        //   style: largeReguler,
-        // ),
+        Text(
+          ref.read(dataUserProvider.notifier).state.value!["name"],
+          style: largeReguler,
+        ),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
           decoration: const BoxDecoration(

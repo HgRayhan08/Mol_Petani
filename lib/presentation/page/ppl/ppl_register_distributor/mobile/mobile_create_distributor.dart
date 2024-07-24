@@ -185,48 +185,5 @@ class _MobileCreateDistributorState extends State<MobileCreateDistributor> {
         });
       },
     );
-    //   if (emailControler.text == "" ||
-    //       passwordControler.text == "" ||
-    //       nameControler.text == "" ||
-    //       subdistrikControler.text == "" ||
-    //       coverage == []) {
-    //     context.buildAlertInformation(
-    //         title: "Pesan", subTitle: "Please enter the data completely");
-    //   } else {
-    //     bool result =
-    //         await widget.ref.read(dataUserProvider.notifier).registerDistributor(
-    //               nama: nameControler.text,
-    //               email: emailControler.text,
-    //               password: passwordControler.text,
-    //               scope: coverage,
-    //               address: subdistrikControler.text,
-    //               familyIdentificationNumber: nikControler.text,
-    //               image: File(xfile!.path),
-    //               toko: tokoController.text,
-    //               mobileNumber: int.parse(handphoneConntroler.text),
-    //             );
-    //     setState(() {
-    //       _isLoading = true;
-    //     });
-    //     if (result = true) {
-    //       context.buildAlertInformation(
-    //           title: "Pesan", subTitle: "Berhasil Menambahkan Data");
-    //       Future.delayed(
-    //         const Duration(seconds: 3),
-    //         () {
-    //           widget.ref.read(routerProvider).goNamed("data-distributor");
-    //         },
-    //       );
-    //       setState(() {
-    //         _isLoading = false;
-    //       });
-    //     } else {
-    //       context.buildAlertInformation(
-    //           title: "Pesan", subTitle: "Gagal Menambahkan Data");
-    //       setState(() {
-    //         _isLoading = false;
-    //       });
-    //     }
-    //   }
   }
 }

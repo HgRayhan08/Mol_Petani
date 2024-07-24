@@ -40,7 +40,7 @@ class ReportProvider extends _$ReportProvider {
     return "";
   }
 
-  Future<String> createReport({
+  Future<bool> createReport({
     required String reporting,
     required String reportingDetail,
   }) async {
@@ -49,9 +49,9 @@ class ReportProvider extends _$ReportProvider {
     var result = await create(CreateReportParams(
         reporting: reporting, reportingDetail: reportingDetail));
     if (result case Success(value: _)) {
-      return "Succses create report";
+      return true;
     } else {
-      return "failed create report";
+      return false;
     }
   }
 
@@ -98,7 +98,7 @@ class ReportProvider extends _$ReportProvider {
   }
 
 // Hama
-  Future<String> createReportHama({
+  Future<bool> createReportHama({
     required String reporting,
     required String detailReporting,
     required String idUserFarmer,
@@ -111,9 +111,9 @@ class ReportProvider extends _$ReportProvider {
       idUserFarmer: idUserFarmer,
     ));
     if (result case Success(value: _)) {
-      return "Succses create report hama";
+      return true;
     } else {
-      return "failed create report hama";
+      return false;
     }
   }
 

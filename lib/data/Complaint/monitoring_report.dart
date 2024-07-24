@@ -49,7 +49,8 @@ class MonitoringReport implements ReportRepository {
     CollectionReference<Map<String, dynamic>> getData =
         await _firebaseFirestore.collection("Complaint_Report");
     try {
-      var result = await getData.where("idFarmer", isEqualTo: idFarmer).get();
+      var result =
+          await getData.where("idUserFarmer", isEqualTo: idFarmer).get();
       if (result.docs.isNotEmpty) {
         return Result.success(
           result.docs
@@ -58,7 +59,7 @@ class MonitoringReport implements ReportRepository {
                   idGrupFarmer: e["idGrupFarmer"],
                   idPPL: e["idPPL"],
                   idUserFarmer: e["idUserFarmer"],
-                  farmerGroup: e["groupFarmer"],
+                  farmerGroup: e["farmerGroup"],
                   nameFarmer: e["nameFarmer"],
                   information: e["information"],
                   reporting: e["reporting"],
@@ -86,6 +87,7 @@ class MonitoringReport implements ReportRepository {
           .where("idPPL", isEqualTo: idPPL)
           .where("information", isEqualTo: information)
           .get();
+      print(result.docs.length);
       if (result.docs.isNotEmpty) {
         return Result.success(
           result.docs
@@ -94,7 +96,7 @@ class MonitoringReport implements ReportRepository {
                   idGrupFarmer: e["idGrupFarmer"],
                   idPPL: e["idPPL"],
                   idUserFarmer: e["idUserFarmer"],
-                  farmerGroup: e["groupFarmer"],
+                  farmerGroup: e["farmerGroup"],
                   nameFarmer: e["nameFarmer"],
                   information: e["information"],
                   reporting: e["reporting"],

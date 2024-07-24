@@ -40,6 +40,8 @@ class _TextFieldPasswordWidgetState extends State<TextFieldPasswordWidget> {
               controller: widget.controller,
               obscureText: !_obscureText,
               decoration: InputDecoration(
+                fillColor: background,
+                filled: true,
                 contentPadding: const EdgeInsets.only(
                     left: 15, top: 15, bottom: 15, right: 20),
                 border: OutlineInputBorder(

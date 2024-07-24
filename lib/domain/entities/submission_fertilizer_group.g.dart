@@ -9,13 +9,13 @@ part of 'submission_fertilizer_group.dart';
 _$DataSubmissionGroupImpl _$$DataSubmissionGroupImplFromJson(
         Map<String, dynamic> json) =>
     _$DataSubmissionGroupImpl(
-      idGrupFarmers: json['idGrupFarmers'] as String,
+      idFarmerGroup: json['idFarmerGroup'] as String,
       idPPL: json['idPPL'] as String,
       leaderName: json['leaderName'] as String,
       village: json['village'] as String,
       forYear: json['forYear'] as String,
       date: json['date'] as String,
-      farmerFroup: json['farmerFroup'] as String,
+      farmerGroup: json['farmerGroup'] as String,
       information: json['information'] as String,
       idDocument: json['idDocument'] as String?,
     );
@@ -23,13 +23,13 @@ _$DataSubmissionGroupImpl _$$DataSubmissionGroupImplFromJson(
 Map<String, dynamic> _$$DataSubmissionGroupImplToJson(
         _$DataSubmissionGroupImpl instance) =>
     <String, dynamic>{
-      'idGrupFarmers': instance.idGrupFarmers,
+      'idFarmerGroup': instance.idFarmerGroup,
       'idPPL': instance.idPPL,
       'leaderName': instance.leaderName,
       'village': instance.village,
       'forYear': instance.forYear,
       'date': instance.date,
-      'farmerFroup': instance.farmerFroup,
+      'farmerGroup': instance.farmerGroup,
       'information': instance.information,
       'idDocument': instance.idDocument,
     };

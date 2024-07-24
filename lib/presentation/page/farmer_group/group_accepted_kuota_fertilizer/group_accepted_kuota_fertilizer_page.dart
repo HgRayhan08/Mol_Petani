@@ -17,6 +17,14 @@ class GroupAcceptedKuotaFertilizerPage extends ConsumerWidget {
           "Penerimaan Kelompok tani",
           style: regulerReguler,
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              ref.read(routerProvider).goNamed("history-accepted-grup");
+            },
+            icon: const Icon(Icons.history),
+          ),
+        ],
       ),
       body: MobileAccptedKuota(ref: ref),
     );

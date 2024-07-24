@@ -137,13 +137,13 @@ class FirebaseUserRepository implements UserRepository {
         _firebaseFirestore.collection("User_Farmer");
 
     await users.doc().set({
-      "idGrupFarmer": "",
+      "idFarmerGroup": "",
       "idUserFarmer": "",
       "idPPL": "",
       "name": name,
       "alamat": alamat,
       "information": "Petani",
-      "FarmerGroup": "",
+      "farmerGroup": "",
       "email": "",
       "nik": nik,
       "noHp": noHp,
@@ -293,7 +293,7 @@ class FirebaseUserRepository implements UserRepository {
         _firebaseFirestore.collection("User_Farmer");
     try {
       var result =
-          await user.where("idGrupFarmer", isEqualTo: idFarmerGroup).get();
+          await user.where("idFarmerGroup", isEqualTo: idFarmerGroup).get();
       if (result.docs.isNotEmpty) {
         return Result.success(
           result.docs
@@ -388,7 +388,7 @@ class FirebaseUserRepository implements UserRepository {
     CollectionReference<Map<String, dynamic>> user =
         await _firebaseFirestore.collection("User_Farmer");
     var result = await user.get();
-
+    print(result.docs.length);
     if (result.docs.isNotEmpty) {
       return Result.success(
         result.docs
@@ -426,8 +426,8 @@ class FirebaseUserRepository implements UserRepository {
     CollectionReference<Map<String, dynamic>> data =
         _firebaseFirestore.collection("User_Farmer");
     await data.doc(idDocument).update({
-      "idGrupFarmer": idFarmerGroup,
-      "grupFarmer": grupFarmer,
+      "idFarmerGroup": idFarmerGroup,
+      "farmerGroup": grupFarmer,
       "idPPL": idPPL
     });
     DocumentSnapshot<Map<String, dynamic>> result = await data.doc().get();

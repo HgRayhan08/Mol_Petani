@@ -11,6 +11,7 @@ _$SupportingDataFertilizerImpl _$$SupportingDataFertilizerImplFromJson(
     _$SupportingDataFertilizerImpl(
       idDocument: json['idDocument'] as String?,
       idPpl: json['idPpl'] as String,
+      idSubmission: json['idSubmission'] as String,
       idFarmerGroup: json['idFarmerGroup'] as String,
       farmername: json['farmername'] as String,
       nik: json['nik'] as String,
@@ -25,6 +26,7 @@ Map<String, dynamic> _$$SupportingDataFertilizerImplToJson(
     <String, dynamic>{
       'idDocument': instance.idDocument,
       'idPpl': instance.idPpl,
+      'idSubmission': instance.idSubmission,
       'idFarmerGroup': instance.idFarmerGroup,
       'farmername': instance.farmername,
       'nik': instance.nik,

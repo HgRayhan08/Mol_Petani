@@ -58,7 +58,7 @@ class MobileDetailMonitoringGroup extends StatelessWidget {
                             color: Colors.white, fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        data.information,
+                        data.information == "Send" ? "Pengiriman" : "Selesai",
                         style: regulerReguler.copyWith(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,

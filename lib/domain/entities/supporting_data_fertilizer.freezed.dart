@@ -23,6 +23,7 @@ SupportingDataFertilizer _$SupportingDataFertilizerFromJson(
 mixin _$SupportingDataFertilizer {
   String? get idDocument => throw _privateConstructorUsedError;
   String get idPpl => throw _privateConstructorUsedError;
+  String get idSubmission => throw _privateConstructorUsedError;
   String get idFarmerGroup => throw _privateConstructorUsedError;
   String get farmername => throw _privateConstructorUsedError;
   String get nik => throw _privateConstructorUsedError;
@@ -46,6 +47,7 @@ abstract class $SupportingDataFertilizerCopyWith<$Res> {
   $Res call(
       {String? idDocument,
       String idPpl,
+      String idSubmission,
       String idFarmerGroup,
       String farmername,
       String nik,
@@ -71,6 +73,7 @@ class _$SupportingDataFertilizerCopyWithImpl<$Res,
   $Res call({
     Object? idDocument = freezed,
     Object? idPpl = null,
+    Object? idSubmission = null,
     Object? idFarmerGroup = null,
     Object? farmername = null,
     Object? nik = null,
@@ -87,6 +90,10 @@ class _$SupportingDataFertilizerCopyWithImpl<$Res,
       idPpl: null == idPpl
           ? _value.idPpl
           : idPpl // ignore: cast_nullable_to_non_nullable
+              as String,
+      idSubmission: null == idSubmission
+          ? _value.idSubmission
+          : idSubmission // ignore: cast_nullable_to_non_nullable
               as String,
       idFarmerGroup: null == idFarmerGroup
           ? _value.idFarmerGroup
@@ -132,6 +139,7 @@ abstract class _$$SupportingDataFertilizerImplCopyWith<$Res>
   $Res call(
       {String? idDocument,
       String idPpl,
+      String idSubmission,
       String idFarmerGroup,
       String farmername,
       String nik,
@@ -156,6 +164,7 @@ class __$$SupportingDataFertilizerImplCopyWithImpl<$Res>
   $Res call({
     Object? idDocument = freezed,
     Object? idPpl = null,
+    Object? idSubmission = null,
     Object? idFarmerGroup = null,
     Object? farmername = null,
     Object? nik = null,
@@ -172,6 +181,10 @@ class __$$SupportingDataFertilizerImplCopyWithImpl<$Res>
       idPpl: null == idPpl
           ? _value.idPpl
           : idPpl // ignore: cast_nullable_to_non_nullable
+              as String,
+      idSubmission: null == idSubmission
+          ? _value.idSubmission
+          : idSubmission // ignore: cast_nullable_to_non_nullable
               as String,
       idFarmerGroup: null == idFarmerGroup
           ? _value.idFarmerGroup
@@ -211,6 +224,7 @@ class _$SupportingDataFertilizerImpl implements _SupportingDataFertilizer {
   _$SupportingDataFertilizerImpl(
       {this.idDocument,
       required this.idPpl,
+      required this.idSubmission,
       required this.idFarmerGroup,
       required this.farmername,
       required this.nik,
@@ -226,6 +240,8 @@ class _$SupportingDataFertilizerImpl implements _SupportingDataFertilizer {
   final String? idDocument;
   @override
   final String idPpl;
+  @override
+  final String idSubmission;
   @override
   final String idFarmerGroup;
   @override
@@ -243,7 +259,7 @@ class _$SupportingDataFertilizerImpl implements _SupportingDataFertilizer {
 
   @override
   String toString() {
-    return 'SupportingDataFertilizer(idDocument: $idDocument, idPpl: $idPpl, idFarmerGroup: $idFarmerGroup, farmername: $farmername, nik: $nik, luasLahan: $luasLahan, fotoKtp: $fotoKtp, fotoKK: $fotoKK, fotoPajak: $fotoPajak)';
+    return 'SupportingDataFertilizer(idDocument: $idDocument, idPpl: $idPpl, idSubmission: $idSubmission, idFarmerGroup: $idFarmerGroup, farmername: $farmername, nik: $nik, luasLahan: $luasLahan, fotoKtp: $fotoKtp, fotoKK: $fotoKK, fotoPajak: $fotoPajak)';
   }
 
   @override
@@ -254,6 +270,8 @@ class _$SupportingDataFertilizerImpl implements _SupportingDataFertilizer {
             (identical(other.idDocument, idDocument) ||
                 other.idDocument == idDocument) &&
             (identical(other.idPpl, idPpl) || other.idPpl == idPpl) &&
+            (identical(other.idSubmission, idSubmission) ||
+                other.idSubmission == idSubmission) &&
             (identical(other.idFarmerGroup, idFarmerGroup) ||
                 other.idFarmerGroup == idFarmerGroup) &&
             (identical(other.farmername, farmername) ||
@@ -269,8 +287,8 @@ class _$SupportingDataFertilizerImpl implements _SupportingDataFertilizer {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, idDocument, idPpl, idFarmerGroup,
-      farmername, nik, luasLahan, fotoKtp, fotoKK, fotoPajak);
+  int get hashCode => Object.hash(runtimeType, idDocument, idPpl, idSubmission,
+      idFarmerGroup, farmername, nik, luasLahan, fotoKtp, fotoKK, fotoPajak);
 
   @JsonKey(ignore: true)
   @override
@@ -291,6 +309,7 @@ abstract class _SupportingDataFertilizer implements SupportingDataFertilizer {
   factory _SupportingDataFertilizer(
       {final String? idDocument,
       required final String idPpl,
+      required final String idSubmission,
       required final String idFarmerGroup,
       required final String farmername,
       required final String nik,
@@ -306,6 +325,8 @@ abstract class _SupportingDataFertilizer implements SupportingDataFertilizer {
   String? get idDocument;
   @override
   String get idPpl;
+  @override
+  String get idSubmission;
   @override
   String get idFarmerGroup;
   @override

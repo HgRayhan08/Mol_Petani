@@ -22,9 +22,10 @@ class MobileDetailDataFarmer extends StatelessWidget {
       padding: EdgeInsets.only(
         left: width * 0.05,
         right: width * 0.05,
-        // bottom: height * 0.5,
+        bottom: height * 0.1,
       ),
       child: ListView(
+        shrinkWrap: true,
         // crossAxisAlignment: CrossAxisAlignment.start,
         // mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -62,9 +63,6 @@ class MobileDetailDataFarmer extends StatelessWidget {
               },
             ),
           ),
-          SizedBox(
-            height: height * 0.1,
-          )
         ],
       ),
     );

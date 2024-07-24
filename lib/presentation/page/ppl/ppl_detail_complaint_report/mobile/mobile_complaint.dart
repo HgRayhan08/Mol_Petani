@@ -5,6 +5,7 @@ import 'package:mol_petani/domain/entities/report.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/ppl/ppl_detail_complaint_report/method/complaint_information.dart';
 import 'package:mol_petani/presentation/provider/report/report_provider.dart';
+import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/widgets/button_submission_widget.dart';
 
 class MobileComplaint extends StatelessWidget {
@@ -40,6 +41,7 @@ class MobileComplaint extends StatelessWidget {
                       ref
                           .read(reportProviderProvider.notifier)
                           .updateStatusComplaint(idDocument: data.idDocument!);
+                      ref.read(routerProvider).pop();
                     })
                 : Container(),
       ],

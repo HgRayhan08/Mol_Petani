@@ -13,6 +13,7 @@ class PplComplaintReportPage extends ConsumerWidget {
   Widget buildAndroid(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: background,
         title: Text("Laporan Petani", style: largeReguler),
         actions: [
           IconButton(

@@ -26,17 +26,9 @@ class _GroupFormDistributionFertilizerFarmerPageState
   final TextEditingController ureaController = TextEditingController();
   final TextEditingController poskaController = TextEditingController();
 
-  // @override
-  // void dispose() {
-  //   yearController.dispose();
-  //   distributionController.dispose();
-  //   ureaController.dispose();
-  //   poskaController.dispose();
-  //   super.dispose();
-  // }
-
   Widget buildAndroid(BuildContext context, WidgetRef ref) {
     return Scaffold(
+        backgroundColor: background,
         appBar: AppBar(
           title: Text("Pembagian Pupuk", style: largeReguler),
         ),
@@ -58,6 +50,7 @@ class _GroupFormDistributionFertilizerFarmerPageState
       ],
       title: "Pembagian Pupuk",
       home: CupertinoPageScaffold(
+        backgroundColor: background,
         navigationBar: CupertinoNavigationBar(
           leading: IconButton(
             onPressed: () {

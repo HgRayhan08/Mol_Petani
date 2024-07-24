@@ -54,7 +54,7 @@ class MobileDetailSubmissionGroup extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Text(data.farmerFroup,
+                      Text(data.farmerGroup,
                           style: largeReguler.copyWith(
                               color: Colors.white, fontSize: 18)),
                       SizedBox(

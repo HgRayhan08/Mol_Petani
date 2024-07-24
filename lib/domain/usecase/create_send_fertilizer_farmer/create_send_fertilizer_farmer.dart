@@ -28,6 +28,7 @@ class CreateSendFertilizerFarmer
         distribusiDate: DateFormat("dd-mm-yy").format(date),
         ureaDistribution: params.ureaDistribution,
         poskaDistribution: params.poskaDistribution);
+    print("object");
     return switch (result) {
       Success(value: final value) => Result.success(value),
       Failed(:final message) => Result.failed(message),

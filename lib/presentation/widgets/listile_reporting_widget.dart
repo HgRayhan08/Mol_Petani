@@ -28,6 +28,7 @@ class ListTileReportingWidget extends StatelessWidget {
       ),
       child: Material(
         child: ListTile(
+          tileColor: background,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(20),

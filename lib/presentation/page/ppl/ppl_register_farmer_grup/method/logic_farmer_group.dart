@@ -54,7 +54,7 @@ class RegisterLogic {
                   mobileNumber: int.parse(handphoneController.text),
                 );
 
-        if (result) {
+        if (result==false) {
           context.buildAlertInformation(
               title: "Pesan", subTitle: "Berhasil Menambahkan Data");
           Future.delayed(

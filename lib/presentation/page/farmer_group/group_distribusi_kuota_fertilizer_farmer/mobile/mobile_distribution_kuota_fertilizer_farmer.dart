@@ -39,6 +39,7 @@ class MobileDistributionKuotaFerilizerFarmer extends StatelessWidget {
                 ),
                 child: Material(
                   child: ListTile(
+                    tileColor: background,
                     onTap: () {
                       ref.read(routerProvider).pushNamed(
                           "detail-distribution-fertilizer-farmer",

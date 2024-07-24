@@ -24,6 +24,7 @@ class GroupDistributionFertilizerFarmerPage extends ConsumerWidget {
     return CupertinoApp(
       title: "Distributution Pupuk",
       home: CupertinoPageScaffold(
+        backgroundColor: background,
         navigationBar: CupertinoNavigationBar(
           middle: Text(
             "Distributution Pupuk",

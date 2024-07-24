@@ -4,7 +4,9 @@ import 'package:mol_petani/presentation/misc/build_context_alert_information.dar
 import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/user_login/method/dropdown_login.dart';
 import 'package:mol_petani/presentation/page/user_login/method/form_login_farmer.dart';
+import 'package:mol_petani/presentation/page/user_login/method/logic_login.dart';
 import 'package:mol_petani/presentation/page/user_login/method/opener_petani.dart';
+import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
 
 class WebsiteLoginFarmer extends ConsumerStatefulWidget {
@@ -22,12 +24,14 @@ class WebsiteLoginFarmer extends ConsumerStatefulWidget {
 
 class _WebsiteLoginFarmerState extends ConsumerState<WebsiteLoginFarmer> {
   String? selectedValue;
+  bool _isLoading = false;
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: background,
       body: Row(
         children: [
           Container(
@@ -105,26 +109,7 @@ class _WebsiteLoginFarmerState extends ConsumerState<WebsiteLoginFarmer> {
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                 ),
-                                onPressed: () {
-                                  if (_formKey.currentState!.validate()) {
-                                    if (widget.emailControler.text == "" ||
-                                        widget.passwordControler.text == "") {
-                                      context.buildAlertInformation(
-                                          title: "Peringatan",
-                                          subTitle:
-                                              "Harap masukkan alamat email dan kata sandi dengan benar.");
-                                    } else {
-                                      ref
-                                          .read(dataUserProvider.notifier)
-                                          .loginUser(
-                                            email: widget.emailControler.text,
-                                            password:
-                                                widget.passwordControler.text,
-                                            user: selectedValue!,
-                                          );
-                                    }
-                                  }
-                                },
+                                onPressed: _isLoading ? null : _login,
                                 child: Text(
                                   "Login",
                                   style: buttonReguler.copyWith(
@@ -151,7 +136,9 @@ class _WebsiteLoginFarmerState extends ConsumerState<WebsiteLoginFarmer> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          ref.read(routerProvider).goNamed("register-ppl");
+                        },
                         child: Text(
                           "Registrasi",
                           style: buttonReguler.copyWith(
@@ -178,5 +165,19 @@ class _WebsiteLoginFarmerState extends ConsumerState<WebsiteLoginFarmer> {
         ],
       ),
     );
+  }
+
+  void _login() {
+    final login = LogicLogin(
+        ref: ref,
+        context: context,
+        emailControler: widget.emailControler,
+        passwordControler: widget.passwordControler,
+        selectValue: selectedValue.toString());
+    login.login((isLoading) {
+      setState(() {
+        _isLoading = isLoading;
+      });
+    });
   }
 }

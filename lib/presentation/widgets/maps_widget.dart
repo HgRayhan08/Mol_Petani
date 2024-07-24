@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +7,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/provider/maps/maps_provider.dart';
 
-class MapsWidget extends ConsumerWidget {
+class MapsWidget extends ConsumerStatefulWidget {
   final String idUserFarmer;
   bool? isDelete;
   final double width;
@@ -16,17 +18,32 @@ class MapsWidget extends ConsumerWidget {
       required this.width});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<MapsWidget> createState() => _MapsWidgetState();
+}
+
+class _MapsWidgetState extends ConsumerState<MapsWidget> {
+  Color getRandomColor() {
+    final Random random = Random();
+    return Color.fromRGBO(
+      random.nextInt(256),
+      random.nextInt(256),
+      random.nextInt(256),
+      1.0,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
     // final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     String? idDocument;
     return SizedBox(
       height: height * 0.3,
-      width: width,
+      width: widget.width,
       child: FutureBuilder(
         future: ref
             .watch(mapsProviderProvider.notifier)
-            .getLocationFarmer(idUserFarmer: idUserFarmer),
+            .getLocationFarmer(idUserFarmer: widget.idUserFarmer),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
@@ -57,12 +74,14 @@ class MapsWidget extends ConsumerWidget {
                       PolygonLayer(
                         polygons: data.map(
                           (location) {
+                            Color randomColor = getRandomColor();
                             idDocument = location.idDocument;
                             return Polygon(
                               points: location.cordinatPoint,
-                              color: Colors.redAccent.withOpacity(0.5),
-                              borderColor: Colors.redAccent,
+                              color: randomColor.withOpacity(0.2),
+                              borderColor: randomColor.withOpacity(0.2),
                               borderStrokeWidth: 3.0,
+                              isFilled: true,
                               label: location.farmerName,
                               labelStyle: const TextStyle(
                                 color: Colors.black,
@@ -75,7 +94,7 @@ class MapsWidget extends ConsumerWidget {
                     ],
                   ),
                 ),
-                isDelete == false
+                widget.isDelete == false
                     ? ElevatedButton(
                         onPressed: () {
                           if (idDocument != null) {

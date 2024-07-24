@@ -2,8 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mol_petani/domain/entities/submission_kuota_fertilizer.dart';
-import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/provider/submission_fertilizer/submission_fertilizer_provider.dart';
+import 'package:mol_petani/presentation/widgets/button_submission_widget.dart';
 import 'package:mol_petani/presentation/widgets/text_field_custom.dart';
 
 class MobileFormAccepted extends StatelessWidget {
@@ -54,24 +54,22 @@ class MobileFormAccepted extends StatelessWidget {
         SizedBox(
           height: height * 0.35,
         ),
-        defaultTargetPlatform == TargetPlatform.iOS ?Container():
-        ElevatedButton(
-          onPressed: () {
-            ref
-                .read(fertilizerSubmissionProvider.notifier)
-                .updateAcceptionFertilizerGroup(
-                  idDocument: data.idDocument.toString(),
-                  acceptPoska: int.parse(poskaControler.text),
-                  acceptUrea: int.parse(ureaControler.text),
-                  nameSendDistributor: senderName.text,
-                  nameAcceptGroupFarmer: namaControler.text,
-                );
-          },
-          child: Text(
-            "Submission",
-            style: buttonReguler,
-          ),
-        )
+        defaultTargetPlatform == TargetPlatform.iOS
+            ? Container()
+            : ButtonSubmissionWidget(
+                onTap: () {
+                  ref
+                      .read(fertilizerSubmissionProvider.notifier)
+                      .updateAcceptionFertilizerGroup(
+                        idDocument: data.idDocument.toString(),
+                        acceptPoska: int.parse(poskaControler.text),
+                        acceptUrea: int.parse(ureaControler.text),
+                        nameSendDistributor: senderName.text,
+                        nameAcceptGroupFarmer: namaControler.text,
+                      );
+                },
+                title: "Submission",
+              )
       ],
     );
   }

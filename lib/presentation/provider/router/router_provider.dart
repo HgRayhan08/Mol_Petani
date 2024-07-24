@@ -8,6 +8,7 @@ import 'package:mol_petani/domain/entities/supporting_data_fertilizer.dart';
 import 'package:mol_petani/domain/entities/user_distributor.dart';
 import 'package:mol_petani/domain/entities/user_farmer.dart';
 import 'package:mol_petani/domain/entities/user_farmer_grup.dart';
+import 'package:mol_petani/presentation/page/distributor/distributor_sends_fertilizer/distributor_sends_fertilizer_page.dart';
 import 'package:mol_petani/presentation/page/farmer/farmer_main_page/main_farmer_page.dart';
 import 'package:mol_petani/presentation/page/all_news.dart/news_page.dart';
 import 'package:mol_petani/presentation/page/all_news_web_view/news_web_view_page.dart';
@@ -29,11 +30,9 @@ import 'package:mol_petani/presentation/page/farmer_group/group_detail_data_farm
 import 'package:mol_petani/presentation/page/farmer_group/group_detail_distribution_fertilizer_farmer/group_detail_distribution_fertilizer_farmer_page.dart';
 import 'package:mol_petani/presentation/page/farmer_group/group_detail_member_farmer_group/group_detail_member_farmer_group_page.dart';
 import 'package:mol_petani/presentation/page/farmer_group/group_detail_pest_report/group_detail_pest_report_page.dart';
-import 'package:mol_petani/presentation/page/farmer_group/group_distribution_fertilizer_farmer/group_distribution_fertilizer_farmer_page.dart';
 import 'package:mol_petani/presentation/page/farmer_group/group_form_distribution_fertilizer_farmer/group_form_distribution_fertilizer_farmer_page.dart';
 import 'package:mol_petani/presentation/page/farmer_group/group_form_acception_fertilizer_received/group_forms_acception_fertilizer_page.dart';
 import 'package:mol_petani/presentation/page/farmer_group/group_form_submission_report_hama/group_form_report_hama_page.dart';
-import 'package:mol_petani/presentation/page/farmer_group/group_history_submission_report/group_history_submission_report_page.dart';
 import 'package:mol_petani/presentation/page/farmer_group/group_member_farmer_group/group_member_farmer_group_page.dart';
 import 'package:mol_petani/presentation/page/farmer_group/group_register_account_farmer/group_register_account_farmer_page.dart';
 import 'package:mol_petani/presentation/page/farmer_group/group_report_hama/group_report_hama_page.dart';
@@ -70,7 +69,6 @@ import 'package:mol_petani/presentation/page/distributor/distributor_main_page/m
 import 'package:mol_petani/presentation/page/farmer_group/group_main_page/main_kelompok_page.dart';
 import 'package:mol_petani/presentation/page/farmer_group/group_form_submission_group/group_form_submission_group_page.dart';
 import 'package:mol_petani/presentation/page/farmer_group/group_submisson_fertilizer_group/group_submission_fertilizer_group_page.dart';
-import 'package:mol_petani/presentation/provider/submission_fertilizer/submission_fertilizer_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'router_provider.g.dart';
@@ -431,13 +429,11 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(routes: [
           //   builder: (context, state) =>
           //       const DistributorHistorySubissionKuotaPage(),
           // ),
-          // GoRoute(
-          //   path: "detail-distributor-history",
-          //   name: "detail-distributor-history",
-          //   builder: (context, state) => DistributorDetailHistoryKuotaPage(
-          //     state.extra as SubmissionKuotaFertilizer,
-          //   ),
-          // ),
+          GoRoute(
+            path: "send-fertilizer",
+            name: "send-fertilizer",
+            builder: (context, state) => const DistributorSendsFertilizerPage(),
+          ),
           GoRoute(
             path: "detail-send-fertilizer",
             name: "detail-send-fertilizer",
@@ -489,7 +485,7 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(routes: [
           GoRoute(
             path: "farmer-report",
             name: "farmer-report",
-            builder: (context, state) => FarmerReportPage(),
+            builder: (context, state) => const FarmerReportPage(),
           ),
           GoRoute(
             path: "farmer-detail-complaint-reporting",

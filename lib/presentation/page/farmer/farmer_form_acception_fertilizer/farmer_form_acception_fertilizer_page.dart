@@ -33,6 +33,12 @@ class _FarmerFormAcceptionFertilizerPageState
   Widget buildAndroid(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              ref.read(routerProvider).goNamed("farmer-detail-accepted",
+                  extra: widget.dataFertilizer);
+            },
+            icon: const Icon(Icons.arrow_back)),
         title: Text(
           "Form Penerimaan",
           style: largeReguler,
@@ -60,7 +66,8 @@ class _FarmerFormAcceptionFertilizerPageState
           navigationBar: CupertinoNavigationBar(
             leading: IconButton(
               onPressed: () {
-                ref.read(routerProvider).pop();
+                ref.read(routerProvider).goNamed("farmer-detail-accepted",
+                    extra: widget.dataFertilizer);
               },
               icon: const Icon(Icons.arrow_back_ios),
             ),

@@ -18,6 +18,7 @@ class PplDetailMonitoringFarmerGroupPage extends ConsumerWidget {
   Widget buildAndroid(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: background,
         leading: IconButton(
             onPressed: () {
               ref.read(routerProvider).goNamed("monitoring-group", extra: user);
@@ -37,6 +38,7 @@ class PplDetailMonitoringFarmerGroupPage extends ConsumerWidget {
     return CupertinoApp(
       title: "Detail Distribusi Pupuk",
       home: CupertinoPageScaffold(
+        backgroundColor: background,
         navigationBar: CupertinoNavigationBar(
           leading: IconButton(
               onPressed: () {

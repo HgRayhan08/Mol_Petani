@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mol_petani/domain/entities/user_farmer_grup.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/ppl/ppl_submission_group/method/table_submission_group.dart';
-import 'package:mol_petani/presentation/provider/submission_fertilizer/submission_fertilizer_provider.dart';
 
 class WebsiteSubmissionGroup extends StatefulWidget {
   final WidgetRef ref;

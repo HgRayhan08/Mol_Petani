@@ -12,6 +12,7 @@ class PplHistoryPestReportPage extends ConsumerWidget {
 
   Widget buildAndroid(BuildContext context, WidgetRef ref) {
     return Scaffold(
+      backgroundColor: background,
       appBar: AppBar(
         title: Text(
           "History Laporan",
@@ -26,6 +27,7 @@ class PplHistoryPestReportPage extends ConsumerWidget {
     return CupertinoApp(
       title: "History Laporan",
       home: CupertinoPageScaffold(
+        backgroundColor: background,
         navigationBar: CupertinoNavigationBar(
           leading: IconButton(
               onPressed: () {

@@ -1,7 +1,6 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/intl.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/ppl/ppl_register_farmer/method/logic_create_farmer.dart';
 import 'package:mol_petani/presentation/widgets/button_submission_widget.dart';
@@ -20,9 +19,7 @@ class _MobileCreateFarmerState extends State<MobileCreateFarmer> {
   final TextEditingController nikController = TextEditingController();
   final TextEditingController grupController = TextEditingController();
   final TextEditingController villageController = TextEditingController();
-  final TextEditingController kartuController = TextEditingController();
   final TextEditingController luasController = TextEditingController();
-  final TextEditingController tanggalLahirController = TextEditingController();
   final TextEditingController noHpController = TextEditingController();
   final List<String> items = [
     'Laki-laki',
@@ -31,33 +28,11 @@ class _MobileCreateFarmerState extends State<MobileCreateFarmer> {
   String? jenisKelamin;
   bool _isLoading = false;
 
-  DateTime? selectedDate;
-
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? pickedDate = await showDatePicker(
-      context: context,
-      initialDate: selectedDate ?? DateTime.now(),
-      firstDate: DateTime(1900),
-      lastDate: DateTime(2100),
-    );
-
-    if (pickedDate != null && pickedDate != selectedDate) {
-      setState(() {
-        selectedDate = pickedDate;
-      });
-    }
-  }
-
-  final DateFormat formatter = DateFormat('dd-MM-yyyy');
-
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
 
-    final String formattedDate = selectedDate != null
-        ? formatter.format(selectedDate!)
-        : 'No date selected!';
     return ListView(
       padding: EdgeInsets.only(
         left: width * 0.05,
@@ -98,32 +73,13 @@ class _MobileCreateFarmerState extends State<MobileCreateFarmer> {
           controller: nikController,
           title: "Nomor Induk Keluarga",
         ),
-        TextFieldCustom(
-          hinttext: "Kartu Keluarga",
-          controller: kartuController,
-          title: "Kartu Keluarga",
-        ),
+
         TextFieldCustom(
           hinttext: "Luas Lahan",
           controller: luasController,
           title: "Luas Lahan Pertanian",
         ),
         SizedBox(height: height * 0.02),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              formattedDate,
-              style: regulerReguler,
-            ),
-            const SizedBox(height: 20.0),
-            ElevatedButton(
-              onPressed: () => _selectDate(context),
-              child: const Text('Select date'),
-            ),
-          ],
-        ),
-        SizedBox(height: height * 0.03),
 
         Material(
           child: DropdownButtonHideUnderline(
@@ -182,9 +138,7 @@ class _MobileCreateFarmerState extends State<MobileCreateFarmer> {
         villageController: villageController,
         nikController: nikController,
         noHpController: noHpController,
-        kartuController: kartuController,
         luasController: luasController,
-        tanggalLahirController: formatter.format(selectedDate!).toString(),
         jenisKelamin: jenisKelamin!);
     registrasiFarmer.logicCreate((isLoading) {
       setState(() {

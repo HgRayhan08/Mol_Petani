@@ -177,11 +177,9 @@ class _WebCreateFarmerState extends State<WebCreateFarmer> {
             name: nameController.text,
             village: villageController.text,
             nik: nikController.text,
-            kartuKeluarga: kartuController.text,
             luasLahan: luasController.text,
             jenisKelamin: jenisKelamin!,
             noHp: noHpController.text,
-            dateOfBirth: tanggalLahirController.text,
           );
       // context.buildAlertInformation();
       widget.ref.read(routerProvider).pop();

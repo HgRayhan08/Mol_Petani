@@ -39,6 +39,8 @@ class _TextFieldCustomState extends State<TextFieldCustom> {
               controller: widget.controller,
               obscureText: _obscureText,
               decoration: InputDecoration(
+                filled: true,
+                fillColor: background,
                 contentPadding: const EdgeInsets.only(
                     left: 15, top: 15, bottom: 15, right: 20),
                 border: OutlineInputBorder(

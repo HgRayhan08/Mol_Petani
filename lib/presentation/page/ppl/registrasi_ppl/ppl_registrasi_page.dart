@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mol_petani/presentation/misc/build_context_alert_information.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/ppl/registrasi_ppl/mobile/mobile_registrasi_ppl.dart';
+import 'package:mol_petani/presentation/page/ppl/registrasi_ppl/website/web_registrasi.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
-import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
 import 'package:mol_petani/presentation/widgets/platform_widget.dart';
 
 class PplRegistrasiPage extends ConsumerStatefulWidget {
@@ -62,7 +61,14 @@ class _PplRegistrasiPageState extends ConsumerState<PplRegistrasiPage> {
   }
 
   Widget buildWeb(BuildContext context, WidgetRef ref) {
-    return Scaffold();
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+    return Scaffold(
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: width * 0.2),
+        child: WebRegistrasi(ref: ref, width: width, height: height),
+      ),
+    );
   }
 
   @override

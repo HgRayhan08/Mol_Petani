@@ -76,9 +76,10 @@ class _MapsPageState extends ConsumerState<MapsPage> {
                           return Polygon(
                             points: location.cordinatPoint,
                             color: randomColor.withOpacity(0.2),
-                            borderColor: Colors.redAccent,
+                            borderColor: randomColor.withOpacity(0.2),
                             borderStrokeWidth: 3.0,
                             label: location.farmerName,
+                            isFilled: true,
                             labelStyle: const TextStyle(
                                 color: Colors.black, fontSize: 20),
                           );

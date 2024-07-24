@@ -20,13 +20,13 @@ DataSubmissionGroup _$DataSubmissionGroupFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$DataSubmissionGroup {
-  String get idGrupFarmers => throw _privateConstructorUsedError;
+  String get idFarmerGroup => throw _privateConstructorUsedError;
   String get idPPL => throw _privateConstructorUsedError;
   String get leaderName => throw _privateConstructorUsedError;
   String get village => throw _privateConstructorUsedError;
   String get forYear => throw _privateConstructorUsedError;
   String get date => throw _privateConstructorUsedError;
-  String get farmerFroup => throw _privateConstructorUsedError;
+  String get farmerGroup => throw _privateConstructorUsedError;
   String get information => throw _privateConstructorUsedError;
   String? get idDocument => throw _privateConstructorUsedError;
 
@@ -43,13 +43,13 @@ abstract class $DataSubmissionGroupCopyWith<$Res> {
       _$DataSubmissionGroupCopyWithImpl<$Res, DataSubmissionGroup>;
   @useResult
   $Res call(
-      {String idGrupFarmers,
+      {String idFarmerGroup,
       String idPPL,
       String leaderName,
       String village,
       String forYear,
       String date,
-      String farmerFroup,
+      String farmerGroup,
       String information,
       String? idDocument});
 }
@@ -67,20 +67,20 @@ class _$DataSubmissionGroupCopyWithImpl<$Res, $Val extends DataSubmissionGroup>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? idGrupFarmers = null,
+    Object? idFarmerGroup = null,
     Object? idPPL = null,
     Object? leaderName = null,
     Object? village = null,
     Object? forYear = null,
     Object? date = null,
-    Object? farmerFroup = null,
+    Object? farmerGroup = null,
     Object? information = null,
     Object? idDocument = freezed,
   }) {
     return _then(_value.copyWith(
-      idGrupFarmers: null == idGrupFarmers
-          ? _value.idGrupFarmers
-          : idGrupFarmers // ignore: cast_nullable_to_non_nullable
+      idFarmerGroup: null == idFarmerGroup
+          ? _value.idFarmerGroup
+          : idFarmerGroup // ignore: cast_nullable_to_non_nullable
               as String,
       idPPL: null == idPPL
           ? _value.idPPL
@@ -102,9 +102,9 @@ class _$DataSubmissionGroupCopyWithImpl<$Res, $Val extends DataSubmissionGroup>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String,
-      farmerFroup: null == farmerFroup
-          ? _value.farmerFroup
-          : farmerFroup // ignore: cast_nullable_to_non_nullable
+      farmerGroup: null == farmerGroup
+          ? _value.farmerGroup
+          : farmerGroup // ignore: cast_nullable_to_non_nullable
               as String,
       information: null == information
           ? _value.information
@@ -127,13 +127,13 @@ abstract class _$$DataSubmissionGroupImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String idGrupFarmers,
+      {String idFarmerGroup,
       String idPPL,
       String leaderName,
       String village,
       String forYear,
       String date,
-      String farmerFroup,
+      String farmerGroup,
       String information,
       String? idDocument});
 }
@@ -149,20 +149,20 @@ class __$$DataSubmissionGroupImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? idGrupFarmers = null,
+    Object? idFarmerGroup = null,
     Object? idPPL = null,
     Object? leaderName = null,
     Object? village = null,
     Object? forYear = null,
     Object? date = null,
-    Object? farmerFroup = null,
+    Object? farmerGroup = null,
     Object? information = null,
     Object? idDocument = freezed,
   }) {
     return _then(_$DataSubmissionGroupImpl(
-      idGrupFarmers: null == idGrupFarmers
-          ? _value.idGrupFarmers
-          : idGrupFarmers // ignore: cast_nullable_to_non_nullable
+      idFarmerGroup: null == idFarmerGroup
+          ? _value.idFarmerGroup
+          : idFarmerGroup // ignore: cast_nullable_to_non_nullable
               as String,
       idPPL: null == idPPL
           ? _value.idPPL
@@ -184,9 +184,9 @@ class __$$DataSubmissionGroupImplCopyWithImpl<$Res>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String,
-      farmerFroup: null == farmerFroup
-          ? _value.farmerFroup
-          : farmerFroup // ignore: cast_nullable_to_non_nullable
+      farmerGroup: null == farmerGroup
+          ? _value.farmerGroup
+          : farmerGroup // ignore: cast_nullable_to_non_nullable
               as String,
       information: null == information
           ? _value.information
@@ -204,13 +204,13 @@ class __$$DataSubmissionGroupImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DataSubmissionGroupImpl implements _DataSubmissionGroup {
   _$DataSubmissionGroupImpl(
-      {required this.idGrupFarmers,
+      {required this.idFarmerGroup,
       required this.idPPL,
       required this.leaderName,
       required this.village,
       required this.forYear,
       required this.date,
-      required this.farmerFroup,
+      required this.farmerGroup,
       required this.information,
       this.idDocument});
 
@@ -218,7 +218,7 @@ class _$DataSubmissionGroupImpl implements _DataSubmissionGroup {
       _$$DataSubmissionGroupImplFromJson(json);
 
   @override
-  final String idGrupFarmers;
+  final String idFarmerGroup;
   @override
   final String idPPL;
   @override
@@ -230,7 +230,7 @@ class _$DataSubmissionGroupImpl implements _DataSubmissionGroup {
   @override
   final String date;
   @override
-  final String farmerFroup;
+  final String farmerGroup;
   @override
   final String information;
   @override
@@ -238,7 +238,7 @@ class _$DataSubmissionGroupImpl implements _DataSubmissionGroup {
 
   @override
   String toString() {
-    return 'DataSubmissionGroup(idGrupFarmers: $idGrupFarmers, idPPL: $idPPL, leaderName: $leaderName, village: $village, forYear: $forYear, date: $date, farmerFroup: $farmerFroup, information: $information, idDocument: $idDocument)';
+    return 'DataSubmissionGroup(idFarmerGroup: $idFarmerGroup, idPPL: $idPPL, leaderName: $leaderName, village: $village, forYear: $forYear, date: $date, farmerGroup: $farmerGroup, information: $information, idDocument: $idDocument)';
   }
 
   @override
@@ -246,16 +246,16 @@ class _$DataSubmissionGroupImpl implements _DataSubmissionGroup {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DataSubmissionGroupImpl &&
-            (identical(other.idGrupFarmers, idGrupFarmers) ||
-                other.idGrupFarmers == idGrupFarmers) &&
+            (identical(other.idFarmerGroup, idFarmerGroup) ||
+                other.idFarmerGroup == idFarmerGroup) &&
             (identical(other.idPPL, idPPL) || other.idPPL == idPPL) &&
             (identical(other.leaderName, leaderName) ||
                 other.leaderName == leaderName) &&
             (identical(other.village, village) || other.village == village) &&
             (identical(other.forYear, forYear) || other.forYear == forYear) &&
             (identical(other.date, date) || other.date == date) &&
-            (identical(other.farmerFroup, farmerFroup) ||
-                other.farmerFroup == farmerFroup) &&
+            (identical(other.farmerGroup, farmerGroup) ||
+                other.farmerGroup == farmerGroup) &&
             (identical(other.information, information) ||
                 other.information == information) &&
             (identical(other.idDocument, idDocument) ||
@@ -264,8 +264,8 @@ class _$DataSubmissionGroupImpl implements _DataSubmissionGroup {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, idGrupFarmers, idPPL, leaderName,
-      village, forYear, date, farmerFroup, information, idDocument);
+  int get hashCode => Object.hash(runtimeType, idFarmerGroup, idPPL, leaderName,
+      village, forYear, date, farmerGroup, information, idDocument);
 
   @JsonKey(ignore: true)
   @override
@@ -284,13 +284,13 @@ class _$DataSubmissionGroupImpl implements _DataSubmissionGroup {
 
 abstract class _DataSubmissionGroup implements DataSubmissionGroup {
   factory _DataSubmissionGroup(
-      {required final String idGrupFarmers,
+      {required final String idFarmerGroup,
       required final String idPPL,
       required final String leaderName,
       required final String village,
       required final String forYear,
       required final String date,
-      required final String farmerFroup,
+      required final String farmerGroup,
       required final String information,
       final String? idDocument}) = _$DataSubmissionGroupImpl;
 
@@ -298,7 +298,7 @@ abstract class _DataSubmissionGroup implements DataSubmissionGroup {
       _$DataSubmissionGroupImpl.fromJson;
 
   @override
-  String get idGrupFarmers;
+  String get idFarmerGroup;
   @override
   String get idPPL;
   @override
@@ -310,7 +310,7 @@ abstract class _DataSubmissionGroup implements DataSubmissionGroup {
   @override
   String get date;
   @override
-  String get farmerFroup;
+  String get farmerGroup;
   @override
   String get information;
   @override

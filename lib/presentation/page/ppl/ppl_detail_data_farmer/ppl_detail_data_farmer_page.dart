@@ -8,7 +8,6 @@ import 'package:mol_petani/presentation/page/ppl/ppl_detail_data_farmer/mobile/m
 import 'package:mol_petani/presentation/page/ppl/ppl_detail_data_farmer/website/web_detail_data_farmer.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
-import 'package:mol_petani/presentation/widgets/appbar_custom_widget.dart';
 import 'package:mol_petani/presentation/widgets/platform_widget.dart';
 
 class PplDetailDataFarmerPage extends ConsumerStatefulWidget {

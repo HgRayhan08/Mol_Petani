@@ -31,6 +31,7 @@ class MobileSubmissionGroup extends StatelessWidget {
             itemBuilder: (context, index) {
               return Material(
                 child: ListTile(
+                  tileColor: background,
                   contentPadding: EdgeInsets.only(top: height * 0.01),
                   leading: Text(
                     data[index].forYear,

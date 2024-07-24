@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/farmer/farmer_report/mobile/mobile_report.dart';
 import 'package:mol_petani/presentation/page/farmer/farmer_report/website/web_report.dart';
-import 'package:mol_petani/presentation/provider/report/report_provider.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
-import 'package:mol_petani/presentation/widgets/listile_reporting_widget.dart';
 import 'package:mol_petani/presentation/widgets/platform_widget.dart';
 
 class FarmerReportPage extends ConsumerWidget {
@@ -15,6 +13,7 @@ class FarmerReportPage extends ConsumerWidget {
   Widget buildAndroid(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: background,
         title: Text(
           "Laporan Petani",
           style: largeReguler,
@@ -33,6 +32,7 @@ class FarmerReportPage extends ConsumerWidget {
   Widget buildIos(BuildContext context, WidgetRef ref) {
     return CupertinoApp(
       home: CupertinoPageScaffold(
+        backgroundColor: background,
         navigationBar: CupertinoNavigationBar(
           leading: IconButton(
             onPressed: () {

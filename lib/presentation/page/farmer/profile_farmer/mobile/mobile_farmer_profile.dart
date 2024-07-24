@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mol_petani/presentation/misc/build_context_alert_dialog.dart';
 import 'package:mol_petani/presentation/page/farmer/profile_farmer/method/information_farmer.dart';
-import 'package:mol_petani/presentation/page/farmer_group/profile_group/method/information_group.dart';
 import 'package:mol_petani/presentation/page/farmer_group/profile_group/method/menu_group.dart';
-import 'package:mol_petani/presentation/page/profile/method/stack_image_profile.dart';
 import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
 
 class MobileFarmerProfile extends StatelessWidget {

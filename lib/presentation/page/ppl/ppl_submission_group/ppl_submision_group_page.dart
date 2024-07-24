@@ -31,6 +31,7 @@ class PplSubmissionGroupPage extends ConsumerWidget {
     return CupertinoApp(
       title: userGroup.farmerGrup,
       home: CupertinoPageScaffold(
+        backgroundColor: background,
         navigationBar: CupertinoNavigationBar(
           leading: IconButton(
               onPressed: () {

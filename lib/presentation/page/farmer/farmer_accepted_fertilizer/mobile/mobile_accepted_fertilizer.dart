@@ -27,12 +27,14 @@ class MobileAcceptedFertilizer extends StatelessWidget {
               return Container(
                 margin: EdgeInsets.only(top: height * 0.01),
                 decoration: const BoxDecoration(
+                  color: Colors.amber,
                   border: Border(
                     bottom: BorderSide(),
                   ),
                 ),
                 child: Material(
                   child: ListTile(
+                    tileColor: background,
                     onTap: () {
                       ref.read(routerProvider).goNamed("farmer-detail-accepted",
                           extra: data[index]);

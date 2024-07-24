@@ -20,7 +20,7 @@ class CreateFertilizerFarmerGrup
     List<String>? idUser = await sharedPrefRepository.getDataLogin();
     var result = await pengajuanRepository.createSubmissionFertilizer(
       idGrupFarmers: idUser![1],
-      idPPL: idUser[3],
+      idPPL: idUser[2],
       leaderName: params.leaderName,
       village: params.village,
       forYear: params.forYear,

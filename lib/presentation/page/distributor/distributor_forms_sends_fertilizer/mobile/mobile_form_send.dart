@@ -2,10 +2,8 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mol_petani/presentation/misc/build_context_alert_information.dart';
-import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/distributor/distributor_forms_sends_fertilizer/methods/form_send_fertilizer.dart';
-import 'package:mol_petani/presentation/provider/router/router_provider.dart';
+import 'package:mol_petani/presentation/page/distributor/distributor_forms_sends_fertilizer/methods/logic_send.dart';
 import 'package:mol_petani/presentation/provider/submission_fertilizer/submission_fertilizer_provider.dart';
 import 'package:mol_petani/presentation/widgets/button_submission_widget.dart';
 
@@ -34,6 +32,7 @@ class MobileFormSend extends StatefulWidget {
 }
 
 class _MobileFormSendState extends State<MobileFormSend> {
+  bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -135,7 +134,7 @@ class _MobileFormSendState extends State<MobileFormSend> {
           height: height * 0.03,
         ),
         ButtonSubmissionWidget(
-          onTap: _submission,
+          onTap: _isLoading ? null : _submission,
           title: "Submission",
         ),
         SizedBox(
@@ -146,30 +145,19 @@ class _MobileFormSendState extends State<MobileFormSend> {
   }
 
   void _submission() async {
-    if (widget.nameControler.text != "" ||
-        widget.yearControler != 0 ||
-        widget.sendControler.text != "" ||
-        widget.ureaControler.text != "" ||
-        widget.poskaControler.text != "") {
-      context.buildAlertInformation(
-          title: "Pesan", subTitle: "Berhasil Menambahkan Data");
-      await widget.ref
-          .read(fertilizerSubmissionProvider.notifier)
-          .createSendFertilizerGroup(
-            idGroupFarmer: widget.selectedValue.toString(),
-            nameDistributor: widget.nameControler.text,
-            year: widget.yearControler.text,
-            send: int.parse(widget.sendControler.text),
-            sendUrea: int.parse(widget.ureaControler.text),
-            sendPoska: int.parse(widget.poskaControler.text),
-          );
-      // await context.buildAlertInformation();
-      Future.delayed(const Duration(seconds: 2), () {
-        widget.ref.read(routerProvider).pop();
+    final create = LogicSend(
+        ref: widget.ref,
+        context: context,
+        selectedValue: widget.selectedValue.toString(),
+        nameControler: widget.nameControler,
+        yearControler: widget.yearControler,
+        sendControler: widget.sendControler,
+        ureaControler: widget.ureaControler,
+        poskaControler: widget.poskaControler);
+    create.create((isLoading) {
+      setState(() {
+        _isLoading = isLoading;
       });
-    } else {
-      context.buildAlertInformation(
-          title: "Pesan", subTitle: "Please enter the data completely");
-    }
+    });
   }
 }

@@ -8,6 +8,7 @@ class SupportingDataFertilizer with _$SupportingDataFertilizer {
   factory SupportingDataFertilizer({
     String? idDocument,
     required String idPpl,
+    required String idSubmission,
     required String idFarmerGroup,
     required String farmername,
     required String nik,

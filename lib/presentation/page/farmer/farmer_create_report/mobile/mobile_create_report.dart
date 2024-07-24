@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mol_petani/presentation/misc/build_context_alert_information.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
-import 'package:mol_petani/presentation/provider/report/report_provider.dart';
-import 'package:mol_petani/presentation/provider/router/router_provider.dart';
+import 'package:mol_petani/presentation/page/farmer/farmer_create_report/method/logic_create.dart';
 import 'package:mol_petani/presentation/widgets/button_submission_widget.dart';
 import 'package:mol_petani/presentation/widgets/text_field_custom.dart';
 
-class MobileCreateReport extends StatelessWidget {
+class MobileCreateReport extends StatefulWidget {
   final WidgetRef ref;
   final TextEditingController judulControler;
   final TextEditingController deskripsiController;
@@ -19,6 +17,12 @@ class MobileCreateReport extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<MobileCreateReport> createState() => _MobileCreateReportState();
+}
+
+class _MobileCreateReportState extends State<MobileCreateReport> {
+  bool _isLoading = false;
+  @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
@@ -27,7 +31,7 @@ class MobileCreateReport extends StatelessWidget {
       children: [
         TextFieldCustom(
           hinttext: "Judul Laporan",
-          controller: judulControler,
+          controller: widget.judulControler,
           title: "Laporan",
         ),
         SizedBox(
@@ -44,7 +48,7 @@ class MobileCreateReport extends StatelessWidget {
           height: height * 0.4,
           child: Material(
             child: TextFormField(
-              controller: deskripsiController,
+              controller: widget.deskripsiController,
               maxLines: 100,
               keyboardType: TextInputType.multiline,
               decoration: InputDecoration(
@@ -62,22 +66,35 @@ class MobileCreateReport extends StatelessWidget {
           height: height * 0.22,
         ),
         ButtonSubmissionWidget(
-          onTap: () async {
-            if (judulControler.text != "" || deskripsiController.text != "") {
-              context.buildAlertInformation(
-                  title: "Pesan", subTitle: "Berhasil Menambahkan Data");
-              await ref.read(reportProviderProvider.notifier).createReport(
-                  reporting: judulControler.text,
-                  reportingDetail: deskripsiController.text);
-              ref.read(routerProvider).goNamed("farmer-report");
-            } else {
-              context.buildAlertInformation(
-                  title: "Pesan", subTitle: "Please enter the data completely");
-            }
-          },
+          onTap: _isLoading ? null : _create,
+          // onTap: () async {
+          //   if (judulControler.text != "" || deskripsiController.text != "") {
+          //     context.buildAlertInformation(
+          //         title: "Pesan", subTitle: "Berhasil Menambahkan Data");
+          //     await ref.read(reportProviderProvider.notifier).createReport(
+          //         reporting: judulControler.text,
+          //         reportingDetail: deskripsiController.text);
+          //     ref.read(routerProvider).goNamed("farmer-report");
+          //   } else {
+          //     context.buildAlertInformation(
+          //         title: "Pesan", subTitle: "Please enter the data completely");
+          //   }
+          // },
           title: "Submit",
         )
       ],
     );
+  }
+
+  void _create() {
+    final create = LogicCreateReport(
+        ref: widget.ref,
+        context: context,
+        judulControler: widget.judulControler,
+        deskripsiController: widget.deskripsiController);
+
+    create.create((isLoading) {
+      _isLoading = isLoading;
+    });
   }
 }

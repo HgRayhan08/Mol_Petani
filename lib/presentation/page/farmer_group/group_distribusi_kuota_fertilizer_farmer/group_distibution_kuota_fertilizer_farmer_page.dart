@@ -14,6 +14,7 @@ class GroupDistributionKuotaFertilizerFarmerpage extends ConsumerWidget {
 
   Widget buildAndroid(BuildContext context, WidgetRef ref) {
     return Scaffold(
+      backgroundColor: background,
       appBar: AppBar(
         title: Text("Distribusi Pupuk", style: largeReguler),
       ),
@@ -33,6 +34,7 @@ class GroupDistributionKuotaFertilizerFarmerpage extends ConsumerWidget {
     return CupertinoApp(
       title: "Distribusi Pupuk",
       home: CupertinoPageScaffold(
+        backgroundColor: background,
         navigationBar: CupertinoNavigationBar(
           leading: IconButton(
             onPressed: () {

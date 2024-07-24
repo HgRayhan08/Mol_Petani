@@ -13,6 +13,8 @@ Widget formReportHama(
           child: TextFormField(
             controller: reportingController,
             decoration: InputDecoration(
+              fillColor: background,
+              filled: true,
               label: Text(
                 "Judul Pelaporan",
                 style: regulerReguler,
@@ -29,6 +31,8 @@ Widget formReportHama(
             minLines: 5,
             maxLines: 8,
             decoration: InputDecoration(
+              fillColor: background,
+              filled: true,
               label: Text(
                 "Detail Pelaporan",
                 style: regulerReguler,

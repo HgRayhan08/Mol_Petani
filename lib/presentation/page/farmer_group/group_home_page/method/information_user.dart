@@ -12,7 +12,7 @@ Widget informationUserGroup(context, ref) => Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Hi! ${ref.watch(dataUserProvider.notifier).state.value!["leaderName"]}",
+                  "Hi! ${ref.watch(dataUserProvider.notifier).state.value!["name"]}",
                   style: extraLarge.copyWith(
                     fontWeight: FontWeight.bold,
                     color: Colors.white,

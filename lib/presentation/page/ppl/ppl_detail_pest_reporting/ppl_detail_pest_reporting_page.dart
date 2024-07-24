@@ -54,27 +54,27 @@ class PplDetailPestReportingPage extends ConsumerWidget {
               icon: const Icon(Icons.arrow_back_ios),
             ),
             middle: Text(
-              "Detail Laporan Petani",
+              "Detail Laporan Hama",
               style: largeReguler,
             ),
-            trailing: data.information == "Terima"
-                ? Container(width: 1)
-                : IconButton(
-                    onPressed: () {
-                      context.buildShowDialog(
-                        judul: "Konfirmasi Terima",
-                        berhasil: "Terima",
-                        keterangan: "Apakah Anda Telah Menerima Laporan?",
-                        onTapCancel: () {},
-                        onTapSucces: () {
-                          ref
-                              .read(reportProviderProvider.notifier)
-                              .updateStatusPest(idDocument: data.idDocument!);
-                        },
-                      );
-                    },
-                    icon: Icon(Icons.check),
-                  ),
+            // trailing: data.information == "Terima"
+            //     ? Container(width: 1)
+            //     : IconButton(
+            //         onPressed: () {
+            //           context.buildShowDialog(
+            //             judul: "Konfirmasi Terima",
+            //             berhasil: "Terima",
+            //             keterangan: "Apakah Anda Telah Menerima Laporan?",
+            //             onTapCancel: () {},
+            //             onTapSucces: () {
+            //               ref
+            //                   .read(reportProviderProvider.notifier)
+            //                   .updateStatusPest(idDocument: data.idDocument!);
+            //             },
+            //           );
+            //         },
+            //         icon: Icon(Icons.check),
+            //       ),
           ),
           child: SafeArea(child: MobileDetailPest(ref: ref, data: data))),
     );

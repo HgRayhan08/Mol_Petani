@@ -17,6 +17,8 @@ class GetFertilizerFarmer
     var data = await submissionFretilizerRepository.getadditionalDataSubmission(
       params.idSubmition,
     );
+    print("object");
+    print(data.resultValue!.length);
     return switch (data) {
       Success(value: final data) => Result.success(data),
       Failed(:final message) => Result.failed(message),

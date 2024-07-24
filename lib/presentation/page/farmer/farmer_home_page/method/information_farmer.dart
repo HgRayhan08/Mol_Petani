@@ -54,7 +54,7 @@ AppBar informationFarmer(ref, width, height) => AppBar(
                     ),
                   ),
                   child: Text(
-                    "Kelompok Tani ${ref.read(dataUserProvider.notifier).state.value!["grupFarmer"]}",
+                    "Kelompok Tani ${ref.read(dataUserProvider.notifier).state.value!["farmerGroup"]}",
                     style: regulerReguler,
                   ),
                 ),

@@ -3,12 +3,14 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:mol_petani/domain/entities/submission_kuota_fertilizer.dart';
+import 'package:mol_petani/presentation/misc/build_context_alert_dialog.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/distributor/distribution_detail_send_fertilizer/method/information_addintial.dart';
 import 'package:mol_petani/presentation/page/distributor/distribution_detail_send_fertilizer/method/information_purpose_group.dart';
 import 'package:mol_petani/presentation/page/distributor/distribution_detail_send_fertilizer/mobile/mobile_detail_send_fertilizer.dart';
 import 'package:mol_petani/presentation/page/distributor/distribution_detail_send_fertilizer/website/web_detail_send_fertilizer.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
+import 'package:mol_petani/presentation/provider/submission_fertilizer/submission_fertilizer_provider.dart';
 import 'package:mol_petani/presentation/widgets/platform_widget.dart';
 
 class DistributionDetailSendFertilizerPage extends ConsumerWidget {
@@ -34,6 +36,26 @@ class DistributionDetailSendFertilizerPage extends ConsumerWidget {
                   },
                   icon: const Icon(Icons.edit),
                 ),
+          data.information == "Selesai"
+              ? Container()
+              : IconButton(
+                  icon: const Icon(Icons.delete),
+                  onPressed: () {
+                    context.buildShowDialog(
+                      berhasil: "Hapus",
+                      onTapCancel: () {},
+                      onTapSucces: () async {
+                        ref.read(routerProvider).pop();
+                        await ref
+                            .read(fertilizerSubmissionProvider.notifier)
+                            .deleteSendFertilizer(idDocument: data.idDocument!);
+                        ref.read(routerProvider).pop();
+                      },
+                      judul: "Konfirmasi Hapus",
+                      keterangan: "Apakah Anda yakin ingin menghapus item ini?",
+                    );
+                  },
+                ),
         ],
       ),
       body: MobileDetailSendFertilizer(
@@ -48,27 +70,52 @@ class DistributionDetailSendFertilizerPage extends ConsumerWidget {
       title: "Detail Pengiriman",
       home: CupertinoPageScaffold(
         navigationBar: CupertinoNavigationBar(
-          leading: IconButton(
-              onPressed: () {
-                ref.read(routerProvider).pop();
-              },
-              icon: const Icon(Icons.arrow_back_ios)),
-          middle: Text(
-            "Detail Pengiriman",
-            style: largeReguler,
-          ),
-          trailing: data.information == "Selesai"
-              ? Container()
-              : IconButton(
-                  onPressed: () {
-                    ref.read(routerProvider).goNamed(
-                          "update-send-fertilizer",
-                          extra: data,
-                        );
-                  },
-                  icon: const Icon(Icons.edit),
-                ),
-        ),
+            leading: IconButton(
+                onPressed: () {
+                  ref.read(routerProvider).pop();
+                },
+                icon: const Icon(Icons.arrow_back_ios)),
+            middle: Text(
+              "Detail Pengiriman",
+              style: largeReguler,
+            ),
+            trailing: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                data.information == "Selesai"
+                    ? Container()
+                    : IconButton(
+                        onPressed: () {
+                          ref.read(routerProvider).goNamed(
+                                "update-send-fertilizer",
+                                extra: data,
+                              );
+                        },
+                        icon: const Icon(Icons.edit),
+                      ),
+                data.information == "Selesai"
+                    ? Container()
+                    : IconButton(
+                        icon: const Icon(Icons.delete),
+                        onPressed: () {
+                          context.buildShowDialog(
+                            berhasil: "Hapus",
+                            onTapCancel: () {},
+                            onTapSucces: () async {
+                              await ref
+                                  .read(fertilizerSubmissionProvider.notifier)
+                                  .deleteSendFertilizer(
+                                      idDocument: data.idDocument!);
+                              ref.read(routerProvider).pop();
+                            },
+                            judul: "Konfirmasi Hapus",
+                            keterangan:
+                                "Apakah Anda yakin ingin menghapus item ini?",
+                          );
+                        },
+                      ),
+              ],
+            )),
         child: SafeArea(
           child: MobileDetailSendFertilizer(
             ref: ref,

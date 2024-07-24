@@ -47,7 +47,7 @@ class ListTileFertilizer extends StatelessWidget {
                   style: regulerReguler.copyWith(fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  data.farmerFroup,
+                  data.farmerGroup,
                   style: regulerReguler,
                 ),
               ],

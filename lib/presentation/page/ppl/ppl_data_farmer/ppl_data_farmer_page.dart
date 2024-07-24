@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
-import 'package:mol_petani/presentation/page/farmer_group/group_data_farmer/mobile/mobile_data_farmer.dart';
+import 'package:mol_petani/presentation/page/ppl/ppl_data_farmer/mobile/mobile_data_farmer.dart';
 import 'package:mol_petani/presentation/page/ppl/ppl_data_farmer/website/web_data_farmer.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/widgets/platform_widget.dart';

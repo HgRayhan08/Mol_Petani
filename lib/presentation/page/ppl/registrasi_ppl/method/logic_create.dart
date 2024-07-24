@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
-
 import 'package:mol_petani/presentation/misc/build_context_alert_information.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
@@ -54,7 +53,7 @@ class CreatePpl {
               nik: nikController.text,
               scope: coverage,
             );
-        if (result) {
+        if (result == false) {
           context.buildAlertInformation(
               title: "Pesan", subTitle: "Berhasil Menambahkan Data");
           await ref.read(dataUserProvider.notifier).logoutPetugas();

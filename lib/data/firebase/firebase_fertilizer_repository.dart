@@ -26,13 +26,13 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
     CollectionReference<Map<String, dynamic>> pengajuan =
         _firebaseFirestore.collection("Submission_Fertilizer_Farmer_Grup");
     await pengajuan.doc().set({
-      "idGrupFarmers": idGrupFarmers,
+      "idFarmerGroup": idGrupFarmers,
       "idPPL": idPPL,
       "leaderName": leaderName,
-      "farmerGroup": grupFarmer,
       "village": village,
       "forYear": forYear,
       "date": date,
+      "farmerGroup": grupFarmer,
       "information": "proses",
     });
 
@@ -52,20 +52,21 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
         _firebaseFirestore.collection("Submission_Fertilizer_Farmer_Grup");
     try {
       var result = await pengajuan
-          .where("idGrupFarmers", isEqualTo: idKelompoktani)
+          .where("idFarmerGroup", isEqualTo: idKelompoktani)
           .get();
+      print(result.docs.length);
       if (result.docs.isNotEmpty) {
         return Result.success(result.docs
             .map(
               (e) => DataSubmissionGroup(
                 idDocument: e.id,
-                idGrupFarmers: e["idGrupFarmers"],
+                idFarmerGroup: e["idFarmerGroup"],
                 idPPL: e["idPPL"],
                 leaderName: e["leaderName"],
                 village: e["village"],
                 forYear: e["forYear"],
                 date: e["date"],
-                farmerFroup: e["grupFarmer"],
+                farmerGroup: e["farmerGroup"],
                 information: e["information"],
               ),
             )
@@ -110,6 +111,7 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
         _firebaseFirestore.collection("Addantional_Data_Fertilizer_Submission");
     await submission.doc().set({
       "idPpl": idPpl,
+      "idSubmission": idSubmission,
       "idFarmerGroup": idKelompokTani,
       "farmerName": namaPetani,
       "nik": nik,
@@ -136,14 +138,14 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
     try {
       var result =
           await pengajuan.where("idSubmission", isEqualTo: idDocumennt).get();
-
       if (result.docs.isNotEmpty) {
         return Result.success(result.docs
             .map(
               (e) => SupportingDataFertilizer(
                 idPpl: e["idPpl"],
+                idSubmission: e["idSubmission"],
                 idFarmerGroup: e["idFarmerGroup"],
-                farmername: e["farmername"],
+                farmername: e["farmerName"],
                 nik: e["nik"],
                 luasLahan: e["luasLahan"],
                 fotoKtp: e["fotoKtp"],
@@ -171,16 +173,17 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
         _firebaseFirestore.collection("Fertilizer_Distribution_Kuota");
     var result = await data
         .where("idPPL", isEqualTo: idPPL)
-        .where("idGroupFarmer", isEqualTo: idGroupFarmer)
+        .where("idFarmerGroup", isEqualTo: idGroupFarmer)
         .where("information", isEqualTo: information)
         .get();
+    print(result.docs.length);
     if (result.docs.isNotEmpty) {
       return Result.success(result.docs
           .map(
             (e) => SubmissionKuotaFertilizer(
               idDocument: e.id,
               idPPL: e["idPPL"],
-              idFarmerGroup: e["idGroupFarmer"],
+              idFarmerGroup: e["idFarmerGroup"],
               idDistributor: e["idDistributor"],
               information: e["information"],
               year: e["year"],
@@ -189,8 +192,8 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
               acceptDate: e["acceptDate"],
               nameDistributor: e["nameDistributor"],
               leaderName: e["leaderName"],
-              nameFarmerGroup: e["nameGroupFarmer"],
-              nameAcceptFarmerGroup: e["nameAcceptGroupFarmer"],
+              nameFarmerGroup: e["nameFarmerGroup"],
+              nameAcceptFarmerGroup: e["nameAcceptFarmerGroup"],
               nameSendDistributor: e["nameSendDistributor"],
               sendUrea: e["sendUrea"],
               sendPoska: e["sendPoska"],
@@ -292,7 +295,7 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
       "acceptUrea": acceptUrea,
       "acceptPoska": acceptPoska,
       "acceptDate": acceptDate,
-      "nameAcceptGroupFarmer": nameAcceptGroupFarmer,
+      "nameAcceptFarmerGroup": nameAcceptGroupFarmer,
       "nameSendDistributor": nameSendDistributor,
       "information": "Selesai",
     });
@@ -347,21 +350,22 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
 
     try {
       var result = await pengajuan
-          .where("idPPL", isEqualTo: "HuoLcOqRKVZvGt1emLM8TioU9nU2")
-          .where("idGrupFarmers", isEqualTo: idGroupFarmer)
+          .where("idPPL", isEqualTo: idPPL)
+          .where("idFarmerGroup", isEqualTo: idGroupFarmer)
           .get();
+      print(result.docs.length);
       if (result.docs.isNotEmpty) {
         return Result.success(result.docs
             .map(
               (e) => DataSubmissionGroup(
                 idDocument: e.id,
-                idGrupFarmers: e["idGrupFarmers"],
+                idFarmerGroup: e["idFarmerGroup"],
                 idPPL: e["idPPL"],
                 leaderName: e["leaderName"],
                 village: e["village"],
                 forYear: e["forYear"],
                 date: e["date"],
-                farmerFroup: e["grupFarmer"],
+                farmerGroup: e["farmerGroup"],
                 information: e["information"],
               ),
             )
@@ -381,15 +385,17 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
         _firebaseFirestore.collection("Fertilizer_Distribution_Kuota");
     var result = await data
         .where("idPPL", isEqualTo: idPPL)
-        .where("idGroupFarmer", isEqualTo: idGroupFarmer)
+        .where("idFarmerGroup", isEqualTo: idGroupFarmer)
         .get();
+
     if (result.docs.isNotEmpty) {
       return Result.success(
         result.docs
             .map(
               (e) => SubmissionKuotaFertilizer(
+                idDocument: e.id,
                 idPPL: e["idPPL"],
-                idFarmerGroup: e["idGroupFarmer"],
+                idFarmerGroup: e["idFarmerGroup"],
                 idDistributor: e["idDistributor"],
                 information: e["information"],
                 year: e["year"],
@@ -398,8 +404,8 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
                 acceptDate: e["acceptDate"],
                 leaderName: e["leaderName"],
                 nameDistributor: e["nameDistributor"],
-                nameFarmerGroup: e["nameGroupFarmer"],
-                nameAcceptFarmerGroup: e["nameAcceptGroupFarmer"],
+                nameFarmerGroup: e["nameFarmerGroup"],
+                nameAcceptFarmerGroup: e["nameAcceptFarmerGroup"],
                 nameSendDistributor: e["nameSendDistributor"],
                 sendUrea: e["sendUrea"],
                 sendPoska: e["sendPoska"],
@@ -461,27 +467,6 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
     }
   }
 
-  // @override
-  // Future<Result<String>> updateSubmissionkuota({
-  //   required String idDocument,
-  //   required String information,
-  //   required String prosesDate,
-  // }) async {
-  //   CollectionReference<Map<String, dynamic>> kuotaData =
-  //       _firebaseFirestore.collection("Fertilizer_Kuota_Data");
-  //   await kuotaData.doc(idDocument).update({
-  //     "information": information,
-  //     "informationSend": "Proses",
-  //     "prosesDate": prosesDate,
-  //   });
-  //   DocumentSnapshot<Map<String, dynamic>> result = await kuotaData.doc().get();
-  //   if (result.exists) {
-  //     return const Result.success("Success");
-  //   } else {
-  //     return const Result.failed("fail to update");
-  //   }
-  // }
-
   @override
   Future<Result<List<SubmissionKuotaFertilizer>>>
       getDistributionFertilizerGroup({
@@ -497,13 +482,14 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
         .where("idDistributor", isEqualTo: idDistributor)
         .where("information", isEqualTo: information)
         .get();
+    print(result.docs.length);
     if (result.docs.isNotEmpty) {
       return Result.success(result.docs
           .map(
             (e) => SubmissionKuotaFertilizer(
               idDocument: e.id,
               idPPL: e["idPPL"],
-              idFarmerGroup: e["idGroupFarmer"],
+              idFarmerGroup: e["idFarmerGroup"],
               idDistributor: e["idDistributor"],
               information: e["information"],
               year: e["year"],
@@ -512,8 +498,8 @@ class FirebaseFertilizerRepository implements FertilizerRepository {
               acceptDate: e["acceptDate"],
               leaderName: e["leaderName"],
               nameDistributor: e["nameDistributor"],
-              nameFarmerGroup: e["nameGroupFarmer"],
-              nameAcceptFarmerGroup: e["nameAcceptGroupFarmer"],
+              nameFarmerGroup: e["nameFarmerGroup"],
+              nameAcceptFarmerGroup: e["nameAcceptFarmerGroup"],
               nameSendDistributor: e["nameSendDistributor"],
               sendUrea: e["sendUrea"],
               sendPoska: e["sendPoska"],

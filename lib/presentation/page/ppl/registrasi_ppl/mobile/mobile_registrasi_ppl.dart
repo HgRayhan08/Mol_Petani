@@ -149,24 +149,5 @@ class _MobileRegistrasiPplState extends State<MobileRegistrasiPpl> {
         _isLoading = isLoading;
       });
     });
-    // if (emailControler.text != "" ||
-    //     passwordControler.text != "" ||
-    //     nameControler.text != "" ||
-    //     coverage != []) {
-    //   context.buildAlertInformation(
-    //       title: "Pesan", subTitle: "Berhasil Menambahkan Data");
-    // } else {
-    //   context.buildAlertInformation(
-    //       title: "Pesan", subTitle: "Please enter the data completely");
-    //   widget.ref.read(routerProvider).goNamed("user-login");
-    //   widget.ref.read(dataUserProvider.notifier).registerPpl(
-    //         nama: nameControler.text,
-    //         email: emailControler.text,
-    //         password: passwordControler.text,
-    //         subdistrict: kecamatanControler.text,
-    //         image: File(xfile!.path),
-    //         scope: coverage,
-    //       );
-    // }
   }
 }

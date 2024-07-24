@@ -26,7 +26,7 @@ class MobileHomeFarmer extends StatelessWidget {
                 ),
               )
             : Container(),
-        SizedBox(height: height * 0.02),
+        SizedBox(height: height * 0.01),
         FutureBuilder(
           future: ref
               .watch(weatherProviderProvider.notifier)
@@ -49,11 +49,11 @@ class MobileHomeFarmer extends StatelessWidget {
                       fit: BoxFit.cover,
                       image: NetworkImage(
                           "https://openweathermap.org/img/wn/${data.data[0].weather[0].icon}@2x.png"),
-                      width: 120,
+                      width: 100,
                     ),
                     Text(data.data[0].weather[0].description),
-                    SizedBox(height: height * 0.01),
-                    Text(data.timezone)
+                    Text(data.timezone),
+                    // SizedBox(height: height * 0.0)
                   ],
                 ),
               );

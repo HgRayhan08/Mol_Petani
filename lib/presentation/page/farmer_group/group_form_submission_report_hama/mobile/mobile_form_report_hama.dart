@@ -4,7 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/farmer_group/group_form_submission_report_hama/method/dropdown_form_report_hama.dart';
 import 'package:mol_petani/presentation/page/farmer_group/group_form_submission_report_hama/method/form_report_hama.dart';
+import 'package:mol_petani/presentation/page/farmer_group/group_form_submission_report_hama/method/logic_report.dart';
 import 'package:mol_petani/presentation/provider/report/report_provider.dart';
+import 'package:mol_petani/presentation/widgets/button_submission_widget.dart';
 
 class MobileFormReportHama extends StatefulWidget {
   final WidgetRef ref;
@@ -28,6 +30,10 @@ class MobileFormReportHama extends StatefulWidget {
 
 class _MobileFormReportHamaState extends State<MobileFormReportHama> {
   String? _selectedValue;
+  final TextEditingController reportingController = TextEditingController();
+  final TextEditingController detailReportingController =
+      TextEditingController();
+  bool _isLoading = false;
 
   @override
   void initState() {
@@ -58,29 +64,32 @@ class _MobileFormReportHamaState extends State<MobileFormReportHama> {
         ),
         SizedBox(height: height * 0.02),
         formReportHama(
-          widget.reportingController,
-          widget.detailReportingController,
+          reportingController,
+          detailReportingController,
           height,
         ),
         SizedBox(height: height * 0.38),
         defaultTargetPlatform == TargetPlatform.iOS
             ? Container()
-            : ElevatedButton(
-                onPressed: () {
-                  widget.ref
-                      .read(reportProviderProvider.notifier)
-                      .createReportHama(
-                        reporting: widget.reportingController.text,
-                        detailReporting: widget.detailReportingController.text,
-                        idUserFarmer: widget.selectedValue!,
-                      );
-                },
-                child: Text(
-                  "Submit",
-                  style: buttonReguler,
-                ),
+            : ButtonSubmissionWidget(
+                onTap: _isLoading ? null : _create,
+                title: "Submit",
               )
       ],
     );
+  }
+
+  void _create() {
+    final create = LogicReport(
+        ref: widget.ref,
+        context: context,
+        reportingController: reportingController,
+        detailReportingController: detailReportingController,
+        selectedValue: _selectedValue.toString());
+    create.create((isLoading) {
+      setState(() {
+        _isLoading = isLoading;
+      });
+    });
   }
 }

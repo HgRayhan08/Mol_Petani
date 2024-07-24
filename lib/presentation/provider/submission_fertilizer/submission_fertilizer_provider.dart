@@ -140,13 +140,13 @@ class FertilizerSubmission extends _$FertilizerSubmission {
       return data;
     } else {
       return DataSubmissionGroup(
-        idGrupFarmers: "",
+        idFarmerGroup: "",
         idPPL: "",
         leaderName: "",
         village: "",
         forYear: "",
         date: "",
-        farmerFroup: '',
+        farmerGroup: '',
         information: "",
       );
     }
@@ -279,7 +279,7 @@ class FertilizerSubmission extends _$FertilizerSubmission {
 
   // distributor
 
-  Future<String> createSendFertilizerGroup({
+  Future<bool> createSendFertilizerGroup({
     required String idGroupFarmer,
     required String nameDistributor,
     required String year,
@@ -298,9 +298,9 @@ class FertilizerSubmission extends _$FertilizerSubmission {
         sendUrea: sendUrea,
         sendPoska: sendPoska));
     if (result.isSuccess) {
-      return "Create Succes";
+      return true;
     } else {
-      return "Failed Create";
+      return false;
     }
   }
 
@@ -374,7 +374,7 @@ class FertilizerSubmission extends _$FertilizerSubmission {
   // end Distributor
 
   // farmer
-  Future<String> updateReceptionFertilizerGroup({
+  Future<bool> updateReceptionFertilizerGroup({
     required String idDocument,
     required int acceptUrea,
     required int acceptPoska,
@@ -389,9 +389,9 @@ class FertilizerSubmission extends _$FertilizerSubmission {
       acceptPoska: acceptPoska,
     ));
     if (result.isSuccess) {
-      return "Sucsses Update data reception fertilizer";
+      return true;
     } else {
-      return "Failed update data";
+      return false;
     }
   }
 

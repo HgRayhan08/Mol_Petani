@@ -19,23 +19,70 @@ class FarmerDetailReportPage extends ConsumerWidget {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size(
-          width,
-          height * 0.3 -
-              AppBar().preferredSize.height -
-              MediaQuery.of(context).padding.top,
+      appBar: AppBar(
+        backgroundColor: blueLight,
+        title: Text(
+          "detail Pelaporan",
+          // "detail Pelaporan",
+          style: largeReguler,
         ),
-        child: AppbarCustomWidget(
-          height: height,
-          width: width,
-          title: "detail Pelaporan",
-          content: data.farmerGroup,
-          subContext: Text(
-            " Keterangan : ${data.information}",
-            style: regulerReguler.copyWith(color: Colors.white),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        bottom: PreferredSize(
+          preferredSize: Size(width, height * 0.1),
+          child: Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: width * 0.05,
+              vertical: height * 0.03,
+            ),
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
+              ),
+            ),
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  data.farmerGroup,
+                  style: largeReguler.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                Text(
+                  " Keterangan : ${data.information}",
+                  style: regulerReguler.copyWith(color: Colors.white),
+                ),
+              ],
+            ),
           ),
         ),
+        actions: [
+          data.information != "terima"
+              ? IconButton(
+                  onPressed: () {
+                    context.buildShowDialog(
+                      berhasil: "Hapus",
+                      onTapCancel: () {},
+                      onTapSucces: () async {
+                        ref
+                            .read(reportProviderProvider.notifier)
+                            .deleteComplaint(idDocument: data.idDocument!);
+                        ref.read(routerProvider).goNamed("main-farmer");
+                      },
+                      judul: "Konfirmasi Tambae Member",
+                      keterangan: "Apakah Anda yakin ingin Menambah Memmber?",
+                    );
+                  },
+                  icon: const Icon(Icons.delete),
+                )
+              : Container(width: 1),
+        ],
       ),
       body: MobileDetailReport(data: data, ref: ref),
     );
@@ -66,7 +113,7 @@ class FarmerDetailReportPage extends ConsumerWidget {
                         ref
                             .read(reportProviderProvider.notifier)
                             .deleteComplaint(idDocument: data.idDocument!);
-                        ref.read(routerProvider).goNamed("farmer-report");
+                        ref.read(routerProvider).goNamed("main-farmer");
                       },
                       judul: "Konfirmasi Tambae Member",
                       keterangan: "Apakah Anda yakin ingin Menambah Memmber?",

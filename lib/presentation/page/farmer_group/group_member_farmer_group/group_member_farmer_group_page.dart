@@ -12,7 +12,12 @@ class GroupMemberFarmerGroupPage extends ConsumerWidget {
 
   Widget buildAndroid(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(
+          "Member Kelompok Tani",
+          style: largeReguler,
+        ),
+      ),
       body: MobileMemberGroupFarmer(ref: ref),
     );
   }

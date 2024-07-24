@@ -34,7 +34,7 @@ class CreateCordinat {
                 farmerName: user.name,
                 idUserFarmer: user.idUserFarmer);
 
-        if (result.isSuccess) {
+        if (result.isFailed) {
           context.buildAlertInformation(
               title: "Pesan", subTitle: "Berhasil Menambahkan Data");
           Future.delayed(

@@ -52,12 +52,6 @@ class _GroupSubmissionFertilizerGroupState
       title: "Pengajuan Pupuk",
       home: CupertinoPageScaffold(
           navigationBar: CupertinoNavigationBar(
-            leading: IconButton(
-              onPressed: () {
-                ref.read(routerProvider).pop();
-              },
-              icon: const Icon(Icons.arrow_back_ios),
-            ),
             middle: Text(
               "Pengajuan Pupuk",
               style: largeReguler,

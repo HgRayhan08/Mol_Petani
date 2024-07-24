@@ -73,7 +73,7 @@ class ListTileKuotaWidget extends StatelessWidget {
                       style:
                           regulerReguler.copyWith(fontWeight: FontWeight.bold),
                     ),
-                    Text("Pengawas ${subTitle.toString()}"),
+                    Text(subTitle.toString()),
                   ],
                 ),
               ],

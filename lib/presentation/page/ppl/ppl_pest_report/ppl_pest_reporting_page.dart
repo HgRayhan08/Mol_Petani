@@ -13,6 +13,7 @@ class PplPestReportingPage extends ConsumerWidget {
   Widget buildAndroid(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: background,
         title: Text(
           "Laporan Hama",
           style: largeReguler,
@@ -35,6 +36,7 @@ class PplPestReportingPage extends ConsumerWidget {
     return CupertinoApp(
       title: "Laporan Hama",
       home: CupertinoPageScaffold(
+        backgroundColor: background,
         navigationBar: CupertinoNavigationBar(
           trailing: IconButton(
               onPressed: () {

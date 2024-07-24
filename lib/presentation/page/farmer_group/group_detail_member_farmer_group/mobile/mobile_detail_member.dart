@@ -5,6 +5,7 @@ import 'package:mol_petani/domain/entities/user_farmer.dart';
 import 'package:mol_petani/presentation/misc/build_context_alert_dialog.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/farmer_group/group_detail_data_farmer/method/information_farmer.dart';
+import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
 import 'package:mol_petani/presentation/widgets/button_submission_widget.dart';
 
@@ -63,7 +64,7 @@ class MobileDetailMember extends StatelessWidget {
           "Data Diri",
           style: regulerReguler.copyWith(fontWeight: FontWeight.bold),
         ),
-        informationDetailFarmer(user, width, height),
+        informationDetailFarmer(ref, user, width, height),
         SizedBox(height: height * 0.02),
         defaultTargetPlatform == TargetPlatform.iOS
             ? Container()
@@ -81,9 +82,13 @@ class MobileDetailMember extends StatelessWidget {
                               .read(dataUserProvider.notifier)
                               .deleteMemberFarmerGroup(
                                   idDocument: user.idDocument!);
+                          ref
+                              .read(routerProvider)
+                              .goNamed("member-farmer-group");
                         },
                       );
-                    })
+                    },
+                  )
                 : Container(),
       ],
     );

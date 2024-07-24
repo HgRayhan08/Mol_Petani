@@ -66,6 +66,28 @@ class GroupDetailPestReportPage extends ConsumerWidget {
           },
           icon: const Icon(Icons.arrow_back),
         ),
+        actions: [
+          data.information != "Terima"
+              ? IconButton(
+                  onPressed: () {
+                    context.buildShowDialog(
+                      berhasil: "Hapus",
+                      onTapCancel: () {},
+                      onTapSucces: () async {
+                        ref
+                            .read(reportProviderProvider.notifier)
+                            .deletePest(idDocument: data.idDocument.toString());
+                        ref.read(routerProvider).goNamed("report-hama");
+                      },
+                      judul: "Konfirmasi Hapus Laporan",
+                      keterangan: "Apakah Anda yakin ingin Menghapus Laporan?",
+                    );
+                  },
+                  icon: const Icon(Icons.delete))
+              : Container(
+                  width: 0.5,
+                ),
+        ],
       ),
       body: MobileDetailPest(ref: ref, data: data),
     );
@@ -98,11 +120,11 @@ class GroupDetailPestReportPage extends ConsumerWidget {
                             .deletePest(idDocument: data.idDocument.toString());
                         ref.read(routerProvider).goNamed("report-hama");
                       },
-                      judul: "Konfirmasi Tambae Member",
-                      keterangan: "Apakah Anda yakin ingin Menambah Memmber?",
+                      judul: "Konfirmasi Hapus laporan",
+                      keterangan: "Apakah Anda yakin ingin Menghapus Laporan?",
                     );
                   },
-                  icon: Icon(Icons.delete))
+                  icon:const Icon(Icons.delete))
               : Container(
                   width: 0.5,
                 ),

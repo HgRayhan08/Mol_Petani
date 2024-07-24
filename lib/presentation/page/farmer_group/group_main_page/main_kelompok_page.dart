@@ -6,7 +6,6 @@ import 'package:mol_petani/presentation/page/farmer_group/group_main_page/Websit
 import 'package:mol_petani/presentation/page/farmer_group/group_submisson_fertilizer_group/group_submission_fertilizer_group_page.dart';
 import 'package:mol_petani/presentation/page/farmer_group/group_home_page/home_farmer_group_page.dart';
 import 'package:mol_petani/presentation/page/farmer_group/profile_group/profile_group_page.dart';
-import 'package:mol_petani/presentation/page/profile/distributor_profile_page.dart';
 import 'package:mol_petani/presentation/page/profile/profile_page.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';

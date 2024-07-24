@@ -49,6 +49,7 @@ class HomePplPage extends ConsumerWidget {
     final height = MediaQuery.of(context).size.height;
     return CupertinoApp(
       home: CupertinoPageScaffold(
+        backgroundColor: background,
         navigationBar: CupertinoNavigationBar(
           leading: Align(
             alignment: Alignment.topLeft,

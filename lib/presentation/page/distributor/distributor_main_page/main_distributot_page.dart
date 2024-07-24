@@ -6,7 +6,6 @@ import 'package:mol_petani/presentation/page/distributor/distributor_home/home_d
 import 'package:mol_petani/presentation/page/distributor/distributor_main_page/website/web_distributor_main.dart';
 import 'package:mol_petani/presentation/page/distributor/distributor_sends_fertilizer/distributor_sends_fertilizer_page.dart';
 import 'package:mol_petani/presentation/page/distributor/profile_distributor/profile_distributor_page.dart';
-import 'package:mol_petani/presentation/page/profile/distributor_profile_page.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
 import 'package:mol_petani/presentation/widgets/platform_widget.dart';

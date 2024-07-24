@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:mol_petani/presentation/misc/constant.dart';
 
 class CustomScaffold extends StatelessWidget {
   final Widget body;
@@ -9,6 +10,7 @@ class CustomScaffold extends StatelessWidget {
 
   Widget _buildShortAppBar(BuildContext context) {
     return Card(
+      color: blueLight,
       margin: const EdgeInsets.all(0),
       shape: const BeveledRectangleBorder(
         borderRadius: BorderRadius.only(
@@ -20,8 +22,14 @@ class CustomScaffold extends StatelessWidget {
         children: [
           IconButton(
             icon: defaultTargetPlatform == TargetPlatform.iOS
-                ? const Icon(CupertinoIcons.back)
-                : const Icon(Icons.arrow_back),
+                ? const Icon(
+                    CupertinoIcons.back,
+                    color: Colors.white,
+                  )
+                : const Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
+                  ),
             onPressed: () {
               Navigator.pop(context);
             },
@@ -29,7 +37,8 @@ class CustomScaffold extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 16.0),
             child: Text(
-              'N',
+              'Back',
+              style: regulerReguler.copyWith(color: Colors.white),
             ),
           ),
         ],

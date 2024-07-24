@@ -108,7 +108,7 @@ class DataUser extends _$DataUser {
     }
   }
 
-  Future<void> loginUser(
+  Future<bool> loginUser(
       {required String email,
       required String password,
       required String user}) async {
@@ -127,10 +127,12 @@ class DataUser extends _$DataUser {
             "scope": user.scope,
             "subdistrict": user.subdistrict,
           });
+          return true;
         // return;
         case Failed(:final message):
           state = AsyncError(FlutterError(message), StackTrace.current);
           state = const AsyncData(null);
+          return false;
       }
     } else if (user == "Kelompok Tani") {
       LoginFarmerGrup login = ref.read(loginFarmerGrupProvider);
@@ -147,10 +149,12 @@ class DataUser extends _$DataUser {
             "information": user.information,
             "fotoUrl": user.fotoUrl,
           });
+          return true;
         // return;
         case Failed(message: final message):
           state = AsyncError(FlutterError(message), StackTrace.current);
           state = const AsyncData(null);
+          return false;
       }
     } else if (user == "Distributor") {
       LoginDistributor login = ref.read(loginDistributorProvider);
@@ -167,10 +171,12 @@ class DataUser extends _$DataUser {
             "fotoUrl": user.fotoUrl,
             "scope": user.scope,
           });
+          return true;
         // return;
         case Failed(message: final mesage):
           state = AsyncError(FlutterError(mesage), StackTrace.current);
           state = const AsyncData(null);
+          return false;
       }
     } else if (user == "Petani") {
       LoginFarmer login = ref.read(loginFarmerProvider);
@@ -187,12 +193,16 @@ class DataUser extends _$DataUser {
             "information": user.information,
             "farmerGroup": user.farmerGroup,
           });
+          return true;
         // return;
         case Failed(message: final message):
           state = AsyncError(FlutterError(message), StackTrace.current);
           state = const AsyncData(null);
+          return false;
       }
-    } else {}
+    } else {
+      return false;
+    }
   }
 
   Future<void> logoutPetugas() async {
@@ -340,11 +350,9 @@ class DataUser extends _$DataUser {
     required String name,
     required String village,
     required String nik,
-    required String kartuKeluarga,
     required String luasLahan,
     required String jenisKelamin,
     required String noHp,
-    required String dateOfBirth,
   }) async {
     CreateFarmer create = ref.read(createFarmerProvider);
 
@@ -352,7 +360,7 @@ class DataUser extends _$DataUser {
       name: name,
       alamat: village,
       nik: nik,
-      kartuKeluarga: kartuKeluarga,
+      kartuKeluarga: "",
       luasLahan: luasLahan,
       jenisKelamin: jenisKelamin,
       noHp: noHp,
@@ -408,7 +416,7 @@ class DataUser extends _$DataUser {
     }
   }
 
-  Future<String> updateAccountFarmer(
+  Future<bool> updateAccountFarmer(
       {required String email,
       required String password,
       required String idDocument}) async {
@@ -420,9 +428,9 @@ class DataUser extends _$DataUser {
     ));
     switch (result) {
       case Success():
-        return "Update success";
+        return true;
       case Failed():
-        return "Update failed";
+        return false;
     }
   }
 

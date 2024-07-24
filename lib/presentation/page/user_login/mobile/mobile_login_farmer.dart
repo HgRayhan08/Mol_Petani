@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/user_login/method/dropdown_login.dart';
 import 'package:mol_petani/presentation/page/user_login/method/form_login_farmer.dart';
+import 'package:mol_petani/presentation/page/user_login/method/logic_login.dart';
 import 'package:mol_petani/presentation/page/user_login/method/opener_petani.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
 import 'package:mol_petani/presentation/provider/user_data/data_user_provider.dart';
@@ -23,11 +24,13 @@ class MobileLoginFarmer extends ConsumerStatefulWidget {
 
 class _MobileLoginFarmerState extends ConsumerState<MobileLoginFarmer> {
   String? selectedValue;
+  bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     final mediaWidth = MediaQuery.of(context).size.width;
     final mediaHeight = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: background,
       body: ListView(
         padding: EdgeInsets.only(
           left: 20,
@@ -67,13 +70,7 @@ class _MobileLoginFarmerState extends ConsumerState<MobileLoginFarmer> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    onPressed: () {
-                      ref.read(dataUserProvider.notifier).loginUser(
-                            email: widget.emailControler.text,
-                            password: widget.passwordControler.text,
-                            user: selectedValue!,
-                          );
-                    },
+                    onPressed: _isLoading ? null : _login,
                     child: Text(
                       "Login",
                       style: buttonReguler.copyWith(
@@ -101,7 +98,7 @@ class _MobileLoginFarmerState extends ConsumerState<MobileLoginFarmer> {
             height: mediaHeight * 0.05,
           ),
           Padding(
-            padding: EdgeInsets.only(top: mediaHeight * 0.08),
+            padding: EdgeInsets.only(top: mediaHeight * 0.05),
             child: Column(
               children: [
                 Text(
@@ -118,5 +115,19 @@ class _MobileLoginFarmerState extends ConsumerState<MobileLoginFarmer> {
         ],
       ),
     );
+  }
+
+  void _login() {
+    final login = LogicLogin(
+        ref: ref,
+        context: context,
+        emailControler: widget.emailControler,
+        passwordControler: widget.passwordControler,
+        selectValue: selectedValue.toString());
+    login.login((isLoading) {
+      setState(() {
+        _isLoading = isLoading;
+      });
+    });
   }
 }

@@ -15,6 +15,12 @@ class FarmerDetailAcceptedFertilizerPage extends ConsumerWidget {
   Widget buildAndroid(BuildContext context, WidgetRef ref) {
     return Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              ref.read(routerProvider).pop();
+            },
+            icon: const Icon(Icons.arrow_back),
+          ),
           title: Text(
             "Detail Penerimaan Pupuk",
             style: largeReguler,

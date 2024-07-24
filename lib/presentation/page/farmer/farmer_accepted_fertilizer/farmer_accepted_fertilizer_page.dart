@@ -5,7 +5,6 @@ import 'package:mol_petani/presentation/misc/constant.dart';
 import 'package:mol_petani/presentation/page/farmer/farmer_accepted_fertilizer/mobile/mobile_accepted_fertilizer.dart';
 import 'package:mol_petani/presentation/page/farmer/farmer_accepted_fertilizer/website/web_accepted_fertilizer.dart';
 import 'package:mol_petani/presentation/provider/router/router_provider.dart';
-import 'package:mol_petani/presentation/provider/submission_fertilizer/submission_fertilizer_provider.dart';
 import 'package:mol_petani/presentation/widgets/platform_widget.dart';
 
 class FarmerAcceptedFertilizerpage extends ConsumerWidget {
@@ -14,6 +13,7 @@ class FarmerAcceptedFertilizerpage extends ConsumerWidget {
   Widget buildAndroid(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: background,
         title: Text("Peneriamaan Pupuk", style: largeReguler),
       ),
       body: MobileAcceptedFertilizer(ref: ref),
@@ -24,13 +24,8 @@ class FarmerAcceptedFertilizerpage extends ConsumerWidget {
     return CupertinoApp(
       title: "Peneriamaan Pupuk",
       home: CupertinoPageScaffold(
+          backgroundColor: background,
           navigationBar: CupertinoNavigationBar(
-            leading: IconButton(
-              onPressed: () {
-                ref.read(routerProvider).pop();
-              },
-              icon: const Icon(Icons.arrow_back_ios),
-            ),
             middle: Text(
               "Peneriamaan Pupuk",
               style: largeReguler,

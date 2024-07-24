@@ -11,9 +11,7 @@ class Registerfarmer {
   final TextEditingController villageController;
   final TextEditingController nikController;
   final TextEditingController noHpController;
-  final TextEditingController kartuController;
   final TextEditingController luasController;
-  final String tanggalLahirController;
   final String jenisKelamin;
   Registerfarmer({
     required this.ref,
@@ -22,9 +20,7 @@ class Registerfarmer {
     required this.villageController,
     required this.nikController,
     required this.noHpController,
-    required this.kartuController,
     required this.luasController,
-    required this.tanggalLahirController,
     required this.jenisKelamin,
   });
 
@@ -33,9 +29,7 @@ class Registerfarmer {
         villageController.text == "" ||
         nikController.text == "" ||
         noHpController.text == "" ||
-        kartuController.text == "" ||
-        luasController.text == "" ||
-        tanggalLahirController == "") {
+        luasController.text == "") {
       context.buildAlertInformation(
           title: "Pesan", subTitle: "Please enter the data completely");
     } else {
@@ -46,14 +40,12 @@ class Registerfarmer {
               name: nameController.text,
               village: villageController.text,
               nik: nikController.text,
-              kartuKeluarga: kartuController.text,
               luasLahan: luasController.text,
               jenisKelamin: jenisKelamin,
               noHp: noHpController.text,
-              dateOfBirth: tanggalLahirController,
             );
 
-        if (result == true) {
+        if (result == false) {
           context.buildAlertInformation(
               title: "Pesan", subTitle: "Berhasil Menambahkan Data");
           Future.delayed(

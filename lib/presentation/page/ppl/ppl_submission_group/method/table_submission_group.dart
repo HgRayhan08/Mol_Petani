@@ -84,9 +84,9 @@ class _TableSubmissionGroupState extends ConsumerState<TableSubmissionGroup> {
               onPressed: () async {
                 // context.getInheritedWidgetOfExactType("detail-submission-fertilizer", extra: data);
                 ref.read(routerProvider).goNamed(
-                      "detail-submission-fertilizer",
-                      extra: data,
-                    );
+                  "detail-submission-fertilizer",
+                  extra: {"data": data, "user": widget.userGroup},
+                );
               },
             ),
           ],
@@ -119,7 +119,7 @@ class _TableSubmissionGroupState extends ConsumerState<TableSubmissionGroup> {
                         e.key + 1), // Assuming 'no' is a property in your data
                 'nik': PlutoCell(
                     value: e.value
-                        .farmerFroup), // Assuming 'name' is a property in your data
+                        .farmerGroup), // Assuming 'name' is a property in your data
                 'nama': PlutoCell(value: e.value.leaderName),
                 'nomor': PlutoCell(value: e.value.date),
                 'tahun': PlutoCell(value: e.value.forYear),
