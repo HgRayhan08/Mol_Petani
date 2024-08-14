@@ -52,12 +52,12 @@ class LogicDistributor {
                   scope: coverage,
                   address: subdistrikControler.text,
                   familyIdentificationNumber: nikControler.text,
-                  image: File(xfile!.path),
+                  image: File(xfile.path),
                   toko: tokoController.text,
                   mobileNumber: int.parse(handphoneConntroler.text),
                 );
 
-        if (result== false) {
+        if (result == true) {
           context.buildAlertInformation(
               title: "Pesan", subTitle: "Berhasil Menambahkan Data");
           Future.delayed(

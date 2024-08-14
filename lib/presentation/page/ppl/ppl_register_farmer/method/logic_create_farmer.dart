@@ -45,7 +45,7 @@ class Registerfarmer {
               noHp: noHpController.text,
             );
 
-        if (result == false) {
+        if (result == true) {
           context.buildAlertInformation(
               title: "Pesan", subTitle: "Berhasil Menambahkan Data");
           Future.delayed(

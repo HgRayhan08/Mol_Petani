@@ -40,8 +40,8 @@ class PplDetailDistributorPage extends ConsumerWidget {
                       .deleteDistributor(idDocument: user.uid);
                   ref.read(routerProvider).goNamed("data-distributor");
                 },
-                judul: "Konfirmasi Tambae Member",
-                keterangan: "Apakah Anda yakin ingin Menambah Memmber?",
+                judul: "Konfirmasi Hapus Distributor",
+                keterangan: "Apakah Anda yakin ingin Menghapus Distributor?",
               );
             },
           ),

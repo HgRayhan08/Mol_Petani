@@ -21,9 +21,11 @@ class MobileDetailDistributor extends StatelessWidget {
             Container(
               width: width * 0.25,
               height: width * 0.25,
-              decoration: const BoxDecoration(
-                color: Colors.amber,
-                borderRadius: BorderRadius.all(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: NetworkImage(user.fotoUrl.toString()),
+                    fit: BoxFit.cover),
+                borderRadius: const BorderRadius.all(
                   Radius.circular(30),
                 ),
               ),
@@ -85,7 +87,7 @@ class MobileDetailDistributor extends StatelessWidget {
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             shrinkWrap: true,
-            itemCount: 2,
+            itemCount: user.scope!.length,
             itemBuilder: (context, index) {
               return Container(
                 width: width * 0.25,
@@ -99,7 +101,7 @@ class MobileDetailDistributor extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    "data",
+                    user.scope![index],
                     style: regulerReguler.copyWith(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
